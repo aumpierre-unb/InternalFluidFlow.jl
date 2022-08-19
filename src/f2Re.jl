@@ -1,4 +1,5 @@
 using Plots
+include("bissecao.jl")
 
 function f2Re(f, eps=0, fig=false)
     # [Re]=f2Re(f,[eps[,s]]) computes
@@ -105,74 +106,3 @@ function f2Re(f, eps=0, fig=false)
     end
     return Re
 end
-
-# function laminar()
-#     Re = [500; 4000]
-#     f = 64 ./ Re
-#     display(plot!(Re, f,
-#         seriestype=:line,
-#         color=:black))
-# end
-
-# function turb(eps)
-#     Re = []
-#     f = []
-#     N = 51
-#     for i in 1:N
-#         w = log10(2e3) + (i - 1) * (log10(1e8) - log10(2e3)) / (N - 1)
-#         Re = [Re; 10^w]
-#         function foo(f)
-#             return 1 / sqrt(f) + 2 * log10(eps / 3.7 + 2.51 / Re[end] / sqrt(f))
-#         end
-#         f = [f; bissecao(foo, 6e-4, 1e-1, 1e-4)]
-#     end
-#     display(plot!(Re, f,
-#         seriestype=:line,
-#         color=:black))
-# end
-
-# function smooth()
-#     Re = []
-#     f = []
-#     N = 31
-#     for i = 1:N
-#         w = log10(2e3) + (i - 1) * (log10(1e7) - log10(2e3)) / (N - 1)
-#         Re = [Re; 10^w]
-#         function foo(f)
-#             return 1 / sqrt(f) + 2 * log10(2.51 / Re[end] / sqrt(f))
-#         end
-#         f = [f; bissecao(foo, 6e-3, 1e-1, 1e-4)]
-#     end
-#     display(plot!(Re, f,
-#         seriestype=:line,
-#         color=:blue))
-# end
-
-# function rough()
-#     eps = []
-#     f = []
-#     Re = []
-#     N = 31
-#     for i = 1:N
-#         w = log10(4e-5) + (i - 1) * (log10(5e-2) - log10(4e-5)) / (N - 1)
-#         eps = [eps; 10^w]
-#         f = [f; 1.01 * (2 * log10(3.7 / eps[end]))^-2]
-#         z = f2Re(f[end], eps[end])
-#         Re = [Re; z[end]]
-#     end
-#     display(plot!(Re, f,
-#         seriestype=:line,
-#         color=:blue))
-# end
-
-# function bissecao(foo, x1, x2, tol)
-#     while abs(foo(x2)) > tol
-#         x = (x1 + x2) / 2
-#         if foo(x) * foo(x1) > 0
-#             x1 = x
-#         else
-#             x2 = x
-#         end
-#     end
-#     return x2
-# end
