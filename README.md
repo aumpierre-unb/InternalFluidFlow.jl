@@ -1,9 +1,8 @@
 # Internal Fluid Flow
 
-[![DOI](https://zenodo.org/badge/509427410.svg)](https://zenodo.org/badge/latestdoi/509427410)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-This is a very short introduction to an incompressible and inviscid fluid steady internal flow and to the Internal FluidFlow Toolbox for GNU Octave.
+This is a very short introduction to an incompressible and inviscid fluid steady internal flow and to the Internal FluidFlow Toolbox for Julia.
 
 Our focus here is a small set of equations that described the phenomenon and are required to solve problems on internal fluid flow. Fluid mechanics is a pretty extensive topic in fluid dynamics and there are a lot of important and interesting observations related to the topic that are not taken into account in this text, because they have no direct impact the computation performed by the functions in this toolbox.
 
@@ -108,26 +107,6 @@ Internal Fluid Flow Toolbox provides the following functions:
 
 Re2f computes the Darcy friction factor *f* given the relative roughness $\varepsilon$ and the Reynolds number *Re*. If given *Re* < 2500, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
 
-<--
-**Syntax:**
-
-``[f]=Re2f(Re,[eps[,s]])``
-
-*e.g.* this call computes *f* and shows no plot:
-
-``>> Re=1.2e5;eps=0.002;``
-
-``>> f=Re2f(Re,eps)``
-
-*e.g.* this call computes *f* for the default relative roughness $\varepsilon$ = 0.002 and shows plot:
-
-``>> f=Re2f(1.2e5,:,1)``
-
-*e.g.* this call computes *f* and shows plot:
-
-``>> f=Re2f(1.2e5,0.002,1)``
->
-
 ### f2Re
 
 espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2500, laminar solution is accepted. If given *f* is possible for turbulent flow,
@@ -137,24 +116,6 @@ $$
 $$
 
 (which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given $\varepsilon$ > 0.05, execution is aborted.
-
-**Syntax:**
-
-``[Re]=f2Re(f,[eps[,s]])``
-
-*e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and shows no plot:
-
-``>> f=0.025;eps=0.002;``
-
-``>> Re=f2Re(f,eps)``
-
-*e.g.* this call computes *Re* for the default relative roughness $\varepsilon$ = 0.002 for both laminar and turbulent regimes (if possible) and shows plot:
-
-``>> Re=f2Re(0.025,:,1)``
-
-*e.g.* e.g. this call computes *Re* for both laminar and turbulent regimes (if possible) and shows plot:
-
-``>> Re=f2Re(0.025,0.002,1)``
 
 ### hDeps2fDRe
 
@@ -166,26 +127,6 @@ $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively, however an analytic solution is possible in this case.
 
-**Syntax:**
-
-``[Re,f]=hDeps2fRe(h,D,L,eps,g,mu,rho[,s])``
-
-*e.g.* this call computes *Re* and *f* and shows no plot:
-
-``>> h=40;D=10;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;``
-
-``>> thk=eps*D``
-
-``>> [Re,f]=hDeps2fRe(h,D,L,eps,g,mu,rho)``
-
-``>> v=Re*mu/rho/D``
-
-``>> Q=v*(pi/4*D^2)``
-
-*e.g.* this call computes *Re* and *f* and shows plot:
-
-``>> [Re,f]=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,1)``
-
 ### hveps2fDRe
 
 hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the flow speed *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -195,26 +136,6 @@ $$
 $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
-
-**Syntax:**
-
-``[Re,f]=hveps2fRe(h,v,L,eps,g,mu,rho[,s])``
-
-*e.g.* this call computes *Re* and *f* and shows no plot:
-
-``>> h=40;v=110;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;``
-
-``>> [Re,f]=hveps2fRe(h,v,L,eps,g,mu,rho)``
-
-``>> D=Re*mu/rho/v``
-
-``>> thk=eps*D``
-
-``>> Q=v*(pi/4*D^2)``
-
-*e.g.* this call computes *Re* and *f* and shows plot:
-
-``>> [Re,f]=hveps2fRe(40,110,2500,0.0025,981,0.0089,0.989,1)``
 
 ### hQeps2fDRe
 
@@ -226,26 +147,6 @@ $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
 
-**Syntax:**
-
-``[Re,f]=hQeps2fRe(h,Q,L,eps,g,mu,rho[,s])``
-
-*e.g.* this call computes *Re* and *f* and shows no plot:
-
-``>> h=40;Q=8600;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;``
-
-``>> [Re,f]=hQeps2fRe(h,Q,L,eps,g,mu,rho)``
-
-``>> D=Q*rho/(pi/4)/Re/mu``
-
-``>> thk=eps*D``
-
-``>> v=Q/(pi/4*D^2)``
-
-*e.g.* this call computes *Re* and *f* and shows plot:
-
-``>> [Re,f]=hQeps2fRe(40,8600,2500,0.0025,981,0.0089,0.989,1)``
-
 ### hvthk2fDRe
 
 hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the flow speed *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -256,26 +157,6 @@ $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
 
-**Syntax:**
-
-``[Re,f]=hvthk2fRe(h,v,L,thk,g,mu,rho[,s])``
-
-*e.g.* this call computes *Re* and *f* and shows no plot:
-
-``>> h=40;v=110;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;``
-
-``>> [Re,f]=hvthk2fRe(h,v,L,thk,g,mu,rho)``
-
-``>> D=Re*mu/rho/v``
-
-``>> eps=thk/D``
-
-``>> Q=v*(pi/4*D^2)``
-
-*e.g.* this call computes *Re* and *f* and shows plot:
-
-``>> [Re,f]=hvthk2fRe(40,110,2500,0.025,981,0.0089,0.989,1)``
-
 ### hQthk2fDRe
 
 hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -285,26 +166,6 @@ $$
 $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
-
-**Syntax:**
-
-``[Re,f]=hQthk2fRe(h,Q,L,thk,g,mu,rho[,s])``
-
-*e.g.* this call computes *Re* and *f* and shows no plot:
-
-``>> h=40;Q=8600;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;``
-
-``>> [Re,f]=hQthk2fRe(h,Q,L,thk,g,mu,rho)``
-
-``>> D=Q*rho/(pi/4)/Re/mu``
-
-``>> eps=thk/D``
-
-``>> v=Q/(pi/4*D^2)``
-
-*e.g.* this call computes *Re* and *f* and shows plot:
-
-``>> [Re,f]=hQthk2fRe(40,8600,2500,0.025,981,0.0089,0.989,1)``
 
 Copyright &copy; 2022 Alexandre Umpierre
 
