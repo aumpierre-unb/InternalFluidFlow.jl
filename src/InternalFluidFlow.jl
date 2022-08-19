@@ -3,6 +3,11 @@ module InternalFluidFlow
 using Plots
 using Test
 
+export f2Re, Re2f,
+    hDesp2fRe,
+    hvesp2fRe, hvthk2fRe,
+    hQesp2fRe, hQthk2fRe
+
 include("Re2f.jl")
 include("f2Re.jl")
 include("hDeps2fRe.jl")
