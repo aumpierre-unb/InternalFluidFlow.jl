@@ -95,6 +95,10 @@ function hQthk2fRe(h, Q, L, thk, g, mu, rho, fig=false)
         turb(eps)
         turb(eps * 2)
         turb(eps * 5)
+        rough()
+        if eps != 0
+            smooth()
+        end
         display(plot!([Re], [f],
             seriestype=:scatter,
             color=:red))
