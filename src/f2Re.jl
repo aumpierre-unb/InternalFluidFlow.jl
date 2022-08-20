@@ -1,5 +1,9 @@
 using Plots
 include("bissecao.jl")
+include("laminar.jl")
+include("turb.jl")
+include("smooth.jl")
+include("rough.jl")
 
 function f2Re(f, eps=0, fig=false)
     # [Re]=f2Re(f,[eps[,s]]) computes

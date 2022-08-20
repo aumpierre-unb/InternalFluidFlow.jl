@@ -1,5 +1,9 @@
 using Plots
 include("bissecao.jl")
+include("laminar.jl")
+include("turb.jl")
+include("smooth.jl")
+include("rough.jl")
 
 # Follow these steps in the console:
 # https://invenia.github.io/PkgTemplates.jl/stable/
