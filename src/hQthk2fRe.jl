@@ -101,6 +101,7 @@ function hQthk2fRe(h, Q, L, thk, g, mu, rho, fig=false)
         end
         display(plot!([Re], [f],
             seriestype=:scatter,
+            markerstrokecolor=:red,
             color=:red))
         display(plot!([Re / 10; Re * 10], [P / (Re / 10)^5; P / (Re * 10)^5],
             seriestype=:line,

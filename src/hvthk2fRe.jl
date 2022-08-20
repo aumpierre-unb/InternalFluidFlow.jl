@@ -117,6 +117,7 @@ function hvthk2fRe(h, v, L, thk, g, mu, rho, fig=false)
         end
         display(plot!([Re], [f],
             seriestype=:scatter,
+            markerstrokecolor=:red,
             color=:red))
         display(plot!([Re / 10; Re * 10], [M * Re / 10; M * Re * 10],
             seriestype=:line,

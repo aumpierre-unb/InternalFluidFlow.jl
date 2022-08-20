@@ -102,6 +102,7 @@ function f2Re(f, eps=0, fig=false)
         end
         display(plot!([Re], [f],
             seriestype=:scatter,
+            markerstrokecolor=:red,
             color=:red))
         display(plot!([1e2; 1e8], [f; f],
             seriestype=:line,
