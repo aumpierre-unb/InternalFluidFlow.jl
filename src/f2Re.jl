@@ -55,7 +55,7 @@ function f2Re(f, eps=0, fig=false)
             return 1 / sqrt(f) + 2 * log10(eps / 3.7 + 2.51 / Re / sqrt(f))
         end
         r = bissecao(foo, 1e3, 1e8, 1e-4)
-        if r > 2.5e3
+        if r > 2.3e3
             Re = [Re; r]
             fD = [fD; f]
         end
