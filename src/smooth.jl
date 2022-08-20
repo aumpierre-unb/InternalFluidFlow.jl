@@ -1,4 +1,5 @@
 using Plots
+include("bissecao.jl")
 
 function smooth()
     Re = []
