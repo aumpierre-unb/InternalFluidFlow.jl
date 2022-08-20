@@ -98,6 +98,7 @@ function hDeps2fRe(h, D, L, eps, g, mu, rho, fig=false)
         end
         display(plot!([Re], [f],
             seriestype=:scatter,
+            markerstrokecolor=:red,
             color=:red))
         display(plot!([Re / 10; Re * 10], [K / (Re / 10)^2; K / (Re * 10)^2],
             seriestype=:line,
