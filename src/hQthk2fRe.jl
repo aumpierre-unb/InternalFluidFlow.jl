@@ -90,11 +90,31 @@ function hQthk2fRe(h, Q, L, thk, g, mu, rho, fig=false)
             grid=:true,
             minorgrid=:true)
         laminar()
-        turb(eps / 5)
-        turb(eps / 2)
         turb(eps)
-        turb(eps * 2)
-        turb(eps * 5)
+        if eps==0
+            turb(1e-5)
+        elseif eps*3<5e-2
+            turb(eps*3)
+        else
+            turb(eps/2)
+        end
+        if eps==0
+            turb(1e-4)
+        elseif eps*10<5e-2
+            turb(eps*10)
+        else
+            turb(eps/2)
+        end
+        if eps==0
+            turb(1e-3)
+        else
+            turb(eps/3)
+        end
+        if eps==0
+            turb(1e-2)
+        else
+            turb(eps/10)
+        end
         rough()
         if eps != 0
             smooth()
