@@ -88,26 +88,26 @@ function hDeps2fRe(h, D, L, eps, g, mu, rho, fig=false)
             minorgrid=:true)
         laminar()
         turb(eps)
-        if eps<1e-6
+        if eps<1e-5
             turb(1e-5)
         elseif eps*3<5e-2
             turb(eps*3)
         else
             turb(eps/2)
         end
-        if eps<1e-6
+        if eps<1e-5
             turb(1e-4)
         elseif eps*10<5e-2
             turb(eps*10)
         else
             turb(eps/2)
         end
-        if eps<1e-6
+        if eps<1e-5
             turb(1e-3)
         else
             turb(eps/3)
         end
-        if eps<1e-6
+        if eps<1e-5
             turb(1e-2)
         else
             turb(eps/10)
