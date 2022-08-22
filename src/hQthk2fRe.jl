@@ -79,7 +79,7 @@ function hQthk2fRe(h, Q, L, thk, g, mu, rho, fig=false)
             f = Re2f(Re, eps)
         end
     end
-    if !isempty(fD) & fig
+    if fig
         # plot(xlabel="Re",
         #     ylabel="f",
         #     xlims=(1e2, 1e8),

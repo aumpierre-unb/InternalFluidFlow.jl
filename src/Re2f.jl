@@ -55,7 +55,7 @@ function Re2f(Re, eps=0, fig=false)
         end
         f = bissecao(foo, 6e-3, 1e-1, 1e-4)
     end
-    if !isempty(fD) & fig
+    if fig
         # plot(xlabel="Re",
         #     ylabel="f",
         #     xlims=(1e2, 1e8),

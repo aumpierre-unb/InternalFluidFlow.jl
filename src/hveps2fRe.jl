@@ -87,7 +87,7 @@ function hveps2fRe(h, v, L, eps, g, mu, rho, fig=false)
         Re = [sqrt(64 / M); Re]
         f = [64 / sqrt(64 / M); f]
     end
-    if !isempty(fD) & fig
+    if fig
         # plot(xlabel="Re",
         #     ylabel="f",
         #     xlims=(1e2, 1e8),
