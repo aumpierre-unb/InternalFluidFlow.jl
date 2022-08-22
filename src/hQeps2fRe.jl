@@ -114,7 +114,7 @@ function hQeps2fRe(h, Q, L, eps, g, mu, rho, fig=false)
         # if eps != 0
         #     smooth()
         # end
-        figure()
+        figure(eps)
         display(plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,

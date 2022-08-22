@@ -136,7 +136,7 @@ function hvthk2fRe(h, v, L, thk, g, mu, rho, fig=false)
         # if eps != 0
         #     smooth()
         # end
-        figure()
+        figure(eps)
         display(plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,

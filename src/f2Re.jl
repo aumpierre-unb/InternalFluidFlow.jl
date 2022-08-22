@@ -101,7 +101,7 @@ function f2Re(f, eps=0, fig=false)
         # if eps != 0
         #     smooth()
         # end
-        figure()
+        figure(eps)
         display(plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,

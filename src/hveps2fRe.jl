@@ -128,7 +128,7 @@ function hveps2fRe(h, v, L, eps, g, mu, rho, fig=false)
         # if eps != 0
         #     smooth()
         # end
-        figure()
+        figure(eps)
         display(plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
