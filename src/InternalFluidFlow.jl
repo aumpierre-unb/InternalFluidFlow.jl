@@ -17,5 +17,6 @@ include("turb.jl")
 include("smooth.jl")
 include("rough.jl")
 include("bissecao.jl")
+include("figure.jl")
 
 end
