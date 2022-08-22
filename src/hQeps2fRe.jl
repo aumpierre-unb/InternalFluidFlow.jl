@@ -1,9 +1,10 @@
 using Plots
 include("Re2f.jl")
-include("laminar.jl")
-include("turb.jl")
-include("smooth.jl")
-include("rough.jl")
+include("figure.jl")
+# include("laminar.jl")
+# include("turb.jl")
+# include("smooth.jl")
+# include("rough.jl")
 
 function hQeps2fRe(h, Q, L, eps, g, mu, rho, fig=false)
     # Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,s]) computes
