@@ -2,11 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is a very short introduction to an incompressible and inviscid fluid steady internal flow and to the Internal FluidFlow Toolbox for Julia.
+This is a very short introduction to the steady internal flow of an incompressible and inviscid fluid and to the Internal FluidFlow Module for Julia.
 
-Our focus here is a small set of equations that described the phenomenon and are required to solve problems on internal fluid flow. Fluid mechanics is a pretty extensive topic in fluid dynamics and there are a lot of important and interesting observations related to the topic that are not taken into account in this text, because they have no direct impact the computation performed by the functions in this toolbox.
+Our focus here is a small set of equations that described the phenomenon and are required to solve problems on internal fluid flow. Fluid mechanics is a pretty extensive topic in fluid dynamics and there are a lot of important and interesting observations related to the topic that are not taken into account in this text, because they have no direct impact the computation performed by the functions in this module.
 
-This text is divided in two main sections: The Theory and The Internal Fluid Flow Toolbox.
+This text is divided in two main sections: The Theory and The Internal Fluid Flow Module.
 
 ## The Theory
 
@@ -93,7 +93,7 @@ $$
 
 This package provides a set of functions designed to solve problems of internal fluid flow. All functions are based on the Poiseuille condition for laminar flow, the Colebrook-White equation for turbulent flow, and the Darcy-Weisbach equation for head loss. The simplest problems on internal flow consist in computing either the Reynolds number or the Darcy friction factor given the other and the relative roughness. For those cases, this package provides functions f2Re and Re2f, respectively. More elaborated problems consist in computing both the Reynolds number and the Darcy friction factor given the head loss, the tube length, the fluid's density and dynamic viscosity, the gravitational acceleration, the relative roughness and either the dynamic diameter or the flow speed or the volumetric flow. For those cases, this package provides functions hDeps2fRe, hveps2fRe and hQeps2fRe, respectively. A slightly more elaborate situation arises when roughness is given instead of relative roughness along with the flow speed or the volumetric flow. For those cases, this package provides functions hvthk2fRe and hQthk2fRe, respectively. All function in this package offer the option of plotting the solution on a schematic Moody diagram.
 
-Internal Fluid Flow Toolbox provides the following functions:
+Internal Fluid Flow Module provides the following functions:
 
 - Re2f
 - f2Re
