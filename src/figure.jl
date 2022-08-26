@@ -1,5 +1,4 @@
 using Plots
-# include("bissecao.jl")
 include("laminar.jl")
 include("turb.jl")
 include("smooth.jl")

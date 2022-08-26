@@ -2,6 +2,8 @@
 
 1) Add package:
 
+``julia> using Pkg``
+
 ``(@v1.7) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
 
 2) 
@@ -12,7 +14,7 @@
 
 1) Access the module file directory:
 
-``julia> cd("D:/UnB/programacao/julia/InternalFluidFlow/src")``
+``julia> cd("D:/.../InternalFluidFlow/src")``
 
 2) include the module in the session:
 
