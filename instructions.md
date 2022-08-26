@@ -1,4 +1,4 @@
-<!-- ## Add package from github site:
+## Add package from github site:
 
 1) Add package:
 
@@ -8,7 +8,7 @@
 
 2) 
 
-``julia> using InternalFluidFlow`` -->
+``julia> using InternalFluidFlow``
 
 ## Download zip file and include module:
 

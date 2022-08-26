@@ -1,5 +1,6 @@
 # Internal Fluid Flow
 
+[![DOI](https://zenodo.org/badge/524550191.svg)](https://zenodo.org/badge/latestdoi/524550191)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a very short introduction to the steady internal flow of an incompressible and inviscid fluid and to the Internal Fluid Flow module for Julia.
@@ -42,7 +43,7 @@ where
 
 ### Head Loss
 
-The flow of viscous fluids is accompanied of energy dispersion, which can be measured as a pressure drop or, equivalently, as a head loss *h*, by the Darcy-Weisbach equation,
+The flow of viscous fluids is accompanied of energy dispersion, which can be measured as pressure drop or, equivalently, as head loss *h*, by the Darcy-Weisbach equation,
 
 $$
 h=f{v^2 \over 2g} {L \over D}
