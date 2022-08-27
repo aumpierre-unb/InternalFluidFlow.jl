@@ -1,10 +1,10 @@
 Cite as
 Alexandre Umpierre. (2022). 
 aumpierre-unb/InternalFluidFlow.jl: Internal Fluid Flow Toolbox 0.1.0 (v0.1.0). 
-Zenodo. https://doi.org/10.5281/zenodo.7019889
+Zenodo. https://doi.org/10.5281/zenodo.7025751
 
 BibTeX Export
-@software{alexandre_umpierre_2022_7019889,
+@software{alexandre_umpierre_2022_7025751,
   author       = {Alexandre Umpierre},
   title        = {{aumpierre-unb/InternalFluidFlow.jl: Internal Fluid 
                    Flow Toolbox 0.1.0}},
@@ -12,6 +12,6 @@ BibTeX Export
   year         = 2022,
   publisher    = {Zenodo},
   version      = {v0.1.0},
-  doi          = {10.5281/zenodo.7019889},
-  url          = {https://doi.org/10.5281/zenodo.7019889}
+  doi          = {10.5281/zenodo.7025751},
+  url          = {https://doi.org/10.5281/zenodo.7025751}
 }
