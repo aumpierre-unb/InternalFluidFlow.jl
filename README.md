@@ -111,7 +111,7 @@ Re2f computes the Darcy friction factor *f* given the relative roughness $\varep
 
 **Syntax:**
 
-``[f]=Re2f(Re,[eps[,s]])``
+``f=Re2f(Re,[eps[,s]])``
 
 *e.g.* this call computes *f* and shows no plot:
 
@@ -139,7 +139,7 @@ $$
 
 **Syntax:**
 
-``[Re]=f2Re(f,[eps[,s]])``
+``Re=f2Re(f,[eps[,s]])``
 
 *e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and shows no plot:
 
@@ -167,7 +167,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 **Syntax:**
 
-``[Re,f]=hDeps2fRe(h,D,L,eps,g,mu,rho[,s])``
+``Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,s])``
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
@@ -175,7 +175,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 ``julia> thk=eps*D``
 
-``julia> [Re,f]=hDeps2fRe(h,D,L,eps,g,mu,rho)``
+``julia> Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho)``
 
 ``julia> v=Re*mu/rho/D``
 
@@ -183,7 +183,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 *e.g.* this call computes *Re* and *f* and shows plot:
 
-``julia> [Re,f]=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)``
+``julia> Re,f=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)``
 
 ### hveps2fDRe
 
@@ -197,13 +197,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 **Syntax:**
 
-``[Re,f]=hveps2fRe(h,v,L,eps,g,mu,rho[,s])``
+``Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,s])``
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ``julia> h=40;v=110;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;``
 
-``julia> [Re,f]=hveps2fRe(h,v,L,eps,g,mu,rho)``
+``julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho)``
 
 ``julia> D=Re*mu/rho/v``
 
@@ -213,7 +213,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 *e.g.* this call computes *Re* and *f* and shows plot:
 
-``julia> [Re,f]=hveps2fRe(40,110,2500,0.0025,981,0.0089,0.989,true)``
+``julia> Re,f=hveps2fRe(40,110,2500,0.0025,981,0.0089,0.989,true)``
 
 ### hQeps2fDRe
 
@@ -227,13 +227,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 **Syntax:**
 
-``[Re,f]=hQeps2fRe(h,Q,L,eps,g,mu,rho[,s])``
+``Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,s])``
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ``julia> h=40;Q=8600;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;``
 
-``julia> [Re,f]=hQeps2fRe(h,Q,L,eps,g,mu,rho)``
+``julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho)``
 
 ``julia> D=Q*rho/(pi/4)/Re/mu``
 
@@ -243,7 +243,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 *e.g.* this call computes *Re* and *f* and shows plot:
 
-``julia> [Re,f]=hQeps2fRe(40,8600,2500,0.0025,981,0.0089,0.989,true)``
+``julia> Re,f=hQeps2fRe(40,8600,2500,0.0025,981,0.0089,0.989,true)``
 
 ### hvthk2fDRe
 
@@ -257,13 +257,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 **Syntax:**
 
-``[Re,f]=hvthk2fRe(h,v,L,thk,g,mu,rho[,s])``
+``Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,s])``
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ``julia> h=40;v=110;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;``
 
-``julia> [Re,f]=hvthk2fRe(h,v,L,thk,g,mu,rho)``
+``julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho)``
 
 ``julia> D=Re*mu/rho/v``
 
@@ -273,7 +273,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 *e.g.* this call computes *Re* and *f* and shows plot:
 
-``julia> [Re,f]=hvthk2fRe(40,110,2500,0.025,981,0.0089,0.989,true)``
+``julia> Re,f=hvthk2fRe(40,110,2500,0.025,981,0.0089,0.989,true)``
 
 ### hQthk2fDRe
 
@@ -287,13 +287,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 **Syntax:**
 
-``[Re,f]=hQthk2fRe(h,Q,L,thk,g,mu,rho[,s])``
+``Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,s])``
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ``julia> h=40;Q=8600;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;``
 
-``julia> [Re,f]=hQthk2fRe(h,Q,L,thk,g,mu,rho)``
+``julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho)``
 
 ``julia> D=Q*rho/(pi/4)/Re/mu``
 
@@ -303,7 +303,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 *e.g.* this call computes *Re* and *f* and shows plot:
 
-``julia> [Re,f]=hQthk2fRe(40,8600,2500,0.025,981,0.0089,0.989,true)``
+``julia> Re,f=hQthk2fRe(40,8600,2500,0.025,981,0.0089,0.989,true)``
 
 Copyright &copy; 2022 Alexandre Umpierre
 
