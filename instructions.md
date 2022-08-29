@@ -16,17 +16,23 @@ It requires module Pkg to be previously installed:
 
 InternalFluidFlow has seven functions.
 
+All functions have an optional input argument *fig* with
+
+default value *false*. If set to *true*,
+
+a schematic Moody diagram is plot with the computed solution.
+
 The first two are basic functions, to compute either
 
 the Reynolds number *Re* or the Darcy friction factor *f*,
 
 provided the other is given along with the relative roughness *eps*.
 
-``julia> f=Re2f(Re,[eps[,s]])``
+``julia> f=Re2f(Re,[eps[,fig]])``
 
 and
 
-``julia> Re=f2Re(f,[eps[,s]])``
+``julia> Re=f2Re(f,[eps[,fig]])``
 
 The other functions compute both
 
@@ -44,12 +50,12 @@ the pipe's roughness *thk* or relative roughness *eps*, and
 
 the pipe's hydraulic diameter *D* or the speed flow *v* or the volumetric rate flow *Q*:
 
-``julia> Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,s])``
+``julia> Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,fig])``
 
-``julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,s])``
+``julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,fig])``
 
-``julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,s])``
+``julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,fig])``
 
-``julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,s])``
+``julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,fig])``
 
-``julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,s])``
+``julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])``
