@@ -1,3 +1,39 @@
+"""
+`Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,s])` computes
+the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h,
+the flow speed v,
+the tube length L,
+the roughness thk,
+the gravitational accelaration g,
+the fluid's dynamic viscosity mu and
+the fluid's density rho.
+If s=true is given,a schematic Moody diagram
+is plotted as a graphical representation
+of the computation.
+
+e.g. Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h=40 cm,
+the flow speed v=100 cm/s,
+the pipe's length L=2500 cm and
+roughness thk=0.025 cm,
+the gravitational acceleration g=981 cm/s/s, and
+the fluid's dynamic viscosity mu=0.0089 g/cm/s and
+density rho=0.989 g/cc:
+This call computes Re and f:
+```
+    h=40;v=100;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
+    Re,f=hvthk2fRe(h,v,L,eps,g,mu,rho)
+```
+This call computes Re and f and plots a schematic Moody diagram:
+```
+    Re,f=hvthk2fRe(40,100,2500,0.025,981,0.0089,0.989,true)
+```
+
+See also: Re2f, f2Re, hDeps2fRe, hveps2fRe, hQeps2fRe, hQthk2fRe
+"""
 using Plots
 include("Re2f.jl")
 include("figure.jl")

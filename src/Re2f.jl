@@ -1,3 +1,28 @@
+"""
+`f=Re2f(Re,[eps[,s]])` computes
+the Darcy friction f factor, given
+the Reynolds number Re and
+the relative roughness eps.
+By default, tube is assumed to be smooth, eps=0.
+If eps>5e-2, eps is reset to 5e-2.
+If s=true is given,a schematic Moody diagram
+is plotted as a graphical representation
+of the computation.
+
+e.g. Compute the Darcy friction factor f given
+the Reynolds number Re=1.2e5 and
+the relative roughness eps=0.001.
+This call computes f:
+```
+    Re=1.2e5;eps=0.001;f=Re2f(Re,eps)
+```
+This call computes f and shows plos a schematic Moody diagram:
+```
+    f=Re2f(1.2e5,0.001,true)
+```
+
+See also: f2Re, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
+"""
 using Plots
 include("bissecao.jl")
 include("figure.jl")
