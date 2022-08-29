@@ -25,7 +25,7 @@ the pipe's length L=2500 cm and
 roughness thk=0.025 cm,
 the gravitational acceleration g=981 cm/s/s, and
 the fluid's dynamic viscosity mu=0.0089 g/cm/s and
-density rho=0.989 g/cc:
+density rho=0.989 g/cc.
 This call computes Re and f:
 ```
     h=40;Q=8600;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
