@@ -1,38 +1,38 @@
+@doc raw"""
+`Re=f2Re(f,[eps[,s]])` computes
+the Reynolds number Re, given
+the Darcy friction factor f and
+the relative roughness eps for
+for laminar regime and,
+when possible, also
+for turbulent regime.
+By default, tube is assumed to be smooth, eps=0.
+If eps>5e-2, execution is aborted.
+If s=true is given,a schematic Moody diagram
+is plotted as a graphical representation
+of the computation.
+
+e.g. Compute Reynolds number Re for
+Darcy friction factor f=0.028 and
+relative roughness eps=0.001.
+In this case, both laminar and turbulent
+solutions are possible.
+This call computes Re:
+```
+    f=0.028;eps=0.001;Re=f2Re(f,eps)
+```
+This call computes Re and plots a schematic Moody diagram:
+```
+    Re=f2Re(0.028,0.001,true)
+```
+
+See also: Re2f, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
+"""
 using Plots
 include("bissecao.jl")
 include("figure.jl")
 
 function f2Re(f, eps=0, fig=false)
-    """
-    `Re=f2Re(f,[eps[,s]])` computes
-    the Reynolds number Re, given
-    the Darcy friction factor f and
-    the relative roughness eps for
-    for laminar regime and,
-    when possible, also
-    for turbulent regime.
-    By default, tube is assumed to be smooth, eps=0.
-    If eps>5e-2, execution is aborted.
-    If s=true is given,a schematic Moody diagram
-    is plotted as a graphical representation
-    of the computation.
-
-    e.g. Compute Reynolds number Re for
-    Darcy friction factor f=0.028 and
-    relative roughness eps=0.001.
-    In this case, both laminar and turbulent
-    solutions are possible.
-    This call computes Re:
-    ```
-        f=0.028;eps=0.001;Re=f2Re(f,eps)
-    ```
-    This call computes Re and plots a schematic Moody diagram:
-    ```
-        Re=f2Re(0.028,0.001,true)
-    ```
-
-    See also: Re2f, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
-    """
     if eps > 5e-2
         eps = 5e-2
     end
