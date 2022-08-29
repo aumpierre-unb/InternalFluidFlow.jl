@@ -1,44 +1,44 @@
-"""
-`Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,s])` computes
-the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h,
-the hydraullic diameter D,
-the tube length L,
-the relative roughness eps,
-the gravitational accelaration g,
-the fluid's dynamic viscosity mu and
-the fluid's density rho.
-If s=true is given,a schematic Moody diagram
-is plotted as a graphical representation
-of the computation.
-
-e.g. Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h=40 cm,
-the pipe's hydraulic diameter D=10 cm,
-length L=2500 cm and
-relative roughness eps=0.0025,
-the gravitational acceleration g=981 cm/s/s, and
-the fluid's dynamic viscosity mu=0.0089 g/cm/s and
-density rho=0.989 g/cc:
-This call computes Re and f:
-```
-    h=40;D=10;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
-    Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho)
-```
-This call computes Re and f and plots a schematic Moody diagram:
-```
-    Re,f=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)
-```
-
-See also: Re2f, f2Re, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
-"""
 using Plots
 include("Re2f.jl")
 include("figure.jl")
 
 function hDeps2fRe(h, D, L, eps, g, mu, rho, fig=false)
+    """
+    `Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,s])` computes
+    the Reynolds number Re and
+    the Darcy friction factor f, given
+    the head loss h,
+    the hydraullic diameter D,
+    the tube length L,
+    the relative roughness eps,
+    the gravitational accelaration g,
+    the fluid's dynamic viscosity mu and
+    the fluid's density rho.
+    If s=true is given,a schematic Moody diagram
+    is plotted as a graphical representation
+    of the computation.
+
+    e.g. Compute the Reynolds number Re and
+    the Darcy friction factor f, given
+    the head loss h=40 cm,
+    the pipe's hydraulic diameter D=10 cm,
+    length L=2500 cm and
+    relative roughness eps=0.0025,
+    the gravitational acceleration g=981 cm/s/s, and
+    the fluid's dynamic viscosity mu=0.0089 g/cm/s and
+    density rho=0.989 g/cc:
+    This call computes Re and f:
+    ```
+        h=40;D=10;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
+        Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho)
+    ```
+    This call computes Re and f and plots a schematic Moody diagram:
+    ```
+        Re,f=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)
+    ```
+
+    See also: Re2f, f2Re, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
+    """
     K = 2 * g * h * rho^2 * D^3 / mu^2 / L
     islam = true
     Re = K / 64
