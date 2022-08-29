@@ -1,4 +1,9 @@
-"""
+using Plots
+include("Re2f.jl")
+include("figure.jl")
+
+function hvthk2fRe(h, v, L, thk, g, mu, rho, fig=false)
+    """
 `Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,s])` computes
 the Reynolds number Re and
 the Darcy friction factor f, given
@@ -34,11 +39,6 @@ This call computes Re and f and plots a schematic Moody diagram:
 
 See also: Re2f, f2Re, hDeps2fRe, hveps2fRe, hQeps2fRe, hQthk2fRe
 """
-using Plots
-include("Re2f.jl")
-include("figure.jl")
-
-function hvthk2fRe(h, v, L, thk, g, mu, rho, fig=false)
     M = 2 * g * mu * h / v^3 / rho / L
     isturb = true
     Re = 1e4
