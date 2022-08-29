@@ -1,3 +1,7 @@
+using Plots
+include("bissecao.jl")
+include("figure.jl")
+
 """
 `f=Re2f(Re,[eps[,s]])` computes
 the Darcy friction f factor, given
@@ -23,9 +27,6 @@ This call computes f and shows plos a schematic Moody diagram:
 
 See also: f2Re, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
 """
-using Plots
-include("bissecao.jl")
-include("figure.jl")
 
 # Follow these steps in the console:
 # https://invenia.github.io/PkgTemplates.jl/stable/
