@@ -8,8 +8,8 @@ the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the flow speed v,
-the tube length L,
-the relative roughness eps,
+the pipe's length L,
+the pipe's relative roughness eps,
 the gravitational accelaration g,
 the fluid's dynamic viscosity mu and
 the fluid's density rho.

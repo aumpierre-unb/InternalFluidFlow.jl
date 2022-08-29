@@ -7,9 +7,9 @@ include("figure.jl")
 the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
-the hydraullic diameter D,
-the tube length L,
-the relative roughness eps,
+the pipe's hydraullic diameter D,
+the pipe's length L,
+the pipe's relative roughness eps,
 the gravitational accelaration g,
 the fluid's dynamic viscosity mu and
 the fluid's density rho.
