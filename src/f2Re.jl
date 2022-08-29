@@ -1,3 +1,7 @@
+using Plots
+include("bissecao.jl")
+include("figure.jl")
+
 @doc raw"""
 `Re=f2Re(f,[eps[,s]])` computes
 the Reynolds number Re, given
@@ -28,10 +32,6 @@ This call computes Re and plots a schematic Moody diagram:
 
 See also: Re2f, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
 """
-using Plots
-include("bissecao.jl")
-include("figure.jl")
-
 function f2Re(f, eps=0, fig=false)
     if eps > 5e-2
         eps = 5e-2

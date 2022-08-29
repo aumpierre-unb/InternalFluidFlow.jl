@@ -1,3 +1,7 @@
+using Plots
+include("Re2f.jl")
+include("figure.jl")
+
 @doc raw"""
 `Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,s])` computes
 the Reynolds number Re and
@@ -34,10 +38,6 @@ This call computes Re and f and plots a schematic Moody diagram:
 
 See also: Re2f, f2Re, hDeps2fRe, hveps2fRe, hvthk2fRe, hQthk2fRe
 """
-using Plots
-include("Re2f.jl")
-include("figure.jl")
-
 function hQeps2fRe(h, Q, L, eps, g, mu, rho, fig=false)
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (mu / rho)^5 / L
     Re = (P / 64)^(1 / 4)
