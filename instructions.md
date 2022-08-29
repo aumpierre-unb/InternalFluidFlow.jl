@@ -1,25 +1,32 @@
-## Add package from github site:
+## Add InternalFluidFlow module:
 
-1) Add package:
+### 1) Add the module
+
+It requires module Pkg to be previously installed:
 
 ``julia> using Pkg``
 
-``(@v1.7) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
+``julia> Pkg.add("InternalFluidFlow")``
 
-2) 
+### 2) Load the module
 
 ``julia> using InternalFluidFlow``
 
-## Download zip file and include module:
+### 3) Use the module
 
-1) Access the module file directory:
+InternalFluidFlow has seven functions:
 
-``julia> cd("D:/.../InternalFluidFlow/src")``
+``julia> f=Re2f(Re,[eps[,s]])``
 
-2) include the module in the session:
+``julia> Re=f2Re(f,[eps[,s]])``
 
-``julia> Include("InternalFluidFlow.jl")``
+``julia> Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,s])``
 
-3) Load the module:
+``julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,s])``
 
-``julia> using .InternalFluidFlow``
+``julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,s])``
+
+``julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,s])``
+
+``julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,s])``
+
