@@ -12,10 +12,12 @@ the pipe's length L,
 the pipe's relative roughness eps,
 the gravitational accelaration g,
 the fluid's dynamic viscosity mu and
-the fluid's density rho.\n
+the fluid's density rho.
+
 If fig=true is given,a schematic Moody diagram
 is plotted as a graphical representation
-of the computation.\n
+of the computation.
+
 e.g. Compute the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h=40 cm,
