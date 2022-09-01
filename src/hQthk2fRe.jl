@@ -13,6 +13,7 @@ the pipe's roughness thk,
 the gravitational accelaration g,
 the fluid's dynamic viscosity mu and
 the fluid's density rho.
+
 If fig=true is given,a schematic Moody diagram
 is plotted as a graphical representation
 of the computation.
