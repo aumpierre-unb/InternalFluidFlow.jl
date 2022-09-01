@@ -19,13 +19,12 @@ include("figure.jl")
 `f=Re2f(Re,[eps[,fig]])` computes
 the Darcy friction f factor, given
 the Reynolds number Re and
-the relative roughness eps.
+the relative roughness eps.\n
 By default, pipe is assumed to be smooth, eps=0.
-If eps>5e-2, eps is reset to 5e-2.
+If eps>5e-2, eps is reset to 5e-2.\n
 If fig=true is given,a schematic Moody diagram
 is plotted as a graphical representation
-of the computation.
-
+of the computation.\n
 e.g. Compute the Darcy friction factor f given
 the Reynolds number Re=1.2e5 and
 the relative roughness eps=0.001.
