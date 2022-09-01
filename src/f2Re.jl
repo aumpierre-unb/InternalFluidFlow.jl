@@ -3,7 +3,7 @@ include("bissecao.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re=f2Re(f,[eps[,s]])` computes
+`Re=f2Re(f,[eps[,fig]])` computes
 the Reynolds number Re, given
 the Darcy friction factor f and
 the relative roughness eps for
@@ -12,7 +12,7 @@ when possible, also
 for turbulent regime.
 By default, pipe is assumed to be smooth, eps=0.
 If eps>5e-2, execution is aborted.
-If s=true is given,a schematic Moody diagram
+If fig=true is given,a schematic Moody diagram
 is plotted as a graphical representation
 of the computation.
 

@@ -16,13 +16,13 @@ include("figure.jl")
 # t("InternalFluidFlow")
 
 @doc raw"""
-`f=Re2f(Re,[eps[,s]])` computes
+`f=Re2f(Re,[eps[,fig]])` computes
 the Darcy friction f factor, given
 the Reynolds number Re and
 the relative roughness eps.
 By default, pipe is assumed to be smooth, eps=0.
 If eps>5e-2, eps is reset to 5e-2.
-If s=true is given,a schematic Moody diagram
+If fig=true is given,a schematic Moody diagram
 is plotted as a graphical representation
 of the computation.
 
