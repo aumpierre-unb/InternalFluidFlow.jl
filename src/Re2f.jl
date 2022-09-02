@@ -2,19 +2,6 @@ using Plots
 include("bissecao.jl")
 include("figure.jl")
 
-# Follow these steps in the console:
-# https://invenia.github.io/PkgTemplates.jl/stable/
-# using Pkg
-# Pkg.add("PkgTemplates")
-# using PkgTemplates
-# t = Template(;
-#     user="aumpierre-unb",
-#     authors="Alexandre Umpierre <aumpierre@gmail.com>",
-#     license="MIT",
-#     authors=["Alexandre Umpierre"],
-#     plugins=[Git(),GitHubActions(),])
-# t("InternalFluidFlow")
-
 @doc raw"""
 `f=Re2f(Re,[eps[,fig]])` computes
 the Darcy friction f factor, given
@@ -26,7 +13,7 @@ If eps>5e-2, eps is reset to 5e-2.
 
 If fig=true is given,a schematic Moody diagram
 is plotted as a graphical representation
-of the computation.
+of the solution.
 
 e.g. Compute the Darcy friction factor f given
 the Reynolds number Re=1.2e5 and
