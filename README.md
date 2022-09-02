@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![version](https://juliahub.com/docs/InternalFluidFlow/version.svg)](https://juliahub.com/ui/Packages/InternalFluidFlow/zGZKl)
 
-## Install and load Internal Fluid Flow module for Julia:
+### Install and load Internal Fluid Flow module for Julia:
 
 ``julia> using Pkg``
 
