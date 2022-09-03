@@ -1,4 +1,4 @@
-## Using the InternalFluidFlow module for Julia:
+## Using the Internal Fluid Flow module for Julia:
 
 ### 1) Add the module
 
@@ -14,7 +14,7 @@ It requires module Pkg to be previously installed:
 
 ### 3) Use the module
 
-InternalFluidFlow has seven functions.
+The internal Fluid Flow module has seven functions.
 
 All functions have an optional input argument *fig* with
 
@@ -34,7 +34,7 @@ and
 
 ``julia> Re=f2Re(f,[eps[,fig]])``
 
-The other functions compute both
+The other five functions compute both
 
 the Reynolds number *Re* and the Darcy friction factor *f*, given
 
@@ -59,3 +59,7 @@ the pipe's hydraulic diameter *D* or the speed flow *v* or the volumetric rate f
 ``julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,fig])``
 
 ``julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])``
+
+For further details on syntax, check on the functions descriptions. *e.g.*, for the description of function hQthk2fRe, type
+
+``julia> hQthk2fRe``
