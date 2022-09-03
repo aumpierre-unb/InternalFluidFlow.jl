@@ -20,7 +20,7 @@ a schematic Moody diagram is plot with the computed solution.
 
 The first two are basic functions, to compute either 
 the Reynolds number *Re* or the Darcy friction factor *f*, 
-provided the other is given along with the relative roughness *eps*.
+provided the other is given along with the relative roughness *eps*:
 
 ``julia> f=Re2f(Re,[eps[,fig]])``
 
