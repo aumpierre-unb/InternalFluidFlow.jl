@@ -2,8 +2,6 @@
 
 ### 1) Add the module
 
-It requires module Pkg to be previously installed:
-
 ``julia> using Pkg``
 
 ``julia> Pkg.add("InternalFluidFlow")``
