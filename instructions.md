@@ -16,9 +16,9 @@ It requires module Pkg to be previously installed:
 
 The internal Fluid Flow module has seven functions.
 
-All functions have an optional input argument *fig* with
+All functions have an optional input argument with
 
-default value *false*. If set to *true*,
+default value *false*. If it is given as *true*,
 
 a schematic Moody diagram is plot with the computed solution.
 
