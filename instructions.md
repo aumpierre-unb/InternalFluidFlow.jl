@@ -30,8 +30,6 @@ provided the other is given along with the relative roughness *eps*.
 
 ``julia> f=Re2f(Re,[eps[,fig]])``
 
-and
-
 ``julia> Re=f2Re(f,[eps[,fig]])``
 
 The other five functions compute both
