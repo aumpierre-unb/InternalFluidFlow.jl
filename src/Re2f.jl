@@ -22,7 +22,7 @@ This call computes f:
 ```
     Re=1.2e5;eps=0.001;f=Re2f(Re,eps)
 ```
-This call computes f and shows plos a schematic Moody diagram:
+This call computes f and plots a schematic Moody diagram:
 ```
     f=Re2f(1.2e5,0.001,true)
 ```

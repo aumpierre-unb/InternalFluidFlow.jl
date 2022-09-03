@@ -127,11 +127,11 @@ Re2f computes the Darcy friction factor *f* given the relative roughness $\varep
 
 ``julia> f=Re2f(Re,eps)``
 
-*e.g.* this call computes *f* for the default relative roughness $\varepsilon$ = 0.002 and shows plot:
+*e.g.* this call computes *f* for the default condition of smooth tube, $\varepsilon$ = 0, and plots a schematic Moody diagram with the solution:
 
 ``julia> f=Re2f(1.2e5,:,true)``
 
-*e.g.* this call computes *f* and shows plot:
+*e.g.* this call computes *f* and plots a schematic Moody diagram with the solution:
 
 ``julia> f=Re2f(1.2e5,0.002,true)``
 
@@ -155,11 +155,11 @@ $$
 
 ``julia> Re=f2Re(f,eps)``
 
-*e.g.* this call computes *Re* for the default relative roughness $\varepsilon$ = 0.002 for both laminar and turbulent regimes (if possible) and shows plot:
+*e.g.* this call computes *Re* for the default condition of smooth tube, $\varepsilon$ = 0, for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
 
 ``julia> Re=f2Re(0.025,:,true)``
 
-*e.g.* e.g. this call computes *Re* for both laminar and turbulent regimes (if possible) and shows plot:
+*e.g.* e.g. this call computes *Re* for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
 
 ``julia> Re=f2Re(0.025,0.002,true)``
 
@@ -189,7 +189,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 ``julia> Q=v*(pi/4*D^2)``
 
-*e.g.* this call computes *Re* and *f* and shows plot:
+*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ``julia> Re,f=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)``
 
@@ -219,7 +219,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 ``julia> Q=v*(pi/4*D^2)``
 
-*e.g.* this call computes *Re* and *f* and shows plot:
+*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ``julia> Re,f=hveps2fRe(40,110,2500,0.0025,981,0.0089,0.989,true)``
 
@@ -249,7 +249,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 ``julia> v=Q/(pi/4*D^2)``
 
-*e.g.* this call computes *Re* and *f* and shows plot:
+*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ``julia> Re,f=hQeps2fRe(40,8600,2500,0.0025,981,0.0089,0.989,true)``
 
@@ -279,7 +279,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 ``julia> Q=v*(pi/4*D^2)``
 
-*e.g.* this call computes *Re* and *f* and shows plot:
+*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ``julia> Re,f=hvthk2fRe(40,110,2500,0.025,981,0.0089,0.989,true)``
 
@@ -309,7 +309,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 
 ``julia> v=Q/(pi/4*D^2)``
 
-*e.g.* this call computes *Re* and *f* and shows plot:
+*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ``julia> Re,f=hQthk2fRe(40,8600,2500,0.025,981,0.0089,0.989,true)``
 
