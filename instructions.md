@@ -15,15 +15,11 @@
 The internal Fluid Flow module has seven functions.
 
 All functions have an optional input argument with
-
 default value *false*. If it is given as *true*,
-
 a schematic Moody diagram is plot with the computed solution.
 
 The first two are basic functions, to compute either
-
 the Reynolds number *Re* or the Darcy friction factor *f*,
-
 provided the other is given along with the relative roughness *eps*.
 
 ``julia> f=Re2f(Re,[eps[,fig]])``
@@ -31,7 +27,6 @@ provided the other is given along with the relative roughness *eps*.
 ``julia> Re=f2Re(f,[eps[,fig]])``
 
 The other five functions compute both
-
 the Reynolds number *Re* and the Darcy friction factor *f*, given
 
 the head loss *h*,
