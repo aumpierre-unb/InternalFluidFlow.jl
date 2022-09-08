@@ -47,6 +47,10 @@ the pipe's hydraulic diameter *D* or the speed flow *v* or the volumetric rate f
 
 ``julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])``
 
+For a short description of InternalFluidFlow module, type
+
+``help?> InternalFluidFlow``
+
 For further details on syntax, check on the functions descriptions. *e.g.*, for the description of function hQthk2fRe, type
 
 ``help?> hQthk2fRe``
