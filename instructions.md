@@ -1,5 +1,10 @@
 ## Using the InternalFluidFlow module for Julia
 
+InernalFluidFlow can be added and loaded either 
+from the JuliaHub repository or from the source repository.
+
+</hr>
+
 ### Add and load InternalFluidFlow from JuliaHub repository (last released version)
 
 ``julia> using Pkg``
