@@ -12,7 +12,9 @@
 
 ``(@v1.8) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
 
-The internal Fluid Flow module has seven functions.
+### The InternalFluidFlow
+
+InternalFluidFlow module has seven functions. 
 
 All functions have an optional input argument with 
 default value *false*. If it is given as *true*, 
