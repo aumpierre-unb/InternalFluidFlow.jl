@@ -1,16 +1,16 @@
 ## Using the Internal Fluid Flow module for Julia:
 
-### 1) Add the module
+### Add and load the module from JuliaHub repository (last released version)
 
 ``julia> using Pkg``
 
 ``julia> Pkg.add("InternalFluidFlow")``
 
-### 2) Load the module
-
 ``julia> using InternalFluidFlow``
 
-### 3) Use the module
+### Add and load the module from source repository (pre-realease)
+
+``(@v1.8) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
 
 The internal Fluid Flow module has seven functions.
 
@@ -47,4 +47,4 @@ the pipe's hydraulic diameter *D* or the speed flow *v* or the volumetric rate f
 
 For further details on syntax, check on the functions descriptions. *e.g.*, for the description of function hQthk2fRe, type
 
-``julia> hQthk2fRe``
+``help?> hQthk2fRe``
