@@ -8,7 +8,7 @@
 
 ``julia> using InternalFluidFlow``
 
-### Add and load the module from source repository (pre-realease)
+### Add and load the module from source repository (pre-realease version)
 
 ``(@v1.8) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
 
