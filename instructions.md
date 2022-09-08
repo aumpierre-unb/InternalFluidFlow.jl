@@ -1,4 +1,4 @@
-## Using the Internal Fluid Flow module for Julia:
+## Using the InternalFluidFlow module for Julia:
 
 ### Add and load the module from JuliaHub repository (last released version)
 
