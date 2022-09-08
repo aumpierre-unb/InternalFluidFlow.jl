@@ -1,6 +1,6 @@
 ## Using the InternalFluidFlow module for Julia:
 
-### Add and load the module from JuliaHub repository (last released version)
+### Add and load InternalFluidFlow from JuliaHub repository (last released version)
 
 ``julia> using Pkg``
 
@@ -8,7 +8,7 @@
 
 ``julia> using InternalFluidFlow``
 
-### Add and load the module from source repository (pre-realease version)
+### Add and load InternalFluidFlow from source repository (pre-realease version)
 
 ``(@v1.8) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
 
