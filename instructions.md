@@ -17,7 +17,7 @@ from the JuliaHub repository or from the source repository.
 
 <hr/>
 
-### The InternalFluidFlow
+### The InternalFluidFlow Module
 
 InternalFluidFlow module has seven functions. 
 
