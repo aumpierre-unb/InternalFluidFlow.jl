@@ -1,4 +1,4 @@
-## Using the InternalFluidFlow module for Julia
+## Using the InternalFluidFlow Module for Julia
 
 InernalFluidFlow can be added and loaded either 
 from the JuliaHub repository or from the source repository.
