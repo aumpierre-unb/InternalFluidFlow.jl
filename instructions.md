@@ -15,6 +15,8 @@ from the JuliaHub repository or from the source repository.
 
 ``(@v1.8) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
 
+``julia> using InternalFluidFlow``
+
 <hr/>
 
 ### The InternalFluidFlow Module
