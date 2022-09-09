@@ -5,9 +5,7 @@ from the JuliaHub repository or from the source repository.
 
 ### Add and load InternalFluidFlow from JuliaHub repository (last released version)
 
-``julia> using Pkg``
-
-``julia> Pkg.add("InternalFluidFlow")``
+``julia> using Pkg; Pkg.add("InternalFluidFlow")``
 
 ``julia> using InternalFluidFlow``
 
