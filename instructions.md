@@ -9,7 +9,7 @@ from the JuliaHub repository or from the source repository.
 
 ``julia> using InternalFluidFlow``
 
-### Add and load InternalFluidFlow from source repository (pre-realease version)
+### Add and load InternalFluidFlow from source repository (next version, under construction)
 
 ``(@v1.8) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
 
