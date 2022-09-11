@@ -15,7 +15,7 @@ from the JuliaHub repository or from the source repository.
 
 ``julia> using InternalFluidFlow``
 
-</hr>
+---
 
 ### The InternalFluidFlow Module
 
