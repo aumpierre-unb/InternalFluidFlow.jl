@@ -2,6 +2,12 @@ TODO
 ====
 
 
+internal-fluid-flow 0.1.4 (2022-XX-XX)
+======================================
+* Minor adjustments in readme.md and
+  in module's docstrings
+
+
 internal-fluid-flow 0.1.3 (2022-09-13)
 ======================================
 * Add module description
