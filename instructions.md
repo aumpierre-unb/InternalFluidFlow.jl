@@ -9,6 +9,12 @@ from the JuliaHub repository or from the source repository.
 
 ``julia> using InternalFluidFlow``
 
+### Update a current version of InternalFluidFlow from JuliaHub repository (last released version)
+
+``julia> using Pkg; Pkg.update("InternalFluidFlow")``
+
+``julia> using InternalFluidFlow``
+
 ### Add and load InternalFluidFlow from source repository (next version, under construction)
 
 ``(@v1.8) pkg> add "https://github.com/aumpierre-unb/InternalFluidFlow.jl"``
