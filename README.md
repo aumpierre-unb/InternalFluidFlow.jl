@@ -9,7 +9,7 @@
 InternalFluidFlow can be installed and loaded either
 from the JuliaHub repository or from the source repository.
 
-### Last released version of InternalFluidFlow
+### Last Released Version of InternalFluidFlow
 
 The last version of InternalFluidFlow can be installed from JuliaHub repository:
 
@@ -25,7 +25,7 @@ julia> using Pkg; Pkg.update("InternalFluidFlow")
 julia> using InternalFluidFlow
 ```
 
-### Next version (under construction)
+### Next Version (under construction)
 
 The next version (under construction) of InternalFluidFlow can be installed from the maintainer's repository (https://github.com/aumpierre-unb/InternalFluidFlow.jl):
 
@@ -42,7 +42,7 @@ This DOI represents all versions, and will always resolve to the latest one.
 
 For citation of the last released version of InternalFluidFlow, please check CITATION file in the maintainer's repository (https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
-## The theory for InternalFluidFlow
+## The Theory for InternalFluidFlow
 
 The following is a very short introduction to the steady internal flow of an incompressible and inviscid fluid and to the Internal Fluid Flow module for Julia.
 
@@ -145,7 +145,7 @@ $$
 \end{equation}
 $$
 
-## The InternalFluidFlow module for Julia
+## The InternalFluidFlow Module for Julia
 
 This package provides a set of functions designed to solve problems of internal fluid flow. All functions are based on the Poiseuille condition for laminar flow, the Colebrook-White equation for turbulent flow, and the Darcy-Weisbach equation for head loss. The simplest problems on internal flow consist in computing either the Reynolds number or the Darcy friction factor given the other and the relative roughness. For those cases, this package provides functions f2Re and Re2f, respectively. More elaborated problems consist in computing both the Reynolds number and the Darcy friction factor given the head loss, the tube length, the fluid's density and dynamic viscosity, the gravitational acceleration, the relative roughness and either the dynamic diameter or the flow speed or the volumetric flow. For those cases, this package provides functions hDeps2fRe, hveps2fRe and hQeps2fRe, respectively. A slightly more elaborate situation arises when roughness is given instead of relative roughness along with the flow speed or the volumetric flow. For those cases, this package provides functions hvthk2fRe and hQthk2fRe, respectively. All function in this package offer the option of plotting the solution on a schematic Moody diagram.
 
