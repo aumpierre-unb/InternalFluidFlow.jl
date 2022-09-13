@@ -6,7 +6,7 @@
 
 ## Installing and Loading InternalFluidFlow
 
-InternalFluidFlow can be added and loaded either
+InternalFluidFlow can be installed and loaded either
 from the JuliaHub repository or from the source repository.
 
 ### Last released version of InternalFluidFlow
