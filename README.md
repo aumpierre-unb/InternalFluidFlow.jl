@@ -19,15 +19,19 @@ The Bernoulli equation is an expression of the mechanical energy balance for a v
 For such a case, the mechanical energy is conserved, and for any two points 1 and 2 we have
 
 $$
+\begin{equation}
 {\rho v_2^2 \over 2} + \rho g z_2 + p_2 =
 {\rho v_1^2 \over 2} + \rho g z_1 + p_1
+\end{equation}
 $$
 
 or
 
 $$
+\begin{equation}
 {v_2^2 \over 2g}+z_2+{p_2 \over \rho g}=
 {v_1^2 \over 2g}+z_1+{p_1 \over \rho g}
+\end{equation}
 $$
 
 where
@@ -43,25 +47,33 @@ where
 The flow of viscous fluids is accompanied of energy dispersion, which can be measured as pressure drop or, equivalently, as head loss *h*, by the Darcy-Weisbach equation,
 
 $$
+\begin{equation}
 h=f{v^2 \over 2g} {L \over D}
+\end{equation}
 $$
 
 where *f* is the Darcy friction factor, *L* is the pipe's length and *D* is the pipe's hydraulic diameter,
 
 $$
+\begin{equation}
 D={4A \over P}
+\end{equation}
 $$
 
 where *A* is the cross-sectional area of the flow and *P* is the wet perimeter of the cross-section. *f* is described as a function of the Reynolds number,
 
 $$
+\begin{equation}
 Re={\rho vg \over \mu}
+\end{equation}
 $$
 
 and the pipe's relative roughness,
 
 $$
+\begin{equation}
 \varepsilon={k \over D}
+\end{equation}
 $$
 
 where
@@ -78,13 +90,17 @@ The simplest problems on internal fluid flow consist on computing one of them gi
 For laminar flow, *Re* < 2500 (typically), the Darcy friction factor is given by the Poiseuille condition,
 
 $$
+\begin{equation}
 f={64 \over Re}
+\end{equation}
 $$
 
 For turbulent flow, *Re* > 2500 (typically), the Darcy friction factor is given implicitly by the Colebrook-White equation,
 
 $$
+\begin{equation}
 {1 \over \sqrt{f}}=2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon} + {2.51 \over {Re \sqrt{f}}}}
+\end{equation}
 $$
 
 ## The InternalFluidFlow Module for Julia
@@ -128,7 +144,9 @@ Re2f computes the Darcy friction factor *f* given the relative roughness $\varep
 espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2500, laminar solution is accepted. If given *f* is possible for turbulent flow,
 
 $$
+\begin{equation}
 {1 \over \sqrt f} < 2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon}}
+\end{equation}
 $$
 
 (which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given $\varepsilon$ > 0.05, execution is aborted.
@@ -156,7 +174,9 @@ $$
 hDeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L*, relative roughness $\varepsilon$ and hydraulic diameter *D*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing speed flow *v* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $$
+\begin{equation}
 Re^2 f={2gh\rho^2D^3 \over {\mu^2 L}}
+\end{equation}
 $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively, however an analytic solution is possible in this case.
@@ -186,7 +206,9 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $$
+\begin{equation}
 {f \over Re}={2gh\mu \over {v^3\rho L}}
+\end{equation}
 $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
@@ -216,7 +238,9 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $$
+\begin{equation}
 {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}
+\end{equation}
 $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
@@ -246,7 +270,9 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $$
+\begin{equation}
 {f \over Re}={2gh\mu \over {v^3\rho L}}
+\end{equation}
 $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
@@ -276,7 +302,9 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $$
+\begin{equation}
 {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}
+\end{equation}
 $$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
