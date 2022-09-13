@@ -27,7 +27,7 @@ julia> using InternalFluidFlow
 
 ### Next Version (under construction)
 
-The next version (under construction) of InternalFluidFlow can be installed from the maintainer's repository (https://github.com/aumpierre-unb/InternalFluidFlow.jl):
+The next version (under construction) of InternalFluidFlow can be installed from the maintainer's <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">repository</a>.
 
 ```julia
 (@v1.8) pkg> add("https://github.com/aumpierre-unb/InternalFluidFlow.jl")
@@ -40,7 +40,7 @@ You can cite all versions of InternalFluidFlow by using the
 DOI 10.5281/zenodo.7019888.
 This DOI represents all versions, and will always resolve to the latest one.
 
-For citation of the last released version of InternalFluidFlow, please check CITATION file in the maintainer's repository (https://github.com/aumpierre-unb/InternalFluidFlow.jl).
+For citation of the last released version of InternalFluidFlow, please check CITATION file in the maintainer's <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">repository</a>.
 
 ## The Theory for InternalFluidFlow
 
