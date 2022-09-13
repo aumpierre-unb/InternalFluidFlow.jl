@@ -14,7 +14,7 @@ for turbulent regime.
 By default, pipe is assumed to be smooth, eps=0.
 If eps>5e-2, execution is aborted.
 
-If fig=true is given,a schematic Moody diagram
+If fig=true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 

@@ -14,7 +14,7 @@ the gravitational accelaration g,
 the fluid's dynamic viscosity mu and
 the fluid's density rho.
 
-If fig=true is given,a schematic Moody diagram
+If fig=true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
