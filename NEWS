@@ -1,31 +1,20 @@
-TODO
-====
+# TODO
 
-
-internal-fluid-flow 0.1.4 (2022-XX-XX)
-======================================
+## internal-fluid-flow 0.1.4 (2022-XX-XX)
 * Minor adjustments in readme.md and
   in module's docstrings
 
-
-internal-fluid-flow 0.1.3 (2022-09-13)
-======================================
+## internal-fluid-flow 0.1.3 (2022-09-13)
 * Add module description
 
-
-internal-fluid-flow 0.1.2 (2022-09-03)
-======================================
+## internal-fluid-flow 0.1.2 (2022-09-03)
 * Remove brackets from syntaxes in README.md
 * Minor adjustments on plots
 * Minor adjustments on descriptions
 
-
-internal-fluid-flow 0.1.1 (2022-08-27)
-======================================
+## internal-fluid-flow 0.1.1 (2022-08-27)
 * Minor adjustments on plots
 
-
-internal-fluid-flow 0.1.0 (2022-08-20)
-======================================
+## internal-fluid-flow 0.1.0 (2022-08-20)
 * First release
 * Package under construction
