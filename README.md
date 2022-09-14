@@ -141,9 +141,7 @@ f=Re2f(Re,[eps[,fig]])
 
 ```julia
 julia> Re=1.2e5;eps=0.002;
-```
 
-```julia
 julia> f=Re2f(Re,eps)
 ```
 
@@ -177,9 +175,7 @@ Re=f2Re(f,[eps[,fig]])
 
 ```julia
 julia> f=0.025;eps=0.002;
-```
 
-```julia
 julia> Re=f2Re(f,eps)
 ```
 
@@ -213,21 +209,13 @@ Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;D=10;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
-```
 
-```julia
 julia> thk=eps*D
-```
 
-```julia
 julia> Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho)
-```
 
-```julia
 julia> v=Re*mu/rho/D
-```
 
-```julia
 julia> Q=v*(pi/4*D^2)
 ```
 
@@ -255,22 +243,14 @@ Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;v=110;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
-```
 
-```julia
 julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho)
-```
 
-```julia
 julia> D=Re*mu/rho/v
-```
 
-```julia
 julia> thk=eps*Ddotnetcli
 
-``````
-
-```julia
+```
 julia> Q=v*(pi/4*D^2)
 ```
 
@@ -298,21 +278,13 @@ Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;Q=8600;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
-```
 
-```julia
 julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho)
-```
 
-```julia
 julia> D=Q*rho/(pi/4)/Re/mu
-```
 
-```julia
 julia> thk=eps*D
-```
 
-```julia
 julia> v=Q/(pi/4*D^2)
 ```
 
@@ -340,21 +312,13 @@ Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;v=110;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
-```
 
-```julia
 julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho)
-```
 
-```julia
 julia> D=Re*mu/rho/v
-```
 
-```julia
 julia> eps=thk/D
-```
 
-```julia
 julia> Q=v*(pi/4*D^2)
 ```
 
@@ -382,21 +346,13 @@ Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;Q=8600;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
-```
 
-```julia
 julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho)
-```
 
-```julia
 julia> D=Q*rho/(pi/4)/Re/mu
-```
 
-```julia
 julia> eps=thk/D
-```
 
-```julia
 julia> v=Q/(pi/4*D^2)
 ```
 
