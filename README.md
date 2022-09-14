@@ -25,7 +25,7 @@ julia> using Pkg;Pkg.update("InternalFluidFlow")
 julia> using InternalFluidFlow
 ```
 
-### Next Version (under construction)
+### Pre-Release Alpha Version (under construction)
 
 The next version (under construction) of InternalFluidFlow can be installed from the <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">maintainer's repository</a>.
 
