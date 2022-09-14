@@ -7,7 +7,7 @@
 ## Installing and Loading InternalFluidFlow
 
 InternalFluidFlow can be installed and loaded either
-from the JuliaHub repository or from the source repository.
+from the JuliaHub repository or from the <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">maintainer's repository</a>.
 
 ### Last Released Version of InternalFluidFlow
 
