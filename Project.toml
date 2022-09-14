@@ -1,7 +1,7 @@
 name = "InternalFluidFlow"
 uuid = "a3f4ffcb-63ab-449f-b58f-50e21d5ccbd2"
 authors = ["Alexandre Umpierre <aumpierre@gmail.com>"]
-version = "0.1.4"
+version = "0.1.5-alpha"
 
 [deps]
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
