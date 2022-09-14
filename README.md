@@ -34,7 +34,7 @@ The next version (under construction) of InternalFluidFlow can be installed from
 julia> using InternalFluidFlow
 ```
 
-## Citing InternalFluidFlow
+## Citation of InternalFluidFlow
 
 You can cite all versions of InternalFluidFlow by using the
 DOI 10.5281/zenodo.7019888.
