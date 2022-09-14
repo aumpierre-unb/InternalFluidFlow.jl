@@ -15,7 +15,7 @@ If fig=true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-e.g. Compute the Darcy friction factor f given
+Example: Compute the Darcy friction factor f given
 the Reynolds number Re=1.2e5 and
 the relative roughness eps=0.001.
 This call computes f:
