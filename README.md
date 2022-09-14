@@ -250,7 +250,6 @@ julia> D=Re*mu/rho/v
 
 julia> thk=eps*Ddotnetcli
 
-```
 julia> Q=v*(pi/4*D^2)
 ```
 
