@@ -36,7 +36,7 @@ julia> using InternalFluidFlow
 
 ## Citation of InternalFluidFlow
 
-You can cite all versions of InternalFluidFlow by using the
+You can cite all versions (both released and pre-released), by using the
 DOI 10.5281/zenodo.7019888.
 This DOI represents all versions, and will always resolve to the latest one.
 
