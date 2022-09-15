@@ -252,7 +252,7 @@ Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,fig])
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40;v=110;L=2.5e3;eps=2.5e3;g=981;mu=8.9e-3;rho=0.989;
+julia> h=40;v=1.1e2;L=2.5e3;eps=2.5e3;g=981;mu=8.9e-3;rho=0.989;
 julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho)
 julia> D=Re*mu/rho/v
 julia> thk=eps*D
@@ -262,7 +262,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hveps2fRe(40,110,2.5e3,2.5e3,981,8.9e-3,0.989,true)
+julia> Re,f=hveps2fRe(40,1.1e2,2.5e3,2.5e3,981,8.9e-3,0.989,true)
 ```
 
 ### hQeps2fDRe
@@ -320,7 +320,7 @@ Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,fig])
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40;v=110;L=2.5e3;thk=0.025;g=981;mu=8.9e-3;rho=0.989;
+julia> h=40;v=1.1e2;L=2.5e3;thk=0.025;g=981;mu=8.9e-3;rho=0.989;
 julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho)
 julia> D=Re*mu/rho/v
 julia> eps=thk/D
@@ -330,7 +330,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hvthk2fRe(40,110,2.5e3,0.025,981,8.9e-3,0.989,true)
+julia> Re,f=hvthk2fRe(40,1.1e2,2.5e3,0.025,981,8.9e-3,0.989,true)
 ```
 
 ### hQthk2fDRe
