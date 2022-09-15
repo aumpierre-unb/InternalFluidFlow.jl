@@ -131,7 +131,7 @@ Internal Fluid Flow Module provides the following functions:
 
 ### Re2f
 
-Re2f computes the Darcy friction factor *f* given the relative roughness $\varepsilon$ and the Reynolds number *Re*. If given *Re* < 2500, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation. If *f*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
+Re2f computes the Darcy friction factor *f* given the relative roughness $\varepsilon$ and the Reynolds number *Re*. If given *Re* < 2500, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation. If *fig*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 **Syntax:**
 
@@ -160,7 +160,7 @@ julia> f=Re2f(1.2e5,0.002,true)
 
 ### f2Re
 
-espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2500, laminar solution is accepted. If *f*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
+espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2500, laminar solution is accepted. If *fig*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 <!--
 If given *f* is possible for turbulent flow,
@@ -197,7 +197,7 @@ julia> Re=f2Re(0.025,0.002,true)
 
 ### hDeps2fDRe
 
-hDeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L*, relative roughness $\varepsilon$ and hydraulic diameter *D*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *f*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
+hDeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L*, relative roughness $\varepsilon$ and hydraulic diameter *D*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *fig*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 <!--
 Replacing speed flow *v* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -231,7 +231,7 @@ julia> Re,f=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)
 
 ### hveps2fDRe
 
-hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *f*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
+hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *fig*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 <!--
 Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -265,7 +265,7 @@ julia> Re,f=hveps2fRe(40,110,2500,0.0025,981,0.0089,0.989,true)
 
 ### hQeps2fDRe
 
-hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *f*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
+hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *fig*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 <!--
 Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -299,7 +299,7 @@ julia> Re,f=hQeps2fRe(40,8600,2500,0.0025,981,0.0089,0.989,true)
 
 ### hvthk2fDRe
 
-hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *f*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
+hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *fig*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 <!--
 Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -333,7 +333,7 @@ julia> Re,f=hvthk2fRe(40,110,2500,0.025,981,0.0089,0.989,true)
 
 ### hQthk2fDRe
 
-hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *f*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
+hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. If *fig*=*true* is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 <!--
 Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
