@@ -255,7 +255,7 @@ Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,fig])
 julia> h=40;v=110;L=2.5e3;eps=2.5e3;g=981;mu=8.9e-3;rho=0.989;
 julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho)
 julia> D=Re*mu/rho/v
-julia> thk=eps*Ddotnetcli
+julia> thk=eps*D
 julia> Q=v*(pi/4*D^2)
 ```
 
