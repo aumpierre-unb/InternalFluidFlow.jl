@@ -42,6 +42,7 @@ This DOI represents all versions, and will always resolve to the latest one.
 
 For citation of the last released version of InternalFluidFlow, please check CITATION file in the <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">maintainer's repository</a>.
 
+<!--
 ## The Theory for InternalFluidFlow
 
 The following is a very short introduction to the steady internal flow of an incompressible and inviscid fluid and to the Internal Fluid Flow module for Julia.
@@ -116,6 +117,7 @@ $\displaystyle {1 \over \sqrt{f}}=2 \mathrm{log} {1 \over\displaystyle {3.7 \ove
 ## The InternalFluidFlow Module for Julia
 
 This package provides a set of functions designed to solve problems of internal fluid flow. All functions are based on the Poiseuille condition for laminar flow, the Colebrook-White equation for turbulent flow, and the Darcy-Weisbach equation for head loss. The simplest problems on internal flow consist in computing either the Reynolds number or the Darcy friction factor given the other and the relative roughness. For those cases, this package provides functions f2Re and Re2f, respectively. More elaborated problems consist in computing both the Reynolds number and the Darcy friction factor given the head loss, the tube length, the fluid's density and dynamic viscosity, the gravitational acceleration, the relative roughness and either the dynamic diameter or the flow speed or the volumetric flow. For those cases, this package provides functions hDeps2fRe, hveps2fRe and hQeps2fRe, respectively. A slightly more elaborate situation arises when roughness is given instead of relative roughness along with the flow speed or the volumetric flow. For those cases, this package provides functions hvthk2fRe and hQthk2fRe, respectively. All function in this package offer the option of plotting the solution on a schematic Moody diagram.
+-->
 
 Internal Fluid Flow Module provides the following functions:
 
