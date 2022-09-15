@@ -19,17 +19,17 @@ is plotted as a graphical representation
 of the solution.
 
 Example: Compute Reynolds number Re for
-Darcy friction factor f=0.028 and
-relative roughness eps=0.001.
+Darcy friction factor f=2.8e-2 and
+relative roughness eps=1e-3.
 In this case, both laminar and turbulent
 solutions are possible.
 This call computes Re:
 ```
-    f=0.028;eps=0.001;Re=f2Re(f,eps)
+    f=2.8e-2;eps=1e-3;Re=f2Re(f,eps)
 ```
 This call computes Re and plots a schematic Moody diagram:
 ```
-    Re=f2Re(0.028,0.001,true)
+    Re=f2Re(2.8e-2,1e-3,true)
 ```
 
 See also: Re2f, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe

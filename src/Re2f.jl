@@ -17,14 +17,14 @@ of the solution.
 
 Example: Compute the Darcy friction factor f given
 the Reynolds number Re=1.2e5 and
-the relative roughness eps=0.001.
+the relative roughness eps=1e-3.
 This call computes f:
 ```
-    Re=1.2e5;eps=0.001;f=Re2f(Re,eps)
+    Re=1.2e5;eps=1e-3;f=Re2f(Re,eps)
 ```
 This call computes f and plots a schematic Moody diagram:
 ```
-    f=Re2f(1.2e5,0.001,true)
+    f=Re2f(1.2e5,1e-3,true)
 ```
 
 See also: f2Re, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe

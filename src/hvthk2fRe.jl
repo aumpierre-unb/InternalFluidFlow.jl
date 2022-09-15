@@ -21,20 +21,20 @@ of the solution.
 Example: Compute the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h=40 cm,
-the flow speed v=100 cm/s,
-the pipe's length L=2500 cm and
-roughness thk=0.025 cm,
+the flow speed v=1e2 cm/s,
+the pipe's length L=2.5e3 cm and
+roughness thk=2.5e-2 cm,
 the gravitational acceleration g=981 cm/s/s, and
-the fluid's dynamic viscosity mu=0.0089 g/cm/s and
+the fluid's dynamic viscosity mu=8.9e-3 g/cm/s and
 density rho=0.989 g/cc.
 This call computes Re and f:
 ```
-    h=40;v=100;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
+    h=40;v=1e2;L=2.5e3;thk=2.5e-2;g=981;mu=8.9e-3;rho=0.989;
     Re,f=hvthk2fRe(h,v,L,eps,g,mu,rho)
 ```
 This call computes Re and f and plots a schematic Moody diagram:
 ```
-    Re,f=hvthk2fRe(40,100,2500,0.025,981,0.0089,0.989,true)
+    Re,f=hvthk2fRe(40,1e2,2.5e3,2.5e-2,981,8.9e-3,0.989,true)
 ```
 
 See also: Re2f, f2Re, hDeps2fRe, hveps2fRe, hQeps2fRe, hQthk2fRe

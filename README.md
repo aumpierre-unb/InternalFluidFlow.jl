@@ -14,14 +14,16 @@ from the JuliaHub repository (last released version) or from the <a href="https:
 The last version of InternalFluidFlow can be installed from JuliaHub repository:
 
 ```julia
-julia> using Pkg;Pkg.add("InternalFluidFlow")
+julia> using Pkg
+julia> Pkg.add("InternalFluidFlow")
 julia> using InternalFluidFlow
 ```
 
 If InternalFluidFlow is already installed, it can be updated:
 
 ```julia
-julia> using Pkg;Pkg.update("InternalFluidFlow")
+julia> using Pkg
+julia> Pkg.update("InternalFluidFlow")
 julia> using InternalFluidFlow
 ```
 
@@ -106,11 +108,11 @@ The simplest problems on internal fluid flow consist on computing one of them gi
 
 ### Laminar Flow and Turbulent Flow
 
-For laminar flow, *Re* < 2500 (typically), the Darcy friction factor is given by the Poiseuille condition,
+For laminar flow, *Re* < 2.5e3 (typically), the Darcy friction factor is given by the Poiseuille condition,
 
 $\displaystyle f={64 \over Re}$
 
-For turbulent flow, *Re* > 2500 (typically), the Darcy friction factor is given implicitly by the Colebrook-White equation,
+For turbulent flow, *Re* > 2.5e3 (typically), the Darcy friction factor is given implicitly by the Colebrook-White equation,
 
 $\displaystyle {1 \over \sqrt{f}}=2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon} + {2.51 \over {Re \sqrt{f}}}}$
 -->
@@ -131,7 +133,7 @@ Internal Fluid Flow Module provides the following functions:
 
 ### Re2f
 
-Re2f computes the Darcy friction factor *f* given the relative roughness $\varepsilon$ and the Reynolds number *Re*. If given *Re* < 2500, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
+Re2f computes the Darcy friction factor *f* given the relative roughness $\varepsilon$ and the Reynolds number *Re*. If given *Re* < 2.5e3, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
 
 **Syntax:**
 
@@ -142,7 +144,7 @@ f=Re2f(Re,[eps[,fig]])
 *e.g.* this call computes *f* and shows no plot:
 
 ```julia
-julia> Re=1.2e5;eps=0.002;
+julia> Re=1.2e5;eps=2e-3;
 julia> f=Re2f(Re,eps)
 ```
 
@@ -155,12 +157,12 @@ julia> f=Re2f(1.2e5,:,true)
 *e.g.* this call computes *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> f=Re2f(1.2e5,0.002,true)
+julia> f=Re2f(1.2e5,2e-3,true)
 ```
 
 ### f2Re
 
-espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2500, laminar solution is accepted.
+espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2.5e3, laminar solution is accepted.
 
 <!--
 If given *f* is possible for turbulent flow,
@@ -179,20 +181,20 @@ Re=f2Re(f,[eps[,fig]])
 *e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and shows no plot:
 
 ```julia
-julia> f=0.025;eps=0.002;
+julia> f=2.5e-2;eps=2e-3;
 julia> Re=f2Re(f,eps)
 ```
 
 *e.g.* this call computes *Re* for the default condition of smooth tube, $\varepsilon$ = 0, for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re=f2Re(0.025,:,true)
+julia> Re=f2Re(2.5e-2,:,true)
 ```
 
 *e.g.* e.g. this call computes *Re* for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re=f2Re(0.025,0.002,true)
+julia> Re=f2Re(2.5e-2,2e-3,true)
 ```
 
 ### hDeps2fDRe
@@ -216,7 +218,7 @@ Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,fig])
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40;D=10;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
+julia> h=40;D=10;L=2.5e3;eps=2.5e-3;g=981;mu=8.9e-3;rho=0.989;
 julia> thk=eps*D
 julia> Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho)
 julia> v=Re*mu/rho/D
@@ -226,7 +228,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)
+julia> Re,f=hDeps2fRe(40,10,2.5e3,2.5e3,981,8.9e-3,0.989,true)
 ```
 
 ### hveps2fDRe
@@ -250,7 +252,7 @@ Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,fig])
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40;v=110;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
+julia> h=40;v=110;L=2.5e3;eps=2.5e3;g=981;mu=8.9e-3;rho=0.989;
 julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho)
 julia> D=Re*mu/rho/v
 julia> thk=eps*Ddotnetcli
@@ -260,7 +262,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hveps2fRe(40,110,2500,0.0025,981,0.0089,0.989,true)
+julia> Re,f=hveps2fRe(40,110,2.5e3,2.5e3,981,8.9e-3,0.989,true)
 ```
 
 ### hQeps2fDRe
@@ -284,7 +286,7 @@ Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,fig])
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40;Q=8600;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
+julia> h=40;Q=8.6e3;L=2.5e3;eps=2.5e3;g=981;mu=8.9e-3;rho=0.989;
 julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho)
 julia> D=Q*rho/(pi/4)/Re/mu
 julia> thk=eps*D
@@ -294,7 +296,7 @@ julia> v=Q/(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hQeps2fRe(40,8600,2500,0.0025,981,0.0089,0.989,true)
+julia> Re,f=hQeps2fRe(40,8.6e3,2.5e3,2.5e3,981,8.9e-3,0.989,true)
 ```
 
 ### hvthk2fDRe
@@ -318,7 +320,7 @@ Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,fig])
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40;v=110;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
+julia> h=40;v=110;L=2.5e3;thk=0.025;g=981;mu=8.9e-3;rho=0.989;
 julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho)
 julia> D=Re*mu/rho/v
 julia> eps=thk/D
@@ -328,7 +330,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hvthk2fRe(40,110,2500,0.025,981,0.0089,0.989,true)
+julia> Re,f=hvthk2fRe(40,110,2.5e3,0.025,981,8.9e-3,0.989,true)
 ```
 
 ### hQthk2fDRe
@@ -352,7 +354,7 @@ Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40;Q=8600;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
+julia> h=40;Q=8.6e3;L=2.5e3;thk=0.025;g=981;mu=8.9e-3;rho=0.989;
 julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho)
 julia> D=Q*rho/(pi/4)/Re/mu
 julia> eps=thk/D
@@ -362,7 +364,7 @@ julia> v=Q/(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hQthk2fRe(40,8600,2500,0.025,981,0.0089,0.989,true)
+julia> Re,f=hQthk2fRe(40,8.6e3,2.5e3,0.025,981,8.9e-3,0.989,true)
 ```
 
 Copyright &copy; 2022 Alexandre Umpierre
