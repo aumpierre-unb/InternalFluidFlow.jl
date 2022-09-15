@@ -143,7 +143,6 @@ f=Re2f(Re,[eps[,fig]])
 
 ```julia
 julia> Re=1.2e5;eps=0.002;
-
 julia> f=Re2f(Re,eps)
 ```
 
@@ -161,11 +160,15 @@ julia> f=Re2f(1.2e5,0.002,true)
 
 ### f2Re
 
-espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2500, laminar solution is accepted. If given *f* is possible for turbulent flow,
+espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2500, laminar solution is accepted.
+
+<!--
+If given *f* is possible for turbulent flow,
 
 $\displaystyle {1 \over \sqrt f} < 2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon}}$
 
 (which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given $\varepsilon$ > 0.05, execution is aborted.
+-->
 
 **Syntax:**
 
@@ -177,7 +180,6 @@ Re=f2Re(f,[eps[,fig]])
 
 ```julia
 julia> f=0.025;eps=0.002;
-
 julia> Re=f2Re(f,eps)
 ```
 
@@ -195,11 +197,15 @@ julia> Re=f2Re(0.025,0.002,true)
 
 ### hDeps2fDRe
 
-hDeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L*, relative roughness $\varepsilon$ and hydraulic diameter *D*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing speed flow *v* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+hDeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L*, relative roughness $\varepsilon$ and hydraulic diameter *D*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
+
+<!--
+Replacing speed flow *v* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle Re^2 f={2gh\rho^2D^3 \over {\mu^2 L}}$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively, however an analytic solution is possible in this case.
+-->
 
 **Syntax:**
 
@@ -211,13 +217,9 @@ Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;D=10;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
-
 julia> thk=eps*D
-
 julia> Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho)
-
 julia> v=Re*mu/rho/D
-
 julia> Q=v*(pi/4*D^2)
 ```
 
@@ -229,11 +231,15 @@ julia> Re,f=hDeps2fRe(40,10,2500,0.0025,981,0.0089,0.989,true)
 
 ### hveps2fDRe
 
-hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
+
+<!--
+Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {f \over Re}={2gh\mu \over {v^3\rho L}}$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
+-->
 
 **Syntax:**
 
@@ -245,13 +251,9 @@ Re,f=hveps2fRe(h,v,L,eps,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;v=110;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
-
 julia> Re,f=hveps2fRe(h,v,L,eps,g,mu,rho)
-
 julia> D=Re*mu/rho/v
-
 julia> thk=eps*Ddotnetcli
-
 julia> Q=v*(pi/4*D^2)
 ```
 
@@ -263,11 +265,15 @@ julia> Re,f=hveps2fRe(40,110,2500,0.0025,981,0.0089,0.989,true)
 
 ### hQeps2fDRe
 
-hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
+
+<!--
+Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
+-->
 
 **Syntax:**
 
@@ -279,13 +285,9 @@ Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;Q=8600;L=2500;eps=0.0025;g=981;mu=0.0089;rho=0.989;
-
 julia> Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho)
-
 julia> D=Q*rho/(pi/4)/Re/mu
-
 julia> thk=eps*D
-
 julia> v=Q/(pi/4*D^2)
 ```
 
@@ -297,11 +299,15 @@ julia> Re,f=hQeps2fRe(40,8600,2500,0.0025,981,0.0089,0.989,true)
 
 ### hvthk2fDRe
 
-hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
+
+<!--
+Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {f \over Re}={2gh\mu \over {v^3\rho L}}$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
+-->
 
 **Syntax:**
 
@@ -313,13 +319,9 @@ Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;v=110;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
-
 julia> Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho)
-
 julia> D=Re*mu/rho/v
-
 julia> eps=thk/D
-
 julia> Q=v*(pi/4*D^2)
 ```
 
@@ -331,11 +333,15 @@ julia> Re,f=hvthk2fRe(40,110,2500,0.025,981,0.0089,0.989,true)
 
 ### hQthk2fDRe
 
-hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$. Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
+
+<!--
+Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}$
 
 Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
+-->
 
 **Syntax:**
 
@@ -347,13 +353,9 @@ Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])
 
 ```julia
 julia> h=40;Q=8600;L=2500;thk=0.025;g=981;mu=0.0089;rho=0.989;
-
 julia> Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho)
-
 julia> D=Q*rho/(pi/4)/Re/mu
-
 julia> eps=thk/D
-
 julia> v=Q/(pi/4*D^2)
 ```
 
