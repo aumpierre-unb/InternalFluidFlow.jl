@@ -133,7 +133,7 @@ Internal Fluid Flow Module provides the following functions:
 
 ### Re2f
 
-Re2f computes the Darcy friction factor *f* given the relative roughness $\varepsilon$ and the Reynolds number *Re*. If given *Re* < 2.5e3, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
+Re2f computes the Darcy friction factor *f* given the relative roughness $\varepsilon$ and the Reynolds number *Re*. If given *Re*<2.5e3, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
 
 **Syntax:**
 
@@ -148,7 +148,7 @@ julia> Re=1.2e5;eps=2e-3;
 julia> f=Re2f(Re,eps)
 ```
 
-*e.g.* this call computes *f* for the default condition of smooth tube, $\varepsilon$ = 0, and plots a schematic Moody diagram with the solution:
+*e.g.* this call computes *f* for the default condition of smooth tube, $\varepsilon$=0, and plots a schematic Moody diagram with the solution:
 
 ```julia
 julia> f=Re2f(1.2e5,:,true)
@@ -162,14 +162,14 @@ julia> f=Re2f(1.2e5,2e-3,true)
 
 ### f2Re
 
-espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces *Re* < 2.5e3, laminar solution is accepted.
+espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces *Re*<2.5e3, laminar solution is accepted.
 
 <!--
 If given *f* is possible for turbulent flow,
 
 $\displaystyle {1 \over \sqrt f} < 2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon}}$
 
-(which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given $\varepsilon$ > 0.05, execution is aborted.
+(which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given $\varepsilon$>0.05, execution is aborted.
 -->
 
 **Syntax:**
@@ -185,7 +185,7 @@ julia> f=2.5e-2;eps=2e-3;
 julia> Re=f2Re(f,eps)
 ```
 
-*e.g.* this call computes *Re* for the default condition of smooth tube, $\varepsilon$ = 0, for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
+*e.g.* this call computes *Re* for the default condition of smooth tube, $\varepsilon$=0, for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
 
 ```julia
 julia> Re=f2Re(2.5e-2,:,true)
