@@ -162,7 +162,7 @@ julia> f=Re2f(1.2e5,2e-3,true)
 
 ### f2Re
 
-espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces Re < 2.5e3, laminar solution is accepted.
+espfD2Re computes the Reynolds number *Re* given the relative roughness $\varepsilon$ and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces *Re* < 2.5e3, laminar solution is accepted.
 
 <!--
 If given *f* is possible for turbulent flow,
@@ -191,7 +191,7 @@ julia> Re=f2Re(f,eps)
 julia> Re=f2Re(2.5e-2,:,true)
 ```
 
-*e.g.* e.g. this call computes *Re* for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
+*e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
 
 ```julia
 julia> Re=f2Re(2.5e-2,2e-3,true)
@@ -267,7 +267,7 @@ julia> Re,f=hveps2fRe(40,1.1e2,2.5e3,2.5e3,981,8.9e-3,0.989,true)
 
 ### hQeps2fDRe
 
-hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
+hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness $\varepsilon$, the volumetric flow rate *Q*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
 
 <!--
 Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
@@ -335,7 +335,7 @@ julia> Re,f=hvthk2fRe(40,1.1e2,2.5e3,0.025,981,8.9e-3,0.989,true)
 
 ### hQthk2fDRe
 
-hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate Q, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
+hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate *Q*, the gravitational acceleration *g*, and the fluid's density $\rho$ and dynamic viscosity $\mu$.
 
 <!--
 Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
