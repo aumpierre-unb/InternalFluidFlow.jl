@@ -148,7 +148,7 @@ julia> Re=1.2e5;eps=2e-3;
 julia> f=Re2f(Re,eps)
 ```
 
-*e.g.* this call computes *f* for the default condition of smooth tube, *eps*=0, and plots a schematic Moody diagram with the solution:
+*e.g.* this call computes *f* for the default condition of smooth tube, *eps* = 0, and plots a schematic Moody diagram with the solution:
 
 ```julia
 julia> f=Re2f(1.2e5,:,true)
@@ -185,7 +185,7 @@ julia> f=2.5e-2;eps=2e-3;
 julia> Re=f2Re(f,eps)
 ```
 
-*e.g.* this call computes *Re* for the default condition of smooth tube, *eps*=0, for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
+*e.g.* this call computes *Re* for the default condition of smooth tube, *eps* = 0, for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
 
 ```julia
 julia> Re=f2Re(2.5e-2,:,true)
