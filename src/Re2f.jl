@@ -3,13 +3,13 @@ include("bissecao.jl")
 include("figure.jl")
 
 @doc raw"""
-`f=Re2f(Re,[eps[,fig]])` computes
+`f=Re2f(Re,[ε[,fig]])` computes
 the Darcy friction f factor, given
 the Reynolds number Re and
-the relative roughness eps.
+the relative roughness ε.
 
-By default, pipe is assumed to be smooth, eps = 0.
-If eps > 5e-2, eps is reset to eps = 5e-2.
+By default, pipe is assumed to be smooth, ε = 0.
+If ε > 5e-2, ε is reset to ε = 5e-2.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -17,11 +17,11 @@ of the solution.
 
 Example: Compute the Darcy friction factor f given
 the Reynolds number Re = 1.2e5 and
-the relative roughness eps = 1e-3.
+the relative roughness ε = 1e-3.
 This call computes f:
 ```
-    Re=1.2e5;eps=1e-3;
-    f=Re2f(Re,eps)
+    Re=1.2e5;ε=1e-3;
+    f=Re2f(Re,ε)
 ```
 This call computes f and plots a schematic Moody diagram:
 ```

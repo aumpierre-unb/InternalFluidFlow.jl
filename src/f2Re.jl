@@ -3,16 +3,16 @@ include("bissecao.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re=f2Re(f,[eps[,fig]])` computes
+`Re=f2Re(f,[ε[,fig]])` computes
 the Reynolds number Re, given
 the Darcy friction factor f and
-the relative roughness eps for
+the relative roughness ε for
 for laminar regime and,
 when possible, also
 for turbulent regime.
 
-By default, pipe is assumed to be smooth, eps = 0.
-If eps > 5e-2, eps is reset to eps = 5e-2.
+By default, pipe is assumed to be smooth, ε = 0.
+If ε > 5e-2, ε is reset to ε = 5e-2.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -20,13 +20,13 @@ of the solution.
 
 Example: Compute Reynolds number Re for
 Darcy friction factor f = 2.8e-2 and
-relative roughness eps = 1e-3.
+relative roughness ε = 1e-3.
 In this case, both laminar and turbulent
 solutions are possible.
 This call computes Re:
 ```
-    f=2.8e-2;eps=1e-3;
-    Re=f2Re(f,eps)
+    f=2.8e-2;ε=1e-3;
+    Re=f2Re(f,ε)
 ```
 This call computes Re and plots a schematic Moody diagram:
 ```

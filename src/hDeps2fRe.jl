@@ -1,18 +1,18 @@
 using Plots
 include("Re2f.jl")
 include("figure.jl")
-
+β
 @doc raw"""
-`Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,fig])` computes
+`Re,f=hDeps2fRe(h,D,L,eps,g,μ,ρ[,fig])` computes
 the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the pipe's hydraulic diameter D,
 the pipe's length L,
-the pipe's relative roughness eps,
+the pipe's relative roughness ε,
 the gravitational accelaration g,
-the fluid's dynamic viscosity mu and
-the fluid's density rho.
+the fluid's dynamic viscosity μ and
+the fluid's density ρ.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -23,14 +23,14 @@ the Darcy friction factor f, given
 the head loss h = 40 cm,
 the pipe's hydraulic diameter D = 10 cm,
 length L = 2.5e3 cm and
-relative roughness eps = 2.5e-3,
+relative roughness ε = 2.5e-3,
 the gravitational acceleration g = 981 cm/s/s, and
-the fluid's dynamic viscosity mu = 8.9e-3 g/cm/s and
-density rho =  = 0.989 g/cc.
+the fluid's dynamic viscosity μ = 8.9e-3 g/cm/s and
+density ρ =  = 0.989 g/cc.
 This call computes Re and f:
 ```
-    h=40;D=10;L=2.5e3;eps=2.5e-3;g=981;mu=8.9e-3;rho=0.989;
-    Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho)
+    h=40;D=10;L=2.5e3;ε=2.5e-3;g=981;μ=8.9e-3;ρ=0.989;
+    Re,f=hDeps2fRe(h,D,L,ε,g,μ,ρ)
 ```
 This call computes Re and f and plots a schematic Moody diagram:
 ```
@@ -39,8 +39,8 @@ This call computes Re and f and plots a schematic Moody diagram:
 
 See also: Re2f, f2Re, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
 """
-function hDeps2fRe(h, D, L, eps, g, mu, rho, fig=false)
-    K = 2 * g * h * rho^2 * D^3 / mu^2 / L
+function hDeps2fRe(h, D, L, eps, g, μ, ρ, fig=false)
+    K = 2 * g * h * ρ^2 * D^3 / μ^2 / L
     islam = true
     Re = K / 64
     f = 64 / Re
