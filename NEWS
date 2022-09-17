@@ -1,43 +1,40 @@
 ### TODO
 
-### internal-fluid-flow 0.1.7-alpha
+### InternalFluidFlow 0.1.7-alpha
 
 * Documentation ans docstrings (ongoing)
 
-### internal-fluid-flow 0.1.5 (2022-09-14)
-
-
-### internal-fluid-flow 0.1.6 (2022-09-15)
+### InternalFluidFlow 0.1.6 (2022-09-15)
 
 * Major changes in README.md
 * Mathematical equations removed
   to best fit README to JuliaHub
 
-### internal-fluid-flow 0.1.5 (2022-09-14)
+### InternalFluidFlow 0.1.5 (2022-09-14)
 
 * Major changes in README.md
 * Minor changes in docstrings
 
-### internal-fluid-flow 0.1.4 (2022-09-13)
+### InternalFluidFlow 0.1.4 (2022-09-13)
 
 * Major changes in README.md
 * Minor changes in docstrings
 
-### internal-fluid-flow 0.1.3 (2022-09-13)
+### InternalFluidFlow 0.1.3 (2022-09-13)
 
 * Add module description
 
-### internal-fluid-flow 0.1.2 (2022-09-03)
+### InternalFluidFlow 0.1.2 (2022-09-03)
 
 * Remove brackets from syntaxes in README.md
 * Minor adjustments on plots
 * Minor adjustments on descriptions
 
-### internal-fluid-flow 0.1.1 (2022-08-27)
+### InternalFluidFlow 0.1.1 (2022-08-27)
 
 * Minor adjustments on plots
 
-### internal-fluid-flow 0.1.0 (2022-08-20)
+### InternalFluidFlow 0.1.0 (2022-08-20)
 
 * First release
 * Package under construction
