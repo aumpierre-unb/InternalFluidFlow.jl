@@ -133,7 +133,7 @@ Internal Fluid Flow Module provides the following functions:
 
 ### Re2f
 
-Re2f computes the Darcy friction factor *f* given the relative roughness *eps* and the Reynolds number *Re*. If given *Re*<2.5e3, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
+Re2f computes the Darcy friction factor *f* given the relative roughness *eps* and the Reynolds number *Re*. If given *Re* < 2.5e3, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
 
 **Syntax:**
 
@@ -162,7 +162,7 @@ julia> f=Re2f(1.2e5,2e-3,true)
 
 ### f2Re
 
-espfD2Re computes the Reynolds number *Re* given the relative roughness *eps* and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces *Re*<2.5e3, laminar solution is accepted.
+espfD2Re computes the Reynolds number *Re* given the relative roughness *eps* and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces *Re* < 2.5e3, laminar solution is accepted.
 
 <!--
 If given *f* is possible for turbulent flow,
