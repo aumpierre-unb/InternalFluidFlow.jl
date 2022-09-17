@@ -26,7 +26,7 @@ length L = 2.5e3 cm and
 relative roughness eps = 2.5e-3,
 the gravitational acceleration g = 981 cm/s/s, and
 the fluid's dynamic viscosity mu = 8.9e-3 g/cm/s and
-density rho =  = 0.989 g/cc.
+density rho = 0.989 g/cc.
 This call computes Re and f:
 ```
     h=40;D=10;L=2.5e3;eps=2.5e-3;g=981;mu=8.9e-3;rho=0.989;
