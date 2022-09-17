@@ -1,7 +1,7 @@
 using Plots
 include("Re2f.jl")
 include("figure.jl")
-β
+
 @doc raw"""
 `Re,f=hDeps2fRe(h,D,L,eps,g,μ,ρ[,fig])` computes
 the Reynolds number Re and
