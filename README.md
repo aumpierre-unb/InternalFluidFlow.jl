@@ -369,4 +369,4 @@ julia> Re,f=hQthk2fRe(40,8.6e3,2.5e3,0.025,981,8.9e-3,0.989,true)
 
 Copyright &copy; 2022 Alexandre Umpierre
 
-email: aumpierre@gmail.com
+email: <aumpierre@gmail.com>
