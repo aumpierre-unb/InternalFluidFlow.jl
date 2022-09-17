@@ -20,7 +20,8 @@ the Reynolds number Re = 1.2e5 and
 the relative roughness eps = 1e-3.
 This call computes f:
 ```
-    Re=1.2e5;eps=1e-3;f=Re2f(Re,eps)
+    Re=1.2e5;eps=1e-3;
+    f=Re2f(Re,eps)
 ```
 This call computes f and plots a schematic Moody diagram:
 ```

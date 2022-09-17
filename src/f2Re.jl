@@ -25,7 +25,8 @@ In this case, both laminar and turbulent
 solutions are possible.
 This call computes Re:
 ```
-    f=2.8e-2;eps=1e-3;Re=f2Re(f,eps)
+    f=2.8e-2;eps=1e-3;
+    Re=f2Re(f,eps)
 ```
 This call computes Re and plots a schematic Moody diagram:
 ```
