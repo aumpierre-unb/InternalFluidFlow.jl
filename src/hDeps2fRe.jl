@@ -14,19 +14,19 @@ the gravitational accelaration g,
 the fluid's dynamic viscosity mu and
 the fluid's density rho.
 
-If fig=true is given, a schematic Moody diagram
+If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
 Example: Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h=40 cm,
-the pipe's hydraulic diameter D=10 cm,
-length L=2.5e3 cm and
-relative roughness eps=2.5e-3,
-the gravitational acceleration g=981 cm/s/s, and
-the fluid's dynamic viscosity mu=8.9e-3 g/cm/s and
-density rho=0.989 g/cc.
+the head loss h = 40 cm,
+the pipe's hydraulic diameter D = 10 cm,
+length L = 2.5e3 cm and
+relative roughness eps = 2.5e-3,
+the gravitational acceleration g = 981 cm/s/s, and
+the fluid's dynamic viscosity mu = 8.9e-3 g/cm/s and
+density rho =  = 0.989 g/cc.
 This call computes Re and f:
 ```
     h=40;D=10;L=2.5e3;eps=2.5e-3;g=981;mu=8.9e-3;rho=0.989;
