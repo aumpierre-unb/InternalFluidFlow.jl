@@ -33,7 +33,7 @@ for water flow.
 
 Compute Re and f:
 ```
-    h=40;Q=1e2;L=2.5e3;eps=2.5e-2;
+    h=40.;Q=1e2;L=2.5e3;eps=2.5e-2;
     Re,f=hQeps2fRe(h,Q,L,eps)
 ```
 
@@ -45,15 +45,15 @@ dynamic viscosity mu = 8.9e-3 g/cm/s.
 
 Compute Re and f:
 ```
-    h=40;Q=8.6e3;L=2.5e3;eps=2.5e-3;rho=0.989;mu=8.9e-3;
+    h=40.;Q=8.6e3;L=2.5e3;eps=2.5e-3;rho=0.989;mu=8.9e-3;
     Re,f=hQeps2fRe(h,Q,L,eps,rho,mu)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hQeps2fRe(40,8.6e3,2.5e3,2.5e-3,0.997,9.1e-3,981,true)
+    Re,f=hQeps2fRe(40.,8.6e3,2.5e3,2.5e-3,0.997,9.1e-3,981.,true)
 ```
 """
-function hQeps2fRe(h::Float64, Q::Float64, L::Float64, eps::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64=981, fig::Bool=false)
+function hQeps2fRe(h::Float64, Q::Float64, L::Float64, eps::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64=981., fig::Bool=false)
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (mu / rho)^5 / L
     Re = (P / 64)^(1 / 4)
     f = 64 / Re
