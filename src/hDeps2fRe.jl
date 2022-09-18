@@ -37,7 +37,7 @@ This call computes Re and f and plots a schematic Moody diagram:
     Re,f=hDeps2fRe(40,10,2.5e3,2.5e-3,981,8.9e-3,0.989,true)
 ```
 
-See also: `Re2f`, `f2Re`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`
+See also: `Re2f`, `f2Re`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
 """
 function hDeps2fRe(h, D, L, eps, g, mu, rho, fig=false)
     K = 2 * g * h * rho^2 * D^3 / mu^2 / L
