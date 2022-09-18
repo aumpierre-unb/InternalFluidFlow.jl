@@ -4,7 +4,8 @@ include("figure.jl")
 
 @doc raw"""
 `f=Re2f(Re,[eps[,fig]])`
-Computes the Darcy friction f factor, given
+
+`Re2f` computes the Darcy friction f factor, given
 the Reynolds number Re and
 the relative roughness eps.
 

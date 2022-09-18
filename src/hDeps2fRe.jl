@@ -4,7 +4,8 @@ include("figure.jl")
 
 @doc raw"""
 `Re,f=hDeps2fRe(h,D,L,eps,g,mu,rho[,fig])`
-Computes the Reynolds number Re and
+
+`hDeps2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the pipe's hydraulic diameter D,
