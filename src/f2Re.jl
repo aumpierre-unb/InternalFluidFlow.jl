@@ -5,7 +5,7 @@ include("figure.jl")
 @doc raw"""
 `Re=f2Re(f,[eps=0[,fig=true]])`
 
-`f2Re` computes the Reynolds number Re, given
+`f2Re` compute the Reynolds number Re, given
 the Darcy friction factor f and
 the relative roughness eps for
 for laminar regime and,
@@ -28,12 +28,12 @@ Darcy friction factor f = 2.8e-2 and
 relative roughness eps = 1e-3.
 In this case, both laminar and turbulent
 solutions are possible.
-This call computes Re:
+Compute Re:
 ```
     f=2.8e-2;eps=1e-3;
     Re=f2Re(f,eps)
 ```
-This call computes Re and plots a schematic Moody diagram:
+Compute Re and plot a schematic Moody diagram:
 ```
     Re=f2Re(2.8e-2,1e-3,true)
 ```

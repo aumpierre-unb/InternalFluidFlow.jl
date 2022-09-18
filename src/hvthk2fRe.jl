@@ -5,7 +5,7 @@ include("figure.jl")
 @doc raw"""
 `Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,fig=true])`
 
-`hvthk2fRe` computes the Reynolds number Re and
+`hvthk2fRe` compute the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the flow speed v,
@@ -32,12 +32,12 @@ roughness thk = 2.5e-2 cm,
 the gravitational acceleration g = 981 cm/s/s, and
 the fluid's dynamic viscosity mu = 8.9e-3 g/cm/s and
 density rho = 0.989 g/cc.
-This call computes Re and f:
+Compute Re and f:
 ```
     h=40;v=1e2;L=2.5e3;thk=2.5e-2;g=981;mu=8.9e-3;rho=0.989;
     Re,f=hvthk2fRe(h,v,L,eps,g,mu,rho)
 ```
-This call computes Re and f and plots a schematic Moody diagram:
+Compute Re and f and plot a schematic Moody diagram:
 ```
     Re,f=hvthk2fRe(40,1e2,2.5e3,2.5e-2,981,8.9e-3,0.989,true)
 ```

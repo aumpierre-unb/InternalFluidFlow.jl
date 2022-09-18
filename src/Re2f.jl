@@ -5,7 +5,7 @@ include("figure.jl")
 @doc raw"""
 `f=Re2f(Re,[eps=0[,fig=true]])`
 
-`Re2f` computes the Darcy friction f factor, given
+`Re2f` compute the Darcy friction f factor, given
 the Reynolds number Re and
 the relative roughness eps.
 
@@ -23,12 +23,12 @@ Examples
 Compute the Darcy friction factor f given
 the Reynolds number Re = 1.2e5 and
 the relative roughness eps = 1e-3.
-This call computes f:
+Compute f:
 ```
     Re=1.2e5;eps=1e-3;
     f=Re2f(Re,eps)
 ```
-This call computes f and plots a schematic Moody diagram:
+Compute f and plot a schematic Moody diagram:
 ```
     f=Re2f(1.2e5,1e-3,true)
 ```
