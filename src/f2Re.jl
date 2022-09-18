@@ -18,8 +18,8 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-Example
-=========
+Examples
+==========
 Compute Reynolds number Re for
 Darcy friction factor f = 2.8e-2 and
 relative roughness eps = 1e-3.
