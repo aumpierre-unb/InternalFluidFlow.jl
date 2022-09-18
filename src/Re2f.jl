@@ -28,7 +28,7 @@ This call computes f and plots a schematic Moody diagram:
     f=Re2f(1.2e5,1e-3,true)
 ```
 
-See also: f2Re, hDeps2fRe, hveps2fRe, hvthk2fRe, hQeps2fRe, hQthk2fRe
+See also: `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
 """
 function Re2f(Re, eps=0, fig=false)
     if eps > 5e-2
