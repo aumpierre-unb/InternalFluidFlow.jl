@@ -3,8 +3,8 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])` computes
-the Reynolds number Re and
+`Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig])`
+Computes the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the volumetric flow rate Q,
@@ -18,7 +18,7 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-See also `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`.
+See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`.
 
 Examples
 ==========

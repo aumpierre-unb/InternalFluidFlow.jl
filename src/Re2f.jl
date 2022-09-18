@@ -3,8 +3,8 @@ include("bissecao.jl")
 include("figure.jl")
 
 @doc raw"""
-`f=Re2f(Re,[eps[,fig]])` computes
-the Darcy friction f factor, given
+`f=Re2f(Re,[eps[,fig]])`
+Computes the Darcy friction f factor, given
 the Reynolds number Re and
 the relative roughness eps.
 
@@ -15,7 +15,7 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-See also `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
+See also: `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
 
 Examples
 ==========
