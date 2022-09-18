@@ -53,7 +53,7 @@ Compute Re and f and plot a schematic Moody diagram:
     Re,f=hvthk2fRe(40,1e2,2.5e3,2.5e-2,0.997,9.1e-3,981,true)
 ```
 """
-function hvthk2fRe(h::Float64, v::Float64, L::Float64, thk::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64==981, fig::Bool=false)
+function hvthk2fRe(h::Float64, v::Float64, L::Float64, thk::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64=981, fig::Bool=false)
     M = 2 * g * mu * h / v^3 / rho / L
     isturb = true
     Re = 1e4

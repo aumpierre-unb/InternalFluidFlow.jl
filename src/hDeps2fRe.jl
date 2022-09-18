@@ -39,7 +39,7 @@ Compute Re and f and plot a schematic Moody diagram:
     Re,f=hDeps2fRe(40,10,2.5e3,2.5e-3,0.997,9.1e-3,981,true)
 ```
 """
-function hDeps2fRe(h::Float64, D::Float64, L::Float64, eps::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64==981, fig::Bool=false)
+function hDeps2fRe(h::Float64, D::Float64, L::Float64, eps::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64=981, fig::Bool=false)
     K = 2 * g * h * rho^2 * D^3 / mu^2 / L
     islam = true
     Re = K / 64
