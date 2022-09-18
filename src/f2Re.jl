@@ -12,10 +12,10 @@ for laminar regime and,
 when possible, also
 for turbulent regime.
 
-By default, pipe is assumed to be smooth, eps = 0.
-If eps > 5e-2, eps is reset to eps = 5e-2.
+By default, pipe is assumed to be smooth, ``eps=0``.
+If ``eps>5e-2``, eps is reset to ``eps=5e-2``.
 
-If fig = true is given, a schematic Moody diagram
+If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -24,8 +24,8 @@ See also: `Re2f`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe
 Examples
 ==========
 Compute Reynolds number Re for
-Darcy friction factor f = 2.8e-2 and
-relative roughness eps = 1e-3.
+Darcy friction factor ``f=2.8e-2`` and
+relative roughness ``eps=1e-3``.
 In this case, both laminar and turbulent
 solutions are possible.
 Compute Re:
