@@ -3,7 +3,7 @@ include("bissecao.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re=f2Re(f,[eps[,fig]])`
+`Re=f2Re(f,[eps=0[,fig=true]])`
 
 `f2Re` computes the Reynolds number Re, given
 the Darcy friction factor f and
