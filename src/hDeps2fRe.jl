@@ -25,6 +25,20 @@ Examples
 ==========
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
+the head loss h = 40 cm,
+the pipe's hydraulic diameter D = 10 cm,
+length L = 2.5e3 cm and
+relative roughness eps = 2.5e-3,
+for water flow.
+
+Compute Re and f:
+```
+    h=40;Q=1e2;L=2.5e3;eps=2.5e-2;
+    Re,f=hQeps2fRe(h,Q,L,eps)
+```
+
+Compute the Reynolds number Re and
+the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 g/cc and
 dynamic viscosity mu = 8.9e-3 g/cm/s.
