@@ -28,6 +28,7 @@ Darcy friction factor f = 2.8e-2 and
 relative roughness eps = 1e-3.
 In this case, both laminar and turbulent
 solutions are possible.
+
 Compute Re:
 ```
     f=2.8e-2;eps=1e-3;
@@ -38,7 +39,7 @@ Compute Re and plot a schematic Moody diagram:
     Re=f2Re(2.8e-2,1e-3,true)
 ```
 """
-function f2Re(f, eps=0, fig=false)
+function f2Re(f::Float64, eps::Float64=0, fig::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end

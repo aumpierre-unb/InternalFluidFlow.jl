@@ -1,7 +1,8 @@
 ### TODO
 
-### InternalFluidFlow 0.1.7-alpha
-* Documentation and docstrings (ongoing)
+### InternalFluidFlow 0.2.0-alpha
+* Major changes on functions' structure
+* Major changes on docstrings and on README.md
 
 ### InternalFluidFlow 0.1.6 (2022-09-15)
 * Major changes in README.md

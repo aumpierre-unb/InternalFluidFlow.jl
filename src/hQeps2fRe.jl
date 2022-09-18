@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho[,fig=true])`
+`Re,f=hQeps2fRe(h,Q,L,eps[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])`
 
 ``hQeps2fRe`` compute the Reynolds number ``Re`` and
 the Darcy friction factor ``f``, given
@@ -11,9 +11,9 @@ the head loss ``h``,
 the volumetric flow rate ``Q``,
 the pipe's length ``L``,
 the pipe's relative roughness ``eps``,
-the gravitational accelaration ``g``,
-the fluid's dynamic viscosity ``mu`` and
-the fluid's density ``rho``.
+the fluid's density ``rho``,
+the fluid's dynamic viscosity ``mu``, and
+the gravitational accelaration ``g``.
 
 If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -29,20 +29,31 @@ the head loss h = 40 cm,
 the volumetric flow rate Q = 8.6e3 cc/s,
 the pipe's length L = 2.5e3 cm and
 relative roughness eps = 2.5e-3,
-the gravitational acceleration g = 981 cm/s/s, and
-the fluid's dynamic viscosity mu = 8.9e-3 g/cm/s and
-density rho = 0.989 g/cc.
+for water flow.
+
 Compute Re and f:
 ```
-    h=40;Q=8.6e3;L=2.5e3;eps=2.5e-3;g=981;mu=8.9e-3;rho=0.989;
-    Re,f=hQeps2fRe(h,Q,L,eps,g,mu,rho)
+    h=40;Q=1e2;L=2.5e3;eps=2.5e-2;
+    Re,f=hQeps2fRe(h,Q,L,eps)
+```
+
+Compute the Reynolds number Re and
+the Darcy friction factor f, given
+in addition
+the fluid's density rho = 0.989 g/cc and
+dynamic viscosity mu = 8.9e-3 g/cm/s.
+
+Compute Re and f:
+```
+    h=40;Q=8.6e3;L=2.5e3;eps=2.5e-3;rho=0.989;mu=8.9e-3;
+    Re,f=hQeps2fRe(h,Q,L,eps,rho,mu)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hQeps2fRe(40,8.6e3,2.5e3,2.5e-3,981,8.9e-3,0.989,true)
+    Re,f=hQeps2fRe(40,8.6e3,2.5e3,2.5e-3,0.997,9.1e-3,981,true)
 ```
 """
-function hQeps2fRe(h, Q, L, eps, g, mu, rho, fig=false)
+function hQeps2fRe(h::Float64, Q::Float64, L::Float64, eps::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64==981, fig::Bool=false)
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (mu / rho)^5 / L
     Re = (P / 64)^(1 / 4)
     f = 64 / Re
