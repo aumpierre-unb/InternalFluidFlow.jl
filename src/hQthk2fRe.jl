@@ -5,7 +5,7 @@ include("figure.jl")
 @doc raw"""
 `Re,f=hQthk2fRe(h,Q,L,thk,g,mu,rho[,fig=true])`
 
-`hQthk2fRe` compute the Reynolds number ``Re`` and
+``hQthk2fRe`` compute the Reynolds number ``Re`` and
 the Darcy friction factor ``f``, given
 the head loss ``h``,
 the volumetric flow rate ``Q``,
