@@ -18,6 +18,8 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
+See also: `Re2f`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
+
 Examples
 ==========
 Compute Reynolds number Re for
@@ -34,8 +36,6 @@ This call computes Re and plots a schematic Moody diagram:
 ```
     Re=f2Re(2.8e-2,1e-3,true)
 ```
-
-See also: `Re2f`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
 """
 function f2Re(f, eps=0, fig=false)
     if eps > 5e-2
