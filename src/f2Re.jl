@@ -24,8 +24,8 @@ See also: `Re2f`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe
 Examples
 ==========
 Compute Reynolds number Re for
-Darcy friction factor ``f=2.8e-2`` and
-relative roughness ``eps=1e-3``.
+Darcy friction factor f = 2.8e-2 and
+relative roughness eps = 1e-3.
 In this case, both laminar and turbulent
 solutions are possible.
 Compute Re:
