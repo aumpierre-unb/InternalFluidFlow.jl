@@ -5,9 +5,9 @@ include("figure.jl")
 @doc raw"""
 `Re=f2Re(f,[eps=0[,fig=true]])`
 
-`f2Re` compute the Reynolds number Re, given
-the Darcy friction factor f and
-the relative roughness eps for
+`f2Re` compute the Reynolds number ``Re``, given
+the Darcy friction factor ``f`` and
+the relative roughness ``eps`` for
 for laminar regime and,
 when possible, also
 for turbulent regime.

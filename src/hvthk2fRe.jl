@@ -5,17 +5,17 @@ include("figure.jl")
 @doc raw"""
 `Re,f=hvthk2fRe(h,v,L,thk,g,mu,rho[,fig=true])`
 
-`hvthk2fRe` compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h,
-the flow speed v,
-the pipe's length L,
-the pipe's roughness thk,
-the gravitational accelaration g,
-the fluid's dynamic viscosity mu and
-the fluid's density rho.
+`hvthk2fRe` compute the Reynolds number ``Re`` and
+the Darcy friction factor ``f``, given
+the head loss ``h``,
+the flow speed ``v``,
+the pipe's length ``L``,
+the pipe's roughness ``thk``,
+the gravitational accelaration ``g``,
+the fluid's dynamic viscosity ``mu`` and
+the fluid's density ``rho``.
 
-If fig = true is given, a schematic Moody diagram
+If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
