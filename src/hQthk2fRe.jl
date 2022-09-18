@@ -15,6 +15,9 @@ the fluid's density ``rho``,
 the fluid's dynamic viscosity ``mu``, and
 the gravitational accelaration ``g``.
 
+By default, fluid is assumed to be water at 25 °C, ``rho=0.997`` and ``mu::Float64=0.91``,
+and gravitational acceleration is assumed to be ``g=981.``.
+
 If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
