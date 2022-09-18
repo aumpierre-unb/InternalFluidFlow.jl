@@ -9,7 +9,7 @@ and the Darcy-Weisbach equation for head loss.
 All function offer the option of plotting the solution 
 on a schematic Moody diagram. Check the functions' syntaxes at Julia's help.
 
-See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
+See also `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
 """
 module InternalFluidFlow
 
