@@ -18,7 +18,9 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-Example: Compute the Reynolds number Re and
+Example
+=========
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h = 40 cm,
 the flow speed v = 1e2 cm/s,
