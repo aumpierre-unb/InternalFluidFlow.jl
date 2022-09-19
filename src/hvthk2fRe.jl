@@ -21,7 +21,7 @@ By default, fluid is assumed to be water at 25 °C,
 and gravitational acceleration is assumed to be
 ``g=981`` (in g/s/s).
 Please, notice that dafault values are given in cgs unit system and,
-if taken, all other inputs must also be in cgs units.
+if taken, all other inputs must as well be given in cgs units.
 
 If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
