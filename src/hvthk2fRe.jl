@@ -15,8 +15,13 @@ the fluid's density ``rho``,
 the fluid's dynamic viscosity ``mu``, and
 the gravitational accelaration ``g``.
 
-By default, fluid is assumed to be water at 25 °C, ``rho=0.997`` and ``mu=0.91``,
-and gravitational acceleration is assumed to be ``g=981``.
+By default, fluid is assumed to be water at 25 °C,
+``rho=0.997`` (in g/cc) and
+``mu=0.91`` (in g/cm/s),
+and gravitational acceleration is assumed to be
+``g=981`` (in g/s/s).
+Please, notice that dafault values are given in cgs unit system and,
+if taken, all other inputs must also be in cgs units.
 
 If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
