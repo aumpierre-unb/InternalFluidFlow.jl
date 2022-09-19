@@ -16,7 +16,7 @@ the fluid's dynamic viscosity ``mu``, and
 the gravitational accelaration ``g``.
 
 By default, fluid is assumed to be water at 25 °C, ``rho=0.997`` and ``mu=0.91``,
-and gravitational acceleration is assumed to be ``g=981.``.
+and gravitational acceleration is assumed to be ``g=981``.
 
 If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -36,7 +36,7 @@ for water flow.
 
 Compute Re and f:
 ```
-    h=40.;v=1.e2;L=2.5e3;thk=2.5e-2;
+    h=40;v=1e2;L=2.5e3;thk=2.5e-2;
     Re,f=hvthk2fRe(h,v,L,thk)
 ```
 
@@ -48,15 +48,15 @@ dynamic viscosity mu = 8.9e-3 g/cm/s.
 
 Compute Re and f:
 ```
-    h=40.;v=1.e2;L=2.5e3;thk=2.5e-2;rho=0.989;mu=8.9e-3;
+    h=40;v=1e2;L=2.5e3;thk=2.5e-2;rho=0.989;mu=8.9e-3;
     Re,f=hvthk2fRe(h,v,L,thk,rho,mu)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hvthk2fRe(40.,1.e2,2.5e3,2.5e-2,0.997,9.1e-3,981.,true)
+    Re,f=hvthk2fRe(40,1e2,2.5e3,2.5e-2,0.997,9.1e-3,981,true)
 ```
 """
-function hvthk2fRe(h::Float64, v::Float64, L::Float64, thk::Float64, rho::Float64=0.997, mu::Float64=0.91, g::Float64=981., fig::Bool=false)
+function hvthk2fRe(h::Number, v::Number, L::Number, thk::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
     M = 2 * g * mu * h / v^3 / rho / L
     isturb = true
     Re = 1e4

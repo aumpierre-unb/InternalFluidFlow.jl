@@ -39,7 +39,7 @@ julia> using InternalFluidFlow
 ## Citation of InternalFluidFlow
 
 You can cite all versions (both released and pre-released), by using the
-<a href="https://doi.org/10.5281/zenodo.7019888">DOI 10.5281/zenodo.7019888</a>.
+<a href="https://doi.org/105281/zenodo.7019888">DOI 105281/zenodo.7019888</a>.
 This DOI represents all versions, and will always resolve to the latest one.
 
 For citation of the last released version of InternalFluidFlow, please check CITATION file in the <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">maintainer's repository</a>.
@@ -212,13 +212,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hDeps2fRe(h,D,L,eps[,rho=0.997[,mu=9.1e-3[,g=981.[,fig=true]]]])
+Re,f=hDeps2fRe(h,D,L,eps[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40.;D=10.;L=2.5e3;eps=2.5e-3;rho=0.989;mu=8.9e-3;g=981.;
+julia> h=40;D=10;L=2.5e3;eps=2.5e-3;rho=0.989;mu=8.9e-3;g=981;
 julia> thk=eps*D
 julia> Re,f=hDeps2fRe(h,D,L,eps,rho,mu,g)
 julia> v=Re*mu/rho/D
@@ -228,7 +228,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hDeps2fRe(40.,10.,2.5e3,2.5e3,0.997,9.1e-3,981.,true)
+julia> Re,f=hDeps2fRe(40,10,2.5e3,2.5e3,0.997,9.1e-3,981,true)
 ```
 
 ### hveps2fDRe
@@ -246,13 +246,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hveps2fRe(h,v,L,eps[,rho=0.997[,mu=9.1e-3[,g=981.[,fig=true]]]])
+Re,f=hveps2fRe(h,v,L,eps[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40.;v=1.e2;L=2.5e3;eps=2.5e3;rho=0.989;mu=8.9e-3;g=981.;
+julia> h=40;v=1e2;L=2.5e3;eps=2.5e3;rho=0.989;mu=8.9e-3;g=981;
 julia> Re,f=hveps2fRe(h,v,L,eps,rho,mu,g)
 julia> D=Re*mu/rho/v
 julia> thk=eps*D
@@ -262,7 +262,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hveps2fRe(40.,1.e2,2.5e3,2.5e3,0.997,9.1e-3,981.,true)
+julia> Re,f=hveps2fRe(40,1e2,2.5e3,2.5e3,0.997,9.1e-3,981,true)
 ```
 
 ### hQeps2fDRe
@@ -280,13 +280,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hQeps2fRe(h,Q,L,eps[,rho=0.997[,mu=9.1e-3[,g=981.[,fig=true]]]])
+Re,f=hQeps2fRe(h,Q,L,eps[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40.;Q=8.6e3;L=2.5e3;eps=2.5e3;rho=0.989;mu=8.9e-3;g=981.;
+julia> h=40;Q=8.6e3;L=2.5e3;eps=2.5e3;rho=0.989;mu=8.9e-3;g=981;
 julia> Re,f=hQeps2fRe(h,Q,L,eps,rho,mu,g)
 julia> D=Q*rho/(pi/4)/Re/mu
 julia> thk=eps*D
@@ -296,7 +296,7 @@ julia> v=Q/(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hQeps2fRe(40.,8.6e3,2.5e3,2.5e3,0.997,9.1e-3,981.,true)
+julia> Re,f=hQeps2fRe(40,8.6e3,2.5e3,2.5e3,0.997,9.1e-3,981,true)
 ```
 
 ### hvthk2fDRe
@@ -314,13 +314,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hvthk2fRe(h,v,L,thk[,rho=0.997[,mu=9.1e-3[,g=981.[,fig=true]]]])
+Re,f=hvthk2fRe(h,v,L,thk[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40.;v=1.e2;L=2.5e3;thk=0.025;rho=0.989;mu=8.9e-3;g=981.;
+julia> h=40;v=1e2;L=2.5e3;thk=0.025;rho=0.989;mu=8.9e-3;g=981;
 julia> Re,f=hvthk2fRe(h,v,L,thk,rho,mu,g)
 julia> D=Re*mu/rho/v
 julia> eps=thk/D
@@ -330,7 +330,7 @@ julia> Q=v*(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hvthk2fRe(40.,1.e2,2.5e3,0.025,0.997,9.1e-3,981.,true)
+julia> Re,f=hvthk2fRe(40,1e2,2.5e3,0.025,0.997,9.1e-3,981,true)
 ```
 
 ### hQthk2fDRe
@@ -348,13 +348,13 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hQthk2fRe(h,Q,L,thk[,rho=0.997[,mu=9.1e-3[,g=981.[,fig=true]]]])
+Re,f=hQthk2fRe(h,Q,L,thk[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
 
 ```julia
-julia> h=40.;Q=8.6e3;L=2.5e3;thk=0.025;rho=0.989;mu=8.9e-3;g=981.;
+julia> h=40;Q=8.6e3;L=2.5e3;thk=0.025;rho=0.989;mu=8.9e-3;g=981;
 julia> Re,f=hQthk2fRe(h,Q,L,thk,rho,mu,g)
 julia> D=Q*rho/(pi/4)/Re/mu
 julia> eps=thk/D
@@ -364,7 +364,7 @@ julia> v=Q/(pi/4*D^2)
 *e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
 
 ```julia
-julia> Re,f=hQthk2fRe(40.,8.6e3,2.5e3,0.025,0.997,9.1e-3,981.,true)
+julia> Re,f=hQthk2fRe(40,8.6e3,2.5e3,0.025,0.997,9.1e-3,981,true)
 ```
 
 Copyright &copy; 2022 Alexandre Umpierre

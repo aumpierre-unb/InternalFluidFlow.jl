@@ -39,7 +39,7 @@ Compute Re and plot a schematic Moody diagram:
     Re=f2Re(2.8e-2,1e-3,true)
 ```
 """
-function f2Re(f::Float64, eps::Float64=0, fig::Bool=false)
+function f2Re(f::Number, eps::Number=0, fig::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
