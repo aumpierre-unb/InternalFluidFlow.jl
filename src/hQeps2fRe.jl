@@ -15,8 +15,13 @@ the fluid's density ``rho``,
 the fluid's dynamic viscosity ``mu``, and
 the gravitational accelaration ``g``.
 
-By default, fluid is assumed to be water at 25 °C, ``rho=0.997`` and ``mu=0.91``,
-and gravitational acceleration is assumed to be ``g=981``.
+By default, fluid is assumed to be water at 25 °C,
+``rho=0.997`` (in g/cc) and
+``mu=0.91`` (in g/cm/s),
+and gravitational acceleration is assumed to be
+``g=981`` (in g/s/s).
+Please, notice that default values are given in the cgs unit system and,
+if taken, all other inputs must as well be given in cgs units.
 
 If ``fig=true`` is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -28,10 +33,10 @@ Examples
 ==========
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 40 cm,
-the volumetric flow rate Q = 8.6e3 cc/s,
-the pipe's length L = 2.5e3 cm and
-relative roughness eps = 2.5e-3,
+the head loss h = 0.4 m,
+the volumetric flow rate Q = 8600 L/s,
+the pipe's length L = 25 m and
+relative roughness eps = 0.025,
 for water flow.
 
 Compute Re and f:

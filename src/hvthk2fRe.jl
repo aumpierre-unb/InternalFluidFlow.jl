@@ -20,7 +20,7 @@ By default, fluid is assumed to be water at 25 °C,
 ``mu=0.91`` (in g/cm/s),
 and gravitational acceleration is assumed to be
 ``g=981`` (in g/s/s).
-Please, notice that dafault values are given in cgs unit system and,
+Please, notice that default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
 If ``fig=true`` is given, a schematic Moody diagram
@@ -33,10 +33,10 @@ Examples
 ==========
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 40 cm,
-the flow speed v = 1e2 cm/s,
-the pipe's length L = 2.5e3 cm and
-roughness thk = 2.5e-2 cm,
+the head loss h = 0.4 m,
+the flow speed v = 1 m/s,
+the pipe's length L = 25 m and
+roughness thk = 0.25 mm,
 for water flow.
 
 Compute Re and f:
