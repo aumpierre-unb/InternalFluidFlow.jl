@@ -20,7 +20,7 @@ By default, fluid is assumed to be water at 25 °C,
 ``mu=0.91`` (in g/cm/s),
 and gravitational acceleration is assumed to be
 ``g=981`` (in cm/s/s).
-Please, notice that default values are given in the cgs unit system and,
+Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
 If ``fig=true`` is given, a schematic Moody diagram
@@ -34,14 +34,14 @@ Examples
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h = 0.4 m,
-the flow speed v = 1 m/s,
+the flow speed v = 1.1 m/s,
 the pipe's length L = 25 m and
-relative roughness eps = 0.0025,
+relative roughness eps = 0.0027,
 for water flow.
 
 Compute Re and f:
 ```
-    h=40;v=1e2;L=2.5e3;eps=2.5e-3;
+    h=40;v=1.1e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
     Re,f=hveps2fRe(h,v,L,eps)
 ```
 
@@ -49,16 +49,16 @@ Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 8.9e-3 g/cm/s.
+dynamic viscosity mu = 0.0089 g/cm/s.
 
 Compute Re and f:
 ```
-    h=40;v=1e2;L=2.5e3;eps=2.5e-3;rho=0.989;mu=8.9e-3;
+    h=40;v=1.1e2;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
     Re,f=hveps2fRe(h,v,L,eps,rho,mu)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hveps2fRe(40,1e2,2.5e3,2.5e-3,0.997,9.1e-3,981,true)
+    Re,f=hveps2fRe(0.40,1.1,25,2.7e-5,997,9.1e-4,9.81,true)
 ```
 """
 function hveps2fRe(h::Number, v::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
