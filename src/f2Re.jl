@@ -24,8 +24,8 @@ See also: `Re2f`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe
 Examples
 ==========
 Compute Reynolds number Re for
-Darcy friction factor f = 2.8e-2 and
-relative roughness eps = 1e-3.
+Darcy friction factor f = 0.028 and
+relative roughness eps = 0.001.
 In this case, both laminar and turbulent
 solutions are possible.
 
@@ -37,6 +37,15 @@ Compute Re:
 Compute Re and plot a schematic Moody diagram:
 ```
     Re=f2Re(2.8e-2,1e-3,true)
+```
+
+Compute Reynolds number Re for
+Darcy friction factor f = 0.028
+in a smooth pipe.
+
+Compute Re:
+```
+    Re=f2Re(2.8e-2)
 ```
 """
 function f2Re(f::Number, eps::Number=0, fig::Bool=false)

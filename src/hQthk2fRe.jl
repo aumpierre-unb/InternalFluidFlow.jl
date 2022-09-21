@@ -36,12 +36,12 @@ the Darcy friction factor f, given
 the head loss h = 0.4 m,
 the volumetric flow rate Q = 8.6 L/s,
 the pipe's length L = 25 m and
-roughness thk = 0.027 mm
+roughness thk = 0.27 mm
 for water flow.
 
 Compute Re and f:
 ```
-    h=40;Q=8.6e2;L=2.5e3;thk=2.7e-3; # inputs in cgs units
+    h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2; # inputs in cgs units
     Re,f=hQthk2fRe(h,Q,L,thk)
 ```
 
@@ -53,12 +53,12 @@ dynamic viscosity mu = 0.0089 g/cm/s.
 
 Compute Re and f:
 ```
-    h=40;Q=8.6e3;L=2.5e3;thk=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
+    h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
     Re,f=hQthk2fRe(h,Q,L,thk,rho,mu)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hQthk2fRe(0.40,8.6,25,2.7e-5,997,9.1e-4,9.81,true)
+    Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true)
 ```
 """
 function hQthk2fRe(h::Number, Q::Number, L::Number, thk::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)

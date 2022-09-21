@@ -58,7 +58,7 @@ Compute Re and f:
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hveps2fRe(0.40,1.1,25,2.7e-5,997,9.1e-4,9.81,true)
+    Re,f=hveps2fRe(0.40,1.1,25,2.7e-3,989,8.9e-4,9.81,true)
 ```
 """
 function hveps2fRe(h::Number, v::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)

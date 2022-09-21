@@ -33,6 +33,15 @@ Compute f and plot a schematic Moody diagram:
 ```
     f=Re2f(1.2e5,1e-3,true)
 ```
+
+Compute the Darcy friction factor f given
+the Reynolds number Re = 1.2e5
+in a smooth pipe.
+    
+Compute Re:
+```
+    f=Re2f(1.2e5)
+```
 """
 function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
     if eps > 5e-2

@@ -41,7 +41,7 @@ for water flow.
 
 Compute Re and f:
 ```
-    h=40;Q=8.6e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
+    h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3; # inputs in cgs units
     Re,f=hQeps2fRe(h,Q,L,eps)
 ```
 
@@ -58,7 +58,7 @@ Compute Re and f:
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hQeps2fRe(0.40,8.6,25,2.7e-5,997,9.1e-4,9.81,true)
+    Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true)
 ```
 """
 function hQeps2fRe(h::Number, Q::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
