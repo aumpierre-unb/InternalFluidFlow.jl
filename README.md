@@ -138,7 +138,7 @@ Re2f computes the Darcy friction factor *f* given the relative roughness *eps* a
 **Syntax:**
 
 ```julia
-f=Re2f(Re,[eps[,fig]])
+f=Re2f(Re[,eps[,fig]])
 ```
 
 *e.g.* this call computes *f* and shows no plot:
@@ -175,7 +175,7 @@ $\displaystyle {1 \over \sqrt f} < 2 \mathrm{log} {1 \over\displaystyle {3.7 \ov
 **Syntax:**
 
 ```julia
-Re=f2Re(f,[eps[,fig]])
+Re=f2Re(f[,eps[,fig]])
 ```
 
 *e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and shows no plot:
