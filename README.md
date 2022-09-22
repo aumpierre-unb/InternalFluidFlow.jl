@@ -41,7 +41,7 @@ julia> using InternalFluidFlow
 ## Citation of InternalFluidFlow
 
 You can cite all versions (both released and pre-released), by using
-[DOI 105281/zenodo.7019888](https://doi.org/105281/zenodo.7019888).
+[DOI 105281/zenodo.7019888](https://doi.org/10.5281/zenodo.7019888).
 
 This DOI represents all versions, and will always resolve to the latest one.
 
