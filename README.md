@@ -7,7 +7,8 @@
 ## Installing and Loading InternalFluidFlow
 
 InternalFluidFlow can be installed and loaded either
-from the JuliaHub repository (last released version) or from the <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">maintainer's repository</a> (under construction pre-release alpha version).
+from the JuliaHub repository (last released version) or from the
+[maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl)
 
 ### Last Released Version of InternalFluidFlow
 
@@ -29,7 +30,8 @@ julia> using InternalFluidFlow
 
 ### Pre-Release Alpha Version (Under Construction)
 
-The next version (under construction) of InternalFluidFlow can be installed from the <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">maintainer's repository</a>.
+The next version (under construction) of InternalFluidFlow
+can be installed from the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
 ```julia
 (@v1.8) pkg> add("https://github.com/aumpierre-unb/InternalFluidFlow.jl")
@@ -38,11 +40,12 @@ julia> using InternalFluidFlow
 
 ## Citation of InternalFluidFlow
 
-You can cite all versions (both released and pre-released), by using the
-<a href="https://doi.org/105281/zenodo.7019888">DOI 105281/zenodo.7019888</a>.
+You can cite all versions (both released and pre-released), by using
+[DOI 105281/zenodo.7019888](https://doi.org/105281/zenodo.7019888).
+
 This DOI represents all versions, and will always resolve to the latest one.
 
-For citation of the last released version of InternalFluidFlow, please check CITATION file in the <a href="https://github.com/aumpierre-unb/InternalFluidFlow.jl">maintainer's repository</a>.
+For citation of the last released version of InternalFluidFlow, please check CITATION file at the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
 <!--
 ## The Theory for InternalFluidFlow
