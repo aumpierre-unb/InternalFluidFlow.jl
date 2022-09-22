@@ -165,13 +165,11 @@ julia> f=Re2f(1.2e5,2e-3,true)
 
 espfD2Re computes the Reynolds number *Re* given the relative roughness *eps* and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces *Re* < 2.5e3, laminar solution is accepted.
 
-<!--
-If given *f* is possible for turbulent flow,
+<!-- If given *f* is possible for turbulent flow,
 
 $\displaystyle {1 \over \sqrt f} < 2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon}}$
 
-(which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given *eps*>0.05, execution is aborted.
--->
+(which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given *eps*>0.05, execution is aborted. -->
 
 **Syntax:**
 
@@ -202,13 +200,11 @@ julia> Re=f2Re(2.5e-2,2e-3,true)
 
 hDeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L*, relative roughness *eps* and hydraulic diameter *D*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
 
-<!--
-Replacing speed flow *v* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+<!-- Replacing speed flow *v* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle Re^2 f={2gh\rho^2D^3 \over {\mu^2 L}}$
 
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively, however an analytic solution is possible in this case.
--->
+Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively, however an analytic solution is possible in this case. -->
 
 **Syntax:**
 
@@ -236,13 +232,11 @@ julia> Re,f=hDeps2fRe(40,10,2.5e3,2.5e3,0.997,9.1e-3,981,true)
 
 hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness *eps*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
 
-<!--
-Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {f \over Re}={2gh\mu \over {v^3\rho L}}$
 
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
--->
+Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
 
 **Syntax:**
 
@@ -270,13 +264,11 @@ julia> Re,f=hveps2fRe(40,1e2,2.5e3,2.5e3,0.997,9.1e-3,981,true)
 
 hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness *eps*, the volumetric flow rate *Q*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
 
-<!--
-Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}$
 
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
--->
+Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
 
 **Syntax:**
 
@@ -304,13 +296,11 @@ julia> Re,f=hQeps2fRe(40,8.6e3,2.5e3,2.5e3,0.997,9.1e-3,981,true)
 
 hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
 
-<!--
-Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {f \over Re}={2gh\mu \over {v^3\rho L}}$
 
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
--->
+Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
 
 **Syntax:**
 
@@ -338,13 +328,11 @@ julia> Re,f=hvthk2fRe(40,1e2,2.5e3,0.025,0.997,9.1e-3,981,true)
 
 hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate *Q*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
 
-<!--
-Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
 
 $\displaystyle {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}$
 
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively.
--->
+Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
 
 **Syntax:**
 
