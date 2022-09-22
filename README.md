@@ -138,7 +138,7 @@ Re2f computes the Darcy friction factor *f* given the relative roughness *eps* a
 **Syntax:**
 
 ```julia
-f=Re2f(Re,[eps=0[,fig=true]])
+f=Re2f(Re,[eps[,fig]])
 ```
 
 *e.g.* this call computes *f* and shows no plot:
@@ -175,7 +175,7 @@ $\displaystyle {1 \over \sqrt f} < 2 \mathrm{log} {1 \over\displaystyle {3.7 \ov
 **Syntax:**
 
 ```julia
-Re=f2Re(f,[eps=0[,fig=true]])
+Re=f2Re(f,[eps[,fig]])
 ```
 
 *e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and shows no plot:
@@ -212,7 +212,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hDeps2fRe(h,D,L,eps[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
+Re,f=hDeps2fRe(h,D,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
@@ -246,7 +246,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hveps2fRe(h,v,L,eps[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
+Re,f=hveps2fRe(h,v,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
@@ -280,7 +280,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hQeps2fRe(h,Q,L,eps[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
+Re,f=hQeps2fRe(h,Q,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
@@ -314,7 +314,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hvthk2fRe(h,v,L,thk[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
+Re,f=hvthk2fRe(h,v,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
@@ -348,7 +348,7 @@ Along with the Colebrook-White equation, this version of the Darcy-Weisbach equa
 **Syntax:**
 
 ```julia
-Re,f=hQthk2fRe(h,Q,L,thk[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])
+Re,f=hQthk2fRe(h,Q,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
 *e.g.* this call computes *Re* and *f* and shows no plot:
