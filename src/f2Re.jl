@@ -3,19 +3,19 @@ include("bissecao.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re=f2Re(f,[eps=0[,fig=true]])`
+`Re=f2Re(f,[eps[,fig]])`
 
-``f2Re`` computes the Reynolds number ``Re``, given
-the Darcy friction factor ``f`` and
-the relative roughness ``eps`` for
+`f2Re` computes the Reynolds number Re, given
+the Darcy friction factor f and
+the relative roughness eps for
 for laminar regime and,
 when possible, also
 for turbulent regime.
 
-By default, pipe is assumed to be smooth, ``eps=0``.
-If eps > 5e-2, eps is reset to ``eps=5e-2``.
+By default, pipe is assumed to be smooth, eps = 0.
+If eps > 0.05, eps is reset to eps = 0.0.
 
-If ``fig=true`` is given, a schematic Moody diagram
+If fig=true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -23,29 +23,27 @@ See also: `Re2f`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe
 
 Examples
 ==========
-Compute Reynolds number Re for
-Darcy friction factor f = 0.028 and
-relative roughness eps = 0.001.
+Compute the Reynolds number Re given
+the Darcy friction factor f = 0.028 and
+the relative roughness eps = 0.001.
 In this case, both laminar and turbulent
-solutions are possible.
-
-Compute Re:
+solutions are possible:
 ```
-    f=2.8e-2;eps=1e-3;
-    Re=f2Re(f,eps)
+f=2.8e-2;eps=1e-3;
+Re=f2Re(f,eps)
 ```
 Compute Re and plot a schematic Moody diagram:
 ```
-    Re=f2Re(2.8e-2,1e-3,true)
+Re=f2Re(2.8e-2,1e-3,true)
 ```
 
-Compute Reynolds number Re for
-Darcy friction factor f = 0.028
-in a smooth pipe.
-
-Compute Re:
+Compute the Reynolds number Re given
+the Darcy friction factor f = 0.028
+for a smooth tube and plot
+a schematic Moody diagram
+with the solution:
 ```
-    Re=f2Re(2.8e-2)
+Re=f2Re(2.8e-2)
 ```
 """
 function f2Re(f::Number, eps::Number=0, fig::Bool=false)

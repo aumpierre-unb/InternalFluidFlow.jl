@@ -3,27 +3,27 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hQthk2fRe(h,Q,L,thk[,rho=0.997[,mu=9.1e-3[,g=981[,fig=true]]]])`
+`Re,f=hQthk2fRe(h,Q,L,thk[,rho[,mu[,g[,fig]]]])`
 
-``hQthk2fRe`` computes the Reynolds number ``Re`` and
-the Darcy friction factor ``f``, given
-the head loss ``h``,
-the volumetric flow rate ``Q``,
-the pipe's length ``L``,
-the pipe's roughness ``thk``,
-the fluid's density ``rho``,
-the fluid's dynamic viscosity ``mu``, and
-the gravitational accelaration ``g``.
+`hQthk2fRe` computes the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h,
+the volumetric flow rate Q,
+the pipe's length L,
+the pipe's roughness thk,
+the fluid's density rho,
+the fluid's dynamic viscosity mu, and
+the gravitational accelaration g.
 
 By default, fluid is assumed to be water at 25 °C,
-``rho=0.997`` (in g/cc) and
-``mu=0.91`` (in g/cm/s),
+rho = 0.997 (in g/cc) and
+mu = 0.91 (in g/cm/s),
 and gravitational acceleration is assumed to be
-``g=981`` (in cm/s/s).
+g = 981 (in cm/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
-If ``fig=true`` is given, a schematic Moody diagram
+If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -37,28 +37,24 @@ the head loss h = 0.4 m,
 the volumetric flow rate Q = 8.6 L/s,
 the pipe's length L = 25 m and
 roughness thk = 0.27 mm
-for water flow.
-
-Compute Re and f:
+for water flow:
 ```
-    h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2; # inputs in cgs units
-    Re,f=hQthk2fRe(h,Q,L,thk)
+h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2; # inputs in cgs units
+Re,f=hQthk2fRe(h,Q,L,thk)
 ```
 
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.0089 g/cm/s.
-
-Compute Re and f:
+dynamic viscosity mu = 0.0089 g/cm/s:
 ```
-    h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
-    Re,f=hQthk2fRe(h,Q,L,thk,rho,mu)
+h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
+Re,f=hQthk2fRe(h,Q,L,thk,rho,mu)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-    Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true)
+Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true)
 ```
 """
 function hQthk2fRe(h::Number, Q::Number, L::Number, thk::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)

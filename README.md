@@ -15,17 +15,17 @@ from the JuliaHub repository (last released version) or from the
 The last version of InternalFluidFlow can be installed from JuliaHub repository:
 
 ```julia
-julia> using Pkg
-julia> Pkg.add("InternalFluidFlow")
-julia> using InternalFluidFlow
+using Pkg
+Pkg.add("InternalFluidFlow")
+using InternalFluidFlow
 ```
 
 If InternalFluidFlow is already installed, it can be updated:
 
 ```julia
-julia> using Pkg
-julia> Pkg.update("InternalFluidFlow")
-julia> using InternalFluidFlow
+using Pkg
+Pkg.update("InternalFluidFlow")
+using InternalFluidFlow
 ```
 
 ### Pre-Release Alpha Version (Under Construction)
@@ -34,8 +34,9 @@ The next version (under construction) of InternalFluidFlow
 can be installed from the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
 ```julia
-(@v1.8) pkg> add("https://github.com/aumpierre-unb/InternalFluidFlow.jl")
-julia> using InternalFluidFlow
+using Pkg
+Pkg.add(path="https://github.com/aumpierre-unb/InternalFluidFlow.jl")
+using InternalFluidFlow
 ```
 
 ## Citation of InternalFluidFlow
@@ -47,80 +48,7 @@ This DOI represents all versions, and will always resolve to the latest one.
 
 For citation of the last released version of InternalFluidFlow, please check CITATION file at the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
-<!-- ## The Theory for InternalFluidFlow
-
-The following is a very short introduction to the steady internal flow of an incompressible and inviscid fluid and to the Internal Fluid Flow module for Julia.
-
-Our focus here is a small set of equations that described the phenomenon and are required to solve problems on internal fluid flow. Internal flow is a pretty extensive topic in fluid mechanics and there are a lot of important and interesting observations related to it that are not taken into account in this text, because they have no direct impact the computation performed by the functions in this module.
-
-This text is divided in two main sections: The Theory and The InternalFluidFlow Module for Julia.
-
-### The Bernoulli Equation
-
-The Bernoulli equation is an expression of the mechanical energy balance for a very particular situation:
-
-- internal steady flow of an
-- incompressible inviscid fluid, where
-- friction effects and tube fittings can be neglected.
-
-For such a case, the mechanical energy is conserved, and for any two points 1 and 2 we have
-
-$\displaystyle {\rho v_2^2 \over 2} + \rho g z_2 + p_2 =
-{\rho v_1^2 \over 2} + \rho g z_1 + p_1$
-
-or
-
-$\displaystyle {v_2^2 \over 2g}+z_2+{p_2 \over \rho g}=
-{v_1^2 \over 2g}+z_1+{p_1 \over \rho g}$
-
-where
-
-- *rho* is the fluid's density,
-- *v* is the flow speed,
-- *g* is the gravitational acceleration,
-- *z* is the elevation, and
-- *p* is the static pressure.
-
-### Head Loss
-
-The flow of viscous fluids is accompanied of energy dispersion, which can be measured as pressure drop or, equivalently, as head loss *h*, by the Darcy-Weisbach equation,
-
-$\displaystyle h=f{v^2 \over 2g} {L \over D}$
-
-where *f* is the Darcy friction factor, *L* is the pipe's length and *D* is the pipe's hydraulic diameter,
-
-$\displaystyle D={4A \over P}$
-
-where *A* is the cross-sectional area of the flow and *P* is the wet perimeter of the cross-section. *f* is described as a function of the Reynolds number,
-
-$\displaystyle Re={\rho vg \over \mu}$
-
-and the pipe's relative roughness,
-
-$\displaystyle \varepsilon={k \over D}$
-
-where
-
-- *mu* is the fluid's dynamic viscosity and
-- *k* is the pipe's[ internal surface] roughness.
-
-The Reynolds number *Re*, the Darcy friction factor *f*, and the relative roughness *eps* completely describe the internal flow of incompressible viscous fluids, for both laminar and turbulent regimes. Usually, *f* is given as a function of *Re* and *eps*.
-
-The simplest problems on internal fluid flow consist on computing one of them given the two other. More complex situations arise when only one or none of those variables is known. Instead, dimensional variables involved are given. However not always, in most cases iterative computation is required.
-
-### Laminar Flow and Turbulent Flow
-
-For laminar flow, *Re* < 2.5e3 (typically), the Darcy friction factor is given by the Poiseuille condition,
-
-$\displaystyle f={64 \over Re}$
-
-For turbulent flow, *Re* > 2.5e3 (typically), the Darcy friction factor is given implicitly by the Colebrook-White equation,
-
-$\displaystyle {1 \over \sqrt{f}}=2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon} + {2.51 \over {Re \sqrt{f}}}}$ -->
-
 ## The InternalFluidFlow Module for Julia
-
-<!-- This package provides a set of functions designed to solve problems of internal fluid flow. All functions are based on the Poiseuille condition for laminar flow, the Colebrook-White equation for turbulent flow, and the Darcy-Weisbach equation for head loss. The simplest problems on internal flow consist in computing either the Reynolds number or the Darcy friction factor given the other and the relative roughness. For those cases, this package provides functions f2Re and Re2f, respectively. More elaborated problems consist in computing both the Reynolds number and the Darcy friction factor given the head loss, the tube length, the fluid's density and dynamic viscosity, the gravitational acceleration, the relative roughness and either the dynamic diameter or the flow speed or the volumetric flow. For those cases, this package provides functions hDeps2fRe, hveps2fRe and hQeps2fRe, respectively. A slightly more elaborate situation arises when roughness is given instead of relative roughness along with the flow speed or the volumetric flow. For those cases, this package provides functions hvthk2fRe and hQthk2fRe, respectively. All function in this package offer the option of plotting the solution on a schematic Moody diagram. -->
 
 Internal Fluid Flow provides the following functions:
 
@@ -134,226 +62,395 @@ Internal Fluid Flow provides the following functions:
 
 ### Re2f
 
-Re2f computes the Darcy friction factor *f* given the relative roughness *eps* and the Reynolds number *Re*. If given *Re* < 2.5e3, then flow is assumed to be laminar and *f* is computed using of the Poiseuille condition. Otherwise, flow is assumed to be turbulent and *f* is computed using the Colebrook-White equation.
+Re2f computes the Darcy friction f factor, given
+the Reynolds number Re and
+the relative roughness eps.
+
+By default, pipe is assumed to be smooth, eps = 0.
+If eps > 0.05, eps is reset to eps = 0.05.
+
+If fig=true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
-```julia
+```
 f=Re2f(Re[,eps[,fig]])
 ```
 
-*e.g.* this call computes *f* and shows no plot:
+*e.g.* Compute the Darcy friction factor f given
+the Reynolds number Re = 120000 and
+the relative roughness eps = 0.001:
 
 ```julia
-julia> Re=1.2e5;eps=2e-3;
-julia> f=Re2f(Re,eps)
+Re=1.2e5;eps=1e-3;
+f=Re2f(Re,eps)
 ```
 
-*e.g.* this call computes *f* for the default condition of smooth tube, *eps* = 0, and plots a schematic Moody diagram with the solution:
+Compute f and plot a schematic Moody diagram:
 
 ```julia
-julia> f=Re2f(1.2e5,:,true)
+f=Re2f(1.2e5,1e-3,true)
 ```
 
-*e.g.* this call computes *f* and plots a schematic Moody diagram with the solution:
+*e.g.* Compute the Darcy friction factor f given
+the Reynolds number Re = 120000
+for a smooth tube and plot
+a schematic Moody diagram
+with the solution:
 
 ```julia
-julia> f=Re2f(1.2e5,2e-3,true)
+f=Re2f(1.2e5,:,true)
 ```
 
 ### f2Re
 
-espfD2Re computes the Reynolds number *Re* given the relative roughness *eps* and the Darcy friction factor *f*. Depending on the inputs, solution may be laminar or turbulent flow, or either for smooth pipes with higher friction, or none for lower friction and rough pipes. If the Poiseuille condition produces *Re* < 2.5e3, laminar solution is accepted.
+f2Re computes the Reynolds number Re, given
+the Darcy friction factor f and
+the relative roughness eps for
+for laminar regime and,
+when possible, also
+for turbulent regime.
 
-<!-- If given *f* is possible for turbulent flow,
+By default, pipe is assumed to be smooth, eps = 0.
+If eps > 0.05, eps is reset to eps = 0.0.
 
-$\displaystyle {1 \over \sqrt f} < 2 \mathrm{log} {1 \over\displaystyle {3.7 \over \varepsilon}}$
-
-(which is Colebrook-White equation for for elevated *Re*) the turbulent solution is accepted. If both solutions are accepted, espfD2Re returns both answers. If neither laminar or turbulent solutions are accepted, espfD2Re returns an empty matrix. If given *eps*>0.05, execution is aborted. -->
+If fig=true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
-```julia
+```
 Re=f2Re(f[,eps[,fig]])
 ```
 
-*e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and shows no plot:
+*e.g.* Compute the Reynolds number Re given
+the Darcy friction factor f = 0.028 and
+the relative roughness eps = 0.001.
+In this case, both laminar and turbulent
+solutions are possible:
 
 ```julia
-julia> f=2.5e-2;eps=2e-3;
-julia> Re=f2Re(f,eps)
+f=2.8e-2;eps=1e-3;
+Re=f2Re(f,eps)
 ```
 
-*e.g.* this call computes *Re* for the default condition of smooth tube, *eps* = 0, for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
+Compute Re and plot a schematic Moody diagram:
 
 ```julia
-julia> Re=f2Re(2.5e-2,:,true)
+Re=f2Re(2.8e-2,1e-3,true)
 ```
 
-*e.g.* this call computes *Re* for both laminar and turbulent regimes (if possible) and plots a schematic Moody diagram with the solution:
+*e.g.* Compute the Reynolds number Re given
+the Darcy friction factor f = 0.028
+for a smooth tube and plot
+a schematic Moody diagram
+with the solution:
 
 ```julia
-julia> Re=f2Re(2.5e-2,2e-3,true)
+Re=f2Re(2.8e-2)
 ```
 
 ### hDeps2fDRe
 
-hDeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L*, relative roughness *eps* and hydraulic diameter *D*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
+hDeps2fRe computes the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h,
+the pipe's hydraulic diameter D,
+the pipe's length L,
+the pipe's relative roughness eps,
+the fluid's density rho,
+the fluid's dynamic viscosity mu, and
+the gravitational accelaration g.
 
-<!-- Replacing speed flow *v* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+By default, fluid is assumed to be water at 25 °C,
+rho = 0.997 (in g/cc) and
+mu = 0.91 (in g/cm/s),
+and gravitational acceleration is assumed to be
+g = 981 (in cm/s/s).
+Please, notice that these default values are given in the cgs unit system and,
+if taken, all other inputs must as well be given in cgs units.
 
-$\displaystyle Re^2 f={2gh\rho^2D^3 \over {\mu^2 L}}$
-
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively, however an analytic solution is possible in this case. -->
+If fig = true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
-```julia
+```
 Re,f=hDeps2fRe(h,D,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* this call computes *Re* and *f* and shows no plot:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 0.4 m,
+the pipe's hydraulic diameter D = 10 cm,
+length L = 25 m and
+relative roughness eps = 0.0027,
+for water flow:
 
 ```julia
-julia> h=40;D=10;L=2.5e3;eps=2.5e-3;rho=0.989;mu=8.9e-3;g=981;
-julia> thk=eps*D
-julia> Re,f=hDeps2fRe(h,D,L,eps,rho,mu,g)
-julia> v=Re*mu/rho/D
-julia> Q=v*(pi/4*D^2)
+h=40;Q=1e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
+Re,f=hDeps2fRe(h,D,L,eps)
 ```
 
-*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+in addition
+the fluid's density rho = 0.989 g/cc and
+dynamic viscosity mu = 0.0089 g/cm/s:
 
 ```julia
-julia> Re,f=hDeps2fRe(40,10,2.5e3,2.5e3,0.997,9.1e-3,981,true)
+h=40;D=10;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
+Re,f=hDeps2fRe(h,D,L,eps,rho,mu)
+```
+
+Compute Re and f and plot a schematic Moody diagram:
+
+```julia
+Re,f=hDeps2fRe(0.40,0.10,25,2.7e-3,989,8.9e-4,9.81,true)
 ```
 
 ### hveps2fDRe
 
-hveps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness *eps*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
+hveps2fRe computes the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h,
+the flow speed v,
+the pipe's length L,
+the pipe's relative roughness eps,
+the fluid's density rho,
+the fluid's dynamic viscosity mu, and
+the gravitational accelaration g.
 
-<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+By default, fluid is assumed to be water at 25 °C,
+rho = 0.997 (in g/cc) and
+mu = 0.91 (in g/cm/s),
+and gravitational acceleration is assumed to be
+g = 981 (in cm/s/s).
+Please, notice that these default values are given in the cgs unit system and,
+if taken, all other inputs must as well be given in cgs units.
 
-$\displaystyle {f \over Re}={2gh\mu \over {v^3\rho L}}$
-
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
+If fig = true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
-```julia
+```
 Re,f=hveps2fRe(h,v,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* this call computes *Re* and *f* and shows no plot:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 0.4 m,
+the flow speed v = 1.1 m/s,
+the pipe's length L = 25 m and
+relative roughness eps = 0.0027,
+for water flow:
 
 ```julia
-julia> h=40;v=1e2;L=2.5e3;eps=2.5e3;rho=0.989;mu=8.9e-3;g=981;
-julia> Re,f=hveps2fRe(h,v,L,eps,rho,mu,g)
-julia> D=Re*mu/rho/v
-julia> thk=eps*D
-julia> Q=v*(pi/4*D^2)
+h=40;v=1.1e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
+Re,f=hveps2fRe(h,v,L,eps)
 ```
 
-*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+in addition
+the fluid's density rho = 0.989 g/cc and
+dynamic viscosity mu = 0.0089 g/cm/s:
 
 ```julia
-julia> Re,f=hveps2fRe(40,1e2,2.5e3,2.5e3,0.997,9.1e-3,981,true)
+h=40;v=1.1e2;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
+Re,f=hveps2fRe(h,v,L,eps,rho,mu)
+```
+
+Compute Re and f and plot a schematic Moody diagram:
+
+```julia
+Re,f=hveps2fRe(0.40,1.1,25,2.7e-3,989,8.9e-4,9.81,true)
 ```
 
 ### hQeps2fDRe
 
-hQeps2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and relative roughness *eps*, the volumetric flow rate *Q*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
+hQeps2fRe computes the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h,
+the volumetric flow rate Q,
+the pipe's length L,
+the pipe's relative roughness eps,
+the fluid's density rho,
+the fluid's dynamic viscosity mu, and
+the gravitational accelaration g.
 
-<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+By default, fluid is assumed to be water at 25 °C,
+rho = 0.997 (in g/cc) and
+mu = 0.91 (in g/cm/s),
+and gravitational acceleration is assumed to be
+g = 981 (in cm/s/s).
+Please, notice that these default values are given in the cgs unit system and,
+if taken, all other inputs must as well be given in cgs units.
 
-$\displaystyle {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}$
-
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
+If fig = true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
-```julia
+```
 Re,f=hQeps2fRe(h,Q,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* this call computes *Re* and *f* and shows no plot:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 0.4 m,
+the volumetric flow rate Q = 8.6 L/s,
+the pipe's length L = 25 m and
+relative roughness eps = 0.0027,
+for water flow:
 
 ```julia
-julia> h=40;Q=8.6e3;L=2.5e3;eps=2.5e3;rho=0.989;mu=8.9e-3;g=981;
-julia> Re,f=hQeps2fRe(h,Q,L,eps,rho,mu,g)
-julia> D=Q*rho/(pi/4)/Re/mu
-julia> thk=eps*D
-julia> v=Q/(pi/4*D^2)
+h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3; # inputs in cgs units
+Re,f=hQeps2fRe(h,Q,L,eps)
 ```
 
-*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+in addition
+the fluid's density rho = 0.989 g/cc and
+dynamic viscosity mu = 0.0089 g/cm/s:
 
 ```julia
-julia> Re,f=hQeps2fRe(40,8.6e3,2.5e3,2.5e3,0.997,9.1e-3,981,true)
+h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
+Re,f=hQeps2fRe(h,Q,L,eps,rho,mu)
+```
+
+Compute Re and f and plot a schematic Moody diagram:
+
+```julia
+Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true)
 ```
 
 ### hvthk2fDRe
 
-hvthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the speed flow *v*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
+hvthk2fRe computes the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h,
+the flow speed v,
+the pipe's length L,
+the pipe's roughness thk,
+the fluid's density rho,
+the fluid's dynamic viscosity mu, and
+the gravitational accelaration g.
 
-<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+By default, fluid is assumed to be water at 25 °C,
+rho=0.997 (in g/cc) and
+mu=0.91 (in g/cm/s),
+and gravitational acceleration is assumed to be
+g=981 (in cm/s/s).
+Please, notice that these default values are given in the cgs unit system and,
+if taken, all other inputs must as well be given in cgs units.
 
-$\displaystyle {f \over Re}={2gh\mu \over {v^3\rho L}}$
-
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
+If fig=true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
-```julia
+```
 Re,f=hvthk2fRe(h,v,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* this call computes *Re* and *f* and shows no plot:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 0.4 m,
+the flow speed v = 1.1 m/s,
+the pipe's length L = 25 m and
+roughness thk = 0.27 mm,
+for water flow:
 
 ```julia
-julia> h=40;v=1e2;L=2.5e3;thk=0.025;rho=0.989;mu=8.9e-3;g=981;
-julia> Re,f=hvthk2fRe(h,v,L,thk,rho,mu,g)
-julia> D=Re*mu/rho/v
-julia> eps=thk/D
-julia> Q=v*(pi/4*D^2)
+h=40;v=1.1e2;L=2.5e3;thk=2.7e-2; # inputs in cgs units
+Re,f=hvthk2fRe(h,v,L,thk)
 ```
 
-*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+in addition
+the fluid's density rho = 0.989 g/cc and
+dynamic viscosity mu = 0.0089 g/cm/s:
 
 ```julia
-julia> Re,f=hvthk2fRe(40,1e2,2.5e3,0.025,0.997,9.1e-3,981,true)
+h=40;v=1.1e2;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
+Re,f=hvthk2fRe(h,v,L,thk,rho,mu)
+```
+
+Compute Re and f and plot a schematic Moody diagram:
+
+```julia
+Re,f=hvthk2fRe(0.40,1.1,25,2.7e-4,989,8.9e-4,9.81,true)
 ```
 
 ### hQthk2fDRe
 
-hQthk2fDRe computes both the Darcy friction factor *f* and the Reynolds number *Re* given the head loss *h*, the pipe's length *L* and roughness *k*, the volumetric flow rate *Q*, the gravitational acceleration *g*, and the fluid's density *rho* and dynamic viscosity *mu*.
+hQthk2fRe computes the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h,
+the volumetric flow rate Q,
+the pipe's length L,
+the pipe's roughness thk,
+the fluid's density rho,
+the fluid's dynamic viscosity mu, and
+the gravitational accelaration g.
 
-<!-- Replacing hydraulic diameter *D* in the Darcy-Weisbach equation by the Reynolds number *Re*,
+By default, fluid is assumed to be water at 25 °C,
+rho = 0.997 (in g/cc) and
+mu = 0.91 (in g/cm/s),
+and gravitational acceleration is assumed to be
+g = 981 (in cm/s/s).
+Please, notice that these default values are given in the cgs unit system and,
+if taken, all other inputs must as well be given in cgs units.
 
-$\displaystyle {Re^5 f}={2ghQ^3 \over\displaystyle {{\left[ {\pi \over 4} \right]}^3 {\left[ {\mu \over \rho} \right]}^5 L}}$
-
-Along with the Colebrook-White equation, this version of the Darcy-Weisbach equation produces a system of two equations with two variables. Solution is computed iteratively. -->
+If fig = true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
-```julia
+```
 Re,f=hQthk2fRe(h,Q,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* this call computes *Re* and *f* and shows no plot:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 0.4 m,
+the volumetric flow rate Q = 8.6 L/s,
+the pipe's length L = 25 m and
+roughness thk = 0.27 mm
+for water flow:
 
 ```julia
-julia> h=40;Q=8.6e3;L=2.5e3;thk=0.025;rho=0.989;mu=8.9e-3;g=981;
-julia> Re,f=hQthk2fRe(h,Q,L,thk,rho,mu,g)
-julia> D=Q*rho/(pi/4)/Re/mu
-julia> eps=thk/D
-julia> v=Q/(pi/4*D^2)
+h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2; # inputs in cgs units
+Re,f=hQthk2fRe(h,Q,L,thk)
 ```
 
-*e.g.* this call computes *Re* and *f* and plots a schematic Moody diagram with the solution:
+*e.g.* Compute the Reynolds number Re and
+the Darcy friction factor f, given
+in addition
+the fluid's density rho = 0.989 g/cc and
+dynamic viscosity mu = 0.0089 g/cm/s:
 
 ```julia
-julia> Re,f=hQthk2fRe(40,8.6e3,2.5e3,0.025,0.997,9.1e-3,981,true)
+h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
+Re,f=hQthk2fRe(h,Q,L,thk,rho,mu)
+```
+
+Compute Re and f and plot a schematic Moody diagram:
+
+```julia
+Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true)
 ```
 
 Copyright &copy; 2022 Alexandre Umpierre

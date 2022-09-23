@@ -3,16 +3,16 @@ include("bissecao.jl")
 include("figure.jl")
 
 @doc raw"""
-`f=Re2f(Re,[eps=0[,fig=true]])`
+`f=Re2f(Re,[eps[,fig]])`
 
-``Re2f`` computes the Darcy friction ``f`` factor, given
-the Reynolds number ``Re`` and
-the relative roughness ``eps``.
+`Re2f` computes the Darcy friction f factor, given
+the Reynolds number Re and
+the relative roughness eps.
 
-By default, pipe is assumed to be smooth, ``eps=0``.
-If eps > 5e-2, eps is reset to ``eps=5e-2``.
+By default, pipe is assumed to be smooth, eps = 0.
+If eps > 0.05, eps is reset to eps = 0.05.
 
-If ``fig=true`` is given, a schematic Moody diagram
+If fig=true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -21,26 +21,23 @@ See also: `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe
 Examples
 ==========
 Compute the Darcy friction factor f given
-the Reynolds number Re = 1.2e5 and
-the relative roughness eps = 1e-3.
-
-Compute f:
+the Reynolds number Re = 120000 and
+the relative roughness eps = 0.001:
 ```
-    Re=1.2e5;eps=1e-3;
-    f=Re2f(Re,eps)
+Re=1.2e5;eps=1e-3;
+f=Re2f(Re,eps)
 ```
 Compute f and plot a schematic Moody diagram:
 ```
-    f=Re2f(1.2e5,1e-3,true)
+f=Re2f(1.2e5,1e-3,true)
 ```
-
 Compute the Darcy friction factor f given
-the Reynolds number Re = 1.2e5
-in a smooth pipe.
-    
-Compute Re:
+the Reynolds number Re = 120000
+for a smooth tube and plot
+a schematic Moody diagram
+with the solution:
 ```
-    f=Re2f(1.2e5)
+f=Re2f(1.2e5,:,true)
 ```
 """
 function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
