@@ -75,7 +75,7 @@ of the solution.
 
 **Syntax:**
 
-```
+```julia
 f=Re2f(Re[,eps[,fig]])
 ```
 
@@ -122,7 +122,7 @@ of the solution.
 
 **Syntax:**
 
-```
+```julia
 Re=f2Re(f[,eps[,fig]])
 ```
 
@@ -179,7 +179,7 @@ of the solution.
 
 **Syntax:**
 
-```
+```julia
 Re,f=hDeps2fRe(h,D,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
@@ -239,7 +239,7 @@ of the solution.
 
 **Syntax:**
 
-```
+```julia
 Re,f=hveps2fRe(h,v,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
@@ -299,7 +299,7 @@ of the solution.
 
 **Syntax:**
 
-```
+```julia
 Re,f=hQeps2fRe(h,Q,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
@@ -359,7 +359,7 @@ of the solution.
 
 **Syntax:**
 
-```
+```julia
 Re,f=hvthk2fRe(h,v,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
@@ -419,7 +419,7 @@ of the solution.
 
 **Syntax:**
 
-```
+```julia
 Re,f=hQthk2fRe(h,Q,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
