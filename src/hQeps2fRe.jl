@@ -54,7 +54,7 @@ Re,f=hQeps2fRe(h,Q,L,eps,rho,mu)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true)
+Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 """
 function hQeps2fRe(h::Number, Q::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)

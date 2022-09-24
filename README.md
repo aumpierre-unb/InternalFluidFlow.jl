@@ -210,7 +210,7 @@ Re,f=hDeps2fRe(h,D,L,eps,rho,mu)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hDeps2fRe(0.40,0.10,25,2.7e-3,989,8.9e-4,9.81,true)
+Re,f=hDeps2fRe(0.40,0.10,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 
 ### hveps2fDRe
@@ -270,7 +270,7 @@ Re,f=hveps2fRe(h,v,L,eps,rho,mu)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hveps2fRe(0.40,1.1,25,2.7e-3,989,8.9e-4,9.81,true)
+Re,f=hveps2fRe(0.40,1.1,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 
 ### hQeps2fDRe
@@ -330,7 +330,7 @@ Re,f=hQeps2fRe(h,Q,L,eps,rho,mu)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true)
+Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 
 ### hvthk2fDRe
@@ -390,7 +390,7 @@ Re,f=hvthk2fRe(h,v,L,thk,rho,mu)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hvthk2fRe(0.40,1.1,25,2.7e-4,989,8.9e-4,9.81,true)
+Re,f=hvthk2fRe(0.40,1.1,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 
 ### hQthk2fDRe
@@ -450,7 +450,7 @@ Re,f=hQthk2fRe(h,Q,L,thk,rho,mu)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true)
+Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 
 Copyright &copy; 2022 Alexandre Umpierre
