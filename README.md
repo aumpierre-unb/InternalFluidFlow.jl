@@ -166,10 +166,10 @@ the fluid's dynamic viscosity mu, and
 the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cc) and
-mu = 0.91 (in g/cm/s),
+rho = 0.997 (in kg/L) and
+mu = 0.91 (in cP),
 and gravitational acceleration is assumed to be
-g = 981 (in cm/s/s).
+g = 9.81 (in m/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
@@ -199,8 +199,8 @@ Re,f=hDeps2fRe(h,D,L,eps)
 *e.g.* Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.0089 g/cm/s:
+the fluid's density rho = 0.989 kg/L and
+dynamic viscosity mu = 0.0089 P:
 
 ```julia
 h=40;D=10;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -226,10 +226,10 @@ the fluid's dynamic viscosity mu, and
 the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cc) and
-mu = 0.91 (in g/cm/s),
+rho = 0.997 (in kg/L) and
+mu = 0.91 (in cP),
 and gravitational acceleration is assumed to be
-g = 981 (in cm/s/s).
+g = 9.81 (in m/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
@@ -259,8 +259,8 @@ Re,f=hveps2fRe(h,v,L,eps)
 *e.g.* Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.0089 g/cm/s:
+the fluid's density rho = 0.989 kg/L and
+dynamic viscosity mu = 0.0089 P:
 
 ```julia
 h=40;v=1.1e2;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -286,10 +286,10 @@ the fluid's dynamic viscosity mu, and
 the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cc) and
-mu = 0.91 (in g/cm/s),
+rho = 0.997 (in kg/L) and
+mu = 0.91 (in cP),
 and gravitational acceleration is assumed to be
-g = 981 (in cm/s/s).
+g = 9.81 (in m/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
@@ -319,8 +319,8 @@ Re,f=hQeps2fRe(h,Q,L,eps)
 *e.g.* Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.0089 g/cm/s:
+the fluid's density rho = 0.989 kg/L and
+dynamic viscosity mu = 0.0089 P:
 
 ```julia
 h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -346,10 +346,10 @@ the fluid's dynamic viscosity mu, and
 the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cc) and
-mu = 0.91 (in g/cm/s),
+rho = 0.997 (in kg/L) and
+mu = 0.91 (in cP),
 and gravitational acceleration is assumed to be
-g = 981 (in cm/s/s).
+g = 9.81 (in m/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
@@ -379,8 +379,8 @@ Re,f=hvthk2fRe(h,v,L,thk)
 *e.g.* Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.0089 g/cm/s:
+the fluid's density rho = 0.989 kg/L and
+dynamic viscosity mu = 0.0089 P:
 
 ```julia
 h=40;v=1.1e2;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -406,10 +406,10 @@ the fluid's dynamic viscosity mu, and
 the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cc) and
-mu = 0.91 (in g/cm/s),
+rho = 0.997 (in kg/L) and
+mu = 0.91 (in cP),
 and gravitational acceleration is assumed to be
-g = 981 (in cm/s/s).
+g = 9.81 (in m/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
@@ -439,8 +439,8 @@ Re,f=hQthk2fRe(h,Q,L,thk)
 *e.g.* Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.0089 g/cm/s:
+the fluid's density rho = 0.989 kg/L and
+dynamic viscosity mu = 0.0089 P:
 
 ```julia
 h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
