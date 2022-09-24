@@ -80,7 +80,7 @@ f=Re2f(Re[,eps[,fig]])
 ```
 
 *e.g.* Compute the Darcy friction factor f given
-the Reynolds number Re = 120000 and
+the Reynolds number Re = 120,000 and
 the relative roughness eps = 0.001:
 
 ```julia
@@ -95,7 +95,7 @@ f=Re2f(1.2e5,1e-3,true)
 ```
 
 *e.g.* Compute the Darcy friction factor f given
-the Reynolds number Re = 120000
+the Reynolds number Re = 120,000
 for a smooth tube and plot
 a schematic Moody diagram
 with the solution:
@@ -114,7 +114,7 @@ when possible, also
 for turbulent regime.
 
 By default, pipe is assumed to be smooth, eps = 0.
-If eps > 0.05, eps is reset to eps = 0.0.
+If eps > 0.05, eps is reset to eps = 0.05.
 
 If fig=true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -163,7 +163,7 @@ the pipe's length L,
 the pipe's relative roughness eps,
 the fluid's density rho,
 the fluid's dynamic viscosity mu, and
-the gravitational accelaration g.
+the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
@@ -223,7 +223,7 @@ the pipe's length L,
 the pipe's relative roughness eps,
 the fluid's density rho,
 the fluid's dynamic viscosity mu, and
-the gravitational accelaration g.
+the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
@@ -283,7 +283,7 @@ the pipe's length L,
 the pipe's relative roughness eps,
 the fluid's density rho,
 the fluid's dynamic viscosity mu, and
-the gravitational accelaration g.
+the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
@@ -343,17 +343,17 @@ the pipe's length L,
 the pipe's roughness thk,
 the fluid's density rho,
 the fluid's dynamic viscosity mu, and
-the gravitational accelaration g.
+the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho=0.997 (in g/cc) and
-mu=0.91 (in g/cm/s),
+rho = 0.997 (in g/cc) and
+mu = 0.91 (in g/cm/s),
 and gravitational acceleration is assumed to be
-g=981 (in cm/s/s).
+g = 981 (in cm/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
-If fig=true is given, a schematic Moody diagram
+If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -403,7 +403,7 @@ the pipe's length L,
 the pipe's roughness thk,
 the fluid's density rho,
 the fluid's dynamic viscosity mu, and
-the gravitational accelaration g.
+the gravitational acceleration g.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
