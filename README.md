@@ -75,11 +75,13 @@ of the solution.
 
 **Syntax:**
 
-```julia
+```dotnetcli
 f=Re2f(Re[,eps[,fig]])
 ```
 
-*e.g.* Compute the Darcy friction factor f given
+**Examples:**
+
+Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000 and
 the relative roughness eps = 0.001:
 
@@ -94,7 +96,7 @@ Compute f and plot a schematic Moody diagram:
 f=Re2f(1.2e5,1e-3,true)
 ```
 
-*e.g.* Compute the Darcy friction factor f given
+Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000
 for a smooth tube and plot
 a schematic Moody diagram
@@ -122,11 +124,13 @@ of the solution.
 
 **Syntax:**
 
-```julia
+```dotnetcli
 Re=f2Re(f[,eps[,fig]])
 ```
 
-*e.g.* Compute the Reynolds number Re given
+**Examples:**
+
+Compute the Reynolds number Re given
 the Darcy friction factor f = 0.028 and
 the relative roughness eps = 0.001.
 In this case, both laminar and turbulent
@@ -143,7 +147,7 @@ Compute Re and plot a schematic Moody diagram:
 Re=f2Re(2.8e-2,1e-3,true)
 ```
 
-*e.g.* Compute the Reynolds number Re given
+Compute the Reynolds number Re given
 the Darcy friction factor f = 0.028
 for a smooth tube and plot
 a schematic Moody diagram
@@ -179,13 +183,15 @@ of the solution.
 
 **Syntax:**
 
-```julia
+```dotnetcli
 Re,f=hDeps2fRe(h,D,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* Compute the Reynolds number Re and
+**Examples:**
+
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.4 m,
+the head loss h = 0.40 m,
 the pipe's hydraulic diameter D = 10 cm,
 length L = 25 m and
 relative roughness eps = 0.0027,
@@ -196,11 +202,11 @@ h=40;Q=1e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
 Re,f=hDeps2fRe(h,D,L,eps)
 ```
 
-*e.g.* Compute the Reynolds number Re and
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.0089 P:
+dynamic viscosity mu = 0.89 cP:
 
 ```julia
 h=40;D=10;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -239,13 +245,15 @@ of the solution.
 
 **Syntax:**
 
-```julia
+```dotnetcli
 Re,f=hveps2fRe(h,v,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* Compute the Reynolds number Re and
+**Examples:**
+
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.4 m,
+the head loss h = 0.40 m,
 the flow speed v = 1.1 m/s,
 the pipe's length L = 25 m and
 relative roughness eps = 0.0027,
@@ -256,11 +264,11 @@ h=40;v=1.1e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
 Re,f=hveps2fRe(h,v,L,eps)
 ```
 
-*e.g.* Compute the Reynolds number Re and
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.0089 P:
+dynamic viscosity mu = 0.89 cP:
 
 ```julia
 h=40;v=1.1e2;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -299,13 +307,15 @@ of the solution.
 
 **Syntax:**
 
-```julia
+```dotnetcli
 Re,f=hQeps2fRe(h,Q,L,eps[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* Compute the Reynolds number Re and
+**Examples:**
+
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.4 m,
+the head loss h = 0.40 m,
 the volumetric flow rate Q = 8.6 L/s,
 the pipe's length L = 25 m and
 relative roughness eps = 0.0027,
@@ -316,11 +326,11 @@ h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3; # inputs in cgs units
 Re,f=hQeps2fRe(h,Q,L,eps)
 ```
 
-*e.g.* Compute the Reynolds number Re and
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.0089 P:
+dynamic viscosity mu = 0.89 cP:
 
 ```julia
 h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -359,13 +369,15 @@ of the solution.
 
 **Syntax:**
 
-```julia
+```dotnetcli
 Re,f=hvthk2fRe(h,v,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* Compute the Reynolds number Re and
+**Examples:**
+
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.4 m,
+the head loss h = 0.40 m,
 the flow speed v = 1.1 m/s,
 the pipe's length L = 25 m and
 roughness thk = 0.27 mm,
@@ -376,11 +388,11 @@ h=40;v=1.1e2;L=2.5e3;thk=2.7e-2; # inputs in cgs units
 Re,f=hvthk2fRe(h,v,L,thk)
 ```
 
-*e.g.* Compute the Reynolds number Re and
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.0089 P:
+dynamic viscosity mu = 0.89 cP:
 
 ```julia
 h=40;v=1.1e2;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
@@ -419,13 +431,15 @@ of the solution.
 
 **Syntax:**
 
-```julia
+```dotnetcli
 Re,f=hQthk2fRe(h,Q,L,thk[,rho[,mu[,g[,fig]]]])
 ```
 
-*e.g.* Compute the Reynolds number Re and
+**Examples:**
+
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.4 m,
+the head loss h = 0.40 m,
 the volumetric flow rate Q = 8.6 L/s,
 the pipe's length L = 25 m and
 roughness thk = 0.27 mm
@@ -436,11 +450,11 @@ h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2; # inputs in cgs units
 Re,f=hQthk2fRe(h,Q,L,thk)
 ```
 
-*e.g.* Compute the Reynolds number Re and
+Compute the Reynolds number Re and
 the Darcy friction factor f, given
 in addition
 the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.0089 P:
+dynamic viscosity mu = 0.89 cP:
 
 ```julia
 h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units

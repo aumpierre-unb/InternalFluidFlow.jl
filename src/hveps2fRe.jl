@@ -33,7 +33,7 @@ Examples
 ==========
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.4 m,
+the head loss h = 0.40 m,
 the flow speed v = 1.1 m/s,
 the pipe's length L = 25 m and
 relative roughness eps = 0.0027,

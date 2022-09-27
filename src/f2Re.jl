@@ -13,9 +13,9 @@ when possible, also
 for turbulent regime.
 
 By default, pipe is assumed to be smooth, eps = 0.
-If eps > 0.05, eps is reset to eps = 0.0.
+If eps > 0.05, eps is reset to eps = 0.05.
 
-If fig=true is given, a schematic Moody diagram
+If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
