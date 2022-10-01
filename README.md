@@ -50,7 +50,7 @@ For citation of the last released version of InternalFluidFlow, please check CIT
 
 ## The InternalFluidFlow Module for Julia
 
-Internal Fluid Flow provides the following functions:
+InternalFluidFlow provides the following functions:
 
 - Re2f
 - f2Re
