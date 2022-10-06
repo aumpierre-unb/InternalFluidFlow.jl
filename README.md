@@ -62,14 +62,15 @@ InternalFluidFlow provides the following functions:
 
 ### Re2f
 
-Re2f computes the Darcy friction f factor, given
-the Reynolds number Re and
-the relative roughness eps.
+Re2f computes the Darcy friction factor, given
+the Reynolds number and
+the relative roughness.
 
-By default, pipe is assumed to be smooth, eps = 0.
+By default, pipe is assumed to be smooth,
+relative roughness is eps = 0.
 If eps > 0.05, eps is reset to eps = 0.05.
 
-If fig=true is given, a schematic Moody diagram
+If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -108,17 +109,18 @@ f=Re2f(1.2e5,:,true)
 
 ### f2Re
 
-f2Re computes the Reynolds number Re, given
-the Darcy friction factor f and
-the relative roughness eps for
+f2Re computes the Reynolds number, given
+the Darcy friction factor and
+the relative roughness for
 for laminar regime and,
 when possible, also
 for turbulent regime.
 
-By default, pipe is assumed to be smooth, eps = 0.
+By default, pipe is assumed to be smooth,
+relative roughness is eps = 0.
 If eps > 0.05, eps is reset to eps = 0.05.
 
-If fig=true is given, a schematic Moody diagram
+If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -159,23 +161,25 @@ Re=f2Re(2.8e-2)
 
 ### hDeps2fDRe
 
-hDeps2fRe computes the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h,
-the pipe's hydraulic diameter D,
-the pipe's length L,
-the pipe's relative roughness eps,
-the fluid's density rho,
-the fluid's dynamic viscosity mu, and
-the gravitational acceleration g.
+hDeps2fRe computes the Reynolds number and
+the Darcy friction factor, given
+the head loss,
+the pipe's hydraulic diameter,
+the pipe's length,
+the pipe's relative roughness,
+the fluid's density,
+the fluid's dynamic viscosity, and
+the gravitational acceleration.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in kg/L) and
-mu = 0.91 (in cP),
+with density rho = 0.997 kg/L and
+dynamic viscosity mu = 0.91 cP,
 and gravitational acceleration is assumed to be
-g = 9.81 (in m/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other inputs must as well be given in cgs units.
+g = 9.81 m/s/s.
+
+Please, notice that these default values are given
+in the cgs unit system and, if taken,
+all other inputs must as well be given in cgs units.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -198,7 +202,7 @@ relative roughness eps = 0.0027,
 for water flow:
 
 ```julia
-h=40;Q=1e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
+h=40;D=10;L=2.5e3;eps=2.7e-3; # inputs in cgs units
 Re,f=hDeps2fRe(h,D,L,eps)
 ```
 
@@ -221,23 +225,25 @@ Re,f=hDeps2fRe(0.40,0.10,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consisten
 
 ### hveps2fDRe
 
-hveps2fRe computes the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h,
-the flow speed v,
-the pipe's length L,
-the pipe's relative roughness eps,
-the fluid's density rho,
-the fluid's dynamic viscosity mu, and
-the gravitational acceleration g.
+hveps2fRe computes the Reynolds number and
+the Darcy friction factor, given
+the head loss,
+the flow speed,
+the pipe's length,
+the pipe's relative roughness,
+the fluid's density,
+the fluid's dynamic viscosity, and
+the gravitational acceleration.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in kg/L) and
-mu = 0.91 (in cP),
+with density rho = 0.997 kg/L and
+dynamic viscosity mu = 0.91 cP,
 and gravitational acceleration is assumed to be
-g = 9.81 (in m/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other inputs must as well be given in cgs units.
+g = 9.81 m/s/s.
+
+Please, notice that these default values are given
+in the cgs unit system and, if taken,
+all other inputs must as well be given in cgs units.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -283,23 +289,25 @@ Re,f=hveps2fRe(0.40,1.1,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent
 
 ### hQeps2fDRe
 
-hQeps2fRe computes the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h,
-the volumetric flow rate Q,
-the pipe's length L,
-the pipe's relative roughness eps,
-the fluid's density rho,
-the fluid's dynamic viscosity mu, and
-the gravitational acceleration g.
+hQeps2fRe computes the Reynolds number and
+the Darcy friction factor, given
+the head loss,
+the volumetric flow rate,
+the pipe's length,
+the pipe's relative roughness,
+the fluid's density,
+the fluid's dynamic viscosity, and
+the gravitational acceleration.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in kg/L) and
-mu = 0.91 (in cP),
+with density rho = 0.997 kg/L and
+dynamic viscosity mu = 0.91 cP,
 and gravitational acceleration is assumed to be
-g = 9.81 (in m/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other inputs must as well be given in cgs units.
+g = 9.81 m/s/s.
+
+Please, notice that these default values are given
+in the cgs unit system and, if taken,
+all other inputs must as well be given in cgs units.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -345,23 +353,25 @@ Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consist
 
 ### hvthk2fDRe
 
-hvthk2fRe computes the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h,
-the flow speed v,
-the pipe's length L,
-the pipe's roughness thk,
-the fluid's density rho,
-the fluid's dynamic viscosity mu, and
-the gravitational acceleration g.
+hvthk2fRe computes the Reynolds number and
+the Darcy friction factor, given
+the head loss,
+the flow speed,
+the pipe's length,
+the pipe's roughness,
+the fluid's density,
+the fluid's dynamic viscosity, and
+the gravitational acceleration.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in kg/L) and
-mu = 0.91 (in cP),
+with density rho = 0.997 kg/L and
+dynamic viscosity mu = 0.91 cP,
 and gravitational acceleration is assumed to be
-g = 9.81 (in m/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other inputs must as well be given in cgs units.
+g = 9.81 m/s/s.
+
+Please, notice that these default values are given
+in the cgs unit system and, if taken,
+all other inputs must as well be given in cgs units.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -407,23 +417,25 @@ Re,f=hvthk2fRe(0.40,1.1,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent
 
 ### hQthk2fDRe
 
-hQthk2fRe computes the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h,
-the volumetric flow rate Q,
-the pipe's length L,
-the pipe's roughness thk,
-the fluid's density rho,
-the fluid's dynamic viscosity mu, and
-the gravitational acceleration g.
+hQthk2fRe computes the Reynolds number and
+the Darcy friction factor, given
+the head loss,
+the volumetric flow rate,
+the pipe's length,
+the pipe's roughness,
+the fluid's density,
+the fluid's dynamic viscosity, and
+the gravitational acceleration.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in kg/L) and
-mu = 0.91 (in cP),
+with density rho = 0.997 kg/L and
+dynamic viscosity mu = 0.91 cP,
 and gravitational acceleration is assumed to be
-g = 9.81 (in m/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other inputs must as well be given in cgs units.
+g = 9.81 m/s/s.
+
+Please, notice that these default values are given
+in the cgs unit system and, if taken,
+all other inputs must as well be given in cgs units.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
