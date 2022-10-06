@@ -30,7 +30,7 @@ using InternalFluidFlow
 
 ### Pre-Release (Under Construction) Version
 
-The next version (under construction) of InternalFluidFlow
+The pre-release (under construction) version of InternalFluidFlow
 can be installed from the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
 ```julia
