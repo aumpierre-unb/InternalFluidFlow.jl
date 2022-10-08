@@ -39,7 +39,7 @@ length L = 25 m and
 relative roughness eps = 0.0027,
 for water flow:
 ```
-h=40;Q=1e2;L=2.5e3;eps=2.7e-3; # inputs in cgs units
+h=40;d=10;L=2.5e3;eps=2.7e-3; # inputs in cgs units
 Re,f=hDeps2fRe(h,D,L,eps)
 ```
 
