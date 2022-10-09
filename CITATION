@@ -1,22 +1,7 @@
-Cite this version as
-Alexandre Umpierre. (2022). 
-aumpierre-unb/InternalFluidFlow.jl: Internal Fluid Flow Toolbox 0.2.2 (v0.2.2). 
-Zenodo. https://doi.org/10.5281/zenodo.7166696
-
-You can cite all versions (the concept), 
-including pre-released versions, by using the 
-DOI 10.5281/zenodo.7019888. 
+You can cite all versions (including pre-release version) by using the
+DOI 10.5281/zenodo.7019888.
 This DOI represents all versions, and will always resolve to the latest one.
 
-BibTeX Export
-@software{alexandre_umpierre_2022_7166696,
-  author       = {Alexandre Umpierre},
-  title        = {{aumpierre-unb/InternalFluidFlow.jl: Internal Fluid 
-                   Flow Toolbox 0.2.2}},
-  month        = sep,
-  year         = 2022,
-  publisher    = {Zenodo},
-  version      = {v0.2.2},
-  doi          = {10.5281/zenodo.7166696},
-  url          = {https://doi.org/10.5281/zenodo.7166696}
-}
+To cite (and export citation for various formats)
+the last released version, please check
+https://zenodo.org/account/settings/github/repository/aumpierre-unb/InternalFluidFlow.jl.
