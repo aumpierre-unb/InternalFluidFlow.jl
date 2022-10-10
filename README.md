@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![version](https://juliahub.com/docs/InternalFluidFlow/version.svg)](https://juliahub.com/ui/Packages/InternalFluidFlow/zGZKl)
 
-![Illustrative plot](https://github.com/aumpierre-unb/InternalFluidFlow.jl/blob/main/pics/D2fRe.svg "Example of result")
+![Illustrative graphical output](https://github.com/aumpierre-unb/InternalFluidFlow.jl/blob/main/pics/D2fRe.svg "Example of graphical output")
 
 ## Installing and Loading InternalFluidFlow
 
