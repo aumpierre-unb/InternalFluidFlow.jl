@@ -4,12 +4,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![version](https://juliahub.com/docs/InternalFluidFlow/version.svg)](https://juliahub.com/ui/Packages/InternalFluidFlow/zGZKl)
 
-<!--
-![Illustrative graphical output](https://github.com/aumpierre-unb/InternalFluidFlow.jl/blob/main/pics/D2fRe.svg "Example of graphical output, from hydraulic diameter and head loss to Re and f")
-
-![Illustrative graphical output](https://github.com/aumpierre-unb/InternalFluidFlow.jl/blob/main/pics/v2fRe.svg "Example of graphical output, from flow speed and head loss to Re and f")
--->
-
 ## Installing and Loading InternalFluidFlow
 
 InternalFluidFlow can be installed and loaded either
