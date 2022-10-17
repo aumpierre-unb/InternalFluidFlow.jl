@@ -1,60 +1,56 @@
-# PonchonSavarit.jl
+# InternalFluidFlow.jl
 
 [![DOI](https://zenodo.org/badge/524550191.svg)](https://zenodo.org/badge/latestdoi/524550191)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![version](https://juliahub.com/docs/PonchonSavarit/version.svg)](https://juliahub.com/ui/Packages/PonchonSavarit/zGZKl)
+[![version](https://juliahub.com/docs/InternalFluidFlow/version.svg)](https://juliahub.com/ui/Packages/InternalFluidFlow/zGZKl)
 
-![Illustrative graphical output](https://github.com/aumpierre-unb/PonchonSavarit.jl/blob/main/pics/D2fRe.svg "Example of graphical output, from hydraulic diameter and head loss to Re and f")
+## Installing and Loading InternalFluidFlow
 
-![Illustrative graphical output](https://github.com/aumpierre-unb/PonchonSavarit.jl/blob/main/pics/v2fRe.svg "Example of graphical output, from flow speed and head loss to Re and f")
-
-## Installing and Loading PonchonSavarit
-
-PonchonSavarit can be installed and loaded either
+InternalFluidFlow can be installed and loaded either
 from the JuliaHub repository (last released version) or from the
-[maintainer's repository](https://github.com/aumpierre-unb/PonchonSavarit.jl).
+[maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
 ### Last Released Version
 
-The last version of PonchonSavarit can be installed from JuliaHub repository:
+The last version of InternalFluidFlow can be installed from JuliaHub repository:
 
 ```julia
 using Pkg
-Pkg.add("PonchonSavarit")
-using PonchonSavarit
+Pkg.add("InternalFluidFlow")
+using InternalFluidFlow
 ```
 
-If PonchonSavarit is already installed, it can be updated:
+If InternalFluidFlow is already installed, it can be updated:
 
 ```julia
 using Pkg
-Pkg.update("PonchonSavarit")
-using PonchonSavarit
+Pkg.update("InternalFluidFlow")
+using InternalFluidFlow
 ```
 
 ### Pre-Release (Under Construction) Version
 
-The pre-release (under construction) version of PonchonSavarit
-can be installed from the [maintainer's repository](https://github.com/aumpierre-unb/PonchonSavarit.jl).
+The pre-release (under construction) version of InternalFluidFlow
+can be installed from the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
 ```julia
 using Pkg
-Pkg.add(path="https://github.com/aumpierre-unb/PonchonSavarit.jl")
-using PonchonSavarit
+Pkg.add(path="https://github.com/aumpierre-unb/InternalFluidFlow.jl")
+using InternalFluidFlow
 ```
 
-## Citation of PonchonSavarit
+## Citation of InternalFluidFlow
 
 You can cite all versions (both released and pre-released), by using
 [DOI 105281/zenodo.7019888](https://doi.org/10.5281/zenodo.7019888).
 
 This DOI represents all versions, and will always resolve to the latest one.
 
-For citation of the last released version of PonchonSavarit, please check CITATION file at the [maintainer's repository](https://github.com/aumpierre-unb/PonchonSavarit.jl).
+For citation of the last released version of InternalFluidFlow, please check CITATION file at the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
 
-## The PonchonSavarit Module for Julia
+## The InternalFluidFlow Module for Julia
 
-PonchonSavarit provides the following functions:
+InternalFluidFlow provides the following functions:
 
 - Re2f
 - f2Re
@@ -482,13 +478,6 @@ Compute Re and f and plot a schematic Moody diagram:
 ```julia
 Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
-
-<!--
-### See Also
-
-[McCabeThiele.jl](https://github.com/aumpierre-unb/McCabeThiele.jl),
-[PonchonSavarit.jl](https://github.com/aumpierre-unb/PonchonSavarit.jl).
--->
 
 Copyright &copy; 2022 Alexandre Umpierre
 
