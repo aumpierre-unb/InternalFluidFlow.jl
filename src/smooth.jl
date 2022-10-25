@@ -1,6 +1,14 @@
 using Plots
-include("bissecao.jl")
+include("bissection.jl")
 
+@doc raw"""
+`smooth` produces the representation of the
+relation of Reynolds number and the Darcy friction factor
+by the Colebrook-White equation for a smooth pipe.
+
+`smooth` is an auxiliary function of
+the `InternalFluidFlow` toolbox for Julia.
+"""
 function smooth()
     Re = []
     f = []
@@ -11,7 +19,7 @@ function smooth()
         function foo(f)
             return 1 / sqrt(f) + 2 * log10(2.51 / Re[end] / sqrt(f))
         end
-        f = [f; bissecao(foo, 6e-3, 1e-1, 1e-4)]
+        f = [f; bissection(foo, 6e-3, 1e-1, 1e-4)]
     end
     display(plot!(Re, f,
         seriestype=:line,

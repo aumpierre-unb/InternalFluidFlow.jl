@@ -1,5 +1,5 @@
 using Plots
-include("bissecao.jl")
+include("bissection.jl")
 include("figure.jl")
 
 @doc raw"""
@@ -15,6 +15,9 @@ If eps > 0.05, eps is reset to eps = 0.05.
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
+
+`Re2f` is a main function of
+the `InternalFluidFlow` toolbox for Julia.
 
 See also: `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
 
@@ -50,7 +53,7 @@ function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
         function foo(f)
             return 1 / sqrt(f) + 2 * log10(eps / 3.7 + 2.51 / Re / sqrt(f))
         end
-        f = bissecao(foo, 6e-3, 1e-1, 1e-4)
+        f = bissection(foo, 6e-3, 1e-1, 1e-4)
     end
     if fig
         figure(eps)

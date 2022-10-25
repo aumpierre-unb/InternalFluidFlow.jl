@@ -4,6 +4,13 @@ include("turb.jl")
 include("smooth.jl")
 include("rough.jl")
 
+@doc raw"""
+`figure` produces a schematic Moody diagram with
+a representation of the solution computed from inputs.
+
+`figure` is an auxiliary function of
+the `InternalFluidFlow` toolbox for Julia.
+"""
 function figure(eps)
     plot(xlabel="Re",
         ylabel="f",

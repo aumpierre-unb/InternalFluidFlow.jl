@@ -1,5 +1,9 @@
 ### TODO
 
+### InternalFluidFlow 0.2.4-alpha (2022-10-24)
+* Minor changes in docstrings
+* Help comments included for internal functions
+
 ### InternalFluidFlow 0.2.3 (2022-10-20)
 * Minor changes in README.md
 * Minor changes in docstrings

@@ -27,6 +27,9 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
+`hQthk2fRe` is a main function of
+the `InternalFluidFlow` toolbox for Julia.
+
 See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`.
 
 Examples
