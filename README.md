@@ -43,10 +43,9 @@ using InternalFluidFlow
 
 You can cite all versions (both released and pre-released), by using
 [DOI 105281/zenodo.7019888](https://doi.org/10.5281/zenodo.7019888).
-
 This DOI represents all versions, and will always resolve to the latest one.
 
-For citation of the last released version of InternalFluidFlow, please check CITATION file at the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).
+<!--For citation of the last released version of InternalFluidFlow, please check CITATION file at the [maintainer's repository](https://github.com/aumpierre-unb/InternalFluidFlow.jl).-->
 
 ## The InternalFluidFlow Module for Julia
 
