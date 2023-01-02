@@ -61,35 +61,25 @@ Re,f=hvthk2fRe(0.40,1.1,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent
 ```
 """
 function hvthk2fRe(h::Number, v::Number, L::Number, thk::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
+    Re = []
+    f = []
     M = 2 * g * mu * h / v^3 / rho / L
-    isturb = true
-    Re = 1e4
-    f = M * Re
-    D = Re * mu / v / rho
-    eps = thk / D
-    f = 64 / Re
-    while abs(f - Re * M) / f > 5e-3
-        if f - Re * M > 0
-            Re = Re * 1.02
-        else
-            Re = Re * 0.98
-            if Re < 2.3e3
-                isturb = false
-                Re = sqrt(64 / M)
-                f = 64 / Re
-                D = Re * mu / v / rho
-                eps = thk / D
-                break
-            end
-        end
-        f = M * Re
-        D = Re * mu / v / rho
+    foo(f) = 1 / f^(1 / 2) + 2 * log10(
+        thk / (f / M * mu / rho / v)
+        /
+        3.7 + 2.51 / (f / M) / f^(1 / 2))
+    f_ = newtonraphson(foo, 1e-2, 1e-4)
+    Re_ = f_ / M
+    if Re_ > 2.3e3
+        Re = [Re; Re_]
+        f = [f; f_]
+        D = Re_ * mu / rho / v
         eps = thk / D
-        f = Re2f(Re, eps)
     end
-    if isturb && sqrt(64 / M) < 2.3e3
-        Re = [sqrt(64 / M); Re]
-        f = [64 / sqrt(64 / M); f]
+    Re_ = (64 / M)^(1 / 2)
+    if Re_ < 2.3e3
+        Re = [Re; Re_]
+        f = [f; 64 / Re_]
     end
     if fig
         figure(eps)

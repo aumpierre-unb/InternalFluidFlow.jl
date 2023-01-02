@@ -10,9 +10,7 @@ the relative roughness.
 the `InternalFluidFlow` toolbox for Julia.
 """
 function laminar()
-    Re = [500; 4000]
-    f = 64 ./ Re
-    display(plot!(Re, f,
+    display(plot!([500; 4000], 64 ./ Re,
         seriestype=:line,
         color=:black))
 end

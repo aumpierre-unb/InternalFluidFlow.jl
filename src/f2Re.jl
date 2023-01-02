@@ -1,5 +1,4 @@
 using Plots
-include("bissection.jl")
 include("figure.jl")
 
 @doc raw"""
@@ -55,17 +54,15 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false)
     end
     Re = []
     fD = []
-    if 64 / f < 2.3e3
-        Re = [Re; 64 / f]
+    Re_ = 64 / f
+    if Re_ < 2.3e3
+        Re = [Re; Re_]
         fD = [fD; f]
     end
     if f > (2 * log10(3.7 / eps))^-2
-        function foo(Re)
-            return 1 / sqrt(f) + 2 * log10(eps / 3.7 + 2.51 / Re / sqrt(f))
-        end
-        r = bissection(foo, 1e3, 1e8, 1e-4)
-        if r > 2.3e3
-            Re = [Re; r]
+        Re_ = 2.51 / (10^(1 / f^0.5 / -2) - eps / 3.7) / f^0.5
+        if Re_ > 2.3e3
+            Re = [Re; Re_]
             fD = [fD; f]
         end
     end

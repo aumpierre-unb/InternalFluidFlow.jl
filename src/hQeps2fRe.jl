@@ -62,24 +62,15 @@ Re,f=hQeps2fRe(0.40,8.6e-3,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consist
 """
 function hQeps2fRe(h::Number, Q::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (mu / rho)^5 / L
-    Re = (P / 64)^(1 / 4)
-    f = 64 / Re
+    foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / (P / f)^(1 / 5) / f^(1 / 2))
+    f = newtonraphson(foo, 1e-2, 1e-4)
+    Re = (P / f)^(1 / 5)
     if Re > 2.3e3
-        Re = 1e4
-        f = Re2f(Re, eps)
-        while abs(f - P / Re^5) / f > 5e-3
-            if f - P / Re^5 < 0
-                Re = Re * 1.02
-            else
-                Re = Re * 0.98
-                if Re < 2.3e3
-                    Re = (P / 64)^(1 / 4)
-                    f = 64 / Re
-                    break
-                end
-            end
-            f = Re2f(Re, eps)
-        end
+        islam = false
+    else
+        Re = (P / 64)^(1 / 4)
+        f = 64 / Re
+        islam = true
     end
     if fig
         figure(eps)

@@ -1,5 +1,5 @@
 using Plots
-include("bissection.jl")
+include("newtonraphson.jl")
 include("figure.jl")
 
 @doc raw"""
@@ -50,10 +50,8 @@ function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
     if Re < 2.3e3
         f = 64 / Re
     else
-        function foo(f)
-            return 1 / sqrt(f) + 2 * log10(eps / 3.7 + 2.51 / Re / sqrt(f))
-        end
-        f = bissection(foo, 6e-3, 1e-1, 1e-4)
+        foo(f) = 1 / f^0.5 + 2 * log10(eps / 3.7 + 2.51 / Re / f^0.5)
+        f = newtonraphson(foo, 1e-2, 1e-4)
     end
     if fig
         figure(eps)

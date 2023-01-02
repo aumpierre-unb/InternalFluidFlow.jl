@@ -62,27 +62,15 @@ Re,f=hDeps2fRe(0.40,0.10,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consisten
 """
 function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
     K = 2 * g * h * rho^2 * D^3 / mu^2 / L
-    islam = true
-    Re = K / 64
-    f = 64 / Re
+    foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / (K / f)^(1 / 2) / f^(1 / 2))
+    f = newtonraphson(foo, 1e-2, 1e-4)
+    Re = (K / f)^(1 / 2)
     if Re > 2.3e3
         islam = false
-        Re = 1e4
-        f = Re2f(Re, eps)
-        while abs(f - K / Re^2) / f > 5e-3
-            if f - K / Re^2 < 0
-                Re = Re * 1.02
-            else
-                Re = Re * 0.98
-                if Re < 2.3e3
-                    islam = true
-                    Re = K / 64
-                    f = 64 / Re
-                    break
-                end
-            end
-            f = Re2f(Re, eps)
-        end
+    else
+        Re = K / 64
+        f = 64 / Re
+        islam = true
     end
     if fig
         figure(eps)
