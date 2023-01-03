@@ -15,7 +15,7 @@ function rough()
     eps=10 .^ u
     f=1.01 .* (2 .* log10.(3.7 ./ eps)).^-2
     for n=1:length(f)
-        re=f2R(f[n],eps[n])
+        re=f2Re(f[n],eps[n])
         Re[n]=re[end]
     end
     display(plot!(Re, f,
