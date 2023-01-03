@@ -34,14 +34,6 @@ Compute f and plot a schematic Moody diagram:
 ```
 f=Re2f(1.2e5,1e-3,true)
 ```
-Compute the Darcy friction factor f given
-the Reynolds number Re = 120,000
-for a smooth tube and plot
-a schematic Moody diagram
-with the solution:
-```
-f=Re2f(1.2e5,:,true)
-```
 """
 function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
     if eps > 5e-2
