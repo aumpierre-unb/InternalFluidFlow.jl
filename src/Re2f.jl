@@ -47,7 +47,7 @@ function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
     end
     if fig
         figure(eps)
-        if !(Re<2.3e3)
+        if !(Re < 2.3e3)
             turb(eps)
         end
         plot!([Re], [f],

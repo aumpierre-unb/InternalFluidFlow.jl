@@ -73,7 +73,7 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
     end
     if !isempty(fD) & fig
         figure(eps)
-        if !(Re<2.3e3)
+        if !(Re < 2.3e3)
             turb(eps)
         end
         plot!([Re], [f],
@@ -86,7 +86,7 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
             linestyle=:dash))
     end
     if turb
-        Re=Re[end]
+        Re = Re[end]
     end
     return Re
 end

@@ -74,7 +74,7 @@ function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number, rho::Number=0.9
     end
     if fig
         figure(eps)
-        if !(Re<2.3e3)
+        if !(Re < 2.3e3)
             turb(eps)
         end
         plot!([Re], [f],
@@ -82,8 +82,8 @@ function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number, rho::Number=0.9
             markerstrokecolor=:red,
             color=:red)
         display(plot!(
-            (K./[6e-3;1e-1]).^(1/2),
-            [6e-3;1e-1],
+            (K ./ [6e-3; 1e-1]) .^ (1 / 2),
+            [6e-3; 1e-1],
             seriestype=:line,
             color=:red,
             linestyle=:dash))

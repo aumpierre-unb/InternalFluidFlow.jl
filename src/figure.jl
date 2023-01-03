@@ -25,16 +25,16 @@ function figure(eps)
     if eps != 1e-5
         turb(1e-5)
     end
-    if eps!=1e-4
+    if eps != 1e-4
         turb(1e-4)
     end
-    if eps!=1e-3
+    if eps != 1e-3
         turb(1e-3)
     end
-    if eps!=1e-2
+    if eps != 1e-2
         turb(1e-2)
     end
-    if eps!=5e-2
+    if eps != 5e-2
         turb(5e-2)
     end
     rough()
