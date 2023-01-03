@@ -79,7 +79,7 @@ function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number, rho::Number=0.9
             markerstrokecolor=:red,
             color=:red)
         display(plot!(
-            K./[6e-3;1e-1].^(1/2),
+            (K./[6e-3;1e-1]).^(1/2),
             [6e-3;1e-1],
             seriestype=:line,
             color=:red,
