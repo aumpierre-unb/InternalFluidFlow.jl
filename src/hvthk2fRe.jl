@@ -89,7 +89,7 @@ function hvthk2fRe(h::Number, v::Number, L::Number, thk::Number, rho::Number=0.9
     end
     if fig
         figure(eps)
-        if !(Re[end]<2.3e3)
+        if ~(Re[end]<2.3e3)
             turb(eps)
         end
         plot!([Re], [f],
