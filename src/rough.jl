@@ -19,7 +19,7 @@ function rough()
         re=f2Re(f[n],eps[n])
         Re=[Re;re[end]]
     end
-    (plot!(Re, f,
+    plot!(Re, f,
         seriestype=:line,
-        color=:blue))
+        color=:blue)
 end

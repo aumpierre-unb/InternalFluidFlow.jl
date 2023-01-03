@@ -74,10 +74,10 @@ function hQeps2fRe(h::Number, Q::Number, L::Number, eps::Number, rho::Number=0.9
     end
     if fig
         figure(eps)
-        display(plot!([Re], [f],
+        plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red))
+            color=:red)
         display(plot!([Re / 10; Re * 10], [P / (Re / 10)^5; P / (Re * 10)^5],
             seriestype=:line,
             color=:red,

@@ -74,14 +74,14 @@ function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number, rho::Number=0.9
     end
     if fig
         figure(eps)
-        display(plot!([Re], [f],
+        plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red))
-        display(plot!([Re / 10; Re * 10], [K / (Re / 10)^2; K / (Re * 10)^2],
+            color=:red)
+        plot!([Re / 10; Re * 10], [K / (Re / 10)^2; K / (Re * 10)^2],
             seriestype=:line,
             color=:red,
-            linestyle=:dash))
+            linestyle=:dash)
     end
     return [Re; f]
 end

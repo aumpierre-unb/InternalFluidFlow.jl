@@ -47,10 +47,10 @@ function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
     end
     if fig
         figure(eps)
-        display(plot!([Re], [f],
+        plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red))
+            color=:red)
         display(plot!([Re; Re], [6e-3; 1e-1],
             seriestype=:line,
             color=:red,

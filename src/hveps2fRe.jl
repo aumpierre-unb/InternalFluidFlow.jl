@@ -78,10 +78,10 @@ function hveps2fRe(h::Number, v::Number, L::Number, eps::Number, rho::Number=0.9
     end
     if fig
         figure(eps)
-        display(plot!([Re], [f],
+        plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red))
+            color=:red)
         display(plot!([Re / 10; Re * 10], [M * Re / 10; M * Re * 10],
             seriestype=:line,
             color=:red,

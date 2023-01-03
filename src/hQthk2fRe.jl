@@ -79,10 +79,10 @@ function hQthk2fRe(h::Number, Q::Number, L::Number, thk::Number, rho::Number=0.9
     eps = thk / D
     if fig
         figure(eps)
-        display(plot!([Re], [f],
+        plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red))
+            color=:red)
         display(plot!([Re / 10; Re * 10], [P / (Re / 10)^5; P / (Re * 10)^5],
             seriestype=:line,
             color=:red,
