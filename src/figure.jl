@@ -51,4 +51,5 @@ function figure(eps)
     if eps != 0
         smooth()
     end
+    display(plot)
 end
