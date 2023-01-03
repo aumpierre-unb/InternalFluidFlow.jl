@@ -138,16 +138,6 @@ Compute Re and plot a schematic Moody diagram:
 Re=f2Re(2.8e-2,1e-3,true)
 ```
 
-Compute the Reynolds number Re given
-the Darcy friction factor f = 0.028
-for a smooth tube and plot
-a schematic Moody diagram
-with the solution:
-
-```julia
-Re=f2Re(2.8e-2)
-```
-
 ### hDeps2fDRe
 
 hDeps2fRe computes the Reynolds number and
