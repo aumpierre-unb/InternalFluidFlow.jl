@@ -68,10 +68,10 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false)
     end
     if !isempty(fD) & fig
         figure(eps)
-        display(plot!([Re], [f],
+        plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red))
+            color=:red)
         display(plot!([1e2; 1e8], [f; f],
             seriestype=:line,
             color=:red,
