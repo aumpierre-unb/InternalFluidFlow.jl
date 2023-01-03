@@ -13,14 +13,10 @@ function rough()
     eps = []
     f = []
     Re = []
-    N = 31
-    for i = 1:N
-        u = log10(4e-5) + (i - 1) * (log10(5e-2) - log10(4e-5)) / (N - 1)
-        eps = [eps; 10^u]
-        f = [f; 1.01 * (2 * log10(3.7 / eps[end]))^-2]
-        z = f2Re(f[end], eps[end])
-        Re = [Re; z[end]]
-    end
+    N = 30
+    u=log10(4e-5):(log10(5e-2) - log10(4e-5))/N:log10(5e-2)
+    eps=10 .^ u
+    f=1.01 .* (2 .* log10.(3.7 ./ epsilon)).^-2
     display(plot!(Re, f,
         seriestype=:line,
         color=:blue))

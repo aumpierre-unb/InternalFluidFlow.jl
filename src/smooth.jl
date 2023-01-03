@@ -12,12 +12,10 @@ the `InternalFluidFlow` toolbox for Julia.
 function smooth()
     Re = []
     f = []
-    N = 31
-    for n = 1:N
-        u = log10(2.3e3) + (n - 1) * (log10(1e7) - log10(2.3e3)) / (N - 1)
-        Re = [Re; 10^u]
-        f = [f; Re2f(Re[end], eps)]
-    end
+    N = 30
+    u=log10(2.3e3):(log10(1e7) - log10(2.3e3))/N:log10(1e7)
+    Re=10 .^ u
+    f=Re2f.(Re,1e-3)
     display(plot!(Re, f,
         seriestype=:line,
         color=:blue))

@@ -12,12 +12,10 @@ the `InternalFluidFlow` toolbox for Julia.
 function turb(eps)
     Re = []
     f = []
-    N = 51
-    for n = 1:N
-        u = log10(2.3e3) + (n - 1) * (log10(1e8) - log10(2.3e3)) / (N - 1)
-        Re = [Re; 10^u]
-        f = [f; Re2f(Re[end], eps)]
-    end
+    N = 50
+    u = log10(2.3e3):(log10(1e8) - log10(2.3e3)) / (N - 1):log10(1e8)
+    Re=10 .^ u
+    f=Re2f.(Re, eps)
     display(plot!(Re, f,
         seriestype=:line,
         color=:black))
