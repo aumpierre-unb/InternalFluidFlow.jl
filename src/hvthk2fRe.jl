@@ -70,20 +70,20 @@ function hvthk2fRe(h::Number, v::Number, L::Number, thk::Number, rho::Number=0.9
         3.7 + 2.51 / (f / M) / f^(1 / 2))
     f_ = newtonraphson(foo, 1e-2, 1e-4)
     Re_ = f_ / M
-    turb=false
+    lam=true
     if Re_ > 2.3e3
         Re = [Re_; Re]
         f = [f_; f]
         D = Re_ * mu / rho / v
         eps = thk / D
-        turb=true
+        lam=false
     end
     Re_ = (64 / M)^(1 / 2)
     if Re_ < 2.3e3
         Re = [Re_; Re]
         f = [64 / Re_;f]
     end
-    if !turb
+    if lam
         D = Re_ * mu / rho / v
         eps = thk / D
     end
