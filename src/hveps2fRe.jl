@@ -82,7 +82,9 @@ function hveps2fRe(h::Number, v::Number, L::Number, eps::Number, rho::Number=0.9
             seriestype=:scatter,
             markerstrokecolor=:red,
             color=:red)
-        display(plot!([Re / 10; Re * 10], [M * Re / 10; M * Re * 10],
+        display(plot!(
+            [6e-3;1e-1]/M,
+            [6e-3;1e-1],
             seriestype=:line,
             color=:red,
             linestyle=:dash))

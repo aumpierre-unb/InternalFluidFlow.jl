@@ -78,7 +78,9 @@ function hQeps2fRe(h::Number, Q::Number, L::Number, eps::Number, rho::Number=0.9
             seriestype=:scatter,
             markerstrokecolor=:red,
             color=:red)
-        display(plot!([Re / 10; Re * 10], [P / (Re / 10)^5; P / (Re * 10)^5],
+        display(plot!(
+            (P ./ [6e-3;1e-1]).^(1 / 5),
+            [6e-3;1e-1],
             seriestype=:line,
             color=:red,
             linestyle=:dash))
