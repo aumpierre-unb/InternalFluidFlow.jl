@@ -63,6 +63,7 @@ Re,f=hveps2fRe(0.40,1.1,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent
 function hveps2fRe(h::Number, v::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
     Re = []
     f = []
+    eps=1e-3
     M = 2 * g * mu * h / v^3 / rho / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / (f / M) / f^(1 / 2))
     f_ = newtonraphson(foo, 1e-2, 1e-4)
