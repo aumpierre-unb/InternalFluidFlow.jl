@@ -121,7 +121,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-Re=f2Re(f[,eps[,fig]])
+Re=f2Re(f[,eps[,fig[,turb]]])
 ```
 
 **Examples:**
