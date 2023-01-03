@@ -15,7 +15,7 @@ function smooth()
     N = 30
     u=log10(2.3e3):(log10(1e7) - log10(2.3e3))/N:log10(1e7)
     Re=10 .^ u
-    f=Re2f.(Re,1e-3)
+    f=Re2f.(Re)
     display(plot!(Re, f,
         seriestype=:line,
         color=:blue))
