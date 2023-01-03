@@ -73,6 +73,9 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
     end
     if !isempty(fD) & fig
         figure(eps)
+        if !(Re<2.3e3)
+            turb(eps)
+        end
         plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,

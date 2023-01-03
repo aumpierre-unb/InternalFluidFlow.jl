@@ -79,6 +79,9 @@ function hQthk2fRe(h::Number, Q::Number, L::Number, thk::Number, rho::Number=0.9
     eps = thk / D
     if fig
         figure(eps)
+        if !(Re<2.3e3)
+            turb(eps)
+        end
         plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,

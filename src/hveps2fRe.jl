@@ -69,16 +69,19 @@ function hveps2fRe(h::Number, v::Number, L::Number, eps::Number, rho::Number=0.9
     f_ = newtonraphson(foo, 1e-2, 1e-4)
     Re_ = f_ / M
     if Re_ > 2.3e3
-        Re = [Re; Re_]
-        f = [f; f_]
+        Re = [Re_; Re]
+        f = [f_; f]
     end
     Re_ = (64 / M)^(1 / 2)
     if Re_ < 2.3e3
-        Re = [Re; Re_]
-        f = [f; 64 / Re_]
+        Re = [Re_; Re]
+        f = [64 / Re_;f]
     end
     if fig
         figure(eps)
+        if !(Re[end]<2.3e3)
+            turb(eps)
+        end
         plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,

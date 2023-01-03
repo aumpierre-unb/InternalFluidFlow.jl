@@ -22,7 +22,6 @@ function figure(eps)
         grid=:true,
         minorgrid=:true)
     laminar()
-    turb(eps)
     if eps != 1e-5
         turb(1e-5)
     end
@@ -38,30 +37,6 @@ function figure(eps)
     if eps!=5e-2
         turb(5e-2)
     end
-    # if eps < 1e-4
-    #     turb(1e-5)
-    # else
-    #     turb(eps / 3)
-    # end
-    # if eps < 1e-4
-    #     turb(1e-4)
-    # else
-    #     turb(eps / 10)
-    # end
-    # if eps < 1e-4
-    #     turb(1e-3)
-    # elseif eps * 3 > 5e-2
-    #     turb(5e-2)
-    # else
-    #     turb(eps * 3)
-    # end
-    # if eps < 1e-4
-    #     turb(5e-3)
-    # elseif eps * 10 > 5e-2
-    #     turb(eps / 6)
-    # else
-    #     turb(eps * 10)
-    # end
     rough()
     if eps != 0
         smooth()

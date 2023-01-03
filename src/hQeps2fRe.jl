@@ -74,6 +74,9 @@ function hQeps2fRe(h::Number, Q::Number, L::Number, eps::Number, rho::Number=0.9
     end
     if fig
         figure(eps)
+        if !(Re<2.3e3)
+            turb(eps)
+        end
         plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,

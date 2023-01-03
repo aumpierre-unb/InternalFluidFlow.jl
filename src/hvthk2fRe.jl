@@ -72,16 +72,16 @@ function hvthk2fRe(h::Number, v::Number, L::Number, thk::Number, rho::Number=0.9
     Re_ = f_ / M
     turb=false
     if Re_ > 2.3e3
-        Re = [Re; Re_]
-        f = [f; f_]
+        Re = [Re_; Re]
+        f = [f_; f]
         D = Re_ * mu / rho / v
         eps = thk / D
         turb=true
     end
     Re_ = (64 / M)^(1 / 2)
     if Re_ < 2.3e3
-        Re = [Re; Re_]
-        f = [f; 64 / Re_]
+        Re = [Re_; Re]
+        f = [64 / Re_;f]
     end
     if !turb
         D = Re_ * mu / rho / v
@@ -89,6 +89,9 @@ function hvthk2fRe(h::Number, v::Number, L::Number, thk::Number, rho::Number=0.9
     end
     if fig
         figure(eps)
+        if !(Re[end]<2.3e3)
+            turb(eps)
+        end
         plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
