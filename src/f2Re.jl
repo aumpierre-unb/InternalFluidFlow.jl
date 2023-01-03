@@ -2,7 +2,7 @@ using Plots
 include("figure.jl")
 
 @doc raw"""
-`Re=f2Re(f,[eps[,fig]])`
+`Re=f2Re(f,[eps[,fig[,turb]]])`
 
 `f2Re` computes the Reynolds number Re, given
 the Darcy friction factor f and
@@ -17,6 +17,11 @@ If eps > 0.05, eps is reset to eps = 0.05.
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
+
+If turb = true is given and
+both laminar and turbulent regimes are possible,
+then `f2Re` returns the number of Reynolds
+for turbulent regime alone.
 
 `f2Re` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -48,7 +53,7 @@ with the solution:
 Re=f2Re(2.8e-2)
 ```
 """
-function f2Re(f::Number, eps::Number=0, fig::Bool=false)
+function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
@@ -76,6 +81,9 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false)
             seriestype=:line,
             color=:red,
             linestyle=:dash))
+    end
+    if turb
+        Re=Re[end]
     end
     return Re
 end

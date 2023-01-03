@@ -109,6 +109,11 @@ By default, pipe is assumed to be smooth,
 relative roughness is eps = 0.
 If eps > 0.05, eps is reset to eps = 0.05.
 
+If turb = true is given and
+both laminar and turbulent regimes are possible,
+then f2Re returns the number of Reynolds
+for turbulent regime alone.
+
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
