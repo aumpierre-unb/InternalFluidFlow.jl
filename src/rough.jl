@@ -15,11 +15,6 @@ function rough()
     eps=10 .^ u
     f=1.01 .* (2 .* log10.(3.7 ./ eps)).^-2
     Re=(f2Re.(f,eps,false,true))
-    # Re=[]
-    # for n=1:length(f)
-    #     re=f2Re(f[n],eps[n])
-    #     Re=[Re;re[end]]
-    # end
     plot!(Re, f,
         seriestype=:line,
         color=:blue)
