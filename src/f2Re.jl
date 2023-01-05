@@ -53,7 +53,7 @@ with the solution:
 Re=f2Re(2.8e-2)
 ```
 """
-function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
+function f2Re(f::Number, eps::Number=0, fig::Bool=false, isturb::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
@@ -73,7 +73,7 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
     end
     if !isempty(f_) & fig
         figure(eps)
-        if !(Re < 2.3e3)
+        if !(Re[end] < 2.3e3)
             turb(eps)
         end
         plot!([Re], [f_],
@@ -85,7 +85,7 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
             color=:red,
             linestyle=:dash))
     end
-    if turb
+    if isturb
         Re = Re[end]
     end
     return Re

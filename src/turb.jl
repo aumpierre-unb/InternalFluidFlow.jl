@@ -1,4 +1,5 @@
 using Plots
+include("Re2f.jl")
 
 @doc raw"""
 `turb` produces the representation of the
