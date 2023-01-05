@@ -58,25 +58,25 @@ function f2Re(f::Number, eps::Number=0, fig::Bool=false, turb::Bool=false)
         eps = 5e-2
     end
     Re = []
-    fD = []
-    Re_ = 64 / f
-    if Re_ < 2.3e3
-        Re = [Re; Re_]
-        fD = [fD; f]
-    end
+    f_ = []
     if f > (2 * log10(3.7 / eps))^-2
-        Re_ = 2.51 / (10^(1 / f^0.5 / -2) - eps / 3.7) / f^0.5
+        Re_ = 2.51 / (10^(1 / f^(1 / 2) / -2) - eps / 3.7) / f^(1 / 2)
         if Re_ > 2.3e3
-            Re = [Re; Re_]
-            fD = [fD; f]
+            Re = [Re_; Re]
+            f_ = [f; f_]
         end
     end
-    if !isempty(fD) & fig
+    Re_ = 64 / f
+    if Re_ < 4e3
+        Re = [Re_; Re]
+        f_ = [f; f_]
+    end
+    if !isempty(f_) & fig
         figure(eps)
         if !(Re < 2.3e3)
             turb(eps)
         end
-        plot!([Re], [f],
+        plot!([Re], [f_],
             seriestype=:scatter,
             markerstrokecolor=:red,
             color=:red)
