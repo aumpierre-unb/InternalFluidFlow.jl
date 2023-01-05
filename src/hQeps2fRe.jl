@@ -30,7 +30,7 @@ of the solution.
 `hQeps2fRe` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
 
-See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe, `hvthk2fRe, `hQthk2fRe`.
+See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe` , `hvthk2fRe, `hQthk2fRe`.
 
 Examples
 ==========
