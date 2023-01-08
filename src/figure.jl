@@ -15,6 +15,8 @@ function figure(eps)
         ylabel="f",
         xlims=(1e2, 1e8),
         ylims=(6e-3, 1e-1),
+        xticks=[1e2,1e3,1e4,1e5,1e6,1e7,1e8],
+        yticks=[1e-2,2e-2,4e-2,6e-2,8e-2,1e-1],
         legend=false,
         framestyle=:box,
         scale=:log10,
