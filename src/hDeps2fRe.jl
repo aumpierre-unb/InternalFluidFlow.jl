@@ -88,5 +88,5 @@ function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number, rho::Number=0.9
             color=:red,
             linestyle=:dash))
     end
-    return [Re; f]
+    return Re, f
 end

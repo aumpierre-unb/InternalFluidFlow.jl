@@ -103,5 +103,5 @@ function hvthk2fRe(h::Number, v::Number, L::Number, thk::Number, rho::Number=0.9
             color=:red,
             linestyle=:dash))
     end
-    return [Re; f]
+    return Re, f
 end
