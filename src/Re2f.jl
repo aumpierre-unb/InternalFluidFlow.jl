@@ -42,7 +42,7 @@ function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
     if Re < 2.3e3
         f = 64 / Re
     else
-        foo(f) = 1 / f^0.5 + 2 * log10(eps / 3.7 + 2.51 / Re / f^0.5)
+        foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / Re / f^(1 / 2))
         f = newtonraphson(foo, 1e-2, 1e-4)
     end
     if fig
