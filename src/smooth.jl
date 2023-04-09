@@ -6,7 +6,7 @@ include("newtonraphson.jl")
 relation of Reynolds number and the Darcy friction factor
 by the Colebrook-White equation for a smooth pipe.
 
-`smooth` is an auxiliary function of
+`smooth` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
 function smooth()

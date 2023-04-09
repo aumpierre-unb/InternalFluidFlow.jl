@@ -7,7 +7,7 @@ relation of Reynolds number and the Darcy friction factor
 by the Colebrook-White equation for Re > 2,300 given
 the relative roughness.
 
-`turb` is an auxiliary function of
+`turb` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
 function turb(eps)

@@ -6,7 +6,7 @@ include("newtonraphson.jl")
 relation of Reynolds number and the Darcy friction factor
 for a fully rough regime.
 
-`rough` is an auxiliary function of
+`rough` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
 function rough()

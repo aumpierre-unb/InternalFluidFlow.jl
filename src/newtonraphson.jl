@@ -6,7 +6,7 @@ a function f(x) from a guess value x
 within a given tolerance tol for f(x)
 using the method of Newton-Raphson.
 
-`newtonraphson` is an auxiliary function of
+`newtonraphson` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
 function newtonraphson(f, x, tol)
