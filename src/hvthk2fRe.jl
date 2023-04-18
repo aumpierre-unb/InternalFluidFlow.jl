@@ -46,7 +46,7 @@ roughness thk = 0.27 mm,
 for water flow:
 ```
 h=40;v=1.1e2;L=2.5e3;thk=2.7e-2; # inputs in cgs units
-Re,f=hvthk2fRe(h,v,L,thk)
+Re,f=hvthk2fRe(h,v,L,thk=2.7e-2)
 ```
 
 Compute the Reynolds number Re and
@@ -56,19 +56,19 @@ the fluid's density rho = 0.989 g/cc and
 dynamic viscosity mu = 0.89 cP:
 ```
 h=40;v=1.1e2;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
-Re,f=hvthk2fRe(h,v,L,thk,rho,mu)
+Re,f=hvthk2fRe(h,v,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-Re,f=hvthk2fRe(0.40,1.1,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent system of units
+Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
 ```
 """
 function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
     if thk > 5e-2
         thk = 5e-2
     end
-    Re = []
-    f = []
+    Re::Float64 = []
+    f::Float64 = []
     M = 2 * g * mu * h / v^3 / rho / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(
         thk / (f / M * mu / rho / v)

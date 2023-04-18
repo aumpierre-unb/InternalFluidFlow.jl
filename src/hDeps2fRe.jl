@@ -46,7 +46,7 @@ relative roughness eps = 0.0027,
 for water flow:
 ```
 h=40;D=10;L=2.5e3;eps=2.7e-3; # inputs in cgs units
-Re,f=hDeps2fRe(h,D,L,eps)
+Re,f=hDeps2fRe(h,D,L,eps=2.7e-3)
 ```
 
 Compute the Reynolds number Re and
@@ -56,11 +56,11 @@ the fluid's density rho = 0.989 g/cc and
 dynamic viscosity mu = 0.89 cP:
 ```
 h=40;D=10;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
-Re,f=hDeps2fRe(h,D,L,eps,rho,mu)
+Re,f=hDeps2fRe(h,D,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-Re,f=hDeps2fRe(0.40,0.10,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent system of units
+Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
 ```
 """
 function hDeps2fRe(h::Number, D::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)

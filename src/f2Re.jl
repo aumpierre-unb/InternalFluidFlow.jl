@@ -37,11 +37,11 @@ In this case, both laminar and turbulent
 solutions are possible:
 ```
 f=2.8e-2;eps=1e-3;
-Re=f2Re(f;eps)
+Re=f2Re(f;eps=1e-3)
 ```
 Compute Re and plot a schematic Moody diagram:
 ```
-Re=f2Re(2.8e-2;1e-3,true)
+Re=f2Re(2.8e-2;eps=1e-3,fig=true)
 ```
 
 Compute the Reynolds number Re given

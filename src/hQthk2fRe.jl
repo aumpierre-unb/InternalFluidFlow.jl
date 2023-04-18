@@ -46,7 +46,7 @@ roughness thk = 0.27 mm
 for water flow:
 ```
 h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2; # inputs in cgs units
-Re,f=hQthk2fRe(h,Q,L,thk)
+Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2)
 ```
 
 Compute the Reynolds number Re and
@@ -56,11 +56,11 @@ the fluid's density rho = 0.989 g/cc and
 dynamic viscosity mu = 0.89 cP:
 ```
 h=40;Q=8.6e3;L=2.5e3;thk=2.7e-2;rho=0.989;mu=8.9e-3; # inputs in cgs units
-Re,f=hQthk2fRe(h,Q,L,thk,rho,mu)
+Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent system of units
+Re,f=hQthk2fRe(0.40,8.6e-3,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
 ```
 """
 function hQthk2fRe(h::Number, Q::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
