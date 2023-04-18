@@ -15,6 +15,9 @@ the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
+By default, pipe is assumed to be smooth, eps = 0.
+If eps > 0.05, eps is reset to eps = 0.05.
+
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
 mu = 0.0091 (in P),
@@ -60,7 +63,10 @@ Compute Re and f and plot a schematic Moody diagram:
 Re,f=hDeps2fRe(0.40,0.10,25,2.7e-3,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 """
-function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
+function hDeps2fRe(h::Number, D::Number, L::Number, eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
+    if eps > 5e-2
+        eps = 5e-2
+    end
     K = 2 * g * h * rho^2 * D^3 / mu^2 / L
     # foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / (K / f)^(1 / 2) / f^(1 / 2))
     # f = newtonraphson(foo, 1e-2, 1e-4)
