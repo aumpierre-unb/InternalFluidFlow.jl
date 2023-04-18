@@ -35,7 +35,7 @@ Compute f and plot a schematic Moody diagram:
 f=Re2f(1.2e5,1e-3,true)
 ```
 """
-function Re2f(Re::Number, eps::Number=0, fig::Bool=false)
+function Re2f(Re::Number; eps::Number=0, fig::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
