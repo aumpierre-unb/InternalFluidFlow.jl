@@ -64,8 +64,8 @@ Re,f=hvthk2fRe(0.40,1.1,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent
 ```
 """
 function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
-    if eps > 5e-2
-        eps = 5e-2
+    if thk > 5e-2
+        thk = 5e-2
     end
     Re = []
     f = []

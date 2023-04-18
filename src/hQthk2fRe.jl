@@ -64,8 +64,8 @@ Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consist
 ```
 """
 function hQthk2fRe(h::Number, Q::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
-    if eps > 5e-2
-        eps = 5e-2
+    if thk > 5e-2
+        thk = 5e-2
     end
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (mu / rho)^5 / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(
