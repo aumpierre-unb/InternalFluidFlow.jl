@@ -1,5 +1,9 @@
 ### TODO
 
+### InternalFluidFlow 0.3.2 (2023-04-17)
+* Major changes on documentation on units
+  for parameters' default values
+
 ### InternalFluidFlow 0.3.1 (2023-04-09)
 * Minor changes on functions' outputs
 

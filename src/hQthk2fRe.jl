@@ -16,10 +16,10 @@ the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in kg/L) and
-mu = 0.91 (in cP),
+rho = 0.997 (in g/cu.cm) and
+mu = 0.0091 (in P),
 and gravitational acceleration is assumed to be
-g = 9.81 (in m/s/s).
+g = 981 (in cm/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
@@ -60,7 +60,7 @@ Compute Re and f and plot a schematic Moody diagram:
 Re,f=hQthk2fRe(0.40,8.6e-3,25,2.7e-4,989,8.9e-4,9.81,true) # inputs in a consistent system of units
 ```
 """
-function hQthk2fRe(h::Number, Q::Number, L::Number, thk::Number, rho::Number=0.997, mu::Number=0.91, g::Number=981, fig::Bool=false)
+function hQthk2fRe(h::Number, Q::Number, L::Number, thk::Number, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (mu / rho)^5 / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(
         thk / (rho * Q / (pi / 4) / mu / ((P / f)^(1 / 5)))
