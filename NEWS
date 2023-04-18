@@ -1,5 +1,9 @@
 ### TODO
 
+### InternalFluidFlow 0.3.3-alpha (2023-04-18)
+* Smooth tube is adopted as default condition
+  for all main functions
+
 ### InternalFluidFlow 0.3.2 (2023-04-17)
 * Major changes on documentation on units
   for parameters' default values
