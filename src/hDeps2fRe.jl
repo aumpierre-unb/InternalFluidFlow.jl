@@ -16,7 +16,7 @@ the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cu.cm) and
+rho = 0.997 (in g/cc) and
 mu = 0.0091 (in P),
 and gravitational acceleration is assumed to be
 g = 981 (in cm/s/s).
