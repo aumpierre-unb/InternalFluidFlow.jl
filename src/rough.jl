@@ -19,7 +19,6 @@ function rough()
     z = Vector{Float16}(undef, N)
     f = Vector{Float16}(undef, N)
     Re = Vector{Float16}(undef, N)
-    N = 31
     for i = 1:N
         u = log10(5e-2) + (i - 1) * (log10(4e-5) - log10(5e-2)) / (N - 1)
         z[i] = 10^u
