@@ -24,7 +24,7 @@ function rough()
         z[i] = 10^u
         #f = [f; 1.01 * (2 * log10(3.7 / z[end]))^-2]
         f[i] = 1.01 * (2 * log10(3.7 / z[i]))^-2
-        w = f2Re(f[i]; eps=z[i], isturb=true)
+        w = f2Re(f[i], eps=z[i], isturb=true)
         Re[i] = w[end]
     end
     plot!(Re, f,
