@@ -54,7 +54,7 @@ Re=f2Re(2.8e-2)
 ```
 """
 function f2Re(f::Number; eps::Number=0, fig::Bool=false, isturb::Bool=false, isnotrough::Bool=true)
-    if eps > 5e-2 & isnotrough
+    if (eps > 5e-2) & isnotrough
         eps = 5e-2
     end
     Re = []
