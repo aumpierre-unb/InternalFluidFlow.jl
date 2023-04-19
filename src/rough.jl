@@ -30,6 +30,5 @@ function rough()
     # end
     plot!(Re, f,
         seriestype=:line,
-        markershape=:square,
         color=:blue)
 end
