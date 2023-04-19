@@ -15,10 +15,10 @@ function rough()
     # z = 10 .^ u
     # f = 1.01 .* (2 .* log10.(3.7 ./ z)) .^ -2
     # Re = f2Re.(f; eps=z, isturb=false)
-
-    z = []
-    f = []
-    Re = []
+    N = 31
+    z = Vector{Float16}(undef, N)
+    f = Vector{Float16}(undef, N)
+    Re = Vector{Float16}(undef, N)
     N = 31
     for i = 1:N
         u = log10(4e-5) + (i - 1) * (log10(5e-2) - log10(4e-5)) / (N - 1)
@@ -27,7 +27,6 @@ function rough()
         z = f2Re(f[end]; eps=z[end], isturb=false)
         Re = [Re; z[end]]
     end
-
     plot!(Re, f,
         seriestype=:line,
         color=:blue)
