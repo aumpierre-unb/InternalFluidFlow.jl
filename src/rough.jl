@@ -24,7 +24,7 @@ function rough()
         u = log10(4e-5) + (i - 1) * (log10(5e-2) - log10(4e-5)) / (N - 1)
         z = [z; 10^u]
         f = [f; 1.01 * (2 * log10(3.7 / z[end]))^-2]
-        z = f2Re(f[end]; eps=z[end], isturb=false)
+        z = f2Re(f[end]; eps=z[end], isturb=true)
         Re = [Re; z[end]]
     end
     plot!(Re, f,
