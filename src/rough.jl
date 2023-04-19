@@ -24,7 +24,7 @@ function rough()
         # z[i] = 10^u
         # f = [f; 1.01 * (2 * log10(3.7 / z[end]))^-2]
         f[i] = 1.01 * (2 * log10(3.7 / 10^u))^-2
-        w = f2Re(f[i], eps=10^u, isturb=true)
+        w = f2Re(f[i], eps=10^u, isturb=false)
         Re[i] = w[end]
         display(Re[i])
     end
