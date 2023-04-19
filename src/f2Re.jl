@@ -41,7 +41,7 @@ Re=f2Re(f;eps=1e-3)
 ```
 Compute Re and plot a schematic Moody diagram:
 ```
-Re=f2Re(2.8e-2;eps=1e-3,fig=true)
+Re=f2Re(2.8e-2,eps=1e-3,fig=true)
 ```
 
 Compute the Reynolds number Re given
@@ -53,7 +53,7 @@ with the solution:
 Re=f2Re(2.8e-2)
 ```
 """
-function f2Re(f::Number, eps::Vector{Number}=0, fig::Bool=false, isturb::Bool=false)
+function f2Re(f::Number, eps::Number=0, fig::Bool=false, isturb::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
