@@ -23,7 +23,7 @@ function rough()
         u = log10(5e-2) + (i - 1) * (log10(4e-5) - log10(5e-2)) / (N - 1)
         z[i] = 10^u
         #f = [f; 1.01 * (2 * log10(3.7 / z[end]))^-2]
-        f[i] = (2 * log10(3.7 / 1.01 / z[i]))^-2
+        f[i] = 1.01 * (2 * log10(3.7 / z[i]))^-2
         w = f2Re(f[i]; eps=z[i], isturb=true)
         Re[i] = w[end]
     end
