@@ -67,7 +67,9 @@ Compute Re and f and plot a schematic Moody diagram:
 Re,f=hQeps2fRe(0.40,8.6e-3,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
 ```
 """
-function hQeps2fRe(h::Number, Q::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
+function hQeps2fRe(h::Number, Q::Number, L::Number; 
+    eps::Number=0, rho::Number=0.997, mu::Number=0.0091, 
+    g::Number=981, fig::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
