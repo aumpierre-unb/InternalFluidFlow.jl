@@ -57,8 +57,8 @@ function f2Re(f::Number, eps::Number=0; fig::Bool=false, isturb::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
-    Re = []
-    f_ = []
+    Re::Vector{Float64} = []
+    f_::Vector{Float64} = []
     if f > (2 * log10(3.7 / eps))^-2
         Re_ = 2.51 / (10^(1 / f^(1 / 2) / -2) - eps / 3.7) / f^(1 / 2)
         if Re_ > 2.3e3
