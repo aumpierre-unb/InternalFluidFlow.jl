@@ -67,8 +67,10 @@ function hveps2fRe(h::Number, v::Number, L::Number; eps::Number=0, rho::Number=0
     if eps > 5e-2
         eps = 5e-2
     end
-    Re = Vector{Float64}
-    f = Vector{Float64}
+    # Re = Vector{Float64}
+    # f = Vector{Float64}
+    Re::Vector{Float64}=[]
+    f::Vector{Float64}=[]
     M = 2 * g * mu * h / v^3 / rho / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / (f / M) / f^(1 / 2))
     f_ = newtonraphson(foo, 1e-2, 1e-4)
