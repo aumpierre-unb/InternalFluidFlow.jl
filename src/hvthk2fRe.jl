@@ -69,8 +69,8 @@ function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0
     end
     # Re = Vector{Float64}
     # f = Vector{Float64}
-    Re::Vector{Float64}=[]
-    f::Vector{Float64}=[]
+    Re::Vector{Float64} = []
+    f::Vector{Float64} = []
     M = 2 * g * mu * h / v^3 / rho / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(
         thk / (f / M * mu / rho / v)

@@ -86,7 +86,7 @@ function f2Re(f::Number, eps::Number=0; fig::Bool=false, isturb::Bool=false)
             linestyle=:dash))
     end
     if isturb
-        Re = Re[end]
+        return Re[end]
     end
     return Re
 end
