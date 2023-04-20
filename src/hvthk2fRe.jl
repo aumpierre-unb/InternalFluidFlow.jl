@@ -64,12 +64,11 @@ Re,f=hvthk2fRe(h,v,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+# inputs in a consistent system of units
+Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 """
-function hvthk2fRe(h::Number, v::Number, L::Number;
-    thk::Number=0, rho::Number=0.997, mu::Number=0.0091,
-    g::Number=981, fig::Bool=false)
+function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
     if thk > 5e-2
         thk = 5e-2
     end

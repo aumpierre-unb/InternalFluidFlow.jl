@@ -158,7 +158,9 @@ the gravitational acceleration.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hDeps2fRe(h::Number,D::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+Re,f=hDeps2fRe(h::Number,D::Number,L::Number,
+  eps::Number=0,rho::Number=0.997,mu::Number=0.0091,
+  g::Number=981,fig::Bool=false)
 ```
 
 By default, pipe is assumed to be smooth, eps = 0.
@@ -211,7 +213,8 @@ Re,f=hDeps2fRe(h,D,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+# inputs in a consistent system of units
+Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 
 ### hveps2fDRe
@@ -229,7 +232,9 @@ the gravitational acceleration.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hveps2fRe(h::Number,v::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+Re,f=hveps2fRe(h::Number,v::Number,L::Number,
+  eps::Number=0,rho::Number=0.997,mu::Number=0.0091,
+  g::Number=981,fig::Bool=false)
 ```
 
 By default, pipe is assumed to be smooth, eps = 0.
@@ -282,7 +287,8 @@ Re,f=hveps2fRe(h,v,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hveps2fRe(0.40,1.1,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+# inputs in a consistent system of units
+Re,f=hveps2fRe(0.40,1.1,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 
 ### hQeps2fDRe
@@ -300,7 +306,9 @@ the gravitational acceleration.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hQeps2fRe(h::Number,Q::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+Re,f=hQeps2fRe(h::Number,Q::Number,L::Number,
+  eps::Number=0,rho::Number=0.997,mu::Number=0.0091,
+  g::Number=981,fig::Bool=false)
 ```
 
 By default, pipe is assumed to be smooth, eps = 0.
@@ -353,7 +361,8 @@ Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hQeps2fRe(0.40,8.6e-3,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+# inputs in a consistent system of units
+Re,f=hQeps2fRe(0.40,8.6e-3,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 
 ### hvthk2fDRe
@@ -371,7 +380,9 @@ the gravitational acceleration.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hvthk2fRe(h::Number,v::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+Re,f=hvthk2fRe(h::Number,v::Number,L::Number,
+  thk::Number=0,rho::Number=0.997,mu::Number=0.0091,
+  g::Number=981,fig::Bool=false)
 ```
 
 By default, pipe is assumed to be smooth, thk = 0.
@@ -424,7 +435,8 @@ Re,f=hvthk2fRe(h,v,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+# inputs in a consistent system of units
+Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 
 ### hQthk2fDRe
@@ -442,7 +454,9 @@ the gravitational acceleration.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,
+  thk::Number=0,rho::Number=0.997,mu::Number=0.0091,
+  g::Number=981,fig::Bool=false)
 ```
 
 By default, pipe is assumed to be smooth, thk = 0.
@@ -495,7 +509,8 @@ Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hQthk2fRe(0.40,8.6e-3,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+# inputs in a consistent system of units
+Re,f=hQthk2fRe(0.40,8.6e-3,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 
 ### See Also
