@@ -2,7 +2,7 @@ using Plots
 include("figure.jl")
 
 @doc raw"""
-`Re = f2Re(f::Number, eps::Number=0, fig::Bool=false, isturb::Bool=false)`
+`Re=f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)`
 
 `f2Re` computes the Reynolds number Re, given
 the Darcy friction factor f and
@@ -11,8 +11,8 @@ for laminar regime and,
 when possible, also
 for turbulent regime.
 
-By default, pipe is assumed to be smooth, eps = 0.
-If eps > 0.05, eps is reset to eps = 0.05.
+By default, pipe is assumed to be smooth,eps=0.
+If eps > 0.05, eps is reset to eps=0.05.
 
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
@@ -37,11 +37,11 @@ In this case, both laminar and turbulent
 solutions are possible:
 ```
 f = 2.8e-2;
-Re = f2Re(f, eps = 1e-3)
+Re=f2Re(f,eps=1e-3)
 ```
 Compute Re and plot a schematic Moody diagram:
 ```
-Re = f2Re(2.8e-2, eps = 1e-3, fig=true)
+Re=f2Re(2.8e-2,eps=1e-3,fig=true)
 ```
 
 Compute the Reynolds number Re given
@@ -50,7 +50,7 @@ for a smooth tube and plot
 a schematic Moody diagram
 with the solution:
 ```
-Re = f2Re(2.8e-2)
+Re=f2Re(2.8e-2)
 ```
 """
 function f2Re(f::Number, eps::Number=0; fig::Bool=false, isturb::Bool=false)

@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re, f = hvthk2fRe(h::Number, v::Number, L::Number, thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)`
+`Re,f=hvthk2fRe(h::Number,v::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
 
 `hvthk2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
@@ -15,8 +15,8 @@ the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
-By default, pipe is assumed to be smooth, eps = 0.
-If eps > 0.05, eps is reset to eps = 0.05.
+By default, pipe is assumed to be smooth,eps=0.
+If eps > 0.05, eps is reset to eps=0.05.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
@@ -45,10 +45,10 @@ the pipe's length L = 25 m and
 roughness thk = 0.27 mm,
 for water flow:
 ```
-h = 40; # inputs in cgs units
-v = 1.1e2;
-L = 2.5e3;
-Re, f = hvthk2fRe(h, v, L, thk = 2.7e-2)
+h=40; # all inputs in cgs units
+v=1.1e2;
+L=2.5e3;
+Re,f=hvthk2fRe(h,v,L,thk=2.7e-2)
 ```
 
 Compute the Reynolds number Re and
@@ -57,14 +57,14 @@ in addition
 the fluid's density rho = 0.989 g/cc and
 dynamic viscosity mu = 0.89 cP:
 ```
-h = 40; # inputs in cgs units
-v = 1.1e2;
-L = 2.5e3;
-Re, f = hvthk2fRe(h, v, L, thk = 2.7e-2, rho = 0.989, mu = 8.9e-3)
+h=40; # all inputs in cgs units
+v=1.1e2;
+L=2.5e3;
+Re,f=hvthk2fRe(h,v,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
 ```
 Compute Re and f and plot a schematic Moody diagram:
 ```
-Re, f = hvthk2fRe(0.40, 1.1, 25, thk = 2.7e-4, rho = 989, mu = 8.9e-4, g = 9.81, fig = true) # inputs in a consistent system of units
+Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
 ```
 """
 function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
