@@ -86,7 +86,7 @@ the Reynolds number Re = 120,000 and
 the relative roughness eps = 0.001:
 
 ```julia
-Re=1.2e5;
+Re = 1.2e5;
 f = Re2f(Re,eps=1e-3)
 ```
 
@@ -133,7 +133,7 @@ In this case, both laminar and turbulent
 solutions are possible:
 
 ```julia
-f=2.8e-2;
+f = 2.8e-2;
 Re = f2Re(f,eps=1e-3)
 ```
 
