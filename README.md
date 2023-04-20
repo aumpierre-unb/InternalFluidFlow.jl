@@ -35,7 +35,7 @@ can be installed from the [maintainer's repository](https://github.com/aumpierre
 
 ```julia
 using Pkg
-Pkg.add(path="https://github.com/aumpierre-unb/InternalFluidFlow.jl")
+Pkg.add(path = "https://github.com/aumpierre-unb/InternalFluidFlow.jl")
 using InternalFluidFlow
 ```
 
@@ -76,7 +76,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-f=Re2f(Re[,eps[,fig]])
+f = Re2f(Re::Number, eps::Number=0; fig::Bool=false)
 ```
 
 **Examples:**
@@ -87,13 +87,13 @@ the relative roughness eps = 0.001:
 
 ```julia
 Re=1.2e5;
-f=Re2f(Re,eps=1e-3)
+f = Re2f(Re,eps=1e-3)
 ```
 
 Compute f and plot a schematic Moody diagram:
 
 ```julia
-f=Re2f(1.2e5,eps=1e-3,fig=true)
+f = Re2f(1.2e5,eps=1e-3, fig = true)
 ```
 
 ### f2Re
@@ -121,7 +121,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-Re=f2Re(f[,eps[,fig[,turb]]])
+Re = f2Re(f::Number, eps::Number=0; fig::Bool=false, isturb::Bool=false)
 ```
 
 **Examples:**
@@ -134,13 +134,13 @@ solutions are possible:
 
 ```julia
 f=2.8e-2;
-Re=f2Re(f,eps=1e-3)
+Re = f2Re(f,eps=1e-3)
 ```
 
 Compute Re and plot a schematic Moody diagram:
 
 ```julia
-Re=f2Re(2.8e-2,eps=1e-3,fig=true)
+Re = f2Re(2.8e-2,eps=1e-3, fig = true)
 ```
 
 ### hDeps2fDRe
@@ -172,7 +172,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hDeps2fRe(h,D,L,eps[,rho[,mu[,g[,fig]]]])
+Re, f = hDeps2fRe(h::Number, D::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
 ```
 
 **Examples:**
@@ -186,10 +186,10 @@ relative roughness eps = 0.0027,
 for water flow:
 
 ```julia
-h=40; # inputs in cgs units
+h = 40; # inputs in cgs units
 D=10;
-L=2.5e3;
-Re,f=hDeps2fRe(h,D,L,eps=2.7e-3)
+L = 2.5e3;
+Re, f = hDeps2fRe(h, D, L, eps = 2.7e-3)
 ```
 
 Compute the Reynolds number Re and
@@ -199,16 +199,16 @@ the fluid's density rho = 0.989 kg/L and
 dynamic viscosity mu = 0.89 cP:
 
 ```julia
-h=40; # inputs in cgs units
+h = 40; # inputs in cgs units
 D=10;
-L=2.5e3;
-Re,f=hDeps2fRe(h,D,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
+L = 2.5e3;
+Re, f = hDeps2fRe(h, D, L, eps = 2.7e-3, rho = 0.989, mu = 8.9e-3)
 ```
 
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+Re, f = hDeps2fRe(0.40,0.10,25,eps = 2.7e-3, rho = 989, mu = 8.9e-4, g = 9.81, fig = true) # inputs in a consistent system of units
 ```
 
 ### hveps2fDRe
@@ -240,7 +240,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hveps2fRe(h,v,L,eps[,rho[,mu[,g[,fig]]]])
+Re, f = hveps2fRe(h::Number, v::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
 ```
 
 **Examples:**
@@ -254,10 +254,10 @@ relative roughness eps = 0.0027,
 for water flow:
 
 ```julia
-h=40; # inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hveps2fRe(h,v,L,eps=2.7e-3)
+h = 40; # inputs in cgs units
+v = 1.1e2;
+L = 2.5e3;
+Re, f = hveps2fRe(h,v,L,eps = 2.7e-3)
 ```
 
 Compute the Reynolds number Re and
@@ -267,16 +267,16 @@ the fluid's density rho = 0.989 kg/L and
 dynamic viscosity mu = 0.89 cP:
 
 ```julia
-h=40; # inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hveps2fRe(h,v,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
+h = 40; # inputs in cgs units
+v = 1.1e2;
+L = 2.5e3;
+Re, f = hveps2fRe(h,v,L,eps = 2.7e-3, rho = 0.989, mu = 8.9e-3)
 ```
 
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hveps2fRe(0.40,1.1,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+Re, f = hveps2fRe(0.40,1.1,25,eps = 2.7e-3, rho = 989, mu = 8.9e-4, g = 9.81, fig = true) # inputs in a consistent system of units
 ```
 
 ### hQeps2fDRe
@@ -308,7 +308,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hQeps2fRe(h,Q,L,eps[,rho[,mu[,g[,fig]]]])
+Re, f = hQeps2fRe(h::Number, Q::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
 ```
 
 **Examples:**
@@ -322,10 +322,10 @@ relative roughness eps = 0.0027,
 for water flow:
 
 ```julia
-h=40; # inputs in cgs units
+h = 40; # inputs in cgs units
 Q=8.6e3;
-L=2.5e3;
-Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3)
+L = 2.5e3;
+Re, f = hQeps2fRe(h,Q,L,eps = 2.7e-3)
 ```
 
 Compute the Reynolds number Re and
@@ -335,16 +335,16 @@ the fluid's density rho = 0.989 kg/L and
 dynamic viscosity mu = 0.89 cP:
 
 ```julia
-h=40; # inputs in cgs units
+h = 40; # inputs in cgs units
 Q=8.6e3;
-L=2.5e3;
-Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
+L = 2.5e3;
+Re, f = hQeps2fRe(h,Q,L,eps = 2.7e-3, rho = 0.989, mu = 8.9e-3)
 ```
 
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hQeps2fRe(0.40,8.6e-3,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+Re, f = hQeps2fRe(0.40,8.6e-3,25,eps = 2.7e-3, rho = 989, mu = 8.9e-4, g = 9.81, fig = true) # inputs in a consistent system of units
 ```
 
 ### hvthk2fDRe
@@ -376,7 +376,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hvthk2fRe(h,v,L,thk[,rho[,mu[,g[,fig]]]])
+Re, f = hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
 ```
 
 **Examples:**
@@ -390,10 +390,10 @@ roughness thk = 0.27 mm,
 for water flow:
 
 ```julia
-h=40; # inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,thk=2.7e-2)
+h = 40; # inputs in cgs units
+v = 1.1e2;
+L = 2.5e3;
+Re, f = hvthk2fRe(h,v,L,thk = 2.7e-2)
 ```
 
 Compute the Reynolds number Re and
@@ -403,16 +403,16 @@ the fluid's density rho = 0.989 kg/L and
 dynamic viscosity mu = 0.89 cP:
 
 ```julia
-h=40; # inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
+h = 40; # inputs in cgs units
+v = 1.1e2;
+L = 2.5e3;
+Re, f = hvthk2fRe(h,v,L,thk = 2.7e-2, rho = 0.989, mu = 8.9e-3)
 ```
 
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+Re, f = hvthk2fRe(0.40,1.1,25,thk = 2.7e-4, rho = 989, mu = 8.9e-4, g = 9.81, fig = true) # inputs in a consistent system of units
 ```
 
 ### hQthk2fDRe
@@ -444,7 +444,7 @@ of the solution.
 **Syntax:**
 
 ```dotnetcli
-Re,f=hQthk2fRe(h,Q,L,thk[,rho[,mu[,g[,fig]]]])
+Re, f = hQthk2fRe(h::Number, Q::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
 ```
 
 **Examples:**
@@ -458,10 +458,10 @@ roughness thk = 0.27 mm
 for water flow:
 
 ```julia
-h=40; # inputs in cgs units
+h = 40; # inputs in cgs units
 Q=8.6e3;
-L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2)
+L = 2.5e3;
+Re, f = hQthk2fRe(h,Q,L,thk = 2.7e-2)
 ```
 
 Compute the Reynolds number Re and
@@ -471,16 +471,16 @@ the fluid's density rho = 0.989 kg/L and
 dynamic viscosity mu = 0.89 cP:
 
 ```julia
-h=40; # inputs in cgs units
+h = 40; # inputs in cgs units
 Q=8.6e3;
-L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
+L = 2.5e3;
+Re, f = hQthk2fRe(h,Q,L,thk = 2.7e-2, rho = 0.989, mu = 8.9e-3)
 ```
 
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
-Re,f=hQthk2fRe(0.40,8.6e-3,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true) # inputs in a consistent system of units
+Re, f = hQthk2fRe(0.40,8.6e-3,25,thk = 2.7e-4, rho = 989, mu = 8.9e-4, g = 9.81, fig = true) # inputs in a consistent system of units
 ```
 
 ### See Also
