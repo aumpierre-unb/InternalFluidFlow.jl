@@ -65,19 +65,19 @@ Re2f computes the Darcy friction factor, given
 the Reynolds number and
 the relative roughness.
 
-By default, pipe is assumed to be smooth,
-relative roughness is eps=0.
-If eps > 0.05, eps is reset to eps=0.05.
-
-If fig = true is given, a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
-
 **Syntax:**
 
 ```dotnetcli
 f=Re2f(Re::Number,eps::Number=0,fig::Bool=false)
 ```
+
+By default, pipe is assumed to be smooth,
+relative roughness is eps = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
+If fig = true is given, a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Examples:**
 
@@ -105,9 +105,15 @@ for laminar regime and,
 when possible, also
 for turbulent regime.
 
+**Syntax:**
+
+```dotnetcli
+Re=f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
+```
+
 By default, pipe is assumed to be smooth,
-relative roughness is eps=0.
-If eps > 0.05, eps is reset to eps=0.05.
+relative roughness is eps = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
 
 If isturb = true is given and
 both laminar and turbulent regimes are possible,
@@ -117,12 +123,6 @@ for turbulent regime alone.
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
-
-**Syntax:**
-
-```dotnetcli
-Re=f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
-```
 
 **Examples:**
 
@@ -155,6 +155,15 @@ the fluid's density,
 the fluid's dynamic viscosity, and
 the gravitational acceleration.
 
+**Syntax:**
+
+```dotnetcli
+Re,f=hDeps2fRe(h::Number,D::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+```
+
+By default, pipe is assumed to be smooth, eps = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
 By default, fluid is assumed to be water at 25 °C,
 with density rho = 0.997 kg/L and
 dynamic viscosity mu = 0.91 cP,
@@ -168,12 +177,6 @@ all other inputs must as well be given in cgs units.
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hDeps2fRe(h::Number,D::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
-```
 
 **Examples:**
 
@@ -223,6 +226,15 @@ the fluid's density,
 the fluid's dynamic viscosity, and
 the gravitational acceleration.
 
+**Syntax:**
+
+```dotnetcli
+Re,f=hveps2fRe(h::Number,v::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+```
+
+By default, pipe is assumed to be smooth, eps = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
 By default, fluid is assumed to be water at 25 °C,
 with density rho = 0.997 kg/L and
 dynamic viscosity mu = 0.91 cP,
@@ -236,12 +248,6 @@ all other inputs must as well be given in cgs units.
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hveps2fRe(h::Number,v::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
-```
 
 **Examples:**
 
@@ -291,6 +297,15 @@ the fluid's density,
 the fluid's dynamic viscosity, and
 the gravitational acceleration.
 
+**Syntax:**
+
+```dotnetcli
+Re,f=hQeps2fRe(h::Number,Q::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+```
+
+By default, pipe is assumed to be smooth, eps = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
 By default, fluid is assumed to be water at 25 °C,
 with density rho = 0.997 kg/L and
 dynamic viscosity mu = 0.91 cP,
@@ -304,12 +319,6 @@ all other inputs must as well be given in cgs units.
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hQeps2fRe(h::Number,Q::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
-```
 
 **Examples:**
 
@@ -359,6 +368,15 @@ the fluid's density,
 the fluid's dynamic viscosity, and
 the gravitational acceleration.
 
+**Syntax:**
+
+```dotnetcli
+Re,f=hvthk2fRe(h::Number,v::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+```
+
+By default, pipe is assumed to be smooth, thk = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
 By default, fluid is assumed to be water at 25 °C,
 with density rho = 0.997 kg/L and
 dynamic viscosity mu = 0.91 cP,
@@ -373,12 +391,6 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-**Syntax:**
-
-```dotnetcli
-Re,f=hvthk2fRe(h::Number,v::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
-```
-****
 **Examples:**
 
 Compute the Reynolds number Re and
@@ -427,6 +439,15 @@ the fluid's density,
 the fluid's dynamic viscosity, and
 the gravitational acceleration.
 
+**Syntax:**
+
+```dotnetcli
+Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
+```
+
+By default, pipe is assumed to be smooth, thk = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
 By default, fluid is assumed to be water at 25 °C,
 with density rho = 0.997 kg/L and
 dynamic viscosity mu = 0.91 cP,
@@ -440,12 +461,6 @@ all other inputs must as well be given in cgs units.
 If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)
-```
 
 **Examples:**
 

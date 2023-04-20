@@ -15,8 +15,8 @@ the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
-By default, pipe is assumed to be smooth,eps=0.
-If eps > 0.05, eps is reset to eps=0.05.
+By default, pipe is assumed to be smooth, eps = 0.
+Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
