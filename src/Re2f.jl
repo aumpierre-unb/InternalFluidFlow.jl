@@ -27,12 +27,12 @@ Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000 and
 the relative roughness eps = 0.001:
 ```
-Re=1.2e5;eps=1e-3;
-f=Re2f(Re;eps=1e-3)
+Re=1.2e5;
+f=Re2f(Re,eps=1e-3)
 ```
 Compute f and plot a schematic Moody diagram:
 ```
-f=Re2f(1.2e5;eps=1e-3,fig=true)
+f=Re2f(1.2e5,eps=1e-3,fig=true)
 ```
 """
 function Re2f(Re::Number, eps::Number=0; fig::Bool=false)

@@ -36,8 +36,8 @@ the relative roughness eps = 0.001.
 In this case, both laminar and turbulent
 solutions are possible:
 ```
-f=2.8e-2;eps=1e-3;
-Re=f2Re(f;eps=1e-3)
+f=2.8e-2;
+Re=f2Re(f,eps=1e-3)
 ```
 Compute Re and plot a schematic Moody diagram:
 ```

@@ -45,7 +45,9 @@ the pipe's length L = 25 m and
 relative roughness eps = 0.0027,
 for water flow:
 ```
-h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3; # inputs in cgs units
+h=40; # inputs in cgs units
+Q=8.6e3;
+L=2.5e3;
 Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3)
 ```
 
@@ -55,7 +57,9 @@ in addition
 the fluid's density rho = 0.989 g/cc and
 dynamic viscosity mu = 0.89 cP:
 ```
-h=40;Q=8.6e3;L=2.5e3;eps=2.7e-3;rho=0.989;mu=8.9e-3; # inputs in cgs units
+h=40; # inputs in cgs units
+Q=8.6e3;
+L=2.5e3;
 Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
 ```
 Compute Re and f and plot a schematic Moody diagram:
