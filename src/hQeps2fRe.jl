@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re, f = hQeps2fRe(h::Number, Q::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)`
+`Re, f = hQeps2fRe(h::Number, Q::Number, L::Number, eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)`
 
 `hQeps2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
@@ -48,7 +48,7 @@ for water flow:
 h = 40; # inputs in cgs units
 Q=8.6e3;
 L = 2.5e3;
-Re, f = hQeps2fRe(h,Q,L,eps = 2.7e-3)
+Re, f = hQeps2fRe(h, Q, L, eps = 2.7e-3)
 ```
 
 Compute the Reynolds number Re and

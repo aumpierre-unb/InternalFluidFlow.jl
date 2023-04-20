@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re, f = hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)`
+`Re, f = hvthk2fRe(h::Number, v::Number, L::Number, thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)`
 
 `hvthk2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
@@ -48,7 +48,7 @@ for water flow:
 h = 40; # inputs in cgs units
 v = 1.1e2;
 L = 2.5e3;
-Re, f = hvthk2fRe(h,v,L,thk = 2.7e-2)
+Re, f = hvthk2fRe(h, v, L, thk = 2.7e-2)
 ```
 
 Compute the Reynolds number Re and

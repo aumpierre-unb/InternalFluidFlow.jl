@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re, f = hDeps2fRe(h::Number, D::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)`
+`Re, f = hDeps2fRe(h::Number, D::Number, L::Number, eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)`
 
 `hDeps2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
@@ -46,7 +46,7 @@ relative roughness eps = 0.0027,
 for water flow:
 ```
 h = 40; # inputs in cgs units
-D=10;
+D = 10;
 L = 2.5e3;
 Re, f = hDeps2fRe(h, D, L, eps = 2.7e-3)
 ```
@@ -58,7 +58,7 @@ the fluid's density rho = 0.989 g/cc and
 dynamic viscosity mu = 0.89 cP:
 ```
 h = 40; # inputs in cgs units
-D=10;
+D = 10;
 L = 2.5e3;
 Re, f = hDeps2fRe(h, D, L, eps = 2.7e-3, rho = 0.989, mu = 8.9e-3)
 ```
