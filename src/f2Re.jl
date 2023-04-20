@@ -18,7 +18,7 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-If turb = true is given and
+If isturb = true is given and
 both laminar and turbulent regimes are possible,
 then `f2Re` returns the number of Reynolds
 for turbulent regime alone.
