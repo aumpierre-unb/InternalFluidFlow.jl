@@ -1,4 +1,3 @@
-using Plots
 include("hDeps2fRe.jl")
 include("hveps2fRe.jl")
 include("hvthk2fRe.jl")
@@ -88,17 +87,17 @@ function h2fRe(h::Number, L::Number; D::Number=NaN, v::Number=NaN, Q::Number=NaN
             be given.""")
     end
 
-    if a == [1, 0, 0] && b == [1, 0] # given hidraulic diameter and relative roughness
+    if a == [1, 0, 0] && b == [1, 0]
         Re, f = hDeps2fRe(h, D, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
-    elseif a == [1, 0, 0] && b == [0, 1] # given hidraulic diameter and roughness
+    elseif a == [1, 0, 0] && b == [0, 1]
         Re, f = hDeps2fRe(h, D, L, eps=thk / D, rho=rho, mu=mu, g=g, fig=fig)
-    elseif a == [0, 1, 0] && b == [1, 0] # given flow speed and relative roughness
+    elseif a == [0, 1, 0] && b == [1, 0]
         Re, f = hveps2fRe(h, v, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
-    elseif a == [0, 1, 0] && b == [0, 1] # given flow speed and roughness
-        Re, f = hveps2fRe(h, v, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
-    elseif a == [0, 0, 1] && b == [1, 0] # given rate flow and relative roughness
+    elseif a == [0, 1, 0] && b == [0, 1]
+        Re, f = hvthk2fRe(h, v, L, thk=yhk, rho=rho, mu=mu, g=g, fig=fig)
+    elseif a == [0, 0, 1] && b == [1, 0]
         Re, f = hQeps2fRe(h, Q, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
-    elseif a == [0, 0, 1] && b == [0, 1] # given rate flow and roughness
-        Re, f = hQeps2fRe(h, Q, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+    elseif a == [0, 0, 1] && b == [0, 1]
+        Re, f = hQthk2fRe(h, Q, L, thk=yhk, rho=rho, mu=mu, g=g, fig=fig)
     end
 end
