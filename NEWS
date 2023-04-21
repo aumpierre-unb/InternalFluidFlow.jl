@@ -1,6 +1,6 @@
 ### TODO
 
-### InternalFluidFlow 0.4.0-alpha (2023-04-21)
+### InternalFluidFlow 1.0.0-alpha (2023-04-21)
 * h2fRe replaces hDeps2fRe,
   hveps2fRe, hQeps2fRe, hvthk2fRe, hQthk2fRe.
 * Default L = 100 set to pipe's lenght.

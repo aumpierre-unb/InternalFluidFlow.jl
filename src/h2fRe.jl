@@ -90,7 +90,7 @@ function h2fRe(h::Number; L::Number=100, eps::Number=NaN, k::Number=NaN, D::Numb
     if a == [1, 0, 0] && b == [1, 0]
         Re, f = hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
     elseif a == [1, 0, 0] && b == [0, 1]
-        Re, f = hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
+        Re, f = hDeps2fRe(h, D, L, k / D, rho, mu, g, fig)
     elseif a == [0, 1, 0] && b == [1, 0]
         Re, f = hveps2fRe(h, v, L, eps, rho, mu, g, fig)
     elseif a == [0, 1, 0] && b == [0, 1]
