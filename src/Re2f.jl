@@ -38,7 +38,7 @@ show results on a schematic Moody diagram:
 f=Re2f(120e3,fig=true)
 ```
 """
-function Re2f(Re::Number, eps::Number=0; fig::Bool=false)
+function Re2f(Re::Number; eps::Number=0, fig::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
