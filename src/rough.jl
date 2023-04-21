@@ -15,7 +15,7 @@ function rough()
     z = 10 .^ u
     f = 1.01 .* (2 .* log10.(3.7 ./ z)) .^ -2
     f2Re_(f,z)=f2Re(f,eps=z)
-    Re=f2Re.(f, z, isturb=true)
+    Re=f2Re_.(f, z, isturb=true)
     plot!(Re, f,
         seriestype=:line,
         color=:blue)
