@@ -15,8 +15,12 @@ the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
-By default, pipe is assumed to be smooth, thk = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+By default, pipe is assumed to be 1 m long,
+L = 100 (in cm).
+
+By default, pipe is assumed to be smooth,
+eps = 0. Relative roughness eps is reset to eps = 0.05,
+if eps > 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
@@ -30,7 +34,7 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-`hvthk2fRe` is a main function of
+`hvthk2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 
 See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hQeps2fRe`, `hQthk2fRe`.

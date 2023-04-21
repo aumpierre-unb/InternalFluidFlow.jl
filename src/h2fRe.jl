@@ -7,35 +7,30 @@ include("hQthk2fRe.jl")
 @doc raw"""
 `Re,f=hDeps2fRe(h::Number,D::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
 
-`hDeps2fRe` computes the Reynolds number Re and
+`h2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
-the pipe's hydraulic diameter D,
-the pipe's length L,
-the pipe's relative roughness eps,
-the fluid's density rho,
-the fluid's dynamic viscosity mu, and
-the gravitational accelaration g.
+the pipe's hydraulic diameter D or
+the flow speed v or the volumetric flow rate Q,
+the pipe's length L (default L = 100),
+the pipe's roughness thk (default thk = 0)or
+the pipe's relative roughness eps (default eps = 0),
+the fluid's density rho (default rho = 0.997),
+the fluid's dynamic viscosity mu (default mu = 0.0091), and
+the gravitational accelaration g (default g = 981).
 
-By default, pipe is assumed to be smooth, eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+Notice that default values are given in the cgs unit system and,
+if taken, all other parameters must as well be given in cgs units.
 
-By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cc) and
-mu = 0.0091 (in P),
-and gravitational acceleration is assumed to be
-g = 981 (in cm/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other inputs must as well be given in cgs units.
-
-If fig = true is given, a schematic Moody diagram
+If parameter fig = true is given,
+a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-`hDeps2fRe` is a main function of
+`h2fRe` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
 
-See also: `Re2f`, `f2Re`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
+See also: `Re2f`, `f2Re`.
 
 Examples
 ==========
@@ -70,7 +65,7 @@ Compute Re and f and plot a schematic Moody diagram:
 Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 """
-function h2fRe(h::Number, L::Number; D::Number=NaN, v::Number=NaN, Q::Number=NaN, eps::Number=NaN, thk::Number=NaN, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
+function h2fRe(h::Number; L::Number=100, eps::Number=NaN, thk::Number=NaN, D::Number=NaN, v::Number=NaN, Q::Number=NaN, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
     a = isnan.([D, v, Q]) .!= 1
     if sum(a) != 1
         error("""h2fRe demands that either 
@@ -88,9 +83,9 @@ function h2fRe(h::Number, L::Number; D::Number=NaN, v::Number=NaN, Q::Number=NaN
     end
 
     if a == [1, 0, 0] && b == [1, 0]
-        Re, f = hDeps2fRe(h, D, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
     elseif a == [1, 0, 0] && b == [0, 1]
-        Re, f = hDeps2fRe(h, D, L, eps=thk / D, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
     elseif a == [0, 1, 0] && b == [1, 0]
         Re, f = hveps2fRe(h, v, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
     elseif a == [0, 1, 0] && b == [0, 1]

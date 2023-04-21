@@ -15,8 +15,12 @@ the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
-By default, pipe is assumed to be smooth, eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+By default, pipe is assumed to be 1 m long,
+L = 100 (in cm).
+
+By default, pipe is assumed to be smooth,
+eps = 0. Relative roughness eps is reset to eps = 0.05,
+if eps > 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
 rho = 0.997 (in g/cc) and
@@ -30,7 +34,7 @@ If fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-`hDeps2fRe` is a main function of
+`hDeps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 
 See also: `Re2f`, `f2Re`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
@@ -68,13 +72,11 @@ Compute Re and f and plot a schematic Moody diagram:
 Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 """
-function hDeps2fRe(h::Number, D::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
+function hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
     if eps > 5e-2
         eps = 5e-2
     end
     K = 2 * g * h * rho^2 * D^3 / mu^2 / L
-    # foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / (K / f)^(1 / 2) / f^(1 / 2))
-    # f = newtonraphson(foo, 1e-2, 1e-4)
     f = (-2 * log10(eps / 3.7 + 2.51 / K^(1 / 2)))^-2
     Re = (K / f)^(1 / 2)
     if Re > 2.3e3
