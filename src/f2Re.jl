@@ -84,5 +84,4 @@ function f2Re(f::Number, eps::Number=0; fig::Bool=false, isturb::Bool=false)
     else
         Re
     end
-    Re
 end
