@@ -8,10 +8,11 @@ include("hQthk2fRe.jl")
 `Re,f=hDeps2fRe(h::Number,D::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
 
 `h2fRe` computes the Reynolds number Re and
-the Darcy friction factor f, given
+the Darcy friction factor f given
 the head loss h,
 the pipe's hydraulic diameter D or
-the flow speed v or the volumetric flow rate Q or
+the flow speed v or
+the volumetric flow rate Q,
 the pipe's length L (default L = 100),
 the pipe's roughness k (default k = 0) or
 the pipe's relative roughness eps (default eps = 0),
