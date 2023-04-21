@@ -51,466 +51,113 @@ This DOI represents all versions, and will always resolve to the latest one.
 
 InternalFluidFlow provides the following functions:
 
-- Re2f
-- f2Re
-- hDeps2fDRe
-- hveps2fDRe
-- hQeps2fDRe
-- hvthk2fDRe
-- hQthk2fDRe
+- **Re2f**
+- **f2Re**
+- **h2fRe**
 
-### Re2f
+### **Re2f**
 
-Re2f computes the Darcy friction factor, given
-the Reynolds number and
-the relative roughness.
+Re2f computes the Darcy friction f factor given the Reynolds number Re and the relative roughness eps (default eps = 0).
 
 **Syntax:**
 
-```dotnetcli
+```julia
 f=Re2f(Re::Number,eps::Number=0,fig::Bool=false)
 ```
 
-By default, pipe is assumed to be smooth,
-relative roughness is eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+If eps > 0.05, relative roughness is reset to eps = 0.05.
 
-If fig = true is given, a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
+If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 **Examples:**
 
-Compute the Darcy friction factor f given
-the Reynolds number Re = 120,000 and
-the relative roughness eps = 0.001:
+Compute the Darcy friction factor f given the Reynolds number Re = 120,000 and the relative roughness eps = 0.001:
 
 ```julia
-Re = 1.2e5;
-f=Re2f(Re,eps=1e-3)
+f=Re2f(120e3,eps=1e-3)
 ```
 
-Compute f and plot a schematic Moody diagram:
+Compute the Darcy friction factor f given the Reynolds number Re = 120,000 for a smooth pipe and plot and show results on a schematic Moody diagram:
 
 ```julia
-f=Re2f(1.2e5,eps=1e-3,fig=true)
+f=Re2f(120e3,fig=true)
 ```
 
-### f2Re
+### **f2Re**
 
-f2Re computes the Reynolds number, given
-the Darcy friction factor and
-the relative roughness for
-for laminar regime and,
-when possible, also
-for turbulent regime.
+f2Re computes the Reynolds number Re given the Darcy friction factor f and the relative roughness eps (default eps = 0) for both laminar and turbulent regime, if possible.
 
 **Syntax:**
 
-```dotnetcli
+```julia
 Re=f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
 ```
 
-By default, pipe is assumed to be smooth,
-relative roughness is eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+If eps > 0.05, relative roughness is reset to eps = 0.05.
 
-If isturb = true is given and
-both laminar and turbulent regimes are possible,
-then f2Re returns the number of Reynolds
-for turbulent regime alone.
+If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
-If fig = true is given, a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
+If parameter isturb = true is given and both laminar and turbulent regimes are possible, then `f2Re` returns the number of Reynolds for turbulent regime alone.
+
+If parameter fig = true is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 **Examples:**
 
-Compute the Reynolds number Re given
-the Darcy friction factor f = 0.028 and
-the relative roughness eps = 0.001.
-In this case, both laminar and turbulent
-solutions are possible:
+Compute the Reynolds number Re given the Darcy friction factor f = 0.028 and the pipe's relative roughness eps = 0.001. In this case, both laminar and turbulent solutions are possible:
 
 ```julia
-f = 2.8e-2;
-Re=f2Re(f,eps=1e-3)
+Re=f2Re(2.8e-2,eps=1e-3)
 ```
 
-Compute Re and plot a schematic Moody diagram:
+Compute the Reynolds number Re given the Darcy friction factor f = 0.028 for a smooth pipe and plot and show results on a schematic Moody diagram:
 
 ```julia
-Re=f2Re(2.8e-2,eps=1e-3,fig=true)
+Re=f2Re(2.8e-2,fig=true)
 ```
 
-### hDeps2fDRe
+### **h2fRe**
 
-hDeps2fRe computes the Reynolds number and
-the Darcy friction factor, given
-the head loss,
-the pipe's hydraulic diameter,
-the pipe's length,
-the pipe's relative roughness,
-the fluid's density,
-the fluid's dynamic viscosity, and
-the gravitational acceleration.
+hDeps2fRe computes the Reynolds number Re and the Darcy friction factor f given the head loss h, the pipe's hydraulic diameter D or the flow speed v or the volumetric flow rate Q, the pipe's length L (default L = 100), the pipe's roughness k (default k = 0) or the pipe's relative roughness eps (default eps = 0), the fluid's density rho (default rho = 0.997), the fluid's dynamic viscosity mu (default mu = 0.0091), and the gravitational accelaration g (default g = 981).
 
 **Syntax:**
 
-```dotnetcli
-Re,f=hDeps2fRe(h::Number,D::Number,L::Number,
-  eps::Number=0,rho::Number=0.997,mu::Number=0.0091,
-  g::Number=981,fig::Bool=false)
+```julia
+Re,f=h2fRe(h::Number; 
+  L::Number=100, 
+  eps::Number=NaN, k::Number=NaN, 
+  D::Number=NaN, v::Number=NaN, Q::Number=NaN, 
+  rho::Number=0.997, mu::Number=0.0091, 
+  g::Number=981, 
+  fig::Bool=false)
 ```
 
-By default, pipe is assumed to be smooth, eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+If eps > 0.05, relative roughness is reset to eps = 0.05.
 
-By default, fluid is assumed to be water at 25 °C,
-with density rho = 0.997 kg/L and
-dynamic viscosity mu = 0.91 cP,
-and gravitational acceleration is assumed to be
-g = 9.81 m/s/s.
+Notice that default values match for water at 25 °C, Earth's gravitational acceleration and a 100-m-length smooth pipe in cgs units.
 
-Please, notice that these default values are given
-in the cgs unit system and, if taken,
-all other inputs must as well be given in cgs units.
-
-If fig = true is given, a schematic Moody diagram
+If parameter fig = true is given
+a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
 **Examples:**
 
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the pipe's hydraulic diameter D = 10 cm,
-length L = 25 m and
-relative roughness eps = 0.0027,
-for water flow:
+Compute the Reynolds number Re and the Darcy friction factor f given the head loss h = 40 cm, the pipe's hydraulic diameter D = 10 cm, length L = 25 m and relative roughness eps = 0.0027 for water flow:
 
 ```julia
-h=40; # all inputs in cgs units
-D=10;
-L=2.5e3;
-Re,f=hDeps2fRe(h,D,L,eps=2.7e-3)
+Re,f=h2fRe(40,D=10,L=2.5e3,eps=2.7e-3)
 ```
 
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.89 cP:
+Compute the Reynolds number Re and the Darcy friction factor f given the head loss per meter h/L = 1.6 cm/m, the volumetric flow rate Q = 8.6 L/s, the fluid's density rho = 0.989 g/cc and dynamic viscosity mu = 0.89 cP for a smooth pipe and show results on a schematic Moody diagram:
 
 ```julia
-h=40; # all inputs in cgs units
-D=10;
-L=2.5e3;
-Re,f=hDeps2fRe(h,D,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
+Re,f=h2fRe(1.6,Q=8.6e3,eps=0,rho=0.989,mu=8.9e-3,fig=true)
 ```
 
-Compute Re and f and plot a schematic Moody diagram:
+Compute the Reynolds number Re and the Darcy friction factor f, given the head loss h = 0.40 m, the flow speed v = 1.1 m/s, the pipe's length L = 25 m for water flow in a smooth pipe:
 
 ```julia
-# inputs in a consistent system of units
-Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
-
-### hveps2fDRe
-
-hveps2fRe computes the Reynolds number and
-the Darcy friction factor, given
-the head loss,
-the flow speed,
-the pipe's length,
-the pipe's relative roughness,
-the fluid's density,
-the fluid's dynamic viscosity, and
-the gravitational acceleration.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hveps2fRe(h::Number,v::Number,L::Number,
-  eps::Number=0,rho::Number=0.997,mu::Number=0.0091,
-  g::Number=981,fig::Bool=false)
-```
-
-By default, pipe is assumed to be smooth, eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
-
-By default, fluid is assumed to be water at 25 °C,
-with density rho = 0.997 kg/L and
-dynamic viscosity mu = 0.91 cP,
-and gravitational acceleration is assumed to be
-g = 9.81 m/s/s.
-
-Please, notice that these default values are given
-in the cgs unit system and, if taken,
-all other inputs must as well be given in cgs units.
-
-If fig = true is given, a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
-
-**Examples:**
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the flow speed v = 1.1 m/s,
-the pipe's length L = 25 m and
-relative roughness eps = 0.0027,
-for water flow:
-
-```julia
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hveps2fRe(h,v,L,eps=2.7e-3)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.89 cP:
-
-```julia
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hveps2fRe(h,v,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
-```
-
-Compute Re and f and plot a schematic Moody diagram:
-
-```julia
-# inputs in a consistent system of units
-Re,f=hveps2fRe(0.40,1.1,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
-
-### hQeps2fDRe
-
-hQeps2fRe computes the Reynolds number and
-the Darcy friction factor, given
-the head loss,
-the volumetric flow rate,
-the pipe's length,
-the pipe's relative roughness,
-the fluid's density,
-the fluid's dynamic viscosity, and
-the gravitational acceleration.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hQeps2fRe(h::Number,Q::Number,L::Number,
-  eps::Number=0,rho::Number=0.997,mu::Number=0.0091,
-  g::Number=981,fig::Bool=false)
-```
-
-By default, pipe is assumed to be smooth, eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
-
-By default, fluid is assumed to be water at 25 °C,
-with density rho = 0.997 kg/L and
-dynamic viscosity mu = 0.91 cP,
-and gravitational acceleration is assumed to be
-g = 9.81 m/s/s.
-
-Please, notice that these default values are given
-in the cgs unit system and, if taken,
-all other inputs must as well be given in cgs units.
-
-If fig = true is given, a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
-
-**Examples:**
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the volumetric flow rate Q = 8.6 L/s,
-the pipe's length L = 25 m and
-relative roughness eps = 0.0027,
-for water flow:
-
-```julia
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.89 cP:
-
-```julia
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
-```
-
-Compute Re and f and plot a schematic Moody diagram:
-
-```julia
-# inputs in a consistent system of units
-Re,f=hQeps2fRe(0.40,8.6e-3,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
-
-### hvthk2fDRe
-
-hvthk2fRe computes the Reynolds number and
-the Darcy friction factor, given
-the head loss,
-the flow speed,
-the pipe's length,
-the pipe's roughness,
-the fluid's density,
-the fluid's dynamic viscosity, and
-the gravitational acceleration.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hvthk2fRe(h::Number,v::Number,L::Number,
-  k::Number=0,rho::Number=0.997,mu::Number=0.0091,
-  g::Number=981,fig::Bool=false)
-```
-
-By default, pipe is assumed to be smooth, k = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
-
-By default, fluid is assumed to be water at 25 °C,
-with density rho = 0.997 kg/L and
-dynamic viscosity mu = 0.91 cP,
-and gravitational acceleration is assumed to be
-g = 9.81 m/s/s.
-
-Please, notice that these default values are given
-in the cgs unit system and, if taken,
-all other inputs must as well be given in cgs units.
-
-If fig = true is given, a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
-
-**Examples:**
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the flow speed v = 1.1 m/s,
-the pipe's length L = 25 m and
-roughness k = 0.27 mm,
-for water flow:
-
-```julia
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,k=2.7e-2)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.89 cP:
-
-```julia
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,k=2.7e-2,rho=0.989,mu=8.9e-3)
-```
-
-Compute Re and f and plot a schematic Moody diagram:
-
-```julia
-# inputs in a consistent system of units
-Re,f=hvthk2fRe(0.40,1.1,25,k=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
-
-### hQthk2fDRe
-
-hQthk2fRe computes the Reynolds number and
-the Darcy friction factor, given
-the head loss,
-the volumetric flow rate,
-the pipe's length,
-the pipe's roughness,
-the fluid's density,
-the fluid's dynamic viscosity, and
-the gravitational acceleration.
-
-**Syntax:**
-
-```dotnetcli
-Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,
-  k::Number=0,rho::Number=0.997,mu::Number=0.0091,
-  g::Number=981,fig::Bool=false)
-```
-
-By default, pipe is assumed to be smooth, k = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
-
-By default, fluid is assumed to be water at 25 °C,
-with density rho = 0.997 kg/L and
-dynamic viscosity mu = 0.91 cP,
-and gravitational acceleration is assumed to be
-g = 9.81 m/s/s.
-
-Please, notice that these default values are given
-in the cgs unit system and, if taken,
-all other inputs must as well be given in cgs units.
-
-If fig = true is given, a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
-
-**Examples:**
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the volumetric flow rate Q = 8.6 L/s,
-the pipe's length L = 25 m and
-roughness k = 0.27 mm
-for water flow:
-
-```julia
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,k=2.7e-2)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 kg/L and
-dynamic viscosity mu = 0.89 cP:
-
-```julia
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,k=2.7e-2,rho=0.989,mu=8.9e-3)
-```
-
-Compute Re and f and plot a schematic Moody diagram:
-
-```julia
-# inputs in a consistent system of units
-Re,f=hQthk2fRe(0.40,8.6e-3,25,k=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
+Re,f=h2fRe(40,v=1.1e2,L=2.5e3,k=0)
 ```
 
 ### See Also

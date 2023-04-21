@@ -4,21 +4,19 @@ include("figure.jl")
 @doc raw"""
 `Re=f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)`
 
-`f2Re` computes the Reynolds number Re, given
+`f2Re` computes the Reynolds number Re given
 the Darcy friction factor f and
-the relative roughness eps for
-for laminar regime and,
-when possible, also
-for turbulent regime.
+the relative roughness eps (default eps = 0)
+for both laminar and turbulent regime, if possible.
 
-By default, pipe is assumed to be smooth, eps = 0.
-Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+If eps > 0.05, relative roughness is reset to eps = 0.05.
 
-If fig = true is given, a schematic Moody diagram
+If parameter fig = true is given
+a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-If isturb = true is given and
+If parameter isturb = true is given and
 both laminar and turbulent regimes are possible,
 then `f2Re` returns the number of Reynolds
 for turbulent regime alone.

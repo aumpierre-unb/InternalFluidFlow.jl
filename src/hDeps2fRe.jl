@@ -30,7 +30,7 @@ g = 981 (in cm/s/s).
 Please, notice that these default values are given in the cgs unit system and,
 if taken, all other inputs must as well be given in cgs units.
 
-If fig = true is given, a schematic Moody diagram
+If parameter fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 

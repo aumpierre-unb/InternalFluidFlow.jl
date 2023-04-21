@@ -11,18 +11,20 @@ include("hQthk2fRe.jl")
 the Darcy friction factor f, given
 the head loss h,
 the pipe's hydraulic diameter D or
-the flow speed v or the volumetric flow rate Q,
+the flow speed v or the volumetric flow rate Q or
 the pipe's length L (default L = 100),
-the pipe's roughness k (default k = 0)or
+the pipe's roughness k (default k = 0) or
 the pipe's relative roughness eps (default eps = 0),
 the fluid's density rho (default rho = 0.997),
 the fluid's dynamic viscosity mu (default mu = 0.0091), and
 the gravitational accelaration g (default g = 981).
 
+If eps > 0.05, relative roughness is reset to eps = 0.05.
+
 Notice that default values are given in the cgs unit system and,
 if taken, all other parameters must as well be given in cgs units.
 
-If parameter fig = true is given,
+If parameter fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
