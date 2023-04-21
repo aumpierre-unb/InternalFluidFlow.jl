@@ -1,6 +1,9 @@
 using Plots
-include("Re2f.jl")
-include("figure.jl")
+include("hDeps2fRe.jl")
+include("hveps2fRe.jl")
+include("hvthk2fRe.jl")
+include("hQeps2fRe.jl")
+include("hQthk2fRe.jl")
 
 @doc raw"""
 `Re,f=hDeps2fRe(h::Number,D::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
@@ -71,36 +74,31 @@ Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
 function h2fRe(h::Number, L::Number; D::Number=NaN, v::Number=NaN, Q::Number=NaN, eps::Number=NaN, thk::Number=NaN, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
     a = isnan.([D, v, Q]) .!= 1
     if sum(a) != 1
-        error(
-            """h2fRe demands that either 
+        error("""h2fRe demands that either 
             the hidraulic diameter, 
             the flow speed or 
             the flow rate
-            be given."""
-            )
+            be given.""")
     end
-    b = isnan.([eps, k]) .!= 1
+    b = isnan.([eps, thk]) .!= 1
     if sum(b) != 1
-        error(
-            """h2fRe demands that either 
+        error("""h2fRe demands that either 
             the pipe's rougness or 
             the pipe's relative roughness 
-            be given."""
-            )
+            be given.""")
     end
 
     if a == [1, 0, 0] && b == [1, 0] # given hidraulic diameter and relative roughness
-        Re, f = hDeps2fRe(h, D, L eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hDeps2fRe(h, D, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
     elseif a == [1, 0, 0] && b == [0, 1] # given hidraulic diameter and roughness
-        eps=thk/D
-        Re, f = hDeps2fRe(h, D, L eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hDeps2fRe(h, D, L, eps=thk / D, rho=rho, mu=mu, g=g, fig=fig)
     elseif a == [0, 1, 0] && b == [1, 0] # given flow speed and relative roughness
-        Re, f = hveps2fRe(h, v, L eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hveps2fRe(h, v, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
     elseif a == [0, 1, 0] && b == [0, 1] # given flow speed and roughness
-        Re, f = hveps2fRe(h, v, L eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hveps2fRe(h, v, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
     elseif a == [0, 0, 1] && b == [1, 0] # given rate flow and relative roughness
-        Re, f = hQeps2fRe(h, Q, L eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hQeps2fRe(h, Q, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
     elseif a == [0, 0, 1] && b == [0, 1] # given rate flow and roughness
-        Re, f = hQeps2fRe(h, Q, L eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hQeps2fRe(h, Q, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
     end
 end
