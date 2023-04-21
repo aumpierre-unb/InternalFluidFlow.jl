@@ -89,12 +89,12 @@ function h2fRe(h::Number; L::Number=100, eps::Number=NaN, k::Number=NaN, D::Numb
     elseif a == [1, 0, 0] && b == [0, 1]
         Re, f = hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
     elseif a == [0, 1, 0] && b == [1, 0]
-        Re, f = hveps2fRe(h, v, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hveps2fRe(h, v, L, eps, rho, mu, g, fig)
     elseif a == [0, 1, 0] && b == [0, 1]
-        Re, f = hvthk2fRe(h, v, L, k=yhk, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hvthk2fRe(h, v, L, k, rho, mu, g, fig)
     elseif a == [0, 0, 1] && b == [1, 0]
-        Re, f = hQeps2fRe(h, Q, L, eps=eps, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hQeps2fRe(h, Q, L, eps, rho, mu, g, fig)
     elseif a == [0, 0, 1] && b == [0, 1]
-        Re, f = hQthk2fRe(h, Q, L, k=yhk, rho=rho, mu=mu, g=g, fig=fig)
+        Re, f = hQthk2fRe(h, Q, L, k, rho, mu, g, fig)
     end
 end
