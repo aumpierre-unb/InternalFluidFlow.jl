@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hQeps2fRe(h::Number,Q::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
+`Re,f=hQeps2fRe(h,Q,L,eps=0,rho=0.997,mu=0.0091,g=981,fig::Bool=false)`
 
 `hQeps2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
@@ -36,43 +36,8 @@ of the solution.
 
 `hQeps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
-
-See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQthk2fRe`.
-
-Examples
-==========
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the volumetric flow rate Q = 8.6 L/s,
-the pipe's length L = 25 m and
-relative roughness eps = 0.0027,
-for water flow:
-```
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.89 cP:
-```
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQeps2fRe(h,Q,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
-```
-Compute Re and f and plot a schematic Moody diagram:
-```
-# inputs in a consistent system of units
-Re,f=hQeps2fRe(0.40,8.6e-3,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
 """
-function hQeps2fRe(h::Number, Q::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
+function hQeps2fRe(h, Q, L, eps, rho, mu, g, fig)
     if eps > 5e-2
         eps = 5e-2
     end
@@ -103,5 +68,5 @@ function hQeps2fRe(h::Number, Q::Number, L::Number; eps::Number=0, rho::Number=0
             color=:red,
             linestyle=:dash))
     end
-    return Re, f
+    Re, f
 end

@@ -32,28 +32,22 @@ Examples
 ==========
 Compute the Reynolds number Re given
 the Darcy friction factor f = 0.028 and
-the relative roughness eps = 0.001.
+the pipe's relative roughness eps = 0.001.
 In this case, both laminar and turbulent
 solutions are possible:
 ```
-f = 2.8e-2;
-Re=f2Re(f,eps=1e-3)
-```
-Compute Re and plot a schematic Moody diagram:
-```
-Re=f2Re(2.8e-2,eps=1e-3,fig=true)
+Re=f2Re(2.8e-2,eps=1e-3)
 ```
 
 Compute the Reynolds number Re given
 the Darcy friction factor f = 0.028
-for a smooth tube and plot
-a schematic Moody diagram
-with the solution:
+for a smooth pipe and plot and
+show results on a schematic Moody diagram:
 ```
-Re=f2Re(2.8e-2)
+Re=f2Re(2.8e-2,fig=true)
 ```
 """
-function f2Re(f::Number, eps::Number=0; fig::Bool=false, isturb::Bool=false)
+function f2Re(f::Number; eps::Number=0, fig::Bool=false, isturb::Bool=false)
     if eps > 5e-2
         eps = 5e-2
     end
@@ -86,7 +80,9 @@ function f2Re(f::Number, eps::Number=0; fig::Bool=false, isturb::Bool=false)
             linestyle=:dash))
     end
     if isturb
-        return Re[end]
+        Re[end]
+    else
+        Re
     end
-    return Re
+    Re
 end

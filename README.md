@@ -381,11 +381,11 @@ the gravitational acceleration.
 
 ```dotnetcli
 Re,f=hvthk2fRe(h::Number,v::Number,L::Number,
-  thk::Number=0,rho::Number=0.997,mu::Number=0.0091,
+  k::Number=0,rho::Number=0.997,mu::Number=0.0091,
   g::Number=981,fig::Bool=false)
 ```
 
-By default, pipe is assumed to be smooth, thk = 0.
+By default, pipe is assumed to be smooth, k = 0.
 Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
@@ -409,14 +409,14 @@ the Darcy friction factor f, given
 the head loss h = 0.40 m,
 the flow speed v = 1.1 m/s,
 the pipe's length L = 25 m and
-roughness thk = 0.27 mm,
+roughness k = 0.27 mm,
 for water flow:
 
 ```julia
 h=40; # all inputs in cgs units
 v=1.1e2;
 L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,thk=2.7e-2)
+Re,f=hvthk2fRe(h,v,L,k=2.7e-2)
 ```
 
 Compute the Reynolds number Re and
@@ -429,14 +429,14 @@ dynamic viscosity mu = 0.89 cP:
 h=40; # all inputs in cgs units
 v=1.1e2;
 L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
+Re,f=hvthk2fRe(h,v,L,k=2.7e-2,rho=0.989,mu=8.9e-3)
 ```
 
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
 # inputs in a consistent system of units
-Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
+Re,f=hvthk2fRe(0.40,1.1,25,k=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 
 ### hQthk2fDRe
@@ -455,11 +455,11 @@ the gravitational acceleration.
 
 ```dotnetcli
 Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,
-  thk::Number=0,rho::Number=0.997,mu::Number=0.0091,
+  k::Number=0,rho::Number=0.997,mu::Number=0.0091,
   g::Number=981,fig::Bool=false)
 ```
 
-By default, pipe is assumed to be smooth, thk = 0.
+By default, pipe is assumed to be smooth, k = 0.
 Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
@@ -483,14 +483,14 @@ the Darcy friction factor f, given
 the head loss h = 0.40 m,
 the volumetric flow rate Q = 8.6 L/s,
 the pipe's length L = 25 m and
-roughness thk = 0.27 mm
+roughness k = 0.27 mm
 for water flow:
 
 ```julia
 h=40; # all inputs in cgs units
 Q=8.6e3;
 L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2)
+Re,f=hQthk2fRe(h,Q,L,k=2.7e-2)
 ```
 
 Compute the Reynolds number Re and
@@ -503,14 +503,14 @@ dynamic viscosity mu = 0.89 cP:
 h=40; # all inputs in cgs units
 Q=8.6e3;
 L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
+Re,f=hQthk2fRe(h,Q,L,k=2.7e-2,rho=0.989,mu=8.9e-3)
 ```
 
 Compute Re and f and plot a schematic Moody diagram:
 
 ```julia
 # inputs in a consistent system of units
-Re,f=hQthk2fRe(0.40,8.6e-3,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
+Re,f=hQthk2fRe(0.40,8.6e-3,25,k=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
 ```
 
 ### See Also

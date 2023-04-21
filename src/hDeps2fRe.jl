@@ -36,41 +36,6 @@ of the solution.
 
 `hDeps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
-
-See also: `Re2f`, `f2Re`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
-
-Examples
-==========
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the pipe's hydraulic diameter D = 10 cm,
-length L = 25 m and
-relative roughness eps = 0.0027,
-for water flow:
-```
-h=40; # all inputs in cgs units
-D=10;
-L=2.5e3;
-Re,f=hDeps2fRe(h,D,L,eps=2.7e-3)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.89 cP:
-```
-h=40; # all inputs in cgs units
-D=10;
-L=2.5e3;
-Re,f=hDeps2fRe(h,D,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
-```
-Compute Re and f and plot a schematic Moody diagram:
-```
-# inputs in a consistent system of units
-Re,f=hDeps2fRe(0.40,0.10,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
 """
 function hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
     if eps > 5e-2
@@ -102,5 +67,5 @@ function hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
             color=:red,
             linestyle=:dash))
     end
-    return Re, f
+    Re, f
 end

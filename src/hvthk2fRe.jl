@@ -3,14 +3,14 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hvthk2fRe(h::Number,v::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
+`Re,f=hvthk2fRe(h::Number,v::Number,L::Number,k::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
 
 `hvthk2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the flow speed v,
 the pipe's length L,
-the pipe's roughness thk,
+the pipe's roughness k,
 the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
@@ -36,53 +36,16 @@ of the solution.
 
 `hvthk2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
-
-See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hQeps2fRe`, `hQthk2fRe`.
-
-Examples
-==========
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the flow speed v = 1.1 m/s,
-the pipe's length L = 25 m and
-roughness thk = 0.27 mm,
-for water flow:
-```
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,thk=2.7e-2)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.89 cP:
-```
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hvthk2fRe(h,v,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
-```
-Compute Re and f and plot a schematic Moody diagram:
-```
-# inputs in a consistent system of units
-Re,f=hvthk2fRe(0.40,1.1,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
 """
-function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
-    if thk > 5e-2
-        thk = 5e-2
+function hvthk2fRe(h, v, L, eps, rho, mu, g, fig)
+    if k > 5e-2
+        k = 5e-2
     end
-    # Re = Vector{Float64}
-    # f = Vector{Float64}
     Re::Vector{Float64} = []
     f::Vector{Float64} = []
     M = 2 * g * mu * h / v^3 / rho / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(
-        thk / (f / M * mu / rho / v)
+        k / (f / M * mu / rho / v)
         /
         3.7 + 2.51 / (f / M) / f^(1 / 2))
     f_ = newtonraphson(foo, 1e-2, 1e-4)
@@ -92,7 +55,7 @@ function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0
         Re = [Re_; Re]
         f = [f_; f]
         D = Re_ * mu / rho / v
-        eps = thk / D
+        eps = k / D
         isturb = true
     end
     Re_ = (64 / M)^(1 / 2)
@@ -102,7 +65,7 @@ function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0
     end
     if !isturb
         D = Re_ * mu / rho / v
-        eps = thk / D
+        eps = k / D
     end
     if fig
         figure(eps)
@@ -120,5 +83,5 @@ function hvthk2fRe(h::Number, v::Number, L::Number; thk::Number=0, rho::Number=0
             color=:red,
             linestyle=:dash))
     end
-    return Re, f
+    Re, f
 end

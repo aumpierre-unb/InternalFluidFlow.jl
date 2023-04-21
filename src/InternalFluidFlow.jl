@@ -10,7 +10,7 @@ Maintainer's repository: `https://github.com/aumpierre-unb/InternalFluidFlow.jl`
 
 Citation (any version): `DOI 10.5281/zenodo.7019888`
 
-See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
+See also: `Re2f`, `f2Re`, `h2fRe`.
 """
 module InternalFluidFlow
 

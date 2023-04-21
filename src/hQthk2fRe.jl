@@ -3,14 +3,14 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,thk::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
+`Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,k::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
 
 `hQthk2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the volumetric flow rate Q,
 the pipe's length L,
-the pipe's roughness thk,
+the pipe's roughness k,
 the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
@@ -36,49 +36,14 @@ of the solution.
 
 `hQthk2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
-
-See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`.
-
-Examples
-==========
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the volumetric flow rate Q = 8.6 L/s,
-the pipe's length L = 25 m and
-roughness thk = 0.27 mm
-for water flow:
-```
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.89 cP:
-```
-h=40; # all inputs in cgs units
-Q=8.6e3;
-L=2.5e3;
-Re,f=hQthk2fRe(h,Q,L,thk=2.7e-2,rho=0.989,mu=8.9e-3)
-```
-Compute Re and f and plot a schematic Moody diagram:
-```
-# inputs in a consistent system of units
-Re,f=hQthk2fRe(0.40,8.6e-3,25,thk=2.7e-4,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
 """
-function hQthk2fRe(h::Number, Q::Number, L::Number; thk::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
-    if thk > 5e-2
-        thk = 5e-2
+function hQthk2fRe(h, Q, L, eps, rho, mu, g, fig)
+    if k > 5e-2
+        k = 5e-2
     end
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (mu / rho)^5 / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(
-        thk / (rho * Q / (pi / 4) / mu / ((P / f)^(1 / 5)))
+        k / (rho * Q / (pi / 4) / mu / ((P / f)^(1 / 5)))
         /
         3.7 + 2.51 / (P / f)^(1 / 5) / f^(1 / 2))
     f = newtonraphson(foo, 1e-2, 1e-4)
@@ -91,7 +56,7 @@ function hQthk2fRe(h::Number, Q::Number, L::Number; thk::Number=0, rho::Number=0
         islam = true
     end
     D = rho * Q / Re / mu / (pi / 4)
-    eps = thk / D
+    eps = k / D
     if fig
         figure(eps)
         if !(Re < 2.3e3)
@@ -108,5 +73,5 @@ function hQthk2fRe(h::Number, Q::Number, L::Number; thk::Number=0, rho::Number=0
             color=:red,
             linestyle=:dash))
     end
-    return Re, f
+    Re, f
 end

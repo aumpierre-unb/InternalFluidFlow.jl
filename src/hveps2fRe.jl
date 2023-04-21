@@ -36,48 +36,11 @@ of the solution.
 
 `hveps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
-
-See also: `Re2f`, `f2Re`, `hDeps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
-
-Examples
-==========
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the flow speed v = 1.1 m/s,
-the pipe's length L = 25 m and
-relative roughness eps = 0.0027,
-for water flow:
-```
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hveps2fRe(h,v,L,eps=2.7e-3)
-```
-
-Compute the Reynolds number Re and
-the Darcy friction factor f, given
-in addition
-the fluid's density rho = 0.989 g/cc and
-dynamic viscosity mu = 0.89 cP:
-```
-h=40; # all inputs in cgs units
-v=1.1e2;
-L=2.5e3;
-Re,f=hveps2fRe(h,v,L,eps=2.7e-3,rho=0.989,mu=8.9e-3)
-```
-Compute Re and f and plot a schematic Moody diagram:
-```
-# inputs in a consistent system of units
-Re,f=hveps2fRe(0.40,1.1,25,eps=2.7e-3,rho=989,mu=8.9e-4,g=9.81,fig=true)
-```
 """
-function hveps2fRe(h::Number, v::Number, L::Number; eps::Number=0, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
+function hveps2fRe(h, v, L, eps, rho, mu, g, fig)
     if eps > 5e-2
         eps = 5e-2
     end
-    # Re = Vector{Float64}
-    # f = Vector{Float64}
     Re::Vector{Float64} = []
     f::Vector{Float64} = []
     M = 2 * g * mu * h / v^3 / rho / L
@@ -109,5 +72,5 @@ function hveps2fRe(h::Number, v::Number, L::Number; eps::Number=0, rho::Number=0
             color=:red,
             linestyle=:dash))
     end
-    return Re, f
+    Re, f
 end
