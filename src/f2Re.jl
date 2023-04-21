@@ -26,7 +26,7 @@ for turbulent regime alone.
 `f2Re` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
 
-See also: `Re2f`, `hDeps2fRe`, `hveps2fRe`, `hvthk2fRe`, `hQeps2fRe`, `hQthk2fRe`.
+See also: `Re2f`, `h2fRe`.
 
 Examples
 ==========

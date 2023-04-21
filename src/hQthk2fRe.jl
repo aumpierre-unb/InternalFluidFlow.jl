@@ -37,7 +37,7 @@ of the solution.
 `hQthk2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
-function hQthk2fRe(h, Q, L, eps, rho, mu, g, fig)
+function hQthk2fRe(h, Q, L, k, rho, mu, g, fig)
     if k > 5e-2
         k = 5e-2
     end

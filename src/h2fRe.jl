@@ -42,7 +42,7 @@ length L = 25 m and
 relative roughness eps = 0.0027
 for water flow:
 ```
-Re,f=hDeps2fRe(40,D=10,L=2.5e3,eps=2.7e-3)
+Re,f=h2fRe(40,D=10,L=2.5e3,eps=2.7e-3)
 ```
 
 Compute the Reynolds number Re and
@@ -54,7 +54,7 @@ dynamic viscosity mu = 0.89 cP
 for a smooth pipe and
 show results on a schematic Moody diagram:
 ```
-Re,f=hQeps2fRe(1.6,Q=8.6e3,eps=0,rho=0.989,mu=8.9e-3,fig=true)
+Re,f=h2fRe(1.6,Q=8.6e3,eps=0,rho=0.989,mu=8.9e-3,fig=true)
 ```
 
 Compute the Reynolds number Re and
@@ -64,7 +64,7 @@ the flow speed v = 1.1 m/s,
 the pipe's length L = 25 m
 for water flow in a smooth pipe:
 ```
-Re,f=hvthk2fRe(40,v=1.1e2,L=2.5e3,k=0)
+Re,f=h2fRe(40,v=1.1e2,L=2.5e3,k=0)
 ```
 """
 function h2fRe(h::Number; L::Number=100, eps::Number=NaN, k::Number=NaN, D::Number=NaN, v::Number=NaN, Q::Number=NaN, rho::Number=0.997, mu::Number=0.0091, g::Number=981, fig::Bool=false)
