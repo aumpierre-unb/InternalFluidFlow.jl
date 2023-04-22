@@ -77,14 +77,14 @@ function h2fRe(h::Number; L::Number=100, eps::Number=NaN, k::Number=NaN, D::Numb
             the hidraulic diameter,
             the flow speed or
             the flow rate
-            be given.""")
+            be given alone.""")
     end
     b = isnan.([eps, k]) .!= 1
     if sum(b) != 1
         error("""h2fRe requires that either
             the pipe's rougness or
             the pipe's relative roughness
-            be given.""")
+            be given alone.""")
     end
     if a == [1, 0, 0] && b == [1, 0]
         Re, f = hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
