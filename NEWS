@@ -10,7 +10,7 @@
   for parameters' default values
 
 ### InternalFluidFlow 0.3.1 (2023-04-09)
-* Minor changes on functions' outputs
+* Minor changes on functions' returns
 
 ### InternalFluidFlow 0.3.0 (2023-01-05)
 * Major changes on functions
@@ -29,9 +29,9 @@
 * Minor changes in docstrings
 
 ### InternalFluidFlow 0.2.0 (2022-09-22)
-* Input sequence altered for most functions
+* Parameters sequence altered for most functions
   (please, check it out at Julia's help)
-* Input types declared as Number
+* Parameters' types declared as Number
 * Default values for density and viscosity
   set to rho = 0.997 g/cc and
   mu = 0.91 g/cm/s (water @ 25 °C)

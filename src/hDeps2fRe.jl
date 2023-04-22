@@ -28,7 +28,7 @@ mu = 0.0091 (in P),
 and gravitational acceleration is assumed to be
 g = 981 (in cm/s/s).
 Please, notice that these default values are given in the cgs unit system and,
-if taken, all other inputs must as well be given in cgs units.
+if taken, all other parameters must as well be given in cgs units.
 
 If parameter fig = true is given, a schematic Moody diagram
 is plotted as a graphical representation

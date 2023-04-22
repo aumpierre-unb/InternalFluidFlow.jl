@@ -5,7 +5,7 @@ include("rough.jl")
 
 @doc raw"""
 `figure` produces a schematic Moody diagram with
-a representation of the solution computed from inputs.
+a representation of the solution computed from parameters.
 
 `figure` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
