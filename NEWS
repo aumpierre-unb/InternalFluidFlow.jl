@@ -1,9 +1,14 @@
 ### TODO
 
-### InternalFluidFlow 1.0.0-alpha (2023-04-21)
+### InternalFluidFlow 1.0.0-alpha (2023-04-24)
 * h2fRe replaces hDeps2fRe,
-  hveps2fRe, hQeps2fRe, hvthk2fRe, hQthk2fRe.
-* Default L = 100 set to pipe's lenght.
+  hveps2fRe, hQeps2fRe, hvthk2fRe, hQthk2fRe
+* h2fRe accepts the
+  either the pipe's hydraulic diameter or
+  the flow speed or the volumetric flow rate, and
+  either the pipe's roughness or
+  the pipe's relative roughness
+* Pipe's length default set to L = 100
 
 ### InternalFluidFlow 0.3.2 (2023-04-17)
 * Major changes on documentation on units
