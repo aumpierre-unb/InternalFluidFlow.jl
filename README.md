@@ -62,7 +62,7 @@ Re2f computes the Darcy friction f factor given the Reynolds number Re and the r
 **Syntax:**
 
 ```julia
-f=Re2f(Re::Number,eps::Number=0,fig::Bool=false)
+Re2f(Re::Number,eps::Number=0,fig::Bool=false)
 ```
 
 If eps > 0.05, relative roughness is reset to eps = 0.05.
@@ -90,7 +90,7 @@ f2Re computes the Reynolds number Re given the Darcy friction factor f and the r
 **Syntax:**
 
 ```julia
-Re=f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
+f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
 ```
 
 If eps > 0.05, relative roughness is reset to eps = 0.05.
@@ -122,7 +122,7 @@ hDeps2fRe computes the Reynolds number Re and the Darcy friction factor f given 
 **Syntax:**
 
 ```julia
-Re,f=h2fRe(h::Number; 
+h2fRe(h::Number; 
   L::Number=100, 
   eps::Number=NaN, k::Number=NaN, 
   D::Number=NaN, v::Number=NaN, Q::Number=NaN, 
