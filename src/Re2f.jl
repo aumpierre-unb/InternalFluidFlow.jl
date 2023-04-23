@@ -35,7 +35,7 @@ the Reynolds number Re = 120,000
 for a smooth pipe and plot and
 show results on a schematic Moody diagram:
 ```
-f=Re2f(120e3,fig=true)
+Re2f(120e3,fig=true)
 ```
 """
 function Re2f(Re::Number; eps::Number=0, fig::Bool=false)

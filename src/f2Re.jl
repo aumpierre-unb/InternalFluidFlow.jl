@@ -34,7 +34,7 @@ the pipe's relative roughness eps = 0.001.
 In this case, both laminar and turbulent
 solutions are possible:
 ```
-Re=f2Re(2.8e-2,eps=1e-3)
+f2Re(2.8e-2,eps=1e-3)
 ```
 
 Compute the Reynolds number Re given
