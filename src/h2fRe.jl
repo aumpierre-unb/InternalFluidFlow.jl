@@ -74,7 +74,7 @@ function h2fRe(h::Number; L::Number=100, eps::Number=NaN, k::Number=NaN, D::Numb
     a = isnan.([D, v, Q]) .!= 1
     if sum(a) != 1
         error("""h2fRe requires that either
-            the hidraulic diameter,
+            the hydraulic diameter,
             the flow speed or
             the flow rate
             be given alone.""")
