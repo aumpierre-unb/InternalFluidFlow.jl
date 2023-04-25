@@ -87,7 +87,7 @@ function h2fRe(h::Number; L::Number=100, eps::Number=NaN, k::Number=NaN, D::Numb
     b = isnan.([eps, k]) .!= 1
     if sum(b) != 1
         error("""h2fRe requires that either
-            the pipe's rougness or
+            the pipe's roughness or
             the pipe's relative roughness
             be given alone.""")
     end
