@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hQthk2fRe(h::Number,Q::Number,L::Number,k::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
+`hQthk2fRe(h,Q,L,k,rho,mu,g,fig)`
 
 `hQthk2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given

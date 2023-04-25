@@ -3,13 +3,15 @@ include("newtonraphson.jl")
 include("figure.jl")
 
 @doc raw"""
-`f=Re2f(Re::Number,eps::Number=0,fig::Bool=false)`
+`Re2f(Re::Number;eps::Number=0,fig::Bool=false)`
 
 `Re2f` computes the Darcy friction f factor given
 the Reynolds number Re and
 the relative roughness eps (default eps = 0).
 
-If eps > 0.05, relative roughness is reset to eps = 0.05.
+By default, pipe is assumed to be smooth,
+eps = 0. Relative roughness eps is reset to eps = 0.05,
+if eps > 0.05.
 
 If parameter fig = true is given
 a schematic Moody diagram

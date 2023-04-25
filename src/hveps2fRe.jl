@@ -3,7 +3,7 @@ include("Re2f.jl")
 include("figure.jl")
 
 @doc raw"""
-`Re,f=hveps2fRe(h::Number,v::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
+`hveps2fRe(h,v,L,eps,rho, mu,g,fig)`
 
 `hveps2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
@@ -15,11 +15,11 @@ the fluid's density rho,
 the fluid's dynamic viscosity mu, and
 the gravitational accelaration g.
 
+By default, pipe is assumed to be 1 m long,
+L = 100 (in cm).
+
 By default, pipe is assumed to be smooth,
 eps = 0. Relative roughness eps is reset to eps = 0.05,
-if eps > 0.05.
-
-Relative roughness eps is reset to eps = 0.05,
 if eps > 0.05.
 
 By default, fluid is assumed to be water at 25 °C,

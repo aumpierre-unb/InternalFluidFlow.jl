@@ -59,15 +59,15 @@ InternalFluidFlow provides the following functions:
 
 Re2f computes the Darcy friction f factor given the Reynolds number Re and the relative roughness eps (default eps = 0).
 
+By default, pipe is assumed to be smooth,  eps = 0. Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
+If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+
 **Syntax:**
 
 ```julia
 Re2f(Re::Number,eps::Number=0,fig::Bool=false)
 ```
-
-If eps > 0.05, relative roughness is reset to eps = 0.05.
-
-If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 **Examples:**
 
@@ -87,19 +87,17 @@ f=Re2f(120e3,fig=true)
 
 f2Re computes the Reynolds number Re given the Darcy friction factor f and the relative roughness eps (default eps = 0) for both laminar and turbulent regime, if possible.
 
+By default, pipe is assumed to be smooth, eps = 0. Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
+If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+
+If parameter isturb = true is given and both laminar and turbulent regimes are possible, then f2Re returns the number of Reynolds for turbulent regime alone.
+
 **Syntax:**
 
 ```julia
 f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
 ```
-
-If eps > 0.05, relative roughness is reset to eps = 0.05.
-
-If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
-
-If parameter isturb = true is given and both laminar and turbulent regimes are possible, then `f2Re` returns the number of Reynolds for turbulent regime alone.
-
-If parameter fig = true is given, a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 **Examples:**
 
@@ -117,28 +115,27 @@ Re=f2Re(2.8e-2,fig=true)
 
 ### **h2fRe**
 
-hDeps2fRe computes the Reynolds number Re and the Darcy friction factor f given the head loss h, the pipe's hydraulic diameter D or the flow speed v or the volumetric flow rate Q, the pipe's length L (default L = 100), the pipe's roughness k (default k = 0) or the pipe's relative roughness eps (default eps = 0), the fluid's density rho (default rho = 0.997), the fluid's dynamic viscosity mu (default mu = 0.0091), and the gravitational accelaration g (default g = 981).
+h2fRe computes the Reynolds number Re and the Darcy friction factor f given the head loss h, the pipe's hydraulic diameter D or the flow speed v or the volumetric flow rate Q, the pipe's length L (default L = 100), the pipe's roughness k (default k = 0) or the pipe's relative roughness eps (default eps = 0), the fluid's density rho (default rho = 0.997), the fluid's dynamic viscosity mu (default mu = 0.0091), and the gravitational accelaration g (default g = 981).
+
+By default, pipe is assumed to be 1 m long, L = 100 (in cm).
+
+By default, pipe is assumed to be smooth, eps = 0. Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+
+Notice that default values are given in the cgs unit system and, if taken, all other parameters must as well be given in cgs units.
+
+If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
 **Syntax:**
 
 ```julia
-h2fRe(h::Number; 
-  L::Number=100, 
-  eps::Number=NaN, k::Number=NaN, 
-  D::Number=NaN, v::Number=NaN, Q::Number=NaN, 
-  rho::Number=0.997, mu::Number=0.0091, 
-  g::Number=981, 
+h2fRe(h::Number;
+  L::Number=100,
+  eps::Number=NaN,k::Number=NaN,
+  D::Number=NaN,v::Number=NaN,Q::Number=NaN,
+  rho::Number=0.997,mu::Number=0.0091,
+  g::Number=981,
   fig::Bool=false)
 ```
-
-If eps > 0.05, relative roughness is reset to eps = 0.05.
-
-Notice that default values match for water at 25 °C, Earth's gravitational acceleration and a 100-m-length smooth pipe in cgs units.
-
-If parameter fig = true is given
-a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
 
 **Examples:**
 

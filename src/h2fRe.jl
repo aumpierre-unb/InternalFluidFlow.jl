@@ -5,7 +5,7 @@ include("hQeps2fRe.jl")
 include("hQthk2fRe.jl")
 
 @doc raw"""
-`hDeps2fRe(h::Number,D::Number,L::Number,eps::Number=0,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
+`h2fRe(h::Number;L::Number=100,eps::Number=NaN,k::Number=NaN,D::Number=NaN,v::Number=NaN,Q::Number=NaN,rho::Number=0.997,mu::Number=0.0091,g::Number=981,fig::Bool=false)`
 
 `h2fRe` computes the Reynolds number Re and
 the Darcy friction factor f given
@@ -20,7 +20,12 @@ the fluid's density rho (default rho = 0.997),
 the fluid's dynamic viscosity mu (default mu = 0.0091), and
 the gravitational accelaration g (default g = 981).
 
-If eps > 0.05, relative roughness is reset to eps = 0.05.
+By default, pipe is assumed to be 1 m long,
+L = 100 (in cm).
+
+By default, pipe is assumed to be smooth,
+eps = 0. Relative roughness eps is reset to eps = 0.05,
+if eps > 0.05.
 
 Notice that default values are given in the cgs unit system and,
 if taken, all other parameters must as well be given in cgs units.
