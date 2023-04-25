@@ -9,9 +9,8 @@ include("figure.jl")
 the Reynolds number Re and
 the relative roughness eps (default eps = 0).
 
-By default, pipe is assumed to be smooth,
-eps = 0. Relative roughness eps is reset to eps = 0.05,
-if eps > 0.05.
+By default, pipe is assumed to be smooth.
+Relative roughness is reset to eps = 0.05, if eps > 0.05.
 
 If parameter fig = true is given
 a schematic Moody diagram

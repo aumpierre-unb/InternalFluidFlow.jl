@@ -59,7 +59,7 @@ InternalFluidFlow provides the following functions:
 
 Re2f computes the Darcy friction f factor given the Reynolds number Re and the relative roughness eps (default eps = 0).
 
-By default, pipe is assumed to be smooth,  eps = 0. Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+By default, pipe is assumed to be smooth. Relative roughness is reset to eps = 0.05, if eps > 0.05.
 
 If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
@@ -87,7 +87,7 @@ f=Re2f(120e3,fig=true)
 
 f2Re computes the Reynolds number Re given the Darcy friction factor f and the relative roughness eps (default eps = 0) for both laminar and turbulent regime, if possible.
 
-By default, pipe is assumed to be smooth, eps = 0. Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+By default, pipe is assumed to be smooth. Relative roughness is reset to eps = 0.05, if eps > 0.05.
 
 If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
@@ -119,7 +119,7 @@ h2fRe computes the Reynolds number Re and the Darcy friction factor f given the 
 
 By default, pipe is assumed to be 1 m long, L = 100 (in cm).
 
-By default, pipe is assumed to be smooth, eps = 0. Relative roughness eps is reset to eps = 0.05, if eps > 0.05.
+By default, pipe is assumed to be smooth. Relative roughness is reset to eps = 0.05, if eps > 0.05.
 
 Notice that default values are given in the cgs unit system and, if taken, all other parameters must as well be given in cgs units.
 
