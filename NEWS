@@ -1,6 +1,6 @@
 ### TODO
 
-### InternalFluidFlow 1.0.0-alpha (2023-04-24)
+### InternalFluidFlow 1.0.0-alpha (2023-05-02)
 * h2fRe replaces hDeps2fRe,
   hveps2fRe, hQeps2fRe, hvthk2fRe, hQthk2fRe
 * h2fRe accepts the
