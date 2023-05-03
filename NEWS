@@ -1,8 +1,8 @@
 ### TODO
 
-### InternalFluidFlow 1.0.0-alpha (2023-05-02)
+### InternalFluidFlow 1.0.0 (2023-05-03)
 * h2fRe replaces hDeps2fRe,
-  hveps2fRe, hQeps2fRe, hvthk2fRe, hQthk2fRe
+  hveps2fRe, hQeps2fRe, hvthk2fRe and hQthk2fRe
 * h2fRe accepts the
   either the pipe's hydraulic diameter or
   the flow speed or the volumetric flow rate, and
