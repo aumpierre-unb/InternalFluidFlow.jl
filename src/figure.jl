@@ -17,7 +17,7 @@ function figure(eps)
         ylims=(6e-3, 1e-1),
         legend=false,
         framestyle=:box,
-        scale=:log10,
+        xaxis=:log10,yaxis=:log10,#scale=:log10,
         grid=:true,
         gridalpha=0.4,
         minorgrid=:true,
