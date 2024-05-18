@@ -88,7 +88,7 @@ function figure(eps)
         rotation=-34))
     annotate!(1.15e2, 6.6e-3, text(
         "https://github.com/aumpierre-unb/InternalFluidFlow.jl",
-        fontSize-2,
+        fontSize - 2,
         :center, :left,
         :black))
 end

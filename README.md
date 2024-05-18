@@ -66,7 +66,7 @@ If parameter fig = true is given a schematic Moody diagram is plotted as a graph
 **Syntax:**
 
 ```julia
-Re2f(Re::Number,eps::Number=0,fig::Bool=false)
+Re2f(Re::Number, eps::Number=0, fig::Bool=false)
 ```
 
 **Examples:**
@@ -74,13 +74,13 @@ Re2f(Re::Number,eps::Number=0,fig::Bool=false)
 Compute the Darcy friction factor f given the Reynolds number Re = 120,000 and the relative roughness eps = 0.001:
 
 ```julia
-f=Re2f(120e3,eps=1e-3)
+f = Re2f(120e3, eps=1e-3)
 ```
 
 Compute the Darcy friction factor f given the Reynolds number Re = 120,000 for a smooth pipe and plot and show results on a schematic Moody diagram:
 
 ```julia
-f=Re2f(120e3,fig=true)
+f = Re2f(120e3, fig=true)
 ```
 
 ### **f2Re**
@@ -96,7 +96,7 @@ If parameter isturb = true is given and both laminar and turbulent regimes are p
 **Syntax:**
 
 ```julia
-f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
+f2Re(f::Number, eps::Number=0, fig::Bool=false, isturb::Bool=false)
 ```
 
 **Examples:**
@@ -104,13 +104,13 @@ f2Re(f::Number,eps::Number=0,fig::Bool=false,isturb::Bool=false)
 Compute the Reynolds number Re given the Darcy friction factor f = 0.028 and the pipe's relative roughness eps = 0.001. In this case, both laminar and turbulent solutions are possible:
 
 ```julia
-Re=f2Re(2.8e-2,eps=1e-3)
+Re = f2Re(2.8e-2, eps=1e-3)
 ```
 
 Compute the Reynolds number Re given the Darcy friction factor f = 0.028 for a smooth pipe and plot and show results on a schematic Moody diagram:
 
 ```julia
-Re=f2Re(2.8e-2,fig=true)
+Re = f2Re(2.8e-2, fig=true)
 ```
 
 ### **h2fRe**
@@ -129,12 +129,12 @@ If parameter fig = true is given a schematic Moody diagram is plotted as a graph
 
 ```julia
 h2fRe(h::Number;
-  L::Number=100,
-  eps::Number=NaN,k::Number=NaN,
-  D::Number=NaN,v::Number=NaN,Q::Number=NaN,
-  rho::Number=0.997,mu::Number=0.0091,
-  g::Number=981,
-  fig::Bool=false)
+    L::Number=100,
+    eps::Number=NaN, k::Number=NaN,
+    D::Number=NaN, v::Number=NaN, Q::Number=NaN,
+    rho::Number=0.997, mu::Number=0.0091,
+    g::Number=981,
+    fig::Bool=false)
 ```
 
 **Examples:**
@@ -142,19 +142,19 @@ h2fRe(h::Number;
 Compute the Reynolds number Re and the Darcy friction factor f given the head loss h = 40 cm, the pipe's hydraulic diameter D = 10 cm, length L = 25 m and relative roughness eps = 0.0027 for water flow:
 
 ```julia
-Re,f=h2fRe(40,D=10,L=2.5e3,eps=2.7e-3)
+Re, f = h2fRe(40, D=10, L=2.5e3, eps=2.7e-3)
 ```
 
 Compute the Reynolds number Re and the Darcy friction factor f given the head loss per meter h/L = 1.6 cm/m, the volumetric flow rate Q = 8.6 L/s, the fluid's density rho = 0.989 g/cc and dynamic viscosity mu = 0.89 cP for a smooth pipe and show results on a schematic Moody diagram:
 
 ```julia
-Re,f=h2fRe(1.6,Q=8.6e3,eps=0,rho=0.989,mu=8.9e-3,fig=true)
+Re, f = h2fRe(1.6, Q=8.6e3, eps=0, rho=0.989, mu=8.9e-3, fig=true)
 ```
 
 Compute the Reynolds number Re and the Darcy friction factor f, given the head loss h = 0.40 m, the flow speed v = 1.1 m/s, the pipe's length L = 25 m for water flow in a smooth pipe:
 
 ```julia
-Re,f=h2fRe(40,v=1.1e2,L=2.5e3,k=0)
+Re, f = h2fRe(40, v=1.1e2, L=2.5e3, k=0)
 ```
 
 ### See Also

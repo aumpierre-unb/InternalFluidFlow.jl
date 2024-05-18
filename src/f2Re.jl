@@ -35,7 +35,7 @@ the pipe's relative roughness eps = 0.001.
 In this case, both laminar and turbulent
 solutions are possible:
 ```
-f2Re(2.8e-2,eps=1e-3)
+f2Re(2.8e-2, eps=1e-3)
 ```
 
 Compute the Reynolds number Re given
@@ -43,7 +43,7 @@ the Darcy friction factor f = 0.028
 for a smooth pipe and plot and
 show results on a schematic Moody diagram:
 ```
-Re=f2Re(2.8e-2,fig=true)
+Re = f2Re(2.8e-2, fig=true)
 ```
 """
 function f2Re(f::Number; eps::Number=0, fig::Bool=false, isturb::Bool=false)
