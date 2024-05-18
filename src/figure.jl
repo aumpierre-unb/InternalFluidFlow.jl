@@ -34,44 +34,44 @@ function figure(eps)
         rotation=-73))
     if eps != 1e-5
         turb(1e-5)
-        annotate!(0.92e8, 0.77e-2, text(
-            "1e-5",
-            fontSize,
-            :center, :right,
-            :black))
     end
+    annotate!(0.92e8, 0.77e-2, text(
+        "1e-5",
+        fontSize,
+        :center, :right,
+        :black))
     if eps != 1e-4
         turb(1e-4)
-        annotate!(0.92e8, 1.3e-2, text(
-            "1e-4",
-            fontSize,
-            :center, :right,
-            :black))
     end
+    annotate!(0.92e8, 1.3e-2, text(
+        "1e-4",
+        fontSize,
+        :center, :right,
+        :black))
     if eps != 1e-3
         turb(1e-3)
-        annotate!(0.92e8, 2.15e-2, text(
-            "1e-3",
-            fontSize,
-            :center, :right,
-            :black))
     end
+    annotate!(0.92e8, 2.15e-2, text(
+        "1e-3",
+        fontSize,
+        :center, :right,
+        :black))
     if eps != 1e-2
         turb(1e-2)
-        annotate!(0.92e8, 4.1e-2, text(
-            "1e-2",
-            fontSize,
-            :center, :right,
-            :black))
     end
+    annotate!(0.92e8, 4.1e-2, text(
+        "1e-2",
+        fontSize,
+        :center, :right,
+        :black))
     if eps != 5e-2
         turb(5e-2)
-        annotate!(0.92e8, 7.85e-2, text(
-            "5e-2",
-            fontSize,
-            :center, :right,
-            :black))
     end
+    annotate!(0.92e8, 7.85e-2, text(
+        "5e-2",
+        fontSize,
+        :center, :right,
+        :black))
     rough()
     annotate!(1.2e6, 2.7e-2, text(
         "Hydraulically rough boundary",
