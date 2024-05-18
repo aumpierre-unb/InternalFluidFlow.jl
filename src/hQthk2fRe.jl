@@ -59,7 +59,7 @@ function hQthk2fRe(h, Q, L, k, rho, mu, g, fig)
     eps = k / D
     if fig
         figure(eps)
-        if !islam && eps != 0
+        if !(Re < 2.3e3) && eps != 0
             turb(eps)
         end
         plot!([Re], [f],

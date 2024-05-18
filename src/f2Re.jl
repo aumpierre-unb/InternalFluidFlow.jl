@@ -66,7 +66,7 @@ function f2Re(f::Number; eps::Number=0, fig::Bool=false, isturb::Bool=false)
     end
     if !isempty(f_) & fig
         figure(eps)
-        if !(Re[end] < 2.3e3)
+        if !(Re[end] < 2.3e3) && eps != 0
             turb(eps)
         end
         plot!([Re], [f_],
