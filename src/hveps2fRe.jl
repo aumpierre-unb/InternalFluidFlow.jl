@@ -58,7 +58,7 @@ function hveps2fRe(h, v, L, eps, rho, mu, g, fig)
     end
     if fig
         figure(eps)
-        if !(Re[end] < 2.3e3)
+        if !islam && eps != 0
             turb(eps)
         end
         plot!([Re], [f],

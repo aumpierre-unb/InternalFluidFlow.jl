@@ -18,11 +18,5 @@ function rough()
     Re = f2Re_.(f, z)
     plot!(Re, f,
         seriestype=:line,
-        color=:blue)
-    # annotate!(1e5, 7e-2, text(
-    #     "Fully rough flow",
-    #     10,
-    #     :left, :center,
-    #     :blue,
-    #     rotation=-31))
+        color=:darkgreen)
 end

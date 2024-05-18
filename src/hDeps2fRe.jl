@@ -53,7 +53,7 @@ function hDeps2fRe(h, D, L, eps, rho, mu, g, fig)
     end
     if fig
         figure(eps)
-        if !(Re < 2.3e3)
+        if !islam && eps != 0
             turb(eps)
         end
         plot!([Re], [f],
