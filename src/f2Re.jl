@@ -1,5 +1,5 @@
 using Plots
-include("figure.jl")
+# include("figure.jl")
 
 @doc raw"""
 `f2Re(f::Number;eps::Number=0,fig::Bool=false,isturb::Bool=false)`

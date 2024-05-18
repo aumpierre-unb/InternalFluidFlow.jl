@@ -1,5 +1,5 @@
 using Plots
-include("newtonraphson.jl")
+# include("newtonraphson.jl")
 
 @doc raw"""
 `smooth` produces the representation of the

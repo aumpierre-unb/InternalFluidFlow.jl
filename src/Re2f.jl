@@ -1,6 +1,6 @@
 using Plots
-include("newtonraphson.jl")
-include("figure.jl")
+# include("newtonraphson.jl")
+# include("figure.jl")
 
 @doc raw"""
 `Re2f(Re::Number;eps::Number=0,fig::Bool=false)`

@@ -1,6 +1,6 @@
 using Plots
-include("Re2f.jl")
-include("figure.jl")
+# include("Re2f.jl")
+# include("figure.jl")
 
 @doc raw"""
 `hQthk2fRe(h,Q,L,k,rho,mu,g,fig)`

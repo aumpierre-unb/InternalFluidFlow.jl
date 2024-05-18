@@ -1,7 +1,7 @@
 using Plots
-include("laminar.jl")
-include("smooth.jl")
-include("rough.jl")
+# include("laminar.jl")
+# include("smooth.jl")
+# include("rough.jl")
 
 @doc raw"""
 `figure` produces a schematic Moody diagram with
@@ -24,6 +24,11 @@ function figure(eps)
     if eps != 1e-5
         turb(1e-5)
     end
+    # annotate!(330, 0.0152, text(
+    #     "0.00005",
+    #     10,
+    #     :center, :center,
+    #     :blue))
     if eps != 1e-4
         turb(1e-4)
     end
@@ -40,4 +45,5 @@ function figure(eps)
     if eps != 0
         smooth()
     end
+
 end
