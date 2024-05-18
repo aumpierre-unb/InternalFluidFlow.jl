@@ -2,6 +2,8 @@
 
 ### InternalFluidFlow 1.1.0 (2024-05-17)
 * Annotations to the curves included on plots
+* Extra ticks included to plot's y-axis
+* Plot's "no strict ticks found" warning solved
 
 ### InternalFluidFlow 1.0.0 (2023-05-03)
 * h2fRe replaces hDeps2fRe,
