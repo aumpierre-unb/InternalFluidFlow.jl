@@ -1,4 +1,4 @@
-using Plots
+# using Plots
 
 @doc raw"""
 `laminar` produces the representation of the
