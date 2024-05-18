@@ -73,7 +73,6 @@ function figure(eps)
             :black))
     end
     rough()
-<<<<<<< Updated upstream
     annotate!(1.2e6, 2.7e-2, text(
         "Hydraulically rough boundary",
         fontSize,
@@ -92,7 +91,4 @@ function figure(eps)
         fontSize-2,
         :center, :left,
         :black))
-=======
-    smooth()
->>>>>>> Stashed changes
 end
