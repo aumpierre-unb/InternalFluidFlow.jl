@@ -1,6 +1,6 @@
 ### TODO
 
-### InternalFluidFlow 1.1.0 (2024-05-19)
+### InternalFluidFlow 1.1.1 (2024-05-19)
 * Annotations to the curves included on plots
 * Extra ticks included to plot's y-axis
 * Plot's "no strict ticks found" warning solved
