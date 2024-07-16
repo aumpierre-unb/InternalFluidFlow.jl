@@ -8,7 +8,7 @@ Author: Alexandre Umpierre `aumpierre@gmail.com`
 
 Maintainer's repository: `https://github.com/aumpierre-unb/InternalFluidFlow.jl`
 
-Citation (any version): `DOI 10.5281/zenodo.7019888`
+Citation (all versions): `DOI 10.5281/zenodo.7019888`
 
 See also: `Re2f`, `f2Re`, `h2fRe`.
 """
