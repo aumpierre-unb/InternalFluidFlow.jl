@@ -97,27 +97,18 @@ function doPlot(
         :center, :center,
         :blue,
         rotation=-34))
-    annotate!(200, 38.7e-3, text(
+    annotate!(130, 7.9e-3, text(
         "Moody Diagram", "TamilMN-Bold",
-        fontSize + 8,
+        fontSize + 5,
         :center, :left,
         :black))
-    # annotate!(275, 37.3e-3, text(
-    #     "Sea level air-water vapor psychrometrics", "TamilMN-Bold",
-    #     fontSize - 2,
-    #     :center, :left,
-    #     :black))
-    annotate!(200, 36.6e-3, text(
-        "https://github.com/aumpierre-unb/InternalFuidFlow.jl", "TamilMN-Bold",
-        fontSize - 2,
+    annotate!(130, 6.6e-3, text(
+        "https://github.com/aumpierre-unb/InternalFluidFlow.jl", "TamilMN-Bold",
+        fontSize - 3,
         :center, :left,
         :black))
-    path = Base.find_package("InternalFuidFlow")
-    file = string(path[1:length(path)-length("src/InternalFuidFlow.jl")], "\\julia-logo-color.png")
-    img = load(file)
-    plot!([200, 209], [6e-3, 9e-3],
-        reverse(img, dims=1),
-        yflip=false,
-        aspect_ratio=:none)
-
+    path = Base.find_package("InternalFluidFlow")
+    file = string(path[1:length(path)-length("src/InternalFluidFlow.jl")], "\\julia-logo-color.png")
+    plot!(inset=bbox(0.12, 0.65, 0.11, 0.11))
+    plot!(load(file), subplot=2, axis=false, grid=false)
 end
