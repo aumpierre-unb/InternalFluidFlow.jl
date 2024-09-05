@@ -1,7 +1,8 @@
 ### TODO
 
-### InternalFluidFlow 1.1.5-alpha (2024-07-16)
+### InternalFluidFlow 1.1.5-alpha (2024-09-05)
 * Minor changes in docstrings
+* Minor changes on Moody diagram plot.
 
 ### InternalFluidFlow 1.1.4 (2024-07-15)
 * Manifest.toml upgraded
@@ -55,8 +56,8 @@
   (please, check it out at Julia's help)
 * Parameters' types declared as Number
 * Default values for density and viscosity
-  set to rho = 0.997 g/cc and
-  mu = 0.91 g/cm/s (water @ 25 °C)
+  set to ρ = 0.997 g/cc and
+  μ = 0.91 g/cm/s (water @ 25 °C)
 * Default value for gravitational acceleration
   set to g = 981 cm/s/s
 * Major changes on docstrings and on README.md

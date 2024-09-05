@@ -10,14 +10,15 @@ Maintainer's repository: `https://github.com/aumpierre-unb/InternalFluidFlow.jl`
 
 Citation (all versions): `DOI 10.5281/zenodo.7019888`
 
-See also: `Re2f`, `f2Re`, `h2fRe`.
+See also: `Re2f`, `f2Re`, `h2fRe` and `doPlot`.
 """
 module InternalFluidFlow
 
 using Plots
+using Images
 using Test
 
-export Re2f, f2Re, h2fRe
+export Re2f, f2Re, h2fRe, doPlot
 
 include("newtonraphson.jl")
 include("laminar.jl")
@@ -32,6 +33,6 @@ include("hvthk2fRe.jl")
 include("hQeps2fRe.jl")
 include("hQthk2fRe.jl")
 include("h2fRe.jl")
-include("figure.jl")
+include("doPlot.jl")
 
 end

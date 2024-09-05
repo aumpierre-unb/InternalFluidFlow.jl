@@ -1,5 +1,3 @@
-# using Plots
-
 @doc raw"""
 `laminar` produces the representation of the
 relation of Reynolds number and the Darcy friction factor

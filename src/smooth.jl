@@ -1,6 +1,3 @@
-# using Plots
-# include("newtonraphson.jl")
-
 @doc raw"""
 `smooth` produces the representation of the
 relation of Reynolds number and the Darcy friction factor

@@ -1,16 +1,26 @@
-# using Plots
-# include("laminar.jl")
-# include("smooth.jl")
-# include("rough.jl")
-
 @doc raw"""
-`figure` produces a schematic Moody diagram with
-a representation of the solution computed from parameters.
+`doPlot` produces a schematic Moody diagram.
 
-`figure` is an internal function of
+`doPlot` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
+
+See also: `Re2f`, `f2Re` and `h2fRe`.
+
+Examples
+==========
+Compute the Reynolds number Re given
+the Darcy friction factor f = 0.028 and
+the pipe's relative roughness ε = 0.001.
+In this case, both laminar and turbulent
+solutions are possible:
+```
+f2Re(2.8e-2, ε=1e-3)
+```
+
 """
-function figure(eps)
+function doPlot(
+    ε::Number=0
+)
     plot(xlabel="Reynolds Number",
         ylabel="Darcy Friction Factor",
         xlims=(1e2, 1e8),
@@ -33,7 +43,7 @@ function figure(eps)
         :center, :center,
         :black,
         rotation=-73))
-    if eps != 1e-5
+    if ε != 1e-5
         turb(1e-5)
     end
     annotate!(0.92e8, 0.77e-2, text(
@@ -41,7 +51,7 @@ function figure(eps)
         fontSize,
         :center, :right,
         :black))
-    if eps != 1e-4
+    if ε != 1e-4
         turb(1e-4)
     end
     annotate!(0.92e8, 1.3e-2, text(
@@ -49,7 +59,7 @@ function figure(eps)
         fontSize,
         :center, :right,
         :black))
-    if eps != 1e-3
+    if ε != 1e-3
         turb(1e-3)
     end
     annotate!(0.92e8, 2.15e-2, text(
@@ -57,7 +67,7 @@ function figure(eps)
         fontSize,
         :center, :right,
         :black))
-    if eps != 1e-2
+    if ε != 1e-2
         turb(1e-2)
     end
     annotate!(0.92e8, 4.1e-2, text(
@@ -65,7 +75,7 @@ function figure(eps)
         fontSize,
         :center, :right,
         :black))
-    if eps != 5e-2
+    if ε != 5e-2
         turb(5e-2)
     end
     annotate!(0.92e8, 7.85e-2, text(
@@ -87,9 +97,27 @@ function figure(eps)
         :center, :center,
         :blue,
         rotation=-34))
-    annotate!(1.15e2, 6.6e-3, text(
-        "https://github.com/aumpierre-unb/InternalFluidFlow.jl",
+    annotate!(200, 38.7e-3, text(
+        "Moody Diagram", "TamilMN-Bold",
+        fontSize + 8,
+        :center, :left,
+        :black))
+    # annotate!(275, 37.3e-3, text(
+    #     "Sea level air-water vapor psychrometrics", "TamilMN-Bold",
+    #     fontSize - 2,
+    #     :center, :left,
+    #     :black))
+    annotate!(200, 36.6e-3, text(
+        "https://github.com/aumpierre-unb/InternalFuidFlow.jl", "TamilMN-Bold",
         fontSize - 2,
         :center, :left,
         :black))
+    path = Base.find_package("InternalFuidFlow")
+    file = string(path[1:length(path)-length("src/InternalFuidFlow.jl")], "\\julia-logo-color.png")
+    img = load(file)
+    plot!([200, 209], [6e-3, 9e-3],
+        reverse(img, dims=1),
+        yflip=false,
+        aspect_ratio=:none)
+
 end

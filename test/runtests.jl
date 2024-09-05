@@ -7,6 +7,6 @@ using Plots
         InternalFluidFlow.Re2f(1e3) - 64 / 1e3
     ) < 1e-5
     @test abs(
-        InternalFluidFlow.Re2f(1e3, eps=1e-3, fig=true) - 64 / 1e3
+        InternalFluidFlow.Re2f(1e3, ε=1e-3, fig=true) - 64 / 1e3
     ) < 1e-5
 end

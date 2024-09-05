@@ -1,30 +1,26 @@
-# using Plots
-# include("Re2f.jl")
-# include("figure.jl")
-
 @doc raw"""
-`hveps2fRe(h,v,L,eps,rho, mu,g,fig)`
+`hveps2fRe(h,v,L,ε,ρ, μ,g,fig)`
 
 `hveps2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h,
 the flow speed v,
 the pipe's length L,
-the pipe's relative roughness eps,
-the fluid's density rho,
-the fluid's dynamic viscosity mu, and
+the pipe's relative roughness ε,
+the fluid's density ρ,
+the fluid's dynamic viscosity μ, and
 the gravitational accelaration g.
 
 By default, pipe is assumed to be 1 m long,
 L = 100 (in cm).
 
 By default, pipe is assumed to be smooth,
-eps = 0. Relative roughness eps is reset to eps = 0.05,
-if eps > 0.05.
+ε = 0. Relative roughness ε is reset to ε = 0.05,
+if ε > 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
-rho = 0.997 (in g/cc) and
-mu = 0.0091 (in P),
+ρ = 0.997 (in g/cc) and
+μ = 0.0091 (in P),
 and gravitational acceleration is assumed to be
 g = 981 (in cm/s/s).
 Please, notice that these default values are given in the cgs unit system and,
@@ -37,14 +33,23 @@ of the solution.
 `hveps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
-function hveps2fRe(h, v, L, eps, rho, mu, g, fig)
-    if eps > 5e-2
-        eps = 5e-2
+function hveps2fRe(
+    h::Number,
+    v::Number,
+    L::Number,
+    ε::Number,
+    ρ::Number,
+    μ::Number,
+    g::Number,
+    fig::Bool
+)
+    if ε > 5e-2
+        ε = 5e-2
     end
     Re::Vector{Float64} = []
     f::Vector{Float64} = []
-    M = 2 * g * mu * h / v^3 / rho / L
-    foo(f) = 1 / f^(1 / 2) + 2 * log10(eps / 3.7 + 2.51 / (f / M) / f^(1 / 2))
+    M = 2 * g * μ * h / v^3 / ρ / L
+    foo(f) = 1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / (f / M) / f^(1 / 2))
     f_ = newtonraphson(foo, 1e-2, 1e-4)
     Re_ = f_ / M
     if Re_ > 2.3e3
@@ -57,9 +62,9 @@ function hveps2fRe(h, v, L, eps, rho, mu, g, fig)
         f = [64 / Re_; f]
     end
     if fig
-        figure(eps)
-        if !(Re < 2.3e3) && eps != 0
-            turb(eps)
+        doPlot(ε)
+        if !(Re < 2.3e3) && ε != 0
+            turb(ε)
         end
         plot!([Re], [f],
             seriestype=:scatter,
