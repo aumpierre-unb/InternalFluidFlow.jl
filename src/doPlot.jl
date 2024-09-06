@@ -1,4 +1,8 @@
 @doc raw"""
+```
+doPlot()
+```
+
 `doPlot` produces a schematic Moody diagram.
 
 `doPlot` is a main function of
@@ -8,13 +12,9 @@ See also: `Re2f`, `f2Re` and `h2fRe`.
 
 Examples
 ==========
-Compute the Reynolds number Re given
-the Darcy friction factor f = 0.028 and
-the pipe's relative roughness ε = 0.001.
-In this case, both laminar and turbulent
-solutions are possible:
+Build a schematic Moody diagram:
 ```
-f2Re(2.8e-2, ε=1e-3)
+doPlot()
 ```
 
 """

@@ -1,5 +1,6 @@
 @doc raw"""
-`h2fRe( # Reynolds number Re and the Darcy friction factor
+```
+h2fRe( # Reynolds number Re and the Darcy friction factor
     h::Number; # head loss in cm
     L::Number=100, # pipe's length in cm, default is 100 cm
     ε::Number=NaN, # pipe's relative roughness
@@ -11,7 +12,8 @@
     μ::Number=0.0091, # fluid's dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
     fig::Bool=false # default is hide plot
-    )`
+    )
+```
 
 `h2fRe` computes the Reynolds number Re and
 the Darcy friction factor f given

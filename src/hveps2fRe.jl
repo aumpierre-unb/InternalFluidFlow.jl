@@ -1,5 +1,7 @@
 @doc raw"""
-`hveps2fRe(h,v,L,ε,ρ, μ,g,fig)`
+```
+hveps2fRe(h,v,L,ε,ρ, μ,g,fig)
+```
 
 `hveps2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given

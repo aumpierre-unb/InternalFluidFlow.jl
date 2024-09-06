@@ -56,6 +56,7 @@ InternalFluidFlow provides the following functions:
 - **Re2f**
 - **f2Re**
 - **h2fRe**
+- **doPlot**
 
 ### **Re2f**
 
@@ -201,6 +202,33 @@ h2fRe( # Reynolds number Re and the Darcy friction factor
     v=1.1e2, # flow speed in cm/s
     L=2.5e3, # pipe's length in cm
     k=0 # pipe's roughness in cm
+    )
+```
+
+### **doPlot**
+
+doPlot produces a schematic Moody diagram..
+
+**Syntax:**
+
+```julia
+doPlot()
+```
+
+**Examples:**
+
+Build a schematic Moody diagram:
+
+```julia
+doPlot()
+```
+
+Compute the Darcy friction factor f given the Reynolds number Re = 120,000 for a smooth pipe and plot and show results on a schematic Moody diagram:
+
+```julia
+Re2f( # Darcy friction factor
+    120e3, # Reynolds number
+    fig=true # show plot
     )
 ```
 

@@ -1,5 +1,7 @@
 @doc raw"""
-`hQthk2fRe(h,Q,L,k,ρ,μ,g,fig)`
+```
+hQthk2fRe(h,Q,L,k,ρ,μ,g,fig)
+```
 
 `hQthk2fRe` computes the Reynolds number Re and
 the Darcy friction factor f, given
