@@ -175,7 +175,7 @@ Compute the Reynolds number Re and Darcy friction factor f given the head loss h
 h2fRe( # Reynolds number Re and Darcy friction factor f
     40, # head loss in cm
     D=10, # pipe hyraulic diameter in cm
-    L=2.5e3, # pipe length in cm
+    L=25e2, # pipe length in cm
     ε=2.7e-3 # pipe relative roughness
     )
 ```
@@ -184,9 +184,9 @@ Compute the Reynolds number Re and Darcy friction factor f given the head loss p
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-    1.6, # head loss in cm
+    1.6*25e2, # head loss in cm
     Q=8.6e3, # volumetric flow rate in cc/s
-    L=2.5e3, # pipe length in cm
+    L=25e2, # pipe length in cm
     ε=0, # relative roughness
     ρ=0.989, # fluid dynamic density in g/cc
     μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
@@ -200,7 +200,7 @@ Compute the Reynolds number Re and Darcy friction factor f, given the head loss 
 h2fRe( # Reynolds number Re and Darcy friction factor f
     40, # head loss in cm
     v=1.1e2, # flow speed in cm/s
-    L=2.5e3, # pipe length in cm
+    L=25e2, # pipe length in cm
     k=0 # pipe roughness in cm
     )
 ```

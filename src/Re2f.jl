@@ -31,9 +31,9 @@ the Reynolds number Re = 120,000 and
 the relative roughness ε = 0.001:
 ```
 julia> Re2f( # Darcy friction factor
-           120e3, # Reynolds number
-           ε=1e-3 # relative roughness
-           )
+       120e3, # Reynolds number
+       ε=1e-3 # relative roughness
+       )
 0.021815462826391997
 ```
 
@@ -43,9 +43,9 @@ for a smooth pipe and plot and
 show results on a schematic Moody diagram:
 ```
 julia> Re2f( # Darcy friction factor
-           120e3, # Reynolds number
-           fig=true # show plot
-           )
+       120e3, # Reynolds number
+       fig=true # show plot
+       )
 0.017323704233087215
 ```
 """

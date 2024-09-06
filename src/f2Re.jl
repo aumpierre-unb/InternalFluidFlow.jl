@@ -40,9 +40,9 @@ In this case, both laminar and turbulent
 solutions are possible:
 ```
 julia> f2Re( # Reynolds number
-           2.8e-2, # Darcy friction factor
-           ε=1e-3 # relative roughness
-           )
+       2.8e-2, # Darcy friction factor
+       ε=1e-3 # relative roughness
+       )
 2-element Vector{Float64}:
   2285.714285714286
  19800.131484625363
@@ -54,9 +54,9 @@ for a smooth pipe and plot and
 show results on a schematic Moody diagram:
 ```
 julia> f2Re( # Reynolds number
-           2.8e-2, # Darcy friction factor
-           fig=true # show plot
-           )
+       2.8e-2, # Darcy friction factor
+       fig=true # show plot
+       )
 2-element Vector{Float64}:
   2285.714285714286
  14593.727381591969
