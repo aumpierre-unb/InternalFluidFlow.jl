@@ -47,7 +47,7 @@ the Darcy friction factor f = 0.028
 for a smooth pipe and plot and
 show results on a schematic Moody diagram:
 ```
-Re = f2Re(2.8e-2, fig=true)
+f2Re(2.8e-2, fig=true)
 ```
 """
 function f2Re(

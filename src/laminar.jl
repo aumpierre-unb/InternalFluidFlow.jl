@@ -1,4 +1,8 @@
 @doc raw"""
+```
+laminar()
+```
+
 `laminar` produces the representation of the
 relation of Reynolds number and the Darcy friction factor
 by the Hagen-Poiseuille equation for Re < 2,300 given

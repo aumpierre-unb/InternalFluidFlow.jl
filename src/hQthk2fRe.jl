@@ -1,6 +1,15 @@
 @doc raw"""
 ```
-hQthk2fRe(h,Q,L,k,ρ,μ,g,fig)
+hQthk2fRe( # Reynolds number Re and Darcy friction factor f
+    h::Number; # head loss in cm
+    Q::Number=NaN, # volumetric flow rate in cc/s
+    L::Number=100, # pipe's length in cm, default is 100 cm
+    k::Number=NaN, # pipe's roughness in cm
+    ρ::Number=0.997, # fluid's dynamic density in g/cc
+    μ::Number=0.0091, # fluid's dynamic viscosity in g/cm/s
+    g::Number=981, # gravitational accelaration in cm/s/s
+    fig::Bool=false # default is hide plot
+    )
 ```
 
 `hQthk2fRe` computes the Reynolds number Re and

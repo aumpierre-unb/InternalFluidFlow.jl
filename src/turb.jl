@@ -1,4 +1,10 @@
 @doc raw"""
+```
+turb(
+    ε::Number
+)
+```
+
 `turb` produces the representation of the
 relation of Reynolds number and the Darcy friction factor
 by the Colebrook-White equation for Re > 2,300 given

@@ -1,4 +1,8 @@
 @doc raw"""
+```
+rough()
+```
+
 `rough` produces the representation of the
 relation of Reynolds number and the Darcy friction factor
 for a fully rough regime.

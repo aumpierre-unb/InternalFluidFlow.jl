@@ -1,6 +1,10 @@
 @doc raw"""
 ```
-x=newtonraphson(f,x,tol)
+newtonraphson(
+    f::Function,
+    x::number,
+    ξ::Number
+    )
 ```
 
 `newtonraphson` computes the root of
@@ -14,9 +18,9 @@ the `InternalFluidFlow` toolbox for Julia.
 function newtonraphson(
     f::Function,
     x::Number,
-    tol::Number
+    ξ::Number
 )
-    while abs(f(x)) > tol
+    while abs(f(x)) > ξ
         a = (f(x + 1e-7) - f(x)) / 1e-7
         x = x - f(x) / a
     end

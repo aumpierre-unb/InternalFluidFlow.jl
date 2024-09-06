@@ -1,6 +1,6 @@
 @doc raw"""
 ```
-h2fRe( # Reynolds number Re and the Darcy friction factor
+h2fRe( # Reynolds number Re and Darcy friction factor f
     h::Number; # head loss in cm
     L::Number=100, # pipe's length in cm, default is 100 cm
     ε::Number=NaN, # pipe's relative roughness

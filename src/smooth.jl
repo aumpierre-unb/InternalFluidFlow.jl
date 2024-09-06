@@ -1,4 +1,8 @@
 @doc raw"""
+```
+smooth()
+```
+
 `smooth` produces the representation of the
 relation of Reynolds number and the Darcy friction factor
 by the Colebrook-White equation for a smooth pipe.

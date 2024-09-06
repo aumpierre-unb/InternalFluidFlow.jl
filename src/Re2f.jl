@@ -30,7 +30,7 @@ Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000 and
 the relative roughness ε = 0.001:
 ```
-f = Re2f(120e3, ε=1e-3)
+Re2f(120e3, ε=1e-3)
 ```
 
 Compute the Darcy friction factor f given
