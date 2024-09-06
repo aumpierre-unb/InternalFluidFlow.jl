@@ -1,6 +1,7 @@
 ### TODO
 
 ### InternalFluidFlow 1.1.5-alpha (2024-09-05)
+* doPlot function available to plot schematic Moody diagram
 * Minor changes in docstrings
 * Minor changes on Moody diagram plot.
 
