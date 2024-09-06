@@ -1,5 +1,5 @@
 @doc raw"""
-```
+```julia
 doPlot()
 ```
 
