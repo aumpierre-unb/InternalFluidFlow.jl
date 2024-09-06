@@ -1,18 +1,30 @@
 @doc raw"""
-`h2fRe(h::Number;L::Number=100,ε::Number=NaN,k::Number=NaN,D::Number=NaN,v::Number=NaN,Q::Number=NaN,ρ::Number=0.997,μ::Number=0.0091,g::Number=981,fig::Bool=false)`
+`h2fRe( # Reynolds number Re and the Darcy friction factor
+    h::Number; # head loss in cm
+    L::Number=100, # pipe's length in cm, default is 100 cm
+    ε::Number=NaN, # pipe's relative roughness
+    k::Number=NaN, # pipe's roughness in cm
+    D::Number=NaN, # pipe's hydraulic diameter in cm
+    v::Number=NaN, # flow speed in cm/s
+    Q::Number=NaN, # volumetric flow rate in cc/s
+    ρ::Number=0.997, # fluid's dynamic density in g/cc
+    μ::Number=0.0091, # fluid's dynamic viscosity in g/cm/s
+    g::Number=981, # gravitational accelaration in cm/s/s
+    fig::Bool=false # default is hide plot
+    )`
 
 `h2fRe` computes the Reynolds number Re and
 the Darcy friction factor f given
-the head loss h,
-the pipe's hydraulic diameter D or
-the flow speed v or
-the volumetric flow rate Q,
-the pipe's length L (default L = 100),
-the pipe's roughness k (default k = 0) or
+the head loss h in cm,
+the pipe's hydraulic diameter D in cm or
+the flow speed v in cm/s or
+the volumetric flow rate Q in cc/s,
+the pipe's length L in cm (default L = 100 cm),
+the pipe's roughness k in cm (default k = 0 cm) or
 the pipe's relative roughness ε (default ε = 0),
-the fluid's density ρ (default ρ = 0.997),
-the fluid's dynamic viscosity μ (default μ = 0.0091), and
-the gravitational accelaration g (default g = 981).
+the fluid's density ρ in g/cc (default ρ = 0.997 g/cc),
+the fluid's dynamic viscosity μ in g/cm/s (default μ = 0.0091 g/cm/s), and
+the gravitational accelaration g incm/s/s (default g = 981 cm/s/s).
 
 By default, pipe is assumed to be smooth.
 Relative roughness is reset to ε = 0.05, if ε > 0.05.

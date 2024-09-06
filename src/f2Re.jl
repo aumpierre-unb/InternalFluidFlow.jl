@@ -1,5 +1,10 @@
 @doc raw"""
-`f2Re(f::Number;ε::Number=0,fig::Bool=false,isturb::Bool=false)`
+`f2Re( # Reynolds number
+    f::Number; # Darcy friction factor
+    ε::Number=0, # relative roughness, default is smooth pipe
+    fig::Bool=false, # default hide plot
+    isturb::Bool=false # default disregard turbulent flow
+    )`
 
 `f2Re` computes the Reynolds number Re given
 the Darcy friction factor f and

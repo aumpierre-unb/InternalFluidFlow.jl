@@ -1,5 +1,9 @@
 @doc raw"""
-`Re2f(Re::Number;ε::Number=0,fig::Bool=false)`
+`Re2f( # Darcy friction factor
+    Re::Number; # Reynolds number
+    ε::Number=0, # relative roughness
+    fig::Bool=false # show plot
+    )`
 
 `Re2f` computes the Darcy friction f factor given
 the Reynolds number Re and
