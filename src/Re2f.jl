@@ -30,7 +30,11 @@ Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000 and
 the relative roughness ε = 0.001:
 ```
-Re2f(120e3, ε=1e-3)
+julia> Re2f( # Darcy friction factor
+           120e3, # Reynolds number
+           ε=1e-3 # relative roughness
+           )
+0.021815462826391997
 ```
 
 Compute the Darcy friction factor f given
@@ -38,7 +42,11 @@ the Reynolds number Re = 120,000
 for a smooth pipe and plot and
 show results on a schematic Moody diagram:
 ```
-Re2f(120e3, fig=true)
+julia> Re2f( # Darcy friction factor
+           120e3, # Reynolds number
+           fig=true # show plot
+           )
+0.017323704233087215
 ```
 """
 function Re2f(

@@ -14,7 +14,7 @@ Examples
 ==========
 Build a schematic Moody diagram:
 ```
-doPlot()
+julia> doPlot()
 ```
 
 """
