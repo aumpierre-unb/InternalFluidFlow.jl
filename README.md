@@ -238,6 +238,6 @@ Re2f( # Darcy friction factor
 [Psychrometrics.jl](https://github.com/aumpierre-unb/Psychrometrics.jl),
 [PonchonSavarit.jl](https://github.com/aumpierre-unb/PonchonSavarit.jl).
 
-Copyright &copy; 2022 2023 Alexandre Umpierre
+Copyright &copy; 2022 2023 2024 Alexandre Umpierre
 
 email: <aumpierre@gmail.com>
