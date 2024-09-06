@@ -1,6 +1,8 @@
 @doc raw"""
 ```
-doPlot()
+doPlot(
+    ε::Number=0
+    )
 ```
 
 `doPlot` produces a schematic Moody diagram.
