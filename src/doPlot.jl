@@ -5,7 +5,9 @@ doPlot(
     )
 ```
 
-`doPlot` produces a schematic Moody diagram.
+`doPlot` produces a schematic Moody diagram
+including the line for ε
+(default is smooth pipe, ε = 0).
 
 `doPlot` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
