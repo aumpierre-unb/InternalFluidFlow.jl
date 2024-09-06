@@ -35,7 +35,7 @@ Examples
 ==========
 Compute the Reynolds number Re given
 the Darcy friction factor f = 0.028 and
-the pipe's relative roughness ε = 0.001.
+the pipe relative roughness ε = 0.001.
 In this case, both laminar and turbulent
 solutions are possible:
 ```

@@ -3,10 +3,10 @@
 hQeps2fRe( # Reynolds number Re and Darcy friction factor f
     h::Number; # head loss in cm
     Q::Number=NaN, # volumetric flow rate in cc/s
-    L::Number=100, # pipe's length in cm, default is 100 cm
-    ε::Number=NaN, # pipe's relative roughness
-    ρ::Number=0.997, # fluid's dynamic density in g/cc
-    μ::Number=0.0091, # fluid's dynamic viscosity in g/cm/s
+    L::Number=100, # pipe length in cm, default is 100 cm
+    ε::Number=NaN, # pipe relative roughness
+    ρ::Number=0.997, # fluid dynamic density in g/cc
+    μ::Number=0.0091, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
     fig::Bool=false # default is hide plot
     )
@@ -16,10 +16,10 @@ hQeps2fRe( # Reynolds number Re and Darcy friction factor f
 the Darcy friction factor f, given
 the head loss h,
 the volumetric flow rate Q,
-the pipe's length L,
-the pipe's relative roughness ε,
-the fluid's density ρ,
-the fluid's dynamic viscosity μ, and
+the pipe length L,
+the pipe relative roughness ε,
+the fluid density ρ,
+the fluid dynamic viscosity μ, and
 the gravitational accelaration g.
 
 By default, pipe is assumed to be 1 m long,
