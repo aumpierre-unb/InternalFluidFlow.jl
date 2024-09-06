@@ -1,7 +1,7 @@
 @doc raw"""
 ```
 doPlot(
-    ε::Number=0
+    ε::Number=0 # pipe relative roughness
     )
 ```
 
