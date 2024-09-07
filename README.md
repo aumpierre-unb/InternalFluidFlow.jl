@@ -78,12 +78,12 @@ Re2f( # Darcy friction factor
 
 **Examples:**
 
-Compute the Darcy friction factor f given the Reynolds number Re = 120,000 and the relative roughness ε = 0.001:
+Compute the Darcy friction factor f given the Reynolds number Re = 120,000 and the relative roughness ε = 3e-3:
 
 ```julia
 Re2f( # Darcy friction factor
     120e3, # Reynolds number
-    ε=1e-3 # relative roughness
+    ε=3e-3 # relative roughness
     )
 ```
 
@@ -119,12 +119,12 @@ f2Re( # Reynolds number
 
 **Examples:**
 
-Compute the Reynolds number Re given the Darcy friction factor f = 0.028 and the pipe relative roughness ε = 0.001. In this case, both laminar and turbulent solutions are possible:
+Compute the Reynolds number Re given the Darcy friction factor f = 0.028 and the pipe relative roughness ε = 2e-3. In this case, both laminar and turbulent solutions are possible:
 
 ```julia
 f2Re( # Reynolds number
     2.8e-2, # Darcy friction factor
-    ε=1e-3 # relative roughness
+    ε=2e-3 # relative roughness
     )
 ```
 
@@ -169,36 +169,36 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
 
 **Examples:**
 
-Compute the Reynolds number Re and Darcy friction factor f given the head loss h = 40 cm, the pipe hydraulic diameter D = 10 cm, length L = 25 m and relative roughness ε = 0.0027 for water flow:
+Compute the Reynolds number Re and the Darcy friction factor f given the head loss h = 40 cm, the pipe hydraulic diameter D = 4 in, length L = 25 m and relative roughness ε = 0.0027 for water flow:
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
     40, # head loss in cm
-    D=10, # pipe hyraulic diameter in cm
+    D=4*2.54, # pipe hyraulic diameter in cm
     L=25e2, # pipe length in cm
-    ε=2.7e-3 # pipe relative roughness
+    ε=0.0027 # pipe relative roughness
     )
 ```
 
-Compute the Reynolds number Re and Darcy friction factor f given the head loss per meter h/L = 1.6 cm/m, the volumetric flow rate Q = 8.6 L/s, the pipe length L = 25 m, the fluid density ρ = 0.989 g/cc and dynamic viscosity μ = 0.89 cP for a smooth pipe and show results on a schematic Moody diagram:
+Compute the Reynolds number Re and the Darcy friction factor f given the head loss per meter h/L = 1.6 cm/m, the volumetric flow rate Q = 8.6 L/s, the pipe length L = 25 m, the fluid density ρ = 0.989 g/cc and dynamic viscosity μ = 0.89 cP for a smooth pipe and show results on a schematic Moody diagram:
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-    1.6*25e2, # head loss in cm
+    1.6*25, # head loss in cm
     Q=8.6e3, # volumetric flow rate in cc/s
     L=25e2, # pipe length in cm
-    ε=0, # relative roughness
+    ε=0, # pipe relative roughness
     ρ=0.989, # fluid dynamic density in g/cc
     μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
     fig=true # show plot
     )
 ```
 
-Compute the Reynolds number Re and Darcy friction factor f, given the head loss h = 0.40 m, the flow speed v = 1.1 m/s, the pipe length L = 25 m for water flow in a smooth pipe:
+Compute the Reynolds number Re and the Darcy friction factor f, given the head loss h = 0.40 m, the flow speed v = 1.1 m/s, the pipe length L = 25 m for water flow in a smooth pipe:
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-    40, # head loss in cm
+    0.40e2, # head loss in cm
     v=1.1e2, # flow speed in cm/s
     L=25e2, # pipe length in cm
     k=0 # pipe roughness in cm

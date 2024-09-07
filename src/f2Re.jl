@@ -35,17 +35,15 @@ Examples
 ==========
 Compute the Reynolds number Re given
 the Darcy friction factor f = 0.028 and
-the pipe relative roughness ε = 0.001.
+the pipe relative roughness ε = 2e-3.
 In this case, both laminar and turbulent
 solutions are possible:
 ```
 julia> f2Re( # Reynolds number
        2.8e-2, # Darcy friction factor
-       ε=1e-3 # relative roughness
+       ε=2e-3 # relative roughness
        )
-2-element Vector{Float64}:
-  2285.714285714286
- 19800.131484625363
+(InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.002), InternalFluidFlow.Moody(30781.694891269137, 0.028, 0.002))
 ```
 
 Compute the Reynolds number Re given
@@ -57,9 +55,7 @@ julia> f2Re( # Reynolds number
        2.8e-2, # Darcy friction factor
        fig=true # show plot
        )
-2-element Vector{Float64}:
-  2285.714285714286
- 14593.727381591969
+(InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.0), InternalFluidFlow.Moody(14593.727381591969, 0.028, 0.0))
 ```
 """
 function f2Re(

@@ -28,13 +28,13 @@ Examples
 ==========
 Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000 and
-the relative roughness ε = 0.001:
+the relative roughness ε = 3e-3:
 ```
 julia> Re2f( # Darcy friction factor
        120e3, # Reynolds number
-       ε=1e-3 # relative roughness
+       ε=3e-3 # relative roughness
        )
-0.021815462826391997
+InternalFluidFlow.Moody(120000.0, 0.02726577561075442, 0.003)
 ```
 
 Compute the Darcy friction factor f given
@@ -46,7 +46,7 @@ julia> Re2f( # Darcy friction factor
        120e3, # Reynolds number
        fig=true # show plot
        )
-0.017323704233087215
+InternalFluidFlow.Moody(120000.0, 0.017323704233087215, 0.0)
 ```
 """
 function Re2f(
