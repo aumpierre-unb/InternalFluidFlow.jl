@@ -73,6 +73,9 @@ function f2Re(
         if Re_ > 2.3e3
             Re = push!(Re, Re_)
         end
+        ftoolow = false
+    else
+        ftoolow = true
     end
     Re_ = 64 / f
     if Re_ < 4e3
@@ -92,7 +95,7 @@ function f2Re(
             color=:red,
             linestyle=:dash))
     end
-    if isturb
+    if isturb && !ftoolow
         Moody(Re[end], f, ε)
     else
         (Moody(Re[1], f, ε), Moody(Re[end], f, ε))

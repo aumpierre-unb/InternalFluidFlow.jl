@@ -66,13 +66,11 @@ function hvthk2fRe(
     )
     f_ = newtonraphson(foo, 1e-2, 1e-4)
     Re_ = f_ / M
-    # isturb = false
     if Re_ > 2.3e3
         Re = push!(Re, Re_)
         f = push!(f, f_)
         D = Re_ * μ / ρ / v
         ε = push!(ε, k / D)
-        # isturb = true
     end
     Re_ = (64 / M)^(1 / 2)
     if Re_ < 2.3e3
@@ -85,26 +83,27 @@ function hvthk2fRe(
         fontSize = 8
         doPlot(ε[end])
         if !(Re[end] < 2.3e3) && ε != 0
-            turb(ε[end], lineColor=:darkblue)
-            annotate!(
-                0.92e8, 0.95 * (
-                    2 * log10(3.7 / ε[end])
-                )^-2, text(
-                    string(round(ε[end], sigdigits=3)), fontSize,
-                    :center, :right,
-                    :darkblue)
-            )
+            turb(ε[end], lineColor=:black)
+            # annotate!(
+            #     0.92e8, 0.95 * (
+            #         2 * log10(3.7 / ε[end])
+            #     )^-2, text(
+            #         string(round(ε[end], sigdigits=3)), fontSize,
+            #         :center, :right,
+            #         :darkblue)
+            # )
         end
-        plot!([Re], [f],
+        plot!(Re, f,
             seriestype=:scatter,
             markerstrokecolor=:red,
             color=:red)
-        display(plot!(
-            [6e-3; 1e-1] / M,
-            [6e-3; 1e-1],
+        plot!(
+            [6e-3, 1e-1] ./ M,
+            [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
-            linestyle=:dash))
+            linestyle=:dash)
+        display(plot!())
     end
     Re, f, ε
 end

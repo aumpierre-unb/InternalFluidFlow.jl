@@ -136,10 +136,18 @@ function h2fRe(
         Moody(Re, f, ε)
     elseif a == [0, 1, 0] && b == [1, 0]
         Re, f, ε = hveps2fRe(h, v, L, ε, ρ, μ, g, fig)
-        (Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end]))
+        if Re[1] == Re[end]
+            Moody(Re[1], f[1], ε[1])
+        else
+            Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end])
+        end
     elseif a == [0, 1, 0] && b == [0, 1]
         Re, f, ε = hvthk2fRe(h, v, L, k, ρ, μ, g, fig)
-        (Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end]))
+        if Re[1] == Re[end]
+            Moody(Re[1], f[1], ε[1])
+        else
+            Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end])
+        end
     elseif a == [0, 0, 1] && b == [1, 0]
         Re, f, ε = hQeps2fRe(h, Q, L, ε, ρ, μ, g, fig)
         Moody(Re, f, ε)

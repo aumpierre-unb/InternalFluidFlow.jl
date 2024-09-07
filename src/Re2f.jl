@@ -72,7 +72,7 @@ function Re2f(
             seriestype=:scatter,
             markerstrokecolor=:red,
             color=:red)
-        display(plot!([Re; Re], [6e-3; 1e-1],
+        display(plot!([Re; Re], [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
             linestyle=:dash))

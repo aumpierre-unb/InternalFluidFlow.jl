@@ -71,23 +71,23 @@ function hDeps2fRe(
         fontSize = 8
         doPlot(ε)
         if !(Re < 2.3e3) && ε != 0
-            turb(ε, lineColor=:darkblue)
-            annotate!(
-                0.92e8, 0.95 * (
-                    2 * log10(3.7 / ε)
-                )^-2, text(
-                    string(round(ε, sigdigits=3)), fontSize,
-                    :center, :right,
-                    :darkblue)
-            )
+            turb(ε, lineColor=:black)
+            # annotate!(
+            #     0.92e8, 0.95 * (
+            #         2 * log10(3.7 / ε)
+            #     )^-2, text(
+            #         string(round(ε, sigdigits=3)), fontSize,
+            #         :center, :right,
+            #         :darkblue)
+            # )
         end
         plot!([Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
             color=:red)
         display(plot!(
-            (K ./ [6e-3; 1e-1]) .^ (1 / 2),
-            [6e-3; 1e-1],
+            (K ./ [6e-3, 1e-1]) .^ (1 / 2),
+            [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
             linestyle=:dash))
