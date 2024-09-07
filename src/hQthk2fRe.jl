@@ -59,17 +59,16 @@ function hQthk2fRe(
     end
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (μ / ρ)^5 / L
     foo(f) = 1 / f^(1 / 2) + 2 * log10(
-        k / (ρ * Q / (pi / 4) / μ / ((P / f)^(1 / 5)))
-        /
-        3.7 + 2.51 / (P / f)^(1 / 5) / f^(1 / 2))
+        k / (ρ * Q / (pi / 4) / μ / ((P / f)^(1 / 5))) / 3.7 + 2.51 / (P / f)^(1 / 5) / f^(1 / 2)
+        )
     f = newtonraphson(foo, 1e-2, 1e-4)
     Re = (P / f)^(1 / 5)
     if Re > 2.3e3
-        islam = false
+        # islam = false
     else
         Re = (P / 64)^(1 / 4)
         f = 64 / Re
-        islam = true
+        # islam = true
     end
     D = ρ * Q / Re / μ / (pi / 4)
     ε = k / D
@@ -89,5 +88,5 @@ function hQthk2fRe(
             color=:red,
             linestyle=:dash))
     end
-    Re, f
+    Re, f, ε
 end

@@ -83,5 +83,5 @@ function hDeps2fRe(
             color=:red,
             linestyle=:dash))
     end
-    Re, f
+    Re, f, ε
 end

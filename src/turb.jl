@@ -19,7 +19,7 @@ function turb(
     N = 50
     u = log10(2.3e3):(log10(1e8)-log10(2.3e3))/(N-1):log10(1e8)
     Re = 10 .^ u
-    Re2f_(Re, z) = Re2f(Re, ε=z)
+    Re2f_(Re, z) = Re2f(Re, ε=z).f
     f = Re2f_.(Re, ε)
     plot!(Re, f,
         seriestype=:line,

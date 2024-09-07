@@ -20,6 +20,12 @@ using Test
 
 export Re2f, f2Re, h2fRe, doPlot
 
+struct Moody
+    Re::Float64
+    f::Float64
+    ε::Float64
+end
+
 include("newtonraphson.jl")
 include("laminar.jl")
 include("turb.jl")

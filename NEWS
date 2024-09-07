@@ -1,9 +1,11 @@
 ### TODO
 
-### InternalFluidFlow 1.1.5-alpha (2024-09-05)
+### InternalFluidFlow 1.2.0-alpha (2024-09-07)
+* All results are presented now as a structure Moody(Re, f, ε) 
 * doPlot function available to plot schematic Moody diagram
 * Minor changes in docstrings
 * Minor changes on Moody diagram plot.
+* Tests extended
 
 ### InternalFluidFlow 1.1.4 (2024-07-15)
 * Manifest.toml upgraded

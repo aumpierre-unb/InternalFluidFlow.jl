@@ -72,36 +72,33 @@ function f2Re(
         ε = 5e-2
     end
     Re::Vector{Float64} = []
-    f_::Vector{Float64} = []
     if f > (2 * log10(3.7 / ε))^-2
         Re_ = 2.51 / (10^(1 / f^(1 / 2) / -2) - ε / 3.7) / f^(1 / 2)
         if Re_ > 2.3e3
-            Re = [Re_; Re]
-            f_ = [f; f_]
+            Re = push!(Re, Re_)
         end
     end
     Re_ = 64 / f
     if Re_ < 4e3
-        Re = [Re_; Re]
-        f_ = [f; f_]
+        Re = pushfirst!(Re, Re_)
     end
-    if !isempty(f_) & fig
+    if !isempty(Re) & fig
         doPlot(ε)
         if !(Re[end] < 2.3e3) && ε != 0
             turb(ε)
         end
-        plot!([Re], [f_],
+        plot!([Re], [f, f],
             seriestype=:scatter,
             markerstrokecolor=:red,
             color=:red)
-        display(plot!([1e2; 1e8], [f; f],
+        display(plot!([1e2, 1e8], [f, f],
             seriestype=:line,
             color=:red,
             linestyle=:dash))
     end
     if isturb
-        Re[end]
+        Moody(Re[end], f, ε)
     else
-        Re
+        (Moody(Re[1], f, ε), Moody(Re[end], f, ε))
     end
 end

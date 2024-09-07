@@ -63,18 +63,20 @@ function hveps2fRe(
     foo(f) = 1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / (f / M) / f^(1 / 2))
     f_ = newtonraphson(foo, 1e-2, 1e-4)
     Re_ = f_ / M
+    # isturb = false
     if Re_ > 2.3e3
-        Re = [Re_; Re]
-        f = [f_; f]
+        Re = push!(Re, Re_)
+        f = push!(f, f_)
+        # isturb = true
     end
     Re_ = (64 / M)^(1 / 2)
     if Re_ < 2.3e3
-        Re = [Re_; Re]
-        f = [64 / Re_; f]
+        Re = pushfirst!(Re, Re_)
+        f = pushfirst!(f, 64 / Re_)
     end
     if fig
         doPlot(ε)
-        if !(Re < 2.3e3) && ε != 0
+        if !(Re[end] < 2.3e3) && ε != 0
             turb(ε)
         end
         plot!([Re], [f],
@@ -88,5 +90,5 @@ function hveps2fRe(
             color=:red,
             linestyle=:dash))
     end
-    Re, f
+    Re, f, ε
 end

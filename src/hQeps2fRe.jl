@@ -62,11 +62,11 @@ function hQeps2fRe(
     f = newtonraphson(foo, 1e-2, 1e-4)
     Re = (P / f)^(1 / 5)
     if Re > 2.3e3
-        islam = false
+        # islam = false
     else
         Re = (P / 64)^(1 / 4)
         f = 64 / Re
-        islam = true
+        # islam = true
     end
     if fig
         doPlot(ε)
@@ -84,5 +84,5 @@ function hQeps2fRe(
             color=:red,
             linestyle=:dash))
     end
-    Re, f
+    Re, f, ε
 end

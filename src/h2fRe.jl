@@ -130,16 +130,22 @@ function h2fRe(
             be given alone.""")
     end
     if a == [1, 0, 0] && b == [1, 0]
-        Re, f = hDeps2fRe(h, D, L, ε, ρ, μ, g, fig)
+        Re, f, ε = hDeps2fRe(h, D, L, ε, ρ, μ, g, fig)
+        Moody(Re, f, ε)
     elseif a == [1, 0, 0] && b == [0, 1]
-        Re, f = hDeps2fRe(h, D, L, k / D, ρ, μ, g, fig)
+        Re, f, ε = hDeps2fRe(h, D, L, k / D, ρ, μ, g, fig)
+        Moody(Re, f, ε)
     elseif a == [0, 1, 0] && b == [1, 0]
-        Re, f = hveps2fRe(h, v, L, ε, ρ, μ, g, fig)
+        Re, f, ε = hveps2fRe(h, v, L, ε, ρ, μ, g, fig)
+        (Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end]))
     elseif a == [0, 1, 0] && b == [0, 1]
-        Re, f = hvthk2fRe(h, v, L, k, ρ, μ, g, fig)
+        Re, f, ε = hvthk2fRe(h, v, L, k, ρ, μ, g, fig)
+        (Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end]))
     elseif a == [0, 0, 1] && b == [1, 0]
-        Re, f = hQeps2fRe(h, Q, L, ε, ρ, μ, g, fig)
+        Re, f, ε = hQeps2fRe(h, Q, L, ε, ρ, μ, g, fig)
+        Moody(Re, f, ε)
     elseif a == [0, 0, 1] && b == [0, 1]
-        Re, f = hQthk2fRe(h, Q, L, k, ρ, μ, g, fig)
+        Re, f, ε = hQthk2fRe(h, Q, L, k, ρ, μ, g, fig)
+        Moody(Re, f, ε)
     end
 end
