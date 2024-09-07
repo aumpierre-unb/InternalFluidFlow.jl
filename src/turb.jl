@@ -14,7 +14,8 @@ the relative roughness.
 the `InternalFluidFlow` toolbox for Julia.
 """
 function turb(
-    ε::Number
+    ε::Number;
+    lineColor::Symbol=:black
 )
     N = 50
     u = log10(2.3e3):(log10(1e8)-log10(2.3e3))/(N-1):log10(1e8)
@@ -23,5 +24,5 @@ function turb(
     f = Re2f_.(Re, ε)
     plot!(Re, f,
         seriestype=:line,
-        color=:black)
+        color=lineColor)
 end

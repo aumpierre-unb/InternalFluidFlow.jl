@@ -38,107 +38,53 @@ function doPlot(
         gridalpha=0.4,
         minorgrid=true,
         minorgridalpha=0.12,
-        yticks=([6e-3, 1e-2, 2e-2, 3e-2, 5e-2, 1e-1],
-            ["0.006", "0.01", "0.02", "0.03", "0.05", "0.1"]))
+        yticks=([6e-3, 1e-2, 15e-2, 2e-2, 3e-2, 5e-2, 1e-1],
+            ["0.006", "0.01", "0.015", "0.02", "0.03", "0.05", "0.1"]))
     fontSize = 8
     laminar()
     annotate!(1.2e3, 3.8e-2, text(
-        "Laminar flow",
-        fontSize,
-        :center,
-        :center,
+        "Laminar flow", fontSize,
+        :center, :center,
         :black,
         rotation=-73)
     )
-    if ε != 1e-5
-        turb(1e-5)
+    for ϵ in ("1e-5", "3e-5", "1e-4", "3e-4", "1e-3", "3e-3", "1e-2", "3e-2", "5e-2")
+        if ε != parse(Float64, ϵ)
+            turb(parse(Float64, ϵ))
+            annotate!(
+                0.92e8, 0.95 * (2 * log10(3.7 / parse(Float64, ϵ)))^-2, text(
+                    ϵ, fontSize,
+                    :center, :right,
+                    :black)
+            )
+        end
     end
-    annotate!(
-        0.92e8, 0.77e-2, text(
-            "1e-5",
-            fontSize,
-            :center,
-            :right,
-            :black)
-    )
-    if ε != 1e-4
-        turb(1e-4)
-    end
-    annotate!(
-        0.92e8, 1.3e-2, text(
-            "1e-4",
-            fontSize,
-            :center,
-            :right,
-            :black)
-    )
-    if ε != 1e-3
-        turb(1e-3)
-    end
-    annotate!(
-        0.92e8, 2.15e-2, text(
-            "1e-3",
-            fontSize,
-            :center,
-            :right,
-            :black)
-    )
-    if ε != 1e-2
-        turb(1e-2)
-    end
-    annotate!(
-        0.92e8, 4.1e-2, text(
-            "1e-2",
-            fontSize,
-            :center,
-            :right,
-            :black)
-    )
-    if ε != 5e-2
-        turb(5e-2)
-    end
-    annotate!(
-        0.92e8, 7.85e-2, text(
-            "5e-2",
-            fontSize,
-            :center,
-            :right,
-            :black)
-    )
     rough()
     annotate!(
         1.2e6, 2.7e-2, text(
-            "Hydraulically rough boundary",
-            fontSize,
-            :center,
-            :center,
+            "Hydraulically rough boundary", fontSize,
+            :center, :center,
             :darkgreen,
             rotation=-42)
     )
     smooth()
     annotate!(
         1e5, 1.62e-2, text(
-            "Hydraulically smooth boundary",
-            fontSize,
-            :center,
-            :center,
+            "Hydraulically smooth boundary", fontSize,
+            :center, :center,
             :blue,
             rotation=-34)
     )
     annotate!(
         130, 7.9e-3, text(
-            "Moody Diagram", "TamilMN-Bold",
-            fontSize + 5,
-            :center,
-            :left,
+            "Moody Diagram", "TamilMN-Bold", fontSize + 5,
+            :center, :left,
             :black)
     )
     annotate!(
         130, 6.6e-3, text(
-            "https://github.com/aumpierre-unb/InternalFluidFlow.jl", "TamilMN-Bold",
-            fontSize - 3,
-            :center,
-            :left,
+            "https://github.com/.../InternalFluidFlow.jl", "TamilMN-Bold", fontSize - 3,
+            :center, :left,
             :black)
     )
     path = Base.find_package("InternalFluidFlow")

@@ -63,11 +63,9 @@ function hveps2fRe(
     foo(f) = 1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / (f / M) / f^(1 / 2))
     f_ = newtonraphson(foo, 1e-2, 1e-4)
     Re_ = f_ / M
-    # isturb = false
     if Re_ > 2.3e3
         Re = push!(Re, Re_)
         f = push!(f, f_)
-        # isturb = true
     end
     Re_ = (64 / M)^(1 / 2)
     if Re_ < 2.3e3
@@ -75,9 +73,18 @@ function hveps2fRe(
         f = pushfirst!(f, 64 / Re_)
     end
     if fig
+        fontSize = 8
         doPlot(ε)
         if !(Re[end] < 2.3e3) && ε != 0
-            turb(ε)
+            turb(ε, lineColor=:darkblue)
+            annotate!(
+                0.92e8, 0.95 * (
+                    2 * log10(3.7 / ε)
+                )^-2, text(
+                    string(round(ε, sigdigits=3)), fontSize,
+                    :center, :right,
+                    :darkblue)
+            )
         end
         plot!([Re], [f],
             seriestype=:scatter,

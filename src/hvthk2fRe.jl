@@ -82,9 +82,18 @@ function hvthk2fRe(
         ε = pushfirst!(ε, k / D)
     end
     if fig
+        fontSize = 8
         doPlot(ε[end])
         if !(Re[end] < 2.3e3) && ε != 0
-            turb(ε[end])
+            turb(ε[end], lineColor=:darkblue)
+            annotate!(
+                0.92e8, 0.95 * (
+                    2 * log10(3.7 / ε[end])
+                )^-2, text(
+                    string(round(ε[end], sigdigits=3)), fontSize,
+                    :center, :right,
+                    :darkblue)
+            )
         end
         plot!([Re], [f],
             seriestype=:scatter,

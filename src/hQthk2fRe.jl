@@ -73,9 +73,18 @@ function hQthk2fRe(
     D = ρ * Q / Re / μ / (pi / 4)
     ε = k / D
     if fig
+        fontSize = 8
         doPlot(ε)
         if !(Re < 2.3e3) && ε != 0
-            turb(ε)
+            turb(ε, lineColor=:darkblue)
+            annotate!(
+                0.92e8, 0.95 * (
+                    2 * log10(3.7 / ε)
+                )^-2, text(
+                    string(round(ε, sigdigits=3)), fontSize,
+                    :center, :right,
+                    :darkblue)
+            )
         end
         plot!([Re], [f],
             seriestype=:scatter,
