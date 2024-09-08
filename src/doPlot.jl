@@ -38,6 +38,7 @@ function doPlot(
         gridalpha=0.4,
         minorgrid=true,
         minorgridalpha=0.12,
+        right_margin=13Plots.mm,
         yticks=([6e-3, 1e-2, 15e-2, 2e-2, 3e-2, 5e-2, 1e-1],
             ["0.006", "0.01", "0.015", "0.02", "0.03", "0.05", "0.1"]))
     fontSize = 8
@@ -48,13 +49,13 @@ function doPlot(
         :black,
         rotation=-73)
     )
-    for ϵ in ("1e-5", "3e-5", "1e-4", "3e-4", "1e-3", "3e-3", "1e-2", "3e-2", "5e-2")
+    for ϵ in ("0.00001", "0.00003", "0.0001", "0.0003", "0.001", "0.003", "0.01", "0.02", "0.05")
         if ε != parse(Float64, ϵ)
             turb(parse(Float64, ϵ))
             annotate!(
-                0.92e8, 0.95 * (2 * log10(3.7 / parse(Float64, ϵ)))^-2, text(
+                1.1e8, Re2f(1e8, ε=parse(Float64, ϵ)).f, text(
                     ϵ, fontSize,
-                    :center, :right,
+                    :center, :left,
                     :black)
             )
         end
@@ -65,11 +66,11 @@ function doPlot(
             "Hydraulically rough boundary", fontSize,
             :center, :center,
             :darkgreen,
-            rotation=-42)
+            rotation=-44)
     )
     smooth()
     annotate!(
-        1e5, 1.62e-2, text(
+        4e5, 1.2e-2, text(
             "Hydraulically smooth boundary", fontSize,
             :center, :center,
             :blue,
