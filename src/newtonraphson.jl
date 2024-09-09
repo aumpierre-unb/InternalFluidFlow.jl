@@ -18,7 +18,7 @@ the `InternalFluidFlow` toolbox for Julia.
 function newtonraphson(
     f::Function,
     x::Number,
-    ξ::Number
+    ξ::Number=1e-7
 )
     while abs(f(x)) > ξ
         a = (f(x + 1e-7) - f(x)) / 1e-7

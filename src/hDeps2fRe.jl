@@ -44,53 +44,60 @@ of the solution.
 `hDeps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
-function hDeps2fRe(
+function hDeps2fRe(;
     h::Number,
     D::Number,
     L::Number,
     ε::Number,
     ρ::Number,
     μ::Number,
-    g::Number,
-    fig::Bool
+    g::Number=981,
+    fig::Bool=false
 )
-    if ε > 5e-2
-        ε = 5e-2
-    end
     K = 2 * g * h * ρ^2 * D^3 / μ^2 / L
-    f = (-2 * log10(ε / 3.7 + 2.51 / K^(1 / 2)))^-2
+
+    ε_turb = ε
+    if ε_turb > 5e-2
+        ε_turb = 5e-2
+        printstyled(
+            "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+            color=:cyan)
+    end
+    f = (-2 * log10(ε_turb / 3.7 + 2.51 / K^(1 / 2)))^-2
     Re = (K / f)^(1 / 2)
-    if Re > 2.3e3
-        islam = false
-    else
+
+    if Re < 2.3e3
         Re = K / 64
         f = 64 / Re
-        islam = true
+        turb = false
+        moody = Moody(Re, f, ε)
+    else
+        turb = true
+        moody = Moody(Re, f, ε_turb)
     end
+
     if fig
-        fontSize = 8
-        doPlot(ε)
-        if !(Re < 2.3e3) && ε != 0
-            turb(ε, lineColor=:black)
-            # annotate!(
-            #     0.92e8, 0.95 * (
-            #         2 * log10(3.7 / ε)
-            #     )^-2, text(
-            #         string(round(ε, sigdigits=3)), fontSize,
-            #         :center, :right,
-            #         :darkblue)
-            # )
+        if turb
+            doPlot(ε_turb)
+        else
+            doPlot()
         end
-        plot!([Re], [f],
+        plot!(
+            [Re],
+            [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red)
-        display(plot!(
+            color=:red
+        )
+        plot!(
             (K ./ [6e-3, 1e-1]) .^ (1 / 2),
             [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
-            linestyle=:dash))
+            linestyle=:dash
+        )
+        display(plot!())
     end
-    Re, f, ε
+
+    moody
 end

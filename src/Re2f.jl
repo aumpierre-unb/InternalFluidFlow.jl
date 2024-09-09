@@ -56,6 +56,9 @@ function Re2f(
 )
     if ε > 5e-2
         ε = 5e-2
+        printstyled(
+            "Beware that ε was reassigned to 5e-2.\n",
+            color=:cyan)
     end
     if Re < 2.3e3
         f = 64 / Re
@@ -68,14 +71,19 @@ function Re2f(
         if !(Re < 2.3e3) && ε != 0
             turb(ε)
         end
-        plot!([Re], [f],
+        plot!(
+            [Re], [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red)
-        display(plot!([Re; Re], [6e-3, 1e-1],
+            color=:red
+        )
+        plot!(
+            [Re; Re], [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
-            linestyle=:dash))
+            linestyle=:dash
+        )
+        display(plot!())
     end
     Moody(Re, f, ε)
 end

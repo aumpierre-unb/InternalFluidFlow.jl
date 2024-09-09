@@ -4,7 +4,7 @@ f2Re( # Reynolds number
     f::Number; # Darcy friction factor
     ε::Number=0, # relative roughness, default is smooth pipe
     fig::Bool=false, # default hide plot
-    isturb::Bool=false # default disregard turbulent flow
+    turbulent::Bool=false # default disregard turbulent flow
     )
 ```
 
@@ -21,7 +21,7 @@ a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-If parameter isturb = true is given and
+If parameter turbulent = true is given and
 both laminar and turbulent regimes are possible,
 then `f2Re` returns the number of Reynolds
 for turbulent regime alone.
@@ -62,10 +62,13 @@ function f2Re(
     f::Number;
     ε::Number=0,
     fig::Bool=false,
-    isturb::Bool=false
+    turbulent::Bool=false
 )
     if ε > 5e-2
         ε = 5e-2
+        printstyled(
+            "Beware that ε was reassigned to 5e-2.\n",
+            color=:cyan)
     end
     Re::Vector{Float64} = []
     if f > (2 * log10(3.7 / ε))^-2
@@ -73,31 +76,44 @@ function f2Re(
         if Re_ > 2.3e3
             Re = push!(Re, Re_)
         end
-        ftoolow = false
+        turbOK = true
     else
-        ftoolow = true
+        turbOK = false
     end
     Re_ = 64 / f
     if Re_ < 4e3
         Re = pushfirst!(Re, Re_)
+        laminOK = true
+    else
+        laminOK = false
     end
     if !isempty(Re) & fig
         doPlot(ε)
         if !(Re[end] < 2.3e3) && ε != 0
             turb(ε)
         end
-        plot!([Re], [f, f],
+        plot!(
+            [Re], [f, f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red)
-        display(plot!([1e2, 1e8], [f, f],
-            seriestype=:line,
-            color=:red,
-            linestyle=:dash))
+            color=:red
+        )
+        display(
+            plot!([1e2, 1e8], [f, f],
+                seriestype=:line,
+                color=:red,
+                linestyle=:dash)
+        )
     end
-    if isturb && !ftoolow
+    if turbOK && laminOK && !turbulent
+        (Moody(Re[1], f, ε), Moody(Re[end], f, ε))
+    elseif turbOK && turbulent
+        Moody(Re[end], f, ε)
+    elseif turbOK || laminOK
         Moody(Re[end], f, ε)
     else
-        (Moody(Re[1], f, ε), Moody(Re[end], f, ε))
+        printstyled(
+            "f is too high for given ε and too low for laminar flow.",
+            color=:cyan)
     end
 end

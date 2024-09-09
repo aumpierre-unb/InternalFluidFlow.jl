@@ -100,8 +100,8 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
 (InternalFluidFlow.Moody(86213.81590482839, 0.018559404276577138, 0.0), InternalFluidFlow.Moody(86213.81590482839, 0.018559404276577138, 0.0))
 ```
 """
-function h2fRe(
-    h::Number;
+function h2fRe(;
+    h::Number,
     L::Number=100,
     ε::Number=NaN,
     k::Number=NaN,
@@ -115,44 +115,47 @@ function h2fRe(
 )
     a = isnan.([D, v, Q]) .!= 1
     if sum(a) != 1
-        error("""h2fRe requires that either
+        # error(
+        #     """h2fRe requires that either
+        #     the hydraulic diameter,
+        #     the flow speed or
+        #     the flow rate
+        #     be given alone."""
+        # )
+        printstyled(
+            """h2fRe requires that either
             the hydraulic diameter,
             the flow speed or
             the flow rate
-            be given alone.""")
+            be given alone.""",
+            color=:cyan
+        )
     end
     b = isnan.([ε, k]) .!= 1
     if sum(b) != 1
-        error("""h2fRe requires that either
+        # error(
+        #     """h2fRe requires that either
+        #     the pipe roughness or
+        #     the pipe relative roughness
+        #     be given alone."""
+        # )
+        printstyled(
+            """h2fRe requires that either
             the pipe roughness or
             the pipe relative roughness
-            be given alone.""")
+            be given alone.""",
+            color=:cyan
+        )
     end
-    if a == [1, 0, 0] && b == [1, 0]
-        Re, f, ε = hDeps2fRe(h, D, L, ε, ρ, μ, g, fig)
-        Moody(Re, f, ε)
-    elseif a == [1, 0, 0] && b == [0, 1]
-        Re, f, ε = hDeps2fRe(h, D, L, k / D, ρ, μ, g, fig)
-        Moody(Re, f, ε)
+    if a == [1, 0, 0]
+        hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)
     elseif a == [0, 1, 0] && b == [1, 0]
-        Re, f, ε = hveps2fRe(h, v, L, ε, ρ, μ, g, fig)
-        if Re[1] == Re[end]
-            Moody(Re[1], f[1], ε[1])
-        else
-            Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end])
-        end
+        hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)
     elseif a == [0, 1, 0] && b == [0, 1]
-        Re, f, ε = hvthk2fRe(h, v, L, k, ρ, μ, g, fig)
-        if Re[1] == Re[end]
-            Moody(Re[1], f[1], ε[1])
-        else
-            Moody(Re[1], f[1], ε[1]), Moody(Re[end], f[end], ε[end])
-        end
+        hvthk2fRe(h=h, v=v, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig)
     elseif a == [0, 0, 1] && b == [1, 0]
-        Re, f, ε = hQeps2fRe(h, Q, L, ε, ρ, μ, g, fig)
-        Moody(Re, f, ε)
+        hQeps2fRe(h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)
     elseif a == [0, 0, 1] && b == [0, 1]
-        Re, f, ε = hQthk2fRe(h, Q, L, k, ρ, μ, g, fig)
-        Moody(Re, f, ε)
+        hQthk2fRe(h=h, Q=Q, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig)
     end
 end

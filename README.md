@@ -104,7 +104,7 @@ By default, pipe is assumed to be smooth. Relative roughness is reset to ε = 0.
 
 If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
-If parameter isturb = true is given and both laminar and turbulent regimes are possible, then f2Re returns the number of Reynolds for turbulent regime alone.
+If parameter turbulent = true is given and both laminar and turbulent regimes are possible, then f2Re returns the number of Reynolds for turbulent regime alone.
 
 **Syntax:**
 
@@ -113,7 +113,7 @@ f2Re( # Reynolds number
     f::Number; # Darcy friction factor
     ε::Number=0, # relative roughness, default is smooth pipe
     fig::Bool=false, # default hide plot
-    isturb::Bool=false # default disregard turbulent flow
+    turbulent::Bool=false # default disregard turbulent flow
     )
 ```
 

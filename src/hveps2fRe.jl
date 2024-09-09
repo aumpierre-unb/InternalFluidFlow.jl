@@ -44,58 +44,90 @@ of the solution.
 `hveps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
-function hveps2fRe(
+function hveps2fRe(;
     h::Number,
     v::Number,
     L::Number,
     ε::Number,
     ρ::Number,
     μ::Number,
-    g::Number,
-    fig::Bool
+    g::Number=981,
+    fig::Bool=false,
+    lam::Bool=true,
+    turb::Bool=true
 )
-    if ε > 5e-2
-        ε = 5e-2
-    end
-    Re::Vector{Float64} = []
-    f::Vector{Float64} = []
     M = 2 * g * μ * h / v^3 / ρ / L
-    foo(f) = 1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / (f / M) / f^(1 / 2))
-    f_ = newtonraphson(foo, 1e-2, 1e-4)
-    Re_ = f_ / M
-    if Re_ > 2.3e3
-        Re = push!(Re, Re_)
-        f = push!(f, f_)
-    end
-    Re_ = (64 / M)^(1 / 2)
-    if Re_ < 2.3e3
-        Re = pushfirst!(Re, Re_)
-        f = pushfirst!(f, 64 / Re_)
-    end
-    if fig
-        fontSize = 8
-        doPlot(ε)
-        if !(Re[end] < 2.3e3) && ε != 0
-            turb(ε, lineColor=:black)
-            # annotate!(
-            #     0.92e8, 0.95 * (
-            #         2 * log10(3.7 / ε)
-            #     )^-2, text(
-            #         string(round(ε, sigdigits=3)), fontSize,
-            #         :center, :right,
-            #         :darkblue)
-            # )
+
+    if turb
+        ε_turb = ε
+        if ε_turb >= 5e-2
+            ε_turb = 5e-2
+            printstyled(
+                "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+                color=:cyan)
         end
-        plot!(Re, f,
-            seriestype=:scatter,
-            markerstrokecolor=:red,
-            color=:red)
-        display(plot!(
+        foo(f) = 1 / f^(1 / 2) + 2 * log10(
+            ε_turb / 3.7 + 2.51 / (f / M) / f^(1 / 2)
+        )
+        f_turb = newtonraphson(foo, 1e-2, 1e-4)
+        Re_turb = f_turb / M
+        if Re_turb > 2.3e3
+            moody_turb = Moody(Re_turb, f_turb, ε_turb)
+        else
+            turb = false
+        end
+    end
+
+    if lam
+        ε_lam = ε
+        Re_lam = (64 / M)^(1 / 2)
+        f_lam = 64 / Re_lam
+        if Re_lam < 2.3e3
+            moody_lam = Moody(Re_lam, f_lam, ε_lam)
+        else
+            lam = false
+        end
+    end
+
+    if fig
+        if turb
+            doPlot(ε_turb)
+        else
+            doPlot()
+        end
+        if turb
+            plot!(
+                [moody_turb.Re],
+                [moody_turb.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
+        if lam
+            plot!(
+                [moody_lam.Re],
+                [moody_lam.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
+        plot!(
             [6e-3, 1e-1] ./ M,
             [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
-            linestyle=:dash))
+            linestyle=:dash
+        )
+        display(plot!())
     end
-    Re, f, ε
+
+    if lam && turb
+        moody_lam, moody_turb
+    elseif lam
+        moody_lam
+    elseif turb
+        moody_turb
+    end
 end

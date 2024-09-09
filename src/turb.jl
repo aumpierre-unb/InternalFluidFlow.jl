@@ -17,12 +17,13 @@ function turb(
     ε::Number;
     lineColor::Symbol=:black
 )
-    N = 50
-    u = log10(2.3e3):(log10(1e8)-log10(2.3e3))/(N-1):log10(1e8)
+    u = range(log10(2.3e3), log10(1e8), length=50)
     Re = 10 .^ u
-    Re2f_(Re, z) = Re2f(Re, ε=z).f
-    f = Re2f_.(Re, ε)
-    plot!(Re, f,
+    foo(Re, z) = Re2f(Re, ε=z).f
+    f = foo.(Re, ε)
+    plot!(
+        Re, f,
         seriestype=:line,
-        color=lineColor)
+        color=lineColor
+    )
 end

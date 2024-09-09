@@ -44,56 +44,72 @@ of the solution.
 `hQthk2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
-function hQthk2fRe(
+function hQthk2fRe(;
     h::Number,
     Q::Number,
     L::Number,
     k::Number,
     ρ::Number,
     μ::Number,
-    g::Number,
-    fig::Bool
+    g::Number=981,
+    fig::Bool=false
 )
-    if k > 5e-2
-        k = 5e-2
-    end
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (μ / ρ)^5 / L
-    foo(f) = 1 / f^(1 / 2) + 2 * log10(
-        k / (ρ * Q / (pi / 4) / μ / ((P / f)^(1 / 5))) / 3.7 + 2.51 / (P / f)^(1 / 5) / f^(1 / 2)
-        )
+
+    function foo(f)
+        Re = (P / f)^(1 / 5)
+        D = ρ * Q / (pi / 4) / μ / Re
+        ε = k / D
+        1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
+    end
     f = newtonraphson(foo, 1e-2, 1e-4)
     Re = (P / f)^(1 / 5)
-    if Re > 2.3e3
-    else
-        Re = (P / 64)^(1 / 4)
-        f = 64 / Re
-    end
     D = ρ * Q / Re / μ / (pi / 4)
     ε = k / D
+    if ε > 5e-2
+        ε = 5e-2
+    end
+    moody = hQeps2fRe(
+            h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ
+        )
+    if moody.Re < 2.3e3
+        Re = (P / 64)^(1 / 4)
+        f = 64 / Re
+        D = ρ * Q / Re / μ / (pi / 4)
+        ε = k / D
+        turb = false
+        moody = Moody(Re, f, ε)
+    else
+        turb = true
+        D = ρ * Q / moody.Re / μ / (pi / 4)
+        k = ε * D
+        printstyled(string(
+                "Beware that roughness for turbulent flow is reassigned to ", k, ". All other parameters are unchanged.\n"
+            ), color=:cyan)
+    end
+
     if fig
-        fontSize = 8
-        doPlot(ε)
-        if !(Re < 2.3e3) && ε != 0
-            turb(ε, lineColor=:black)
-            # annotate!(
-            #     0.92e8, 0.95 * (
-            #         2 * log10(3.7 / ε)
-            #     )^-2, text(
-            #         string(round(ε, sigdigits=3)), fontSize,
-            #         :center, :right,
-            #         :darkblue)
-            # )
+        if turb
+            doPlot(ε)
+        else
+            doPlot()
         end
-        plot!([Re], [f],
+        plot!(
+            [Re],
+            [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red)
-        display(plot!(
+            color=:red
+        )
+        plot!(
             (P ./ [6e-3, 1e-1]) .^ (1 / 5),
             [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
-            linestyle=:dash))
+            linestyle=:dash
+        )
+        display(plot!())
     end
-    Re, f, ε
+
+    moody
 end

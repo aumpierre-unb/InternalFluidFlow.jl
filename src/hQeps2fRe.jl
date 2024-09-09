@@ -44,52 +44,65 @@ of the solution.
 `hQeps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
 """
-function hQeps2fRe(
+function hQeps2fRe(;
     h::Number,
     Q::Number,
     L::Number,
     ε::Number,
     ρ::Number,
     μ::Number,
-    g::Number,
-    fig::Bool
+    g::Number=981,
+    fig::Bool=false
 )
-    if ε > 5e-2
-        ε = 5e-2
-    end
     P = 2 * g * h * Q^3 / (pi / 4)^3 / (μ / ρ)^5 / L
-    foo(f) = 1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / (P / f)^(1 / 5) / f^(1 / 2))
+
+    ε_turb = ε
+    if ε_turb > 5e-2
+        ε_turb = 5e-2
+        printstyled(
+            "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+            color=:cyan)
+    end
+    function foo(f)
+        Re = (P / f)^(1 / 5)
+        ε = ε_turb
+        1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
+    end
     f = newtonraphson(foo, 1e-2, 1e-4)
     Re = (P / f)^(1 / 5)
-    if Re > 2.3e3
-    else
+
+    if Re < 2.3e3
         Re = (P / 64)^(1 / 4)
         f = 64 / Re
+        turb = false
+        moody = Moody(Re, f, ε)
+    else
+        turb = true
+        moody = Moody(Re, f, ε_turb)
     end
+
     if fig
-        fontSize = 8
-        doPlot(ε)
-        if !(Re < 2.3e3) && ε != 0
-            turb(ε, lineColor=:black)
-            # annotate!(
-            #     0.92e8, 0.95 * (
-            #         2 * log10(3.7 / ε)
-            #     )^-2, text(
-            #         string(round(ε, sigdigits=3)), fontSize,
-            #         :center, :right,
-            #         :darkblue)
-            # )
+        if turb
+            doPlot(ε_turb)
+        else
+            doPlot()
         end
-        plot!([Re], [f],
+        plot!(
+            [Re],
+            [f],
             seriestype=:scatter,
             markerstrokecolor=:red,
-            color=:red)
-        display(plot!(
+            color=:red
+        )
+        plot!(
             (P ./ [6e-3, 1e-1]) .^ (1 / 5),
             [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
-            linestyle=:dash))
+            linestyle=:dash
+        )
+        display(plot!())
     end
-    Re, f, ε
+
+    moody
 end

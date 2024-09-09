@@ -11,12 +11,13 @@ by the Colebrook-White equation for a smooth pipe.
 the `InternalFluidFlow` toolbox for Julia.
 """
 function smooth()
-    N = 30
-    u = log10(2.3e3):(log10(1e7)-log10(2.3e3))/N:log10(1e7)
+    u = range(log10(2.3e3), log10(1e7), length=30)
     Re = 10 .^ u
-    foo(Re) = Re2f(Re).f
+    foo(z) = Re2f(z).f
     f = foo.(Re)
-    plot!(Re, f,
+    plot!(
+        Re, f,
         seriestype=:line,
-        color=:blue)
+        color=:blue
+    )
 end
