@@ -69,8 +69,8 @@ If parameter fig = true is given a schematic Moody diagram is plotted as a graph
 **Syntax:**
 
 ```julia
-Re2f( # Darcy friction factor
-    Re::Number; # Reynolds number
+Re2f(; # Darcy friction factor
+    Re::Number, # Reynolds number
     ε::Number=0, # relative roughness
     fig::Bool=false # show plot
     )
@@ -82,8 +82,9 @@ Compute the Darcy friction factor f given the Reynolds number Re = 120,000 and t
 
 ```julia
 Re2f( # Darcy friction factor
-    120e3, # Reynolds number
-    ε=3e-3 # relative roughness
+    Re=120e3, # Reynolds number
+    ε=3e-3, # relative roughness
+    msgs::Bool=true # default not msgs messages
     )
 ```
 
@@ -91,7 +92,7 @@ Compute the Darcy friction factor f given the Reynolds number Re = 120,000 for a
 
 ```julia
 Re2f( # Darcy friction factor
-    120e3, # Reynolds number
+    Re=120e3, # Reynolds number
     fig=true # show plot
     )
 ```
@@ -109,11 +110,12 @@ If parameter turbulent = true is given and both laminar and turbulent regimes ar
 **Syntax:**
 
 ```julia
-f2Re( # Reynolds number
-    f::Number; # Darcy friction factor
+f2Re(; # Reynolds number
+    f::Number, # Darcy friction factor
     ε::Number=0, # relative roughness, default is smooth pipe
     fig::Bool=false, # default hide plot
-    turbulent::Bool=false # default disregard turbulent flow
+    turbulent::Bool=false, # default disregard turbulent flow
+    msgs::Bool=true # default not msgs messages
     )
 ```
 
@@ -123,7 +125,7 @@ Compute the Reynolds number Re given the Darcy friction factor f = 0.028 and the
 
 ```julia
 f2Re( # Reynolds number
-    2.8e-2, # Darcy friction factor
+    f=2.8e-2, # Darcy friction factor
     ε=2e-3 # relative roughness
     )
 ```
@@ -132,7 +134,7 @@ Compute the Reynolds number Re given the Darcy friction factor f = 0.028 for a s
 
 ```julia
 f2Re( # Reynolds number
-    2.8e-2, # Darcy friction factor
+    f=2.8e-2, # Darcy friction factor
     fig=true # show plot
     )
 ```
@@ -152,8 +154,8 @@ If parameter fig = true is given a schematic Moody diagram is plotted as a graph
 **Syntax:**
 
 ```julia
-h2fRe( # Reynolds number Re and Darcy friction factor f
-    h::Number; # head loss in cm
+h2fRe(; # Reynolds number Re and Darcy friction factor f
+    h::Number, # head loss in cm
     L::Number=100, # pipe length in cm, default is 100 cm
     ε::Number=NaN, # pipe relative roughness
     k::Number=NaN, # pipe roughness in cm
@@ -173,7 +175,7 @@ Compute the Reynolds number Re and the Darcy friction factor f given the head lo
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-    40, # head loss in cm
+    h=40, # head loss in cm
     D=4*2.54, # pipe hyraulic diameter in cm
     L=25e2, # pipe length in cm
     ε=0.0027 # pipe relative roughness
@@ -184,7 +186,7 @@ Compute the Reynolds number Re and the Darcy friction factor f given the head lo
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-    1.6*25, # head loss in cm
+    h=1.6*25, # head loss in cm
     Q=8.6e3, # volumetric flow rate in cc/s
     L=25e2, # pipe length in cm
     ε=0, # pipe relative roughness
@@ -198,7 +200,7 @@ Compute the Reynolds number Re and the Darcy friction factor f, given the head l
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-    0.40e2, # head loss in cm
+    h=0.40e2, # head loss in cm
     v=1.1e2, # flow speed in cm/s
     L=25e2, # pipe length in cm
     k=0 # pipe roughness in cm

@@ -1,12 +1,12 @@
 @doc raw"""
 ```
-hDeps2fRe( # Reynolds number Re and Darcy friction factor f
-    h::Number; # head loss in cm
+hDeps2fRe(; # Reynolds number Re and Darcy friction factor f
+    h::Number, # head loss in cm
     D::Number=NaN, # pipe hydraulic diameter in cm
-    L::Number=100, # pipe length in cm, default is 100 cm
+    L::Number=NaN, # pipe length in cm, default is 100 cm
     ε::Number=NaN, # pipe relative roughness
-    ρ::Number=0.997, # fluid dynamic density in g/cc
-    μ::Number=0.0091, # fluid dynamic viscosity in g/cm/s
+    ρ::Number=NaN, # fluid dynamic density in g/cc
+    μ::Number=NaN, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
     fig::Bool=false # default is hide plot
     )
@@ -52,16 +52,19 @@ function hDeps2fRe(;
     ρ::Number,
     μ::Number,
     g::Number=981,
-    fig::Bool=false
+    fig::Bool=false,
+    msgs::Bool=true
 )
     K = 2 * g * h * ρ^2 * D^3 / μ^2 / L
 
     ε_turb = ε
     if ε_turb > 5e-2
         ε_turb = 5e-2
-        printstyled(
-            "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
-            color=:cyan)
+        if msgs
+            printstyled(
+                "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+                color=:cyan)
+        end
     end
     f = (-2 * log10(ε_turb / 3.7 + 2.51 / K^(1 / 2)))^-2
     Re = (K / f)^(1 / 2)

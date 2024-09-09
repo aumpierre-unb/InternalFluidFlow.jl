@@ -1,12 +1,12 @@
 @doc raw"""
 ```
-hQeps2fRe( # Reynolds number Re and Darcy friction factor f
-    h::Number; # head loss in cm
+hQeps2fRe(; # Reynolds number Re and Darcy friction factor f
+    h::Number, # head loss in cm
     Q::Number=NaN, # volumetric flow rate in cc/s
     L::Number=100, # pipe length in cm, default is 100 cm
     ε::Number=NaN, # pipe relative roughness
-    ρ::Number=0.997, # fluid dynamic density in g/cc
-    μ::Number=0.0091, # fluid dynamic viscosity in g/cm/s
+    ρ::Number=NaN, # fluid dynamic density in g/cc
+    μ::Number=NaN, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
     fig::Bool=false # default is hide plot
     )
@@ -52,16 +52,19 @@ function hQeps2fRe(;
     ρ::Number,
     μ::Number,
     g::Number=981,
-    fig::Bool=false
+    fig::Bool=false,
+    msgs::Bool=true
 )
-    P = 2 * g * h * Q^3 / (pi / 4)^3 / (μ / ρ)^5 / L
+    P = 2 * g * h * Q^3 / (π / 4)^3 / (μ / ρ)^5 / L
 
     ε_turb = ε
     if ε_turb > 5e-2
         ε_turb = 5e-2
-        printstyled(
-            "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
-            color=:cyan)
+        if msgs
+            printstyled(
+                "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+                color=:cyan)
+        end
     end
     function foo(f)
         Re = (P / f)^(1 / 5)

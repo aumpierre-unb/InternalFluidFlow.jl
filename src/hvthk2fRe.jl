@@ -1,12 +1,12 @@
 @doc raw"""
 ```
-hvthk2fRe( # Reynolds number Re and Darcy friction factor f
-    h::Number; # head loss in cm
+hvthk2fRe(; # Reynolds number Re and Darcy friction factor f
+    h::Number, # head loss in cm
     v::Number=NaN, # flow speed in cm/s
     L::Number=100, # pipe length in cm, default is 100 cm
     k::Number=NaN, # pipe roughness in cm
-    ρ::Number=0.997, # fluid dynamic density in g/cc
-    μ::Number=0.0091, # fluid dynamic viscosity in g/cm/s
+    ρ::Number=NaN, # fluid dynamic density in g/cc
+    μ::Number=NaN, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
     fig::Bool=false # default is hide plot
     )
@@ -54,7 +54,8 @@ function hvthk2fRe(;
     g::Number=981,
     fig::Bool=false,
     lam::Bool=true,
-    turb::Bool=true
+    turb::Bool=true,
+    msgs::Bool=true
 )
     M = 2 * g * μ * h / v^3 / ρ / L
 
@@ -84,6 +85,9 @@ function hvthk2fRe(;
             ε_turb = k / D
             if ε_turb > 5e-2
                 ε_turb = 5e-2
+                ε_reassign=true
+            else
+                ε_reassign=false
             end
             moody_turb = hveps2fRe(
                 h=h, v=v, L=L, ε=ε_turb, ρ=ρ, μ=μ, lam=false, fig=false
@@ -91,9 +95,11 @@ function hvthk2fRe(;
             if moody_turb.Re > 2.3e3
                 D = moody_turb.Re * μ / ρ / v
                 k = ε_turb * D
-                printstyled(string(
-                        "Beware that roughness for turbulent flow is reassigned to ", k, ". All other parameters are unchanged.\n"
-                    ), color=:cyan)
+                if msgs && ε_reassign
+                    printstyled(string(
+                            "Beware that roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
+                        ), color=:cyan)
+                end
             else
                 turb = false
             end

@@ -1,6 +1,6 @@
 @doc raw"""
 ```
-h2fRe( # Reynolds number Re and Darcy friction factor f
+h2fRe(; # Reynolds number Re and Darcy friction factor f
     h::Number; # head loss in cm
     L::Number=100, # pipe length in cm, default is 100 cm
     ε::Number=NaN, # pipe relative roughness
@@ -54,7 +54,7 @@ length L = 25 m and
 relative roughness ε = 0.0027 for water flow:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
-       40, # head loss in cm
+       h=40, # head loss in cm
        D=4*2.54, # pipe hyraulic diameter in cm
        L=25e2, # pipe length in cm
        ε=0.0027 # pipe relative roughness
@@ -73,7 +73,7 @@ for a smooth pipe and
 show results on a schematic Moody diagram:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
-       1.6*25, # head loss in cm
+       h=1.6*25, # head loss in cm
        Q=8.6e3, # volumetric flow rate in cc/s
        L=25e2, # pipe length in cm
        ε=0, # pipe relative roughness
@@ -92,7 +92,7 @@ the pipe length L = 25 m
 for water flow in a smooth pipe:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
-       0.40e2, # head loss in cm
+       h=0.40e2, # head loss in cm
        v=1.1e2, # flow speed in cm/s
        L=25e2, # pipe length in cm
        k=0 # pipe roughness in cm
@@ -111,39 +111,27 @@ function h2fRe(;
     ρ::Number=0.997,
     μ::Number=0.0091,
     g::Number=981,
-    fig::Bool=false
+    fig::Bool=false,
+    msgs::Bool=true
 )
     a = isnan.([D, v, Q]) .!= 1
-    if sum(a) != 1
-        # error(
-        #     """h2fRe requires that either
-        #     the hydraulic diameter,
-        #     the flow speed or
-        #     the flow rate
-        #     be given alone."""
-        # )
+    if msgs && sum(a) != 1
         printstyled(
             """h2fRe requires that either
             the hydraulic diameter,
             the flow speed or
             the flow rate
-            be given alone.""",
+            be given alone.\n""",
             color=:cyan
         )
     end
     b = isnan.([ε, k]) .!= 1
-    if sum(b) != 1
-        # error(
-        #     """h2fRe requires that either
-        #     the pipe roughness or
-        #     the pipe relative roughness
-        #     be given alone."""
-        # )
+    if msgs && sum(b) != 1
         printstyled(
             """h2fRe requires that either
             the pipe roughness or
             the pipe relative roughness
-            be given alone.""",
+            be given alone.\n""",
             color=:cyan
         )
     end

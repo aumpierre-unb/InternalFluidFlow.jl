@@ -49,7 +49,7 @@ function doPlot(
     for i in ε_val
         turb(i)
         annotate!(
-            1.1e8, Re2f(1e8, ε=i).f, text(
+            1.1e8, Re2f(Re=1e8, ε=i).f, text(
                 i, fontSize,
                 :center, :left,
                 :black
@@ -60,7 +60,7 @@ function doPlot(
     if all(ε .!= ε_val) && ε != 0
         turb(ε)
         annotate!(
-            1.1e8, Re2f(1e8, ε=ε).f, text(
+            1.1e8, Re2f(Re=1e8, ε=ε).f, text(
                 ε, fontSize,
                 :center, :left,
                 :black

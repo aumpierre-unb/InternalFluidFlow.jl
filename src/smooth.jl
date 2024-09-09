@@ -13,7 +13,7 @@ the `InternalFluidFlow` toolbox for Julia.
 function smooth()
     u = range(log10(2.3e3), log10(1e7), length=30)
     Re = 10 .^ u
-    foo(z) = Re2f(z).f
+    foo(Re) = Re2f(Re=Re).f
     f = foo.(Re)
     plot!(
         Re, f,
