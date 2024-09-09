@@ -26,6 +26,7 @@ function doPlot(
     ε::Number=0
 )
     f_ticks = ("0.006", "0.01", "0.015", "0.02", "0.03", "0.05", "0.1")
+    f_vals = parse.(Float64, f_ticks)
     fontSize = 8
     plot(
         xlabel="Reynolds Number",
@@ -41,26 +42,26 @@ function doPlot(
         minorgrid=true,
         minorgridalpha=0.12,
         right_margin=13Plots.mm,
-        yticks=([parse(Float64, i) for i in f_ticks], [i for i in f_ticks])
+        yticks=([i for i in f_vals], [i for i in f_ticks])
     )
 
     ε_ticks = ("0.00001", "0.00003", "0.0001", "0.0003", "0.001", "0.003", "0.01", "0.02", "0.05")
-    ε_val = parse.(Float64, ε_ticks)
-    for i in ε_val
-        turb(i)
+    ε_vals = parse.(Float64, ε_ticks)
+    for i in eachindex(ε_vals)
+        turb(ε_vals[i])
         annotate!(
-            1.1e8, Re2f(Re=1e8, ε=i).f, text(
-                i, fontSize,
+            1.1e8, Re2f(Re=1e8, ε=ε_vals[i], msgs=false).f, text(
+                ε_ticks[i], fontSize,
                 :center, :left,
                 :black
             )
         )
     end
 
-    if all(ε .!= ε_val) && ε != 0
+    if all(ε .!= ε_vals) && ε != 0
         turb(ε)
         annotate!(
-            1.1e8, Re2f(Re=1e8, ε=ε).f, text(
+            1.1e8, Re2f(Re=1e8, ε=ε, msgs=false).f, text(
                 ε, fontSize,
                 :center, :left,
                 :black
