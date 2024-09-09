@@ -65,7 +65,7 @@ function hveps2fRe(;
             ε_turb = 5e-2
             if msgs
                 printstyled(
-                    "Beware that relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+                    "Beware that pipe relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
                     color=:cyan)
             end
         end

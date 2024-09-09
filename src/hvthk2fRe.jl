@@ -97,7 +97,7 @@ function hvthk2fRe(;
                 k = ε_turb * D
                 if msgs && ε_reassign
                     printstyled(string(
-                            "Beware that roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
+                            "Beware that pipe roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
                         ), color=:cyan)
                 end
             else

@@ -117,7 +117,7 @@ function f2Re(;
     else
         if msgs
             printstyled(
-                "f is too high for given ε and too low for laminar flow.",
+                "Darcy friction factor f is too high for the given pipe relative roughness ε and too low for laminar flow.",
                 color=:cyan)
         end
     end
