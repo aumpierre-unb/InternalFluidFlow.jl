@@ -98,7 +98,7 @@ Re2f( # Darcy friction factor
 Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000 and
 the relative roughness ε = 6e-2.
-In this case, relative roughness is reassigned to ε = 5e-2.
+In this case, relative roughness is reassigned to ε = 5e-2 for turbulent flow.
 
 ```julia
 Re2f( # Darcy friction factor
@@ -111,7 +111,6 @@ Compute the Darcy friction factor f given
 the Reynolds number Re = 3,500 and
 the relative roughness ε = 6e-3 and
 show results on a schematic Moody diagram.
-In this case, relative roughness is reassigned to ε = 5e-2.
 
 ```julia
 Re2f( # Darcy friction factor
