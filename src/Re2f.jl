@@ -70,7 +70,7 @@ julia> Re2f( # Darcy friction factor
        fig=true # show plot
        )
 Be aware that laminar flow bounds extends up to Re = 4e3.
-(InternalFluidFlow.Moody(3500.0, 0.018285714285714287, 0.006), InternalFluidFlow.Moody(3500.0, 0.04696863298595428, 0.006))```
+(InternalFluidFlow.Moody(3500.0, 0.018285714285714287, 0.006), InternalFluidFlow.Moody(3500.0, 0.04696863298595428, 0.006))
 ```
 """
 function Re2f(;
