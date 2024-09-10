@@ -76,7 +76,7 @@ function hveps2fRe(;
             moody_lam = Moody(Re, f, ε)
             if msgs && Re > 2.3e3
                 printstyled(string(
-                        "Be aware that laminar flow extends up to 4e3.\n",
+                        "Be aware that laminar flow extends up to Re = 4e3.\n",
                     ), color=:cyan)
             end
         else
@@ -101,7 +101,7 @@ function hveps2fRe(;
             moody_turb = Moody(Re, f, ε_turb)
             if msgs && ε_reassign
                 printstyled(
-                    "Be aware that pipe relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+                    "Be aware that pipe relative roughness for turbulent flow is reassigned to ε = 5e-2. All other parameters are unchanged.\n",
                     color=:cyan)
             end
         else

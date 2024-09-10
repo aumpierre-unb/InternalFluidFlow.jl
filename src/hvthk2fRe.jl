@@ -78,7 +78,7 @@ function hvthk2fRe(;
             moody_lam = Moody(Re, f, ε)
             if msgs && Re > 2.3e3
                 printstyled(string(
-                        "Be aware that laminar flow extends up to 4e3.\n",
+                        "Be aware that laminar flow extends up to Re = 4e3.\n",
                     ), color=:cyan)
             end
         else
@@ -112,7 +112,7 @@ function hvthk2fRe(;
                 k = ε_turb * D
                 if msgs && ε_reassign
                     printstyled(string(
-                            "Be aware that pipe roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
+                            "Be aware that pipe roughness for turbulent flow is reassigned to k = ", k, " cm. All other parameters are unchanged.\n"
                         ), color=:cyan)
                 end
             else

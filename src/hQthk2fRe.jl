@@ -90,7 +90,7 @@ function hQthk2fRe(;
         k = ε * D
         if msgs && ε_reassign
             printstyled(string(
-                    "Be aware that pipe roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
+                    "Be aware that pipe roughness for turbulent flow is reassigned to k = ", k, " cm. All other parameters are unchanged.\n"
                 ), color=:cyan)
         end
     end
