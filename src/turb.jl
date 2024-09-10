@@ -19,7 +19,7 @@ function turb(
 )
     u = range(log10(2.3e3), log10(1e8), length=50)
     Re = 10 .^ u
-    foo(Re, z) = Re2f(Re=Re, ε=z).f
+    foo(Re, z) = Re2f(Re=Re, ε=z, lam=false).f
     f = foo.(Re, ε)
     plot!(
         Re, f,

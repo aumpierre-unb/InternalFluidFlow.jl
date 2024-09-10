@@ -46,6 +46,7 @@ julia> f2Re( # Reynolds number
        f=2.8e-2, # Darcy friction factor
        ε=5e-3 # relative roughness
        )
+Friction factor is too high for turbulent flow with given relative roughness.
 InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.005)
 ```
 
@@ -56,9 +57,11 @@ In this case, only turbulent
 solution is possible:
 ```
 julia> f2Re( # Reynolds number
-           f=1.8e-2, # Darcy friction factor
-           ε=5e-3 # relative roughness
-           )
+       f=1.8e-2, # Darcy friction factor
+       ε=5e-3 # relative roughness
+       )
+Be aware that laminar flow extends up to Re = 4e3.
+Friction factor is too high for turbulent flow with given relative roughness.
 InternalFluidFlow.Moody(3555.5555555555557, 0.018, 0.005)
 ```
 
@@ -72,7 +75,8 @@ julia> f2Re( # Reynolds number
        f=1.2e-2, # Darcy friction factor
        ε=9e-3 # relative roughness
        )
-Darcy friction factor f is too high for the given pipe relative roughness ε and too low for laminar flow.
+Friction factor is too low for laminar flow.
+Friction factor is too high for turbulent flow with given relative roughness.
 ```
 
 Compute the Reynolds number Re given

@@ -59,7 +59,7 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        L=25e2, # pipe length in cm
        ε=0.0027 # pipe relative roughness
        )
-InternalFluidFlow.Moody(125588.17661494392, 0.025055907172151323, 0.0021)
+InternalFluidFlow.Moody(121961.49911803538, 0.02656820010563398, 0.0027)
 ```
 
 Compute the Reynolds number Re and
@@ -94,11 +94,12 @@ In this case, both laminar and turbulent
 solutions are possible:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
-              h=0.30e2, # head loss in cm
-              v=25, # flow speed in cm/s
-              L=25e2, # pipe length in cm
-              k=0.02,fig=true # pipe roughness in cm
-              )
+       h=0.30e2, # head loss in cm
+       v=25, # flow speed in cm/s
+       L=25e2, # pipe length in cm
+       k=0.02, # pipe roughness in cm
+       fig=true # show plot
+       )
 (InternalFluidFlow.Moody(2157.181854298826, 0.029668337823471388, 0.02539434478880578), InternalFluidFlow.Moody(3844.1827631348333, 0.052870142887847124, 0.014250013799282117))
 
 Compute the Reynolds number Re and
@@ -118,9 +119,10 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        h=0.40e2, # head loss in cm
        v=23, # flow speed in cm/s
        L=25e2, # pipe length in cm
-       k=0.1,fig=true # pipe roughness in cm
+       k=0.1, # pipe roughness in cm
+       fig=true # show plot
        )
-Be aware that pipe roughness for turbulent flow is reassigned to 0.06575480550721453 cm. All other parameters are unchanged.
+Be aware that pipe roughness for turbulent flow is reassigned to k = 0.06575480550721453 cm. All other parameters are unchanged.
 (InternalFluidFlow.Moody(1648.538640616669, 0.03882226259255865, 0.1528559930477271), InternalFluidFlow.Moody(3313.897681507552, 0.07804063722050959, 0.05))
 ```
 """
