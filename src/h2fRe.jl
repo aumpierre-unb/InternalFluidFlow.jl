@@ -107,6 +107,7 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        fig=true # show plot
        )
 (InternalFluidFlow.Moody(2157.181854298826, 0.029668337823471388, 0.02539434478880578), InternalFluidFlow.Moody(3844.1827631348333, 0.052870142887847124, 0.014250013799282117))
+```
 
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
