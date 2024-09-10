@@ -38,15 +38,28 @@ InternalFluidFlow.Moody(120000.0, 0.02726577561075442, 0.003)
 ```
 
 Compute the Darcy friction factor f given
+the Reynolds number Re = 120,000 and
+the relative roughness ε = 6e-2:
+```
+julia> Re2f( # Darcy friction factor
+       Re=120e3, # Reynolds number
+       ε=6e-2 # relative roughness
+       )
+Be aware that ε was reassigned to 5e-2.
+InternalFluidFlow.Moody(120000.0, 0.07174263668795722, 0.05)
+```
+
+Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000
 for a smooth pipe and plot and
 show results on a schematic Moody diagram:
 ```
 julia> Re2f( # Darcy friction factor
-       Re=120e3, # Reynolds number
+       Re=2000, # Reynolds number
+       ε=3e-3, # relative roughness
        fig=true # show plot
        )
-InternalFluidFlow.Moody(120000.0, 0.017323704233087215, 0.0)
+InternalFluidFlow.Moody(2000.0, 0.032, 0.003)
 ```
 """
 function Re2f(;
@@ -59,7 +72,7 @@ function Re2f(;
         ε = 5e-2
         if msgs
             printstyled(
-                "Beware that ε was reassigned to 5e-2.\n",
+                "Be aware that ε was reassigned to 5e-2.\n",
                 color=:cyan)
         end
     end

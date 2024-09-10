@@ -8,7 +8,10 @@ hveps2fRe(; # Reynolds number Re and Darcy friction factor f
     ρ::Number=NaN, # fluid dynamic density in g/cc
     μ::Number=NaN, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
-    fig::Bool=false # default is hide plot
+    fig::Bool=false, # default is hide plot
+    lam::Bool=true, # check on laminar flow bounds
+    turb::Bool=true, # check on turbulent flow bounds
+    msgs::Bool=true # show warning message
     )
 ```
 
@@ -34,12 +37,19 @@ By default, fluid is assumed to be water at 25 °C,
 μ = 0.0091 (in P),
 and gravitational acceleration is assumed to be
 g = 981 (in cm/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other parameters must as well be given in cgs units.
 
-If parameter fig = true is given, a schematic Moody diagram
+Please, notice that all parameters are given in cgs units.
+
+If parameter fig = true is given
+a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
+
+If parameter lam = false is given
+then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If parameter turb = false is given
+then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `hveps2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -59,36 +69,43 @@ function hveps2fRe(;
 )
     M = 2 * g * μ * h / v^3 / ρ / L
 
+    if lam
+        Re = (64 / M)^(1 / 2)
+        f = 64 / Re
+        if Re < 4e3
+            moody_lam = Moody(Re, f, ε)
+            if msgs && Re > 2.3e3
+                printstyled(string(
+                        "Be aware that laminar flow extends up to 4e3.\n",
+                    ), color=:cyan)
+            end
+        else
+            lam = false
+        end
+    end
+
     if turb
         ε_turb = ε
         if ε_turb > 5e-2
             ε_turb = 5e-2
-            if msgs
-                printstyled(
-                    "Beware that pipe relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
-                    color=:cyan)
-            end
+            ε_reassign = true
+        else
+            ε_reassign = false
         end
         foo(f) = 1 / f^(1 / 2) + 2 * log10(
             ε_turb / 3.7 + 2.51 / (f / M) / f^(1 / 2)
         )
-        f_turb = newtonraphson(foo, 1e-2, 1e-4)
-        Re_turb = f_turb / M
-        if Re_turb > 2.3e3
-            moody_turb = Moody(Re_turb, f_turb, ε_turb)
+        f = newtonraphson(foo, 1e-2, 1e-4)
+        Re = f / M
+        if Re > 2.3e3
+            moody_turb = Moody(Re, f, ε_turb)
+            if msgs && ε_reassign
+                printstyled(
+                    "Be aware that pipe relative roughness for turbulent flow is reassigned to 5e-2. All other parameters are unchanged.\n",
+                    color=:cyan)
+            end
         else
             turb = false
-        end
-    end
-
-    if lam
-        ε_lam = ε
-        Re_lam = (64 / M)^(1 / 2)
-        f_lam = 64 / Re_lam
-        if Re_lam < 2.3e3
-            moody_lam = Moody(Re_lam, f_lam, ε_lam)
-        else
-            lam = false
         end
     end
 

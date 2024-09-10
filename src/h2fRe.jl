@@ -2,7 +2,7 @@
 ```
 h2fRe(; # Reynolds number Re and Darcy friction factor f
     h::Number; # head loss in cm
-    L::Number=100, # pipe length in cm, default is 100 cm
+    L::Number=100, # pipe length in cm
     ε::Number=NaN, # pipe relative roughness
     k::Number=NaN, # pipe roughness in cm
     D::Number=NaN, # pipe hydraulic diameter in cm
@@ -26,7 +26,7 @@ the pipe roughness k in cm (default k = 0 cm) or
 the pipe relative roughness ε (default ε = 0),
 the fluid density ρ in g/cc (default ρ = 0.997 g/cc),
 the fluid dynamic viscosity μ in g/cm/s (default μ = 0.0091 g/cm/s), and
-the gravitational accelaration g incm/s/s (default g = 981 cm/s/s).
+the gravitational accelaration g in cm/s/s (default g = 981 cm/s/s).
 
 By default, pipe is assumed to be smooth.
 Relative roughness is reset to ε = 0.05, if ε > 0.05.
@@ -50,8 +50,8 @@ Compute the Reynolds number Re and
 the Darcy friction factor f given
 the head loss h = 40 cm,
 the pipe hydraulic diameter D = 4 in,
-length L = 25 m and
-relative roughness ε = 0.0027 for water flow:
+the pipe length L = 25 m and
+the pipe relative roughness ε = 0.0021 for water flow.
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        h=40, # head loss in cm
@@ -59,7 +59,7 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        L=25e2, # pipe length in cm
        ε=0.0027 # pipe relative roughness
        )
-InternalFluidFlow.Moody(121961.49911803538, 0.02656820010563398, 0.0027)
+InternalFluidFlow.Moody(125588.17661494392, 0.025055907172151323, 0.0021)
 ```
 
 Compute the Reynolds number Re and
@@ -67,37 +67,61 @@ the Darcy friction factor f given
 the head loss per meter h/L = 1.6 cm/m,
 the volumetric flow rate Q = 8.6 L/s,
 the pipe length L = 25 m,
+the pipe roughness k = 0.08 cm,
 the fluid density ρ = 0.989 g/cc and
-dynamic viscosity μ = 0.89 cP
-for a smooth pipe and
-show results on a schematic Moody diagram:
+the fluid dynamic viscosity μ = 0.89 cP.
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        h=1.6*25, # head loss in cm
        Q=8.6e3, # volumetric flow rate in cc/s
        L=25e2, # pipe length in cm
-       ε=0, # pipe relative roughness
+       k=0.08, # pipe relative roughness
        ρ=0.989, # fluid dynamic density in g/cc
-       μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
-       fig=true # show plot
+       μ=8.9e-3 # fluid dynamic viscosity in g/cm/s
        )
-InternalFluidFlow.Moody(132700.26094130933, 0.01697138305171311, 0.0)
+InternalFluidFlow.Moody(114711.41902151344, 0.03515951366848225, 0.007541917588470084)
 ```
+
+Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 0.30 m,
+the flow speed v = 25 cm/s,
+the pipe length L = 25 m,
+the pipe roughness 0.02 cm
+for water flow and
+show results on a schematic Moody diagram.
+In this case, both laminar and turbulent
+solutions are possible:
+```
+julia> h2fRe( # Reynolds number Re and Darcy friction factor f
+              h=0.30e2, # head loss in cm
+              v=25, # flow speed in cm/s
+              L=25e2, # pipe length in cm
+              k=0.02,fig=true # pipe roughness in cm
+              )
+(InternalFluidFlow.Moody(2157.181854298826, 0.029668337823471388, 0.02539434478880578), InternalFluidFlow.Moody(3844.1827631348333, 0.052870142887847124, 0.014250013799282117))
 
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
 the head loss h = 0.40 m,
 the flow speed v = 1.1 m/s,
-the pipe length L = 25 m
-for water flow in a smooth pipe:
+the pipe length L = 25 m,
+the pipe roughness 0.1 cm
+for water flow and
+show results on a schematic Moody diagram.
+In this case, both laminar and turbulent
+solutions are possible,
+however relative roughness
+is reassigned to maximum 5e-2:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        h=0.40e2, # head loss in cm
-       v=1.1e2, # flow speed in cm/s
+       v=23, # flow speed in cm/s
        L=25e2, # pipe length in cm
-       k=0 # pipe roughness in cm
+       k=0.1,fig=true # pipe roughness in cm
        )
-(InternalFluidFlow.Moody(86213.81590482839, 0.018559404276577138, 0.0), InternalFluidFlow.Moody(86213.81590482839, 0.018559404276577138, 0.0))
+Be aware that pipe roughness for turbulent flow is reassigned to 0.06575480550721453 cm. All other parameters are unchanged.
+(InternalFluidFlow.Moody(1648.538640616669, 0.03882226259255865, 0.1528559930477271), InternalFluidFlow.Moody(3313.897681507552, 0.07804063722050959, 0.05))
 ```
 """
 function h2fRe(;

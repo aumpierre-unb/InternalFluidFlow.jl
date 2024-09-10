@@ -34,10 +34,11 @@ By default, fluid is assumed to be water at 25 °C,
 μ = 0.0091 (in P),
 and gravitational acceleration is assumed to be
 g = 981 (in cm/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other parameters must as well be given in cgs units.
 
-If parameter fig = true is given, a schematic Moody diagram
+Please, notice that all parameters are given in cgs units.
+
+If parameter fig = true is given
+a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
@@ -89,7 +90,7 @@ function hQthk2fRe(;
         k = ε * D
         if msgs && ε_reassign
             printstyled(string(
-                    "Beware that pipe roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
+                    "Be aware that pipe roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
                 ), color=:cyan)
         end
     end

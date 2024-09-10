@@ -4,7 +4,9 @@ f2Re(; # Reynolds number
     f::Number, # Darcy friction factor
     ε::Number=0, # relative roughness, default is smooth pipe
     fig::Bool=false, # default hide plot
-    turbulent::Bool=false # default disregard turbulent flow
+    lam::Bool=true, # check on laminar flow bounds
+    turb::Bool=true, # check on turbulent flow bounds
+    msgs::Bool=true # show warning message
     )
 ```
 
@@ -21,10 +23,11 @@ a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-If parameter turbulent = true is given and
-both laminar and turbulent regimes are possible,
-then `f2Re` returns the number of Reynolds
-for turbulent regime alone.
+If parameter lam = false is given
+then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If parameter turb = false is given
+then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `f2Re` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -34,25 +37,53 @@ See also: `Re2f`, `h2fRe` and `doPlot`.
 Examples
 ==========
 Compute the Reynolds number Re given
-the Darcy friction factor f = 0.028 and
-the pipe relative roughness ε = 2e-3.
-In this case, both laminar and turbulent
-solutions are possible:
+the Darcy friction factor f = 2.8e-2 and
+the pipe relative roughness ε = 5e-3.
+In this case, only laminar
+solution is possible:
 ```
 julia> f2Re( # Reynolds number
        f=2.8e-2, # Darcy friction factor
-       ε=2e-3 # relative roughness
+       ε=5e-3 # relative roughness
        )
-(InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.002), InternalFluidFlow.Moody(30781.694891269137, 0.028, 0.002))
+InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.005)
+```
+
+Compute the Reynolds number Re given
+the Darcy friction factor f = 1.8e-2 and
+the pipe relative roughness ε = 5e-3.
+In this case, only turbulent
+solution is possible:
+```
+julia> f2Re( # Reynolds number
+           f=1.8e-2, # Darcy friction factor
+           ε=5e-3 # relative roughness
+           )
+InternalFluidFlow.Moody(3555.5555555555557, 0.018, 0.005)
+```
+
+Compute the Reynolds number Re given
+the Darcy friction factor f = 1.2e-2 and
+the pipe relative roughness ε = 9e-3.
+In this case, both laminar and turbulent
+solutions are impossible:
+```
+julia> f2Re( # Reynolds number
+       f=1.2e-2, # Darcy friction factor
+       ε=9e-3 # relative roughness
+       )
+Darcy friction factor f is too high for the given pipe relative roughness ε and too low for laminar flow.
 ```
 
 Compute the Reynolds number Re given
 the Darcy friction factor f = 0.028
 for a smooth pipe and plot and
-show results on a schematic Moody diagram:
+show results on a schematic Moody diagram.
+In this case, both laminar and turbulent
+solutions are possible:
 ```
 julia> f2Re( # Reynolds number
-       f=2.8e-2, # Darcy friction factor
+       f=0.028, # Darcy friction factor
        fig=true # show plot
        )
 (InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.0), InternalFluidFlow.Moody(14593.727381591969, 0.028, 0.0))
@@ -62,63 +93,93 @@ function f2Re(;
     f::Number,
     ε::Number=0,
     fig::Bool=false,
-    turbulent::Bool=false,
+    lam::Bool=true,
+    turb::Bool=true,
     msgs::Bool=true
 )
-    if ε > 5e-2
-        ε = 5e-2
-        if msgs
+    if lam
+        Re = 64 / f
+        if Re < 4e3
+            moody_lam = Moody(Re, f, ε)
+            if msgs && Re > 2.3e3
+                printstyled(string(
+                        "Be aware that laminar flow extends up to 4e3.\n",
+                    ), color=:cyan)
+            end
+        else
+            lam = false
             printstyled(
-                "Beware that ε was reassigned to 5e-2.\n",
+                "Friction factor is too low for laminar flow.\n",
                 color=:cyan)
         end
     end
-    Re::Vector{Float64} = []
-    if f > (2 * log10(3.7 / ε))^-2
-        Re_ = 2.51 / (10^(1 / f^(1 / 2) / -2) - ε / 3.7) / f^(1 / 2)
-        if Re_ > 2.3e3
-            Re = push!(Re, Re_)
+
+    if turb
+        ε_turb = ε
+        if ε_turb > 5e-2
+            ε_turb = 5e-2
+            ε_reassign = true
+        else
+            ε_reassign = false
         end
-        turbOK = true
-    else
-        turbOK = false
+        if f > (2 * log10(3.7 / ε_turb))^-2
+            Re = 2.51 / (10^(1 / f^(1 / 2) / -2) - ε_turb / 3.7) / f^(1 / 2)
+            if Re > 2.3e3
+                moody_turb = Moody(Re, f, ε_turb)
+                if msgs && ε_reassign
+                    printstyled(string(
+                            "Be aware that pipe roughness for turbulent flow is reassigned to 5e-2.\n",
+                        ), color=:cyan)
+                end
+            else
+                turb = false
+            end
+        else
+            turb = false
+            printstyled(
+                "Friction factor is too high for turbulent flow with given relative roughness.\n",
+                color=:cyan)
+        end
     end
-    Re_ = 64 / f
-    if Re_ < 4e3
-        Re = pushfirst!(Re, Re_)
-        laminOK = true
-    else
-        laminOK = false
-    end
-    if !isempty(Re) & fig
-        doPlot(ε)
-        if !(Re[end] < 2.3e3) && ε != 0
-            turb(ε)
+
+    if fig && (lam || turb)
+        if turb
+            doPlot(ε_turb)
+        else
+            doPlot()
+        end
+        if turb
+            plot!(
+                [moody_turb.Re],
+                [moody_turb.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
+        if lam
+            plot!(
+                [moody_lam.Re],
+                [moody_lam.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
         end
         plot!(
-            [Re], [f, f],
-            seriestype=:scatter,
-            markerstrokecolor=:red,
-            color=:red
+            [1e2, 1e8], [f, f],
+            seriestype=:line,
+            color=:red,
+            linestyle=:dash
         )
-        display(
-            plot!([1e2, 1e8], [f, f],
-                seriestype=:line,
-                color=:red,
-                linestyle=:dash)
-        )
+        display(plot!())
     end
-    if turbOK && laminOK && !turbulent
-        (Moody(Re[1], f, ε), Moody(Re[end], f, ε))
-    elseif turbOK && turbulent
-        Moody(Re[end], f, ε)
-    elseif turbOK || laminOK
-        Moody(Re[end], f, ε)
-    else
-        if msgs
-            printstyled(
-                "Darcy friction factor f is too high for the given pipe relative roughness ε and too low for laminar flow.",
-                color=:cyan)
-        end
+
+    if lam && turb
+        moody_lam, moody_turb
+    elseif lam
+        moody_lam
+    elseif turb
+        moody_turb
     end
 end

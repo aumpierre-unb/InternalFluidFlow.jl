@@ -8,7 +8,10 @@ hvthk2fRe(; # Reynolds number Re and Darcy friction factor f
     ρ::Number=NaN, # fluid dynamic density in g/cc
     μ::Number=NaN, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
-    fig::Bool=false # default is hide plot
+    fig::Bool=false, # default is hide plot
+    lam::Bool=true, # check on laminar flow bounds
+    turb::Bool=true, # check on turbulent flow bounds
+    msgs::Bool=true # show warning message
     )
 ```
 
@@ -34,12 +37,19 @@ By default, fluid is assumed to be water at 25 °C,
 μ = 0.0091 (in P),
 and gravitational acceleration is assumed to be
 g = 981 (in cm/s/s).
-Please, notice that these default values are given in the cgs unit system and,
-if taken, all other parameters must as well be given in cgs units.
 
-If parameter fig = true is given, a schematic Moody diagram
+Please, notice that all parameters are given in cgs units.
+
+If parameter fig = true is given
+a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
+
+If parameter lam = false is given
+then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If parameter turb = false is given
+then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `hvthk2fRe` is an internal function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -60,12 +70,17 @@ function hvthk2fRe(;
     M = 2 * g * μ * h / v^3 / ρ / L
 
     if lam
-        Re_lam = (64 / M)^(1 / 2)
-        if Re_lam < 2.3e3
-            f_lam = 64 / Re_lam
-            D = Re_lam * μ / ρ / v
-            ε_lam = k / D
-            moody_lam = Moody(Re_lam, f_lam, ε_lam)
+        Re = (64 / M)^(1 / 2)
+        if Re < 4e3
+            f = 64 / Re
+            D = Re * μ / ρ / v
+            ε = k / D
+            moody_lam = Moody(Re, f, ε)
+            if msgs && Re > 2.3e3
+                printstyled(string(
+                        "Be aware that laminar flow extends up to 4e3.\n",
+                    ), color=:cyan)
+            end
         else
             lam = false
         end
@@ -78,16 +93,16 @@ function hvthk2fRe(;
             ε = k / D
             1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
         end
-        f_turb = newtonraphson(foo, 1e-2, 1e-4)
-        Re_turb = f_turb / M
-        if Re_turb > 2.3e3
-            D = Re_turb * μ / ρ / v
+        f = newtonraphson(foo, 1e-2, 1e-4)
+        Re = f / M
+        if Re > 2.3e3
+            D = Re * μ / ρ / v
             ε_turb = k / D
             if ε_turb > 5e-2
                 ε_turb = 5e-2
-                ε_reassign=true
+                ε_reassign = true
             else
-                ε_reassign=false
+                ε_reassign = false
             end
             moody_turb = hveps2fRe(
                 h=h, v=v, L=L, ε=ε_turb, ρ=ρ, μ=μ, lam=false, fig=false
@@ -97,7 +112,7 @@ function hvthk2fRe(;
                 k = ε_turb * D
                 if msgs && ε_reassign
                     printstyled(string(
-                            "Beware that pipe roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
+                            "Be aware that pipe roughness for turbulent flow is reassigned to ", k, " cm. All other parameters are unchanged.\n"
                         ), color=:cyan)
                 end
             else
@@ -148,10 +163,5 @@ function hvthk2fRe(;
         moody_lam
     elseif turb
         moody_turb
-        # else
-        #     printstyled(
-        #         "You must assign either lam=true or turb=true or both.\n",
-        #         color=:cyan
-        #     )
     end
 end
