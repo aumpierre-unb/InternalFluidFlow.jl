@@ -28,9 +28,8 @@ the gravitational accelaration g.
 By default, pipe is assumed to be 1 m long,
 L = 100 (in cm).
 
-By default, pipe is assumed to be smooth,
-ε = 0. Relative roughness ε is reset to ε = 0.05,
-if ε > 0.05.
+By default, pipe is assumed to be smooth (ε = 0).
+If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
 ρ = 0.997 (in g/cc) and
@@ -40,15 +39,15 @@ g = 981 (in cm/s/s).
 
 Please, notice that all parameters are given in cgs units.
 
-If parameter fig = true is given
+If fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-If parameter lam = false is given
+If lam = false is given
 then `f2Re` disregards the laminar flow bounds (Re < 4e3).
 
-If parameter turb = false is given
+If turb = false is given
 then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `hvthk2fRe` is an internal function of
@@ -78,7 +77,7 @@ function hvthk2fRe(;
             moody_lam = Moody(Re, f, ε)
             if msgs && Re > 2.3e3
                 printstyled(string(
-                        "Be aware that laminar flow extends up to Re = 4e3.\n",
+                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
                     ), color=:cyan)
             end
         else

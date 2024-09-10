@@ -12,15 +12,21 @@ Re2f(; # Darcy friction factor
 
 `Re2f` computes the Darcy friction f factor given
 the Reynolds number Re and
-the relative roughness ε (default ε = 0).
+the relative roughness ε.
 
-By default, pipe is assumed to be smooth.
-Relative roughness is reset to ε = 0.05, if ε > 0.05.
+By default, pipe is assumed to be smooth (ε = 0).
+If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
-If parameter fig = true is given
+If fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
+
+If lam = false is given
+then `Re2f` disregards the laminar flow bounds (Re < 4e3).
+
+If turb = false is given
+then `Re2f` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `Re2f` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -64,7 +70,7 @@ julia> Re2f( # Darcy friction factor
        ε=6e-3, # relative roughness
        fig=true # show plot
        )
-Be aware that laminar flow extends up to Re = 4e3.
+Be aware that laminar flow bounds extends up to Re = 4e3.
 (InternalFluidFlow.Moody(3500.0, 0.018285714285714287, 0.006), InternalFluidFlow.Moody(3500.0, 0.04696863298595428, 0.006))```
 """
 function Re2f(;
@@ -80,7 +86,7 @@ function Re2f(;
             if Re > 2.3
                 if msgs
                     printstyled(string(
-                            "Be aware that laminar flow extends up to Re = 4e3.\n",
+                            "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
                         ), color=:cyan)
                 end
             end

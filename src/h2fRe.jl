@@ -28,16 +28,22 @@ the fluid density ρ in g/cc (default ρ = 0.997 g/cc),
 the fluid dynamic viscosity μ in g/cm/s (default μ = 0.0091 g/cm/s), and
 the gravitational accelaration g in cm/s/s (default g = 981 cm/s/s).
 
-By default, pipe is assumed to be smooth.
-Relative roughness is reset to ε = 0.05, if ε > 0.05.
+By default, pipe is assumed to be 1 m long,
+L = 100 (in cm).
+
+By default, pipe is assumed to be smooth (ε = 0).
+If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 Notice that default values are given in the cgs unit system and,
 if taken, all other parameters must as well be given in cgs units.
 
-If parameter fig = true is given
+If fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
+
+If flow speed is given, both laminar and turbulent flow
+bounds are considered for possible solutions.
 
 `h2fRe` is a main function of
 the `InternalFluidFlow` toolbox for Julia.

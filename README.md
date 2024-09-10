@@ -60,11 +60,17 @@ InternalFluidFlow provides the following functions:
 
 ### **Re2f**
 
-Re2f computes the Darcy friction f factor given the Reynolds number Re and the relative roughness ε (default ε = 0).
+`Re2f` computes the Darcy friction f factor given the Reynolds number Re and the relative roughness ε.
 
-By default, pipe is assumed to be smooth. Relative roughness is reset to ε = 0.05, if ε > 0.05.
+By default, pipe is assumed to be smooth (ε = 0). If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
-If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+If fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+
+If lam = false is given
+then `Re2f` disregards the laminar flow bounds (Re < 4e3).
+
+If turb = false is given
+then `Re2f` disregards the turbulent flow bounds (Re > 2.3e3).
 
 **Syntax:**
 
@@ -117,13 +123,17 @@ Re2f( # Darcy friction factor
 
 ### **f2Re**
 
-f2Re computes the Reynolds number Re given the Darcy friction factor f and the relative roughness ε (default ε = 0) for both laminar and turbulent regime, if possible.
+`f2Re` computes the Reynolds number Re given the Darcy friction factor f and the relative roughness ε for both laminar and turbulent regime, if possible.
 
-By default, pipe is assumed to be smooth. Relative roughness is reset to ε = 0.05, if ε > 0.05.
+By default, pipe is assumed to be smooth (ε = 0). If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
-If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+If fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
 
-If parameter turbulent = true is given and both laminar and turbulent regimes are possible, then f2Re returns the number of Reynolds for turbulent regime alone.
+If lam = false is given
+then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If turb = false is given
+then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 **Syntax:**
 
@@ -194,15 +204,18 @@ f2Re( # Reynolds number
 
 ### **h2fRe**
 
-h2fRe computes the Reynolds number Re and Darcy friction factor f given the head loss h, the pipe hydraulic diameter D or the flow speed v or the volumetric flow rate Q, the pipe length L (default L = 100 cm), the pipe roughness k (default k = 0 cm) or the pipe relative roughness ε (default ε = 0), the fluid density ρ (default ρ = 0.997 g/cc), the fluid dynamic viscosity μ (default μ = 0.0091 g/cm/s), and the gravitational accelaration g (default g = 981 cm/s/s).
+`h2fRe` computes the Reynolds number Re and Darcy friction factor f given the head loss h, the pipe hydraulic diameter D or the flow speed v or the volumetric flow rate Q, the pipe length L (default L = 100 cm), the pipe roughness k (default k = 0 cm) or the pipe relative roughness ε (default ε = 0), the fluid density ρ (default ρ = 0.997 g/cc), the fluid dynamic viscosity μ (default μ = 0.0091 g/cm/s), and the gravitational accelaration g (default g = 981 cm/s/s).
 
 By default, pipe is assumed to be 1 m long, L = 100 (in cm).
 
-By default, pipe is assumed to be smooth. Relative roughness is reset to ε = 0.05, if ε > 0.05.
+By default, pipe is assumed to be smooth (ε = 0). If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 Notice that default values are given in the cgs unit system and, if taken, all other parameters must as well be given in cgs units.
 
-If parameter fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+If fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+
+If flow speed is given, both laminar and turbulent flow
+bounds are considered for possible solutions.
 
 **Syntax:**
 

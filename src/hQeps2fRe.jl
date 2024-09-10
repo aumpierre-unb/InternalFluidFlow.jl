@@ -25,9 +25,8 @@ the gravitational accelaration g.
 By default, pipe is assumed to be 1 m long,
 L = 100 (in cm).
 
-By default, pipe is assumed to be smooth,
-ε = 0. Relative roughness ε is reset to ε = 0.05,
-if ε > 0.05.
+By default, pipe is assumed to be smooth (ε = 0).
+If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 By default, fluid is assumed to be water at 25 °C,
 ρ = 0.997 (in g/cc) and
@@ -37,7 +36,7 @@ g = 981 (in cm/s/s).
 
 Please, notice that all parameters are given in cgs units.
 
-If parameter fig = true is given
+If fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.

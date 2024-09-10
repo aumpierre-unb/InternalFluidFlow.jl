@@ -12,21 +12,21 @@ f2Re(; # Reynolds number
 
 `f2Re` computes the Reynolds number Re given
 the Darcy friction factor f and
-the relative roughness ε (default ε = 0)
+the relative roughness ε
 for both laminar and turbulent regime, if possible.
 
-By default, pipe is assumed to be smooth.
-Relative roughness is reset to ε = 0.05, if ε > 0.05.
+By default, pipe is assumed to be smooth (ε = 0).
+If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
-If parameter fig = true is given
+If fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-If parameter lam = false is given
+If lam = false is given
 then `f2Re` disregards the laminar flow bounds (Re < 4e3).
 
-If parameter turb = false is given
+If turb = false is given
 then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `f2Re` is a main function of
@@ -60,7 +60,7 @@ julia> f2Re( # Reynolds number
        f=1.8e-2, # Darcy friction factor
        ε=5e-3 # relative roughness
        )
-Be aware that laminar flow extends up to Re = 4e3.
+Be aware that laminar flow bounds extends up to Re = 4e3.
 Friction factor is too high for turbulent flow with given relative roughness.
 InternalFluidFlow.Moody(3555.5555555555557, 0.018, 0.005)
 ```
@@ -107,7 +107,7 @@ function f2Re(;
             moody_lam = Moody(Re, f, ε)
             if msgs && Re > 2.3e3
                 printstyled(string(
-                        "Be aware that laminar flow extends up to Re = 4e3.\n",
+                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
                     ), color=:cyan)
             end
         else
