@@ -112,9 +112,11 @@ function f2Re(;
             end
         else
             lam = false
-            printstyled(
-                "Friction factor is too low for laminar flow.\n",
-                color=:cyan)
+            if msgs
+                printstyled(
+                    "Friction factor is too low for laminar flow.\n",
+                    color=:cyan)
+            end
         end
     end
 
@@ -140,9 +142,11 @@ function f2Re(;
             end
         else
             turb = false
-            printstyled(
-                "Friction factor is too high for turbulent flow with given relative roughness.\n",
-                color=:cyan)
+            if msgs
+                printstyled(
+                    "Friction factor is too high for turbulent flow with given relative roughness.\n",
+                    color=:cyan)
+            end
         end
     end
 
