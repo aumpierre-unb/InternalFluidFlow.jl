@@ -93,7 +93,7 @@ the Darcy friction factor f, given
 the head loss h = 0.30 m,
 the flow speed v = 25 cm/s,
 the pipe length L = 25 m,
-the pipe roughness 0.02 cm
+the pipe roughness k = 0.02 cm
 for water flow and
 show results on a schematic Moody diagram.
 In this case, both laminar and turbulent
@@ -111,26 +111,27 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
 
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the flow speed v = 1.1 m/s,
+the head loss h = 0.12 m,
+the flow speed v = 23 cm/s,
 the pipe length L = 25 m,
-the pipe roughness 0.1 cm
+the pipe roughness k = 0.3 cm
 for water flow and
 show results on a schematic Moody diagram.
 In this case, both laminar and turbulent
 solutions are possible,
-however relative roughness
-is reassigned to maximum 5e-2:
+however laminar flow is extended to Re = 4e3 and
+relative roughness is reassigned to maximum ε = 5e-2 for tubulent flow:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
-       h=0.40e2, # head loss in cm
-       v=23, # flow speed in cm/s
-       L=25e2, # pipe length in cm
-       k=0.1, # pipe roughness in cm
-       fig=true # show plot
-       )
-Be aware that pipe roughness for turbulent flow is reassigned to k = 0.06575480550721453 cm. All other parameters are unchanged.
-(InternalFluidFlow.Moody(1648.538640616669, 0.03882226259255865, 0.1528559930477271), InternalFluidFlow.Moody(3313.897681507552, 0.07804063722050959, 0.05))
+                h=0.12e2, # head loss in cm
+                v=23, # flow speed in cm/s
+                L=25e2, # pipe length in cm
+                k=0.3, # pipe roughness in cm
+                fig=true # show plot
+                )
+Be aware that laminar flow bounds extends up to Re = 4e3.
+Be aware that pipe roughness for turbulent flow is reassigned to k = 0.20701973225753548 cm. All other parameters are unchanged.
+(InternalFluidFlow.Moody(3009.806001282173, 0.021263828955333366, 0.4186133772104648), InternalFluidFlow.Moody(10433.339517357244, 0.07370998224985127, 0.05))
 ```
 """
 function h2fRe(;

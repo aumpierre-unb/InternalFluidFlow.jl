@@ -288,29 +288,31 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
      h=0.30e2, # head loss in cm
      v=25, # flow speed in cm/s
      L=25e2, # pipe length in cm
-     k=0.02,fig=true # pipe roughness in cm
+     k=0.02, # pipe roughness in cm
+     fig=true # show plot
      )
 ```
 
 Compute the Reynolds number Re and
 the Darcy friction factor f, given
-the head loss h = 0.40 m,
-the flow speed v = 1.1 m/s,
+the head loss h = 0.12 m,
+the flow speed v = 23 cm/s,
 the pipe length L = 25 m,
-the pipe roughness 0.1 cm
+the pipe roughness k = 0.3 cm
 for water flow and
 show results on a schematic Moody diagram.
 In this case, both laminar and turbulent
 solutions are possible,
-however relative roughness
-is reassigned to maximum 5e-2:
+however laminar flow is extended to Re = 4e3 and
+relative roughness is reassigned to maximum ε = 5e-2 for tubulent flow:
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-     h=0.40e2, # head loss in cm
+     h=0.12e2, # head loss in cm
      v=23, # flow speed in cm/s
      L=25e2, # pipe length in cm
-     k=0.1,fig=true # pipe roughness in cm
+     k=0.3, # pipe roughness in cm
+     fig=true # show plot
      )
 ```
 
