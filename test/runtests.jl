@@ -14,13 +14,18 @@ using Test
     end
 
     @test isnothing(
-        InternalFluidFlow.f2Re(f=1.3e-2, ε=5e-4, msgs=false)
+        InternalFluidFlow.f2Re(
+            f=1.3e-2,
+            ε=5e-4,
+            msgs=false
+        )
     )
 
     @test begin
         moody = InternalFluidFlow.f2Re(
             f=2.8e-2,
-            ε=1e-3
+            ε=1e-3,
+            msgs=false
         )
         moody[1].Re - 2285 < 1 && moody[2].Re - 19800 < 1
     end
@@ -28,7 +33,8 @@ using Test
     @test begin
         moody = InternalFluidFlow.Re2f(
             Re=1e3,
-            ε=1e-3
+            ε=1e-3,
+            msgs=false
         )
         moody.f - 64 / 1e3 < 1e-5
     end
