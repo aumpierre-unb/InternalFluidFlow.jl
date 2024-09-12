@@ -121,7 +121,8 @@ function doPlot(
                 :black
             )
         )
-        path = pathof(InternalFluidFlow)[1:length(path)-length("src\\InternalFluidFlow.jl")]
+        path = pathof(InternalFluidFlow)
+        path = path[1:length(path)-length("src\\InternalFluidFlow.jl")]
         file = string(path, "julia-logo-color.png")
         # display(path)
         # path = Base.find_package("InternalFluidFlow")
