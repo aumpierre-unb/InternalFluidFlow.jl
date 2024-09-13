@@ -121,11 +121,9 @@ function doPlot(
                 :black
             )
         )
-        path = Base.find_package("InternalFluidFlow")
-        file = string(
-            path[1:length(path)-length("src/InternalFluidFlow.jl")],
-            "\\julia-logo-color.png"
-        )
+        path = pathof(InternalFluidFlow)
+        path = path[1:length(path)-length("src\\InternalFluidFlow.jl")]
+        file = string(path, "julia-logo-color.png")
         plot!(inset=bbox(
             0.127,
             0.65,

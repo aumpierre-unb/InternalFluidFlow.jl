@@ -1,6 +1,6 @@
 ### TODO
 
-### InternalFluidFlow 2.0.0-alpha (2024-09-10)
+### InternalFluidFlow 2.0.0-alpha (2024-09-13)
 * Main and internal functions reformulated
 * All functions now scan for solutions within the laminar (Re < 4e3) and the turbulent (Re > 2.3e3) bounds
 * D, v, and Q are now keyword arguments in h2fRe
@@ -21,7 +21,7 @@
 ### InternalFluidFlow 1.1.1 (2024-05-19)
 * Annotations to the curves included on plots
 * Extra ticks included to plot's y-axis
-* Plot's "no strict ticks found" warning solved
+* Plot no strict ticks found warning solved
 
 ### InternalFluidFlow 1.0.0 (2023-05-03)
 * h2fRe replaces hDeps2fRe,

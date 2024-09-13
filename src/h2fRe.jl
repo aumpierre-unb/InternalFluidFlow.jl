@@ -153,12 +153,12 @@ however laminar flow is extended to Re = 4e3 and
 relative roughness is reassigned to maximum ε = 5e-2 for tubulent flow:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
-                h=0.12e2, # head loss in cm
-                v=23, # flow speed in cm/s
-                L=25e2, # pipe length in cm
-                k=0.3, # pipe roughness in cm
-                fig=true # show plot
-                )
+       h=0.12e2, # head loss in cm
+       v=23, # flow speed in cm/s
+       L=25e2, # pipe length in cm
+       k=0.3, # pipe roughness in cm
+       fig=true # show plot
+       )
 Be aware that laminar flow bounds extends up to Re = 4e3.
 Be aware that pipe roughness for turbulent flow is reassigned to k = 0.20701973225753548 cm. All other parameters are unchanged.
 (InternalFluidFlow.Moody(3009.806001282173, 0.021263828955333366, 0.4186133772104648), InternalFluidFlow.Moody(10433.339517357244, 0.07370998224985127, 0.05))
@@ -179,25 +179,24 @@ function h2fRe(;
     msgs::Bool=true
 )
     a = isnan.([D, v, Q]) .!= 1
-    if msgs && sum(a) != 1
-        printstyled(
-            """h2fRe requires that either
-            the hydraulic diameter,
-            the flow speed or
-            the flow rate
-            be given alone.\n""",
-            color=:cyan
-        )
+    if sum(a) != 1
+        if msgs
+            printstyled(
+                "h2fRe requires that either the hydraulic diameter, the flow speed or the volumetric flow rate be given alone.\n",
+                color=:cyan
+            )
+        end
+        return
     end
     b = isnan.([ε, k]) .!= 1
-    if msgs && sum(b) != 1
-        printstyled(
-            """h2fRe requires that either
-            the pipe roughness or
-            the pipe relative roughness
-            be given alone.\n""",
-            color=:cyan
-        )
+    if sum(b) != 1
+        if msgs
+            printstyled(
+                "h2fRe requires that either the pipe roughness or the pipe relative roughness be given alone.\n",
+                color=:cyan
+            )
+        end
+        return
     end
     if a == [1, 0, 0]
         hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)

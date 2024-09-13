@@ -73,10 +73,10 @@ function hveps2fRe(;
         f = 64 / Re
         if Re < 4e3
             moody_lam = Moody(Re, f, ε)
-            if msgs && Re > 2.3e3
-                printstyled(string(
-                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
-                    ), color=:cyan)
+            if msgs && 2.3e3 < Re < 4e3
+                printstyled(
+                    "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                    color=:cyan)
             end
         else
             lam = false
