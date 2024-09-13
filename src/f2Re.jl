@@ -106,9 +106,9 @@ function f2Re(;
         if Re < 4e3
             moody_lam = Moody(Re, f, ε)
             if msgs && Re > 2.3e3
-                printstyled(string(
-                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
-                    ), color=:cyan)
+                printstyled(
+                    "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                    color=:cyan)
             end
         else
             lam = false
@@ -133,9 +133,9 @@ function f2Re(;
             if Re > 2.3e3
                 moody_turb = Moody(Re, f, ε_turb)
                 if msgs && ε_reassign
-                    printstyled(string(
-                            "Be aware that pipe roughness for turbulent flow is reassigned to ε = 5e-2.\n",
-                        ), color=:cyan)
+                    printstyled(
+                        "Be aware that pipe roughness for turbulent flow is reassigned to ε = 5e-2.\n",
+                        color=:cyan)
                 end
             else
                 turb = false

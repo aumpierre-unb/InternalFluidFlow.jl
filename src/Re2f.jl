@@ -85,9 +85,9 @@ function Re2f(;
         if Re < 4e3
             if Re > 2.3
                 if msgs
-                    printstyled(string(
-                            "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
-                        ), color=:cyan)
+                    printstyled(
+                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                        color=:cyan)
                 end
             end
             f = 64 / Re

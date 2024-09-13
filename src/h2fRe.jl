@@ -149,25 +149,24 @@ function h2fRe(;
     msgs::Bool=true
 )
     a = isnan.([D, v, Q]) .!= 1
-    if msgs && sum(a) != 1
-        printstyled(
-            """h2fRe requires that either
-            the hydraulic diameter,
-            the flow speed or
-            the flow rate
-            be given alone.\n""",
-            color=:cyan
-        )
+    if sum(a) != 1
+        if msgs
+            printstyled(
+                "h2fRe requires that either the hydraulic diameter, the flow speed or the volumetric flow rate be given alone.\n",
+                color=:cyan
+            )
+        end
+        return
     end
     b = isnan.([ε, k]) .!= 1
-    if msgs && sum(b) != 1
-        printstyled(
-            """h2fRe requires that either
-            the pipe roughness or
-            the pipe relative roughness
-            be given alone.\n""",
-            color=:cyan
-        )
+    if sum(b) != 1
+        if msgs
+            printstyled(
+                "h2fRe requires that either the pipe roughness or the pipe relative roughness be given alone.\n",
+                color=:cyan
+            )
+        end
+        return
     end
     if a == [1, 0, 0]
         hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)
