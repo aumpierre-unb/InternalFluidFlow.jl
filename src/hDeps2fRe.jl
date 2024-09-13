@@ -137,6 +137,7 @@ function hDeps2fRe(;
     elseif turb
         moody_turb
     else
+        display(msgs)
         if msgs
             printstyled(
                 "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
