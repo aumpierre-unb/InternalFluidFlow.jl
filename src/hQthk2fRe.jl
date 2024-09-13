@@ -78,6 +78,11 @@ function hQthk2fRe(;
     )
     if moody.Re < 2.3e3
         Re = (P / 64)^(1 / 4)
+        if msgs && Re > 2.3e3
+            printstyled(
+                "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                color=:cyan)
+        end
         f = 64 / Re
         D = ρ * Q / Re / μ / (π / 4)
         ε = k / D

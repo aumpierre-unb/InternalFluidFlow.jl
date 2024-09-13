@@ -76,6 +76,11 @@ function hQeps2fRe(;
 
     if Re < 2.3e3
         Re = (P / 64)^(1 / 4)
+        if msgs && Re > 2.3e3
+            printstyled(
+                "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                color=:cyan)
+        end
         f = 64 / Re
         turb = false
         moody = Moody(Re, f, ε)

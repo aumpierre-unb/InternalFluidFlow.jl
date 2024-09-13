@@ -1,6 +1,6 @@
 ### TODO
 
-### InternalFluidFlow 2.0.0-alpha (2024-09-10)
+### InternalFluidFlow 2.0.0-alpha (2024-09-13)
 * Main and internal functions reformulated
 * D, v, and Q are now keyword arguments in h2fRe
 * Re2f function provides laminar and turbulent solutions, if possible (laminar if Re < 4e3 and turbulent if Re > 2.3e3)
