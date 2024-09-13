@@ -85,7 +85,7 @@ the fluid density ρ = 0.989 g/cc and
 the fluid dynamic viscosity μ = 0.89 cP.
 This is an extraordinary case, where there is no solution
 within laminar bound (Re < 4e3) and
-within turbulent bounds (Re < 2.3e3) and
+within turbulent bounds (Re > 2.3e3) and
 h2fRe returns `Nothing`:
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
