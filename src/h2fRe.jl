@@ -190,7 +190,7 @@ function h2fRe(;
         end
         return
     end
-    
+
     b = isnan.([ε, k]) .!= 1
     if sum(b) != 1
         if msgs
@@ -203,14 +203,14 @@ function h2fRe(;
     end
 
     if a == [1, 0, 0]
-        hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)
+        hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [1, 0]
-        hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)
+        hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [0, 1]
-        hvthk2fRe(h=h, v=v, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig)
+        hvthk2fRe(h=h, v=v, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 0, 1] && b == [1, 0]
-        hQeps2fRe(h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig)
+        hQeps2fRe(h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 0, 1] && b == [0, 1]
-        hQthk2fRe(h=h, Q=Q, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig)
+        hQthk2fRe(h=h, Q=Q, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     end
 end
