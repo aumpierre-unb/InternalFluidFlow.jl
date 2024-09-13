@@ -84,7 +84,7 @@ the pipe length L = 25 m and
 the pipe relative roughness ε = 0.02,
 the fluid density ρ = 0.989 g/cc and
 the fluid dynamic viscosity μ = 0.89 cP.
-This is an extraordinary case, where there is no solution
+This is an extraordinary situation, where there is no solution
 within laminar bound (Re < 4e3) and
 within turbulent bounds (Re > 2.3e3) and
 h2fRe returns `Nothing`:
