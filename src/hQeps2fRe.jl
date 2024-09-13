@@ -53,35 +53,52 @@ function hQeps2fRe(;
     μ::Number,
     g::Number=981,
     fig::Bool=false,
+    lam::Bool=true,
+    turb::Bool=true,
     msgs::Bool=true
 )
     P = 2 * g * h * Q^3 / (π / 4)^3 / (μ / ρ)^5 / L
 
-    ε_turb = ε
-    if ε_turb > 5e-2
-        ε_turb = 5e-2
-        if msgs
-            printstyled(
-                "Be aware that pipe relative roughness for turbulent flow is reassigned to ε = 5e-2. All other parameters are unchanged.\n",
-                color=:cyan)
-        end
-    end
-    function foo(f)
-        Re = (P / f)^(1 / 5)
-        ε = ε_turb
-        1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
-    end
-    f = newtonraphson(foo, 1e-2, 1e-4)
-    Re = (P / f)^(1 / 5)
-
-    if Re < 2.3e3
+    if lam
         Re = (P / 64)^(1 / 4)
         f = 64 / Re
-        turb = false
-        moody = Moody(Re, f, ε)
-    else
-        turb = true
-        moody = Moody(Re, f, ε_turb)
+        if Re < 4e3
+            moody_lam = Moody(Re, f, ε)
+            if msgs && Re > 2.3e3
+                printstyled(string(
+                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                    ), color=:cyan)
+            end
+        else
+            lam = false
+        end
+    end
+
+    if turb
+        ε_turb = ε
+        if ε_turb > 5e-2
+            ε_turb = 5e-2
+            ε_reassign = true
+        else
+            ε_reassign = false
+        end
+        function foo(f)
+            Re = (P / f)^(1 / 5)
+            ε = ε_turb
+            1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
+        end
+        f = newtonraphson(foo, 1e-2, 1e-4)
+        Re = (P / f)^(1 / 5)
+        if Re > 2.3e3
+            moody_turb = Moody(Re, f, ε_turb)
+            if msgs && ε_reassign
+                printstyled(
+                    "Be aware that pipe relative roughness for turbulent flow is reassigned to ε = 5e-2. All other parameters are unchanged.\n",
+                    color=:cyan)
+            end
+        else
+            turb = false
+        end
     end
 
     if fig
@@ -90,13 +107,24 @@ function hQeps2fRe(;
         else
             doPlot()
         end
-        plot!(
-            [Re],
-            [f],
-            seriestype=:scatter,
-            markerstrokecolor=:red,
-            color=:red
-        )
+        if turb
+            plot!(
+                [moody_turb.Re],
+                [moody_turb.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
+        if lam
+            plot!(
+                [moody_lam.Re],
+                [moody_lam.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
         plot!(
             (P ./ [6e-3, 1e-1]) .^ (1 / 5),
             [6e-3, 1e-1],
@@ -107,5 +135,72 @@ function hQeps2fRe(;
         display(plot!())
     end
 
-    moody
+    if lam && turb
+        moody_lam, moody_turb
+    elseif lam
+        moody_lam
+    elseif turb
+        moody_turb
+    else
+        if msgs
+            printstyled(
+                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                color=:cyan)
+        end
+    end
+
+
+
+
+    #     ε_turb = ε
+    #     if ε_turb > 5e-2
+    #         ε_turb = 5e-2
+    #         if msgs
+    #             printstyled(
+    #                 "Be aware that pipe relative roughness for turbulent flow is reassigned to ε = 5e-2. All other parameters are unchanged.\n",
+    #                 color=:cyan)
+    #         end
+    #     end
+    #     function foo(f)
+    #         Re = (P / f)^(1 / 5)
+    #         ε = ε_turb
+    #         1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
+    #     end
+    #     f = newtonraphson(foo, 1e-2, 1e-4)
+    #     Re = (P / f)^(1 / 5)
+
+    #     if Re < 2.3e3
+    #         Re = (P / 64)^(1 / 4)
+    #         f = 64 / Re
+    #         turb = false
+    #         moody = Moody(Re, f, ε)
+    #     else
+    #         turb = true
+    #         moody = Moody(Re, f, ε_turb)
+    #     end
+
+    #     if fig
+    #         if turb
+    #             doPlot(ε_turb)
+    #         else
+    #             doPlot()
+    #         end
+    #         plot!(
+    #             [Re],
+    #             [f],
+    #             seriestype=:scatter,
+    #             markerstrokecolor=:red,
+    #             color=:red
+    #         )
+    #         plot!(
+    #             (P ./ [6e-3, 1e-1]) .^ (1 / 5),
+    #             [6e-3, 1e-1],
+    #             seriestype=:line,
+    #             color=:red,
+    #             linestyle=:dash
+    #         )
+    #         display(plot!())
+    #     end
+
+    #     moody
 end

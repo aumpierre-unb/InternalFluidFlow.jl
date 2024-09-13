@@ -54,18 +54,48 @@ Examples
 ==========
 Compute the Reynolds number Re and
 the Darcy friction factor f given
-the head loss h = 40 cm,
-the pipe hydraulic diameter D = 4 in,
+the head loss h = 262 mm,
+the pipe hydraulic diameter D = 10 mm,
 the pipe length L = 25 m and
-the pipe relative roughness ε = 0.0021 for water flow.
+the pipe relative roughness ε = 0,
+the fluid density ρ = 0.989 g/cc and
+the fluid dynamic viscosity μ = 0.89 cP.
+In this case, both laminar and turbulent
+solutions are possible (at their limit bounds!):
 ```
 julia> h2fRe( # Reynolds number Re and Darcy friction factor f
-       h=40, # head loss in cm
-       D=4*2.54, # pipe hyraulic diameter in cm
+       h=262e-1, # head loss in cm
+       D=10e-1, # volumetric flow rate in cc/s
        L=25e2, # pipe length in cm
-       ε=0.0027 # pipe relative roughness
+       ε=0, # pipe relative roughness
+       ρ=0.989, # fluid dynamic density in g/cc
+       μ=8.9e-3,fig=true # fluid dynamic viscosity in g/cm/s
        )
-InternalFluidFlow.Moody(121961.49911803538, 0.02656820010563398, 0.0027)
+Be aware that laminar flow bounds extends up to Re = 4e3.
+(InternalFluidFlow.Moody(3967.280262309052, 0.016131958361507454, 0.0), InternalFluidFlow.Moody(2320.5810994094313, 0.047149745642806745, 0.0))
+```
+
+Compute the Reynolds number Re and
+the Darcy friction factor f given
+the head loss h = 270 mm,
+the pipe hydraulic diameter D = 10 mm,
+the pipe length L = 25 m and
+the pipe relative roughness ε = 0.02,
+the fluid density ρ = 0.989 g/cc and
+the fluid dynamic viscosity μ = 0.89 cP.
+This is an extraordinary case, where there is no solution
+within laminar bound (Re < 4e3) and
+within turbulent bounds (Re < 2.3e3) and
+h2fRe returns `Nothing`:
+```
+julia> h2fRe( # Reynolds number Re and Darcy friction factor f
+       h=270e-1, # head loss in cm
+       D=10e-1, # volumetric flow rate in cc/s
+       L=25e2, # pipe length in cm
+       ε=0.02, # pipe relative roughness
+       ρ=0.989, # fluid dynamic density in g/cc
+       μ=8.9e-3,fig=true # fluid dynamic viscosity in g/cm/s
+       )
 ```
 
 Compute the Reynolds number Re and

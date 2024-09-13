@@ -53,60 +53,88 @@ function hQthk2fRe(;
     μ::Number,
     g::Number=981,
     fig::Bool=false,
+    lam::Bool=true,
+    turb::Bool=true,
     msgs::Bool=true
 )
     P = 2 * g * h * Q^3 / (π / 4)^3 / (μ / ρ)^5 / L
 
-    function foo(f)
-        Re = (P / f)^(1 / 5)
-        D = ρ * Q / (π / 4) / μ / Re
-        ε = k / D
-        1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
-    end
-    f = newtonraphson(foo, 1e-2, 1e-4)
-    Re = (P / f)^(1 / 5)
-    D = ρ * Q / Re / μ / (π / 4)
-    ε = k / D
-    if ε > 5e-2
-        ε = 5e-2
-        ε_reassign=true
-    else
-        ε_reassign=false
-    end
-    moody = hQeps2fRe(
-        h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ
-    )
-    if moody.Re < 2.3e3
+    if lam
         Re = (P / 64)^(1 / 4)
         f = 64 / Re
         D = ρ * Q / Re / μ / (π / 4)
         ε = k / D
-        turb = false
-        moody = Moody(Re, f, ε)
-    else
-        turb = true
-        D = ρ * Q / moody.Re / μ / (π / 4)
-        k = ε * D
-        if msgs && ε_reassign
-            printstyled(string(
-                    "Be aware that pipe roughness for turbulent flow is reassigned to k = ", k, " cm. All other parameters are unchanged.\n"
-                ), color=:cyan)
+        if Re < 4e3
+            moody_lam = Moody(Re, f, ε)
+            if msgs && Re > 2.3e3
+                printstyled(string(
+                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                    ), color=:cyan)
+            end
+        else
+            lam = false
         end
     end
 
+    if turb
+        function foo(f)
+            Re = (P / f)^(1 / 5)
+            D = ρ * Q / (π / 4) / μ / Re
+            ε = k / D
+            f = 1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
+            f
+        end
+        f = newtonraphson(foo, 1e-2, 1e-4)
+        Re = (P / f)^(1 / 5)
+        D = ρ * Q / (π / 4) / μ / Re
+        ε_turb = k / D
+        if ε_turb > 5e-2
+            ε_turb = 5e-2
+            ε_reassign = true
+        else
+            ε_reassign = false
+        end
+        moody_turb = hQeps2fRe(
+            h=h, Q=Q, L=L, ε=ε_turb, ρ=ρ, μ=μ, lam=false, fig=false
+        )
+        if moody_turb.Re > 2.3e3
+            D = ρ * Q / (π / 4) / μ / moody_turb.Re
+            k = ε_turb * D
+            if msgs && ε_reassign
+                printstyled(string(
+                        "Be aware that pipe roughness for turbulent flow is reassigned to k = ", k, " cm. All other parameters are unchanged.\n"
+                    ), color=:cyan)
+            end
+        else
+            turb = false
+        end
+    end
+
+
     if fig
         if turb
-            doPlot(ε)
+            doPlot(ε_turb)
         else
             doPlot()
         end
-        plot!(
-            [moody.Re],
-            [moody.f],
-            seriestype=:scatter,
-            markerstrokecolor=:red,
-            color=:red
-        )
+        if turb
+            plot!(
+                [moody_turb.Re],
+                [moody_turb.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
+        if lam
+            plot!(
+                [moody_lam.Re],
+                [moody_lam.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
         plot!(
             (P ./ [6e-3, 1e-1]) .^ (1 / 5),
             [6e-3, 1e-1],
@@ -117,5 +145,17 @@ function hQthk2fRe(;
         display(plot!())
     end
 
-    moody
+    if lam && turb
+        moody_lam, moody_turb
+    elseif lam
+        moody_lam
+    elseif turb
+        moody_turb
+    else
+        if msgs
+            printstyled(
+                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                color=:cyan)
+        end
+    end
 end

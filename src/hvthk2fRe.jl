@@ -89,11 +89,14 @@ function hvthk2fRe(;
         function foo(f)
             Re = f / M
             D = Re * μ / ρ / v
-            ε = k / D
-            1 / f^(1 / 2) + 2 * log10(ε / 3.7 + 2.51 / Re / f^(1 / 2))
+            ε_turb = k / D
+            f = 1 / f^(1 / 2) + 2 * log10(ε_turb / 3.7 + 2.51 / Re / f^(1 / 2))
+            f
         end
         f = newtonraphson(foo, 1e-2, 1e-4)
         Re = f / M
+        D = Re * μ / ρ / v
+        ε_turb = k / D
         if Re > 2.3e3
             D = Re * μ / ρ / v
             ε_turb = k / D

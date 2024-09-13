@@ -53,30 +53,47 @@ function hDeps2fRe(;
     μ::Number,
     g::Number=981,
     fig::Bool=false,
+    lam::Bool=true,
+    turb::Bool=true,
     msgs::Bool=true
 )
     K = 2 * g * h * ρ^2 * D^3 / μ^2 / L
 
-    ε_turb = ε
-    if ε_turb > 5e-2
-        ε_turb = 5e-2
-        if msgs
-            printstyled(
-                "Be aware that pipe relative roughness for turbulent flow is reassigned to ε = 5e-2. All other parameters are unchanged.\n",
-                color=:cyan)
-        end
-    end
-    f = (-2 * log10(ε_turb / 3.7 + 2.51 / K^(1 / 2)))^-2
-    Re = (K / f)^(1 / 2)
-
-    if Re < 2.3e3
+    if lam
         Re = K / 64
         f = 64 / Re
-        turb = false
-        moody = Moody(Re, f, ε)
-    else
-        turb = true
-        moody = Moody(Re, f, ε_turb)
+        if Re < 4e3
+            moody_lam = Moody(Re, f, ε)
+            if msgs && Re > 2.3e3
+                printstyled(string(
+                        "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
+                    ), color=:cyan)
+            end
+        else
+            lam = false
+        end
+    end
+
+    if turb
+        ε_turb = ε
+        if ε_turb > 5e-2
+            ε_turb = 5e-2
+            ε_reassign = true
+        else
+            ε_reassign = false
+        end
+        f = (-2 * log10(ε_turb / 3.7 + 2.51 / K^(1 / 2)))^-2
+        Re = (K / f)^(1 / 2)
+        if Re > 2.3e3
+            moody_turb = Moody(Re, f, ε_turb)
+            if msgs && ε_reassign
+                printstyled(
+                    "Be aware that pipe relative roughness for turbulent flow is reassigned to ε = 5e-2. All other parameters are unchanged.\n",
+                    color=:cyan)
+            end
+        else
+            turb = false
+        end
     end
 
     if fig
@@ -85,13 +102,24 @@ function hDeps2fRe(;
         else
             doPlot()
         end
-        plot!(
-            [Re],
-            [f],
-            seriestype=:scatter,
-            markerstrokecolor=:red,
-            color=:red
-        )
+        if turb
+            plot!(
+                [moody_turb.Re],
+                [moody_turb.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
+        if lam
+            plot!(
+                [moody_lam.Re],
+                [moody_lam.f],
+                seriestype=:scatter,
+                markerstrokecolor=:red,
+                color=:red
+            )
+        end
         plot!(
             (K ./ [6e-3, 1e-1]) .^ (1 / 2),
             [6e-3, 1e-1],
@@ -102,5 +130,17 @@ function hDeps2fRe(;
         display(plot!())
     end
 
-    moody
+    if lam && turb
+        moody_lam, moody_turb
+    elseif lam
+        moody_lam
+    elseif turb
+        moody_turb
+    else
+        if msgs
+            printstyled(
+                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                color=:cyan)
+        end
+    end
 end

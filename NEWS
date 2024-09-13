@@ -2,8 +2,8 @@
 
 ### InternalFluidFlow 2.0.0-alpha (2024-09-10)
 * Main and internal functions reformulated
+* All functions now scan for solutions within the laminar (Re < 4e3) and the turbulent (Re > 2.3e3) bounds
 * D, v, and Q are now keyword arguments in h2fRe
-* Re2f function provides laminar and turbulent solutions, if possible (laminar if Re < 4e3 and turbulent if Re > 2.3e3)
 * Computed values now are presented as structure Moody(Re, f, ε)
 * Moody diagrams display more turbulent lines, with relative roughness identified at the right margin
 * doPlot function is available to plot schematic Moody diagram
