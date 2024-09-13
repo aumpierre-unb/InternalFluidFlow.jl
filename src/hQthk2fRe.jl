@@ -145,16 +145,17 @@ function hQthk2fRe(;
         display(plot!())
     end
 
-    if msgs && !lam && !turb
-        printstyled(
-            "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
-            color=:cyan)
-    end
     if lam && turb
         moody_lam, moody_turb
     elseif lam
         moody_lam
     elseif turb
         moody_turb
+    else
+        if msgs
+            printstyled(
+                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                color=:cyan)
+        end
     end
 end
