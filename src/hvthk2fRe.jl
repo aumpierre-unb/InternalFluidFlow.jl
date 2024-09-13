@@ -75,7 +75,7 @@ function hvthk2fRe(;
             D = Re * μ / ρ / v
             ε = k / D
             moody_lam = Moody(Re, f, ε)
-            if msgs && Re > 2.3e3
+            if msgs && 2.3e3 < Re < 4e3
                 printstyled(
                     "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
                     color=:cyan)

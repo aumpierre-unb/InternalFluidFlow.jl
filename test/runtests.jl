@@ -13,6 +13,15 @@ using Test
         moody.Re - 119032 < 1 && moody.f - 0.0265 < 1e-4
     end
 
+    @test isnothing( # Re > 4e3 for laminar and Re < 2.3e3 for turbulent
+        InternalFluidFlow.h2fRe(
+            h=1.8,
+            D=1 * 2.54,
+            L=25e2,
+            ε=0.027
+        )
+    )
+
     @test isnothing( # k and ε can not both be given
         InternalFluidFlow.h2fRe(
             h=40,

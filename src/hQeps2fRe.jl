@@ -76,10 +76,15 @@ function hQeps2fRe(;
 
     if Re < 2.3e3
         Re = (P / 64)^(1 / 4)
-        if msgs && Re > 2.3e3
+        if msgs && 2.3e3 < Re < 4e3
             printstyled(
                 "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
                 color=:cyan)
+        else
+            printstyled(
+                "No solution found for laminar flow (Re < 4e3) or turbulent flow (Re > 2.3e3).\n",
+                color=:cyan)
+            return
         end
         f = 64 / Re
         turb = false
