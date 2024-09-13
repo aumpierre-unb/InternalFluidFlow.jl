@@ -69,7 +69,8 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        L=25e2, # pipe length in cm
        ε=0, # pipe relative roughness
        ρ=0.989, # fluid dynamic density in g/cc
-       μ=8.9e-3,fig=true # fluid dynamic viscosity in g/cm/s
+       μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
+       fig=true # show plot
        )
 Be aware that laminar flow bounds extends up to Re = 4e3.
 (InternalFluidFlow.Moody(3967.280262309052, 0.016131958361507454, 0.0), InternalFluidFlow.Moody(2320.5810994094313, 0.047149745642806745, 0.0))
@@ -94,7 +95,8 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        L=25e2, # pipe length in cm
        ε=0.02, # pipe relative roughness
        ρ=0.989, # fluid dynamic density in g/cc
-       μ=8.9e-3,fig=true # fluid dynamic viscosity in g/cm/s
+       μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
+       fig=true # show plot
        )
 ```
 
