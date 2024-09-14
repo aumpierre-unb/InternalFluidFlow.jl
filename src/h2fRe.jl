@@ -202,8 +202,17 @@ function h2fRe(;
         return
     end
 
-    if a == [1, 0, 0]
+    if a == [1, 0, 0] && b == [1, 0]
         hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+    elseif a == [1, 0, 0] && b == [0, 1]
+        if msgs
+            printstyled(
+                string(
+                    "Be aware that pipe relative roughness is assigned to ε = k / D = ", k / D, ".\n"
+                ), color=:cyan
+            )
+        end
+        hDeps2fRe(h=h, D=D, L=L, ε=k / D, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [1, 0]
         hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [0, 1]
