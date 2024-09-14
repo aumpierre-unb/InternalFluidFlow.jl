@@ -20,19 +20,17 @@ the Darcy friction factor f given
 the head loss h in cm,
 the pipe hydraulic diameter D in cm or
 the flow speed v in cm/s or
-the volumetric flow rate Q in cc/s,
+the volumetric flow rate Q in cc/s `(D or Q or v)`,
 the pipe length L in cm (default L = 100 cm),
-the pipe roughness k in cm (default k = 0 cm) or
-the pipe relative roughness ε (default ε = 0),
+the pipe roughness k in cm or
+the pipe relative roughness ε `(ε or k)`,
 the fluid density ρ in g/cc (default ρ = 0.997 g/cc),
 the fluid dynamic viscosity μ in g/cm/s (default μ = 0.0091 g/cm/s), and
 the gravitational accelaration g in cm/s/s (default g = 981 cm/s/s).
 
-By default, pipe is assumed to be 1 m long,
-L = 100 (in cm).
-
-By default, pipe is assumed to be smooth (ε = 0).
-If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
+By default,pipe is assumed to be 1 m long, L = 100 (in cm),
+gravitational acceleration is assumed to be g = 981 (in cm/s/s), and
+fluid is assumed to be water at 25 °C, ρ = 0.997 (in g/cc) and μ = 0.0091 (in P).
 
 Notice that default values are given in the cgs unit system and,
 if taken, all other parameters must as well be given in cgs units.
@@ -224,14 +222,7 @@ function h2fRe(;
     if a == [1, 0, 0] && b == [1, 0]
         hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [1, 0, 0] && b == [0, 1]
-        if msgs
-            printstyled(
-                string(
-                    "Be aware that pipe relative roughness is assigned to ε = k / D = ", k / D, ".\n"
-                ), color=:cyan
-            )
-        end
-        hDeps2fRe(h=h, D=D, L=L, ε=k / D, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hDthk2fRe(h=h, D=D, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [1, 0]
         hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [0, 1]
