@@ -150,12 +150,8 @@ function f2Re(;
         end
     end
 
-    if fig && (lam || turb)
-        if turb
-            doPlot(ε_turb)
-        else
-            doPlot()
-        end
+    if fig
+        doPlot(ε_turb)
         if turb
             plot!(
                 [moody_turb.Re],
