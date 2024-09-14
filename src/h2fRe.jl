@@ -222,7 +222,7 @@ function h2fRe(;
     if a == [1, 0, 0] && b == [1, 0]
         hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [1, 0, 0] && b == [0, 1]
-        hDthk2fRe(h=h, D=D, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hDeps2fRe(h=h, D=D, L=L, ε=k / D, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [1, 0]
         hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
     elseif a == [0, 1, 0] && b == [0, 1]
