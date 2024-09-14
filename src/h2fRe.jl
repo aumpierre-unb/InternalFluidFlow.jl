@@ -101,6 +101,25 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
 ```
 
 Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 30 mm,
+the pipe hydraulic diameter D = 10 mm,
+the pipe length L = 25 m and
+the pipe roughness k = 3 mm,
+for water flow.
+In this case, pipe roughness is converted to relative roughness ε = k / D and `h2fRe` is called again:
+```
+julia> h2fRe( # Reynolds number Re and Darcy friction factor f
+       h=30e-1, # head loss in cm
+       D=10e-1, # pipe hyraulic diameter in cm
+       L=25e2, # pipe length in cm
+       k=3e-1 # pipe relative roughness
+       )
+Be aware that pipe relative roughness is assigned to ε = k / D = 0.3.
+InternalFluidFlow.Moody(441.57838530974516, 0.14493463024714673, 0.3)
+```
+
+Compute the Reynolds number Re and
 the Darcy friction factor f given
 the head loss per meter h/L = 1.6 cm/m,
 the volumetric flow rate Q = 8.6 L/s,
