@@ -111,7 +111,7 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        h=40, # head loss in cm
        D=10e-1, # pipe hyraulic diameter in cm
        L=25e2, # pipe length in cm
-       k=0.30e-1,fig=true # pipe relative roughness
+       k=0.30e-1 # pipe relative roughness
        )
 InternalFluidFlow.Moody(2349.5105756354287, 0.06826085272582728, 0.03)
 ```
