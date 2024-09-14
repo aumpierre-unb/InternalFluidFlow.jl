@@ -113,7 +113,6 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        L=25e2, # pipe length in cm
        k=3e-1 # pipe relative roughness
        )
-Be aware that pipe relative roughness is assigned to ε = k / D = 0.3.
 InternalFluidFlow.Moody(441.57838530974516, 0.14493463024714673, 0.3)
 ```
 
