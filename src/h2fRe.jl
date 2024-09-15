@@ -28,6 +28,13 @@ the fluid density ρ in g/cc (default ρ = 0.997 g/cc),
 the fluid dynamic viscosity μ in g/cm/s (default μ = 0.0091 g/cm/s), and
 the gravitational accelaration g in cm/s/s (default g = 981 cm/s/s).
 
+`h2fRe` returns solutions found both
+within laminar (Re < 4e3) and
+within turbulent (Re < 2.3e3) bounds.
+
+There is the possibility of not finding any solution
+if hydraulic diameter is given (see on examples).
+
 By default,pipe is assumed to be 1 m long, L = 100 (in cm),
 gravitational acceleration is assumed to be g = 981 (in cm/s/s), and
 fluid is assumed to be water at 25 °C, ρ = 0.997 (in g/cc) and μ = 0.0091 (in P).
@@ -40,8 +47,11 @@ a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
 
-If flow speed is given, both laminar and turbulent flow
-bounds are considered for possible solutions.
+If lam = false is given
+then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If turb = false is given
+then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `h2fRe` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -194,6 +204,8 @@ function h2fRe(;
     μ::Number=0.0091,
     g::Number=981,
     fig::Bool=false,
+    lam::Bool=true,
+    turb::Bool=true,
     msgs::Bool=true
 )
     a = isnan.([D, v, Q]) .!= 1
@@ -219,16 +231,16 @@ function h2fRe(;
     end
 
     if a == [1, 0, 0] && b == [1, 0]
-        hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
     elseif a == [1, 0, 0] && b == [0, 1]
-        hDeps2fRe(h=h, D=D, L=L, ε=k / D, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hDeps2fRe(h=h, D=D, L=L, ε=k / D, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
     elseif a == [0, 1, 0] && b == [1, 0]
-        hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
     elseif a == [0, 1, 0] && b == [0, 1]
-        hvthk2fRe(h=h, v=v, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hvthk2fRe(h=h, v=v, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
     elseif a == [0, 0, 1] && b == [1, 0]
-        hQeps2fRe(h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hQeps2fRe(h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
     elseif a == [0, 0, 1] && b == [0, 1]
-        hQthk2fRe(h=h, Q=Q, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, msgs=msgs)
+        hQthk2fRe(h=h, Q=Q, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
     end
 end

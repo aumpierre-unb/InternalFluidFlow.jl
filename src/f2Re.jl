@@ -15,6 +15,13 @@ the Darcy friction factor f and
 the relative roughness ε
 for both laminar and turbulent regime, if possible.
 
+`f2Re` returns solutions found both
+within laminar (Re < 4e3) and
+within turbulent (Re < 2.3e3) bounds.
+
+There is the possibility of not finding any solution if friction factor is
+too low for laminar flow or too high for turbulent flow (see on examples).
+
 By default, pipe is assumed to be smooth (ε = 0).
 If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
