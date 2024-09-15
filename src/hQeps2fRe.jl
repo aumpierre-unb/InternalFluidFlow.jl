@@ -128,7 +128,7 @@ function hQeps2fRe(;
         if msgs
             printstyled(
                 "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
-                color=:cyan)
+                color=:red)
         end
     end
 end
