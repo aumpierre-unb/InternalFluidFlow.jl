@@ -86,7 +86,7 @@ function Re2f(;
             if msgs && Re > 2.3e3
                 printstyled(
                     "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
-                    color=:cyan)
+                    color=:magenta)
             end
             f = 64 / Re
             lam = true

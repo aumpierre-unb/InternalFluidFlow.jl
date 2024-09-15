@@ -52,7 +52,7 @@ function hQthk2fRe(;
             if msgs && Re > 2.3e3
                 printstyled(string(
                         "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
-                    ), color=:cyan)
+                    ), color=:magenta)
             end
         else
             lam = false
@@ -78,9 +78,9 @@ function hQthk2fRe(;
             ε_reassign = false
         end
         moody_turb = hQeps2fRe(
-            h=h, Q=Q, L=L, ε=ε_turb, ρ=ρ, μ=μ, lam=false, fig=false
+            h=h, Q=Q, L=L, ε=ε_turb, ρ=ρ, μ=μ, lam=false, fig=false, msgs=false
         )
-        if moody_turb.Re > 2.3e3
+        if !isnothing(moody_turb) && moody_turb.Re > 2.3e3
             D = ρ * Q / (π / 4) / μ / moody_turb.Re
             k = ε_turb * D
             if msgs && ε_reassign

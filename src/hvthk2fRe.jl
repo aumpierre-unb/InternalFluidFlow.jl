@@ -55,7 +55,7 @@ function hvthk2fRe(;
             if msgs && 2.3e3 < Re < 4e3
                 printstyled(
                     "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
-                    color=:cyan)
+                    color=:magenta)
             end
         else
             lam = false

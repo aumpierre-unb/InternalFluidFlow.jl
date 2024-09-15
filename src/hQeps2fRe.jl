@@ -50,7 +50,7 @@ function hQeps2fRe(;
             if msgs && Re > 2.3e3
                 printstyled(string(
                         "Be aware that laminar flow bounds extends up to Re = 4e3.\n",
-                    ), color=:cyan)
+                    ), color=:magenta)
             end
         else
             lam = false
