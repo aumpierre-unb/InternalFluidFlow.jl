@@ -213,7 +213,7 @@ function h2fRe(;
         if msgs
             printstyled(
                 "h2fRe requires that either the hydraulic diameter, the flow speed or the volumetric flow rate be given alone.\n",
-                color=:cyan
+                color=:red
             )
         end
         return
@@ -224,7 +224,7 @@ function h2fRe(;
         if msgs
             printstyled(
                 "h2fRe requires that either the pipe roughness or the pipe relative roughness be given alone.\n",
-                color=:cyan
+                color=:red
             )
         end
         return

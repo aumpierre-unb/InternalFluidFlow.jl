@@ -147,6 +147,14 @@ function f2Re(;
         end
     end
 
+    if !lam && !turb
+        if msgs
+            printstyled(
+                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                color=:red)
+        end
+    end
+
     if fig
         doPlot(ε_turb)
         if turb
@@ -183,11 +191,5 @@ function f2Re(;
         moody_lam
     elseif turb
         moody_turb
-    else
-        if msgs
-            printstyled(
-                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
-                color=:red)
-        end
     end
 end
