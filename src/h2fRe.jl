@@ -53,7 +53,7 @@ If turb = false is given then
 
 It is possible that no solution be found
 neither within laminar nor within turbulent bounds (see on examples).
-If msgs = false is not given, user will noticed.
+Unless msgs = false is given, user will noticed.
 
 If fig = true is given
 a schematic Moody diagram
