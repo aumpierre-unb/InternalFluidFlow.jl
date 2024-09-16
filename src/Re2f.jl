@@ -3,10 +3,10 @@
 Re2f(; # Darcy friction factor
     Re::Number, # Reynolds number
     ε::Number=0, # relative roughness
-    fig::Bool=false, # default hide plot
-    lam::Bool=true, # check on laminar flow bounds
-    turb::Bool=true, # check on turbulent flow bounds
-    msgs::Bool=true # show warning message
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
+    fig::Bool=false # default is hide plot
     )
 ```
 
@@ -14,19 +14,19 @@ Re2f(; # Darcy friction factor
 the Reynolds number Re and
 the relative roughness ε.
 
-By default, pipe is assumed to be smooth (ε = 0).
+Pipe is assumed to be smooth (default is ε = 0).
 If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
+
+If lam = false is given
+then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If turb = false is given
+then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 If fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
-
-If lam = false is given
-then `Re2f` disregards the laminar flow bounds (Re < 4e3).
-
-If turb = false is given
-then `Re2f` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `Re2f` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -55,7 +55,7 @@ julia> Re2f( # Darcy friction factor
        Re=120e3, # Reynolds number
        ε=6e-2 # relative roughness
        )
-Be aware that ε was reassigned to 5e-2.
+Be aware that pipe roughness for turbulent flow is reassigned to ε = 5e-2.
 InternalFluidFlow.Moody(120000.0, 0.07174263668795722, 0.05)
 ```
 
@@ -76,10 +76,10 @@ Be aware that laminar flow bounds extends up to Re = 4e3.
 function Re2f(;
     Re::Number,
     ε::Number=0,
-    fig::Bool=false,
     lam::Bool=true,
     turb::Bool=true,
-    msgs::Bool=true
+    msgs::Bool=true,
+    fig::Bool=false
 )
     if lam
         if Re < 4e3

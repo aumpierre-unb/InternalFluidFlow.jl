@@ -11,6 +11,9 @@ h2fRe(; # Reynolds number Re and Darcy friction factor f
     ρ::Number=0.997, # fluid dynamic density in g/cc
     μ::Number=0.0091, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
     fig::Bool=false # default is hide plot
     )
 ```
@@ -29,29 +32,33 @@ the fluid dynamic viscosity μ in g/cm/s (default μ = 0.0091 g/cm/s), and
 the gravitational accelaration g in cm/s/s (default g = 981 cm/s/s).
 
 `h2fRe` returns solutions found both
-within laminar (Re < 4e3) and
-within turbulent (Re < 2.3e3) bounds.
+within laminar (Re < 4e3) and within turbulent (Re < 2.3e3) bounds.
 
-There is the possibility of not finding any solution
-if hydraulic diameter is given (see on examples).
+Pipe is assumed to be 100 cm long (default is L = 100).
 
-By default,pipe is assumed to be 1 m long, L = 100 (in cm),
-gravitational acceleration is assumed to be g = 981 (in cm/s/s), and
-fluid is assumed to be water at 25 °C, ρ = 0.997 (in g/cc) and μ = 0.0091 (in P).
+Fluid is assumed to be water at 25 °C, with
+0.997 g/cc density and 0.0091 g/cm/s dynamic viscosity
+(default is ρ = 0.997 and μ = 0.0091).
 
-Notice that default values are given in the cgs unit system and,
-if taken, all other parameters must as well be given in cgs units.
+Gravitational acceleration is assumed to be 981 cm/s/s (default is g = 981).
+
+Notice that default parameters are given in the cgs unit system and
+all parameters must be given in a consistent unit system.
+
+If lam = false is given then
+`f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If turb = false is given then
+`f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
+
+It is possible that no solution be found
+neither within laminar nor within turbulent bounds (see on examples).
+If msgs = false is not given, user will noticed.
 
 If fig = true is given
 a schematic Moody diagram
 is plotted as a graphical representation
 of the solution.
-
-If lam = false is given
-then `f2Re` disregards the laminar flow bounds (Re < 4e3).
-
-If turb = false is given
-then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
 `h2fRe` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -93,7 +100,7 @@ the pipe relative roughness ε = 0.02,
 the fluid density ρ = 0.989 g/cc and
 the fluid dynamic viscosity μ = 0.89 cP.
 This is an extraordinary situation as there is no solution
-within laminar bound (Re < 4e3) and
+within laminar bounds (Re < 4e3) and
 within turbulent bounds (Re > 2.3e3) and
 `h2fRe` returns `Nothing`:
 ```
@@ -106,6 +113,7 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
        fig=true # show plot
        )
+There is no solution within laminar bounds (Re < 4e3) or within turbulent bounds (Re < 2.3e3).
 ```
 
 Compute the Reynolds number Re and
@@ -189,7 +197,7 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        )
 Be aware that laminar flow bounds extends up to Re = 4e3.
 Be aware that pipe roughness for turbulent flow is reassigned to k = 0.20701973225753548 cm. All other parameters are unchanged.
-(InternalFluidFlow.Moody(3009.806001282173, 0.021263828955333366, 0.4186133772104648), InternalFluidFlow.Moody(10433.339517357244, 0.07370998224985127, 0.05))
+(InternalFluidFlow.Moody(3009.806001282173, 0.021263828955333366, 0.2511680263262789), InternalFluidFlow.Moody(10433.339517357244, 0.07370998224985127, 0.05))
 ```
 """
 function h2fRe(;
@@ -203,10 +211,10 @@ function h2fRe(;
     ρ::Number=0.997,
     μ::Number=0.0091,
     g::Number=981,
-    fig::Bool=false,
     lam::Bool=true,
     turb::Bool=true,
-    msgs::Bool=true
+    msgs::Bool=true,
+    fig::Bool=false
 )
     a = isnan.([D, v, Q]) .!= 1
     if sum(a) != 1

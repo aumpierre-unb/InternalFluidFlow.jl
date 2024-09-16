@@ -60,17 +60,26 @@ InternalFluidFlow provides the following functions:
 
 ### **Re2f**
 
-`Re2f` computes the Darcy friction f factor given the Reynolds number Re and the relative roughness ε.
+`Re2f` computes the Darcy friction f factor given
+the Reynolds number Re and
+the relative roughness ε.
 
-By default, pipe is assumed to be smooth (ε = 0). If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
-
-If fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+Pipe is assumed to be smooth (default is ε = 0).
+If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 If lam = false is given
-then `Re2f` disregards the laminar flow bounds (Re < 4e3).
+then `f2Re` disregards the laminar flow bounds (Re < 4e3).
 
 If turb = false is given
-then `Re2f` disregards the turbulent flow bounds (Re > 2.3e3).
+then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
+
+If fig = true is given
+a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
+
+`Re2f` is a main function of
+the `InternalFluidFlow` toolbox for Julia.
 
 **Syntax:**
 
@@ -78,7 +87,10 @@ then `Re2f` disregards the turbulent flow bounds (Re > 2.3e3).
 Re2f(; # Darcy friction factor
     Re::Number, # Reynolds number
     ε::Number=0, # relative roughness
-    fig::Bool=false # show plot
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
+    fig::Bool=false # default is hide plot
     )
 ```
 
@@ -122,11 +134,17 @@ Re2f( # Darcy friction factor
 
 ### **f2Re**
 
-`f2Re` computes the Reynolds number Re given the Darcy friction factor f and the relative roughness ε for both laminar and turbulent regime, if possible.
+`f2Re` computes the Reynolds number Re given
+the Darcy friction factor f and
+the relative roughness ε
+for both laminar and turbulent regime, if possible.
 
-By default, pipe is assumed to be smooth (ε = 0). If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
+`f2Re` returns solutions found both
+within laminar (Re < 4e3) and
+within turbulent (Re < 2.3e3) bounds.
 
-If fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+Pipe is assumed to be smooth (default is ε = 0).
+If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 If lam = false is given
 then `f2Re` disregards the laminar flow bounds (Re < 4e3).
@@ -134,15 +152,25 @@ then `f2Re` disregards the laminar flow bounds (Re < 4e3).
 If turb = false is given
 then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
 
+It is possible that no solution be found
+neither within laminar nor within turbulent bounds (see on examples).
+If msgs = false is not given, user will noticed.
+
+If fig = true is given
+a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
+
 **Syntax:**
 
 ```julia
 f2Re(; # Reynolds number
     f::Number, # Darcy friction factor
     ε::Number=0, # relative roughness, default is smooth pipe
-    fig::Bool=false, # default hide plot
-    turbulent::Bool=false, # default disregard turbulent flow
-    msgs::Bool=true # default not msgs messages
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
+    fig::Bool=false # default is hide plot
     )
 ```
 
@@ -203,25 +231,54 @@ f2Re( # Reynolds number
 
 ### **h2fRe**
 
-`h2fRe` computes the Reynolds number Re and Darcy friction factor f given the head loss h, the pipe hydraulic diameter D or the flow speed v or the volumetric flow rate Q, the pipe length L (default L = 100 cm), the pipe roughness k (default k = 0 cm) or the pipe relative roughness ε (default ε = 0), the fluid density ρ (default ρ = 0.997 g/cc), the fluid dynamic viscosity μ (default μ = 0.0091 g/cm/s), and the gravitational accelaration g (default g = 981 cm/s/s).
+`h2fRe` computes the Reynolds number Re and
+the Darcy friction factor f given
+the head loss h in cm,
+the pipe hydraulic diameter D in cm or
+the flow speed v in cm/s or
+the volumetric flow rate Q in cc/s `(D or Q or v)`,
+the pipe length L in cm (default L = 100 cm),
+the pipe roughness k in cm or
+the pipe relative roughness ε `(ε or k)`,
+the fluid density ρ in g/cc (default ρ = 0.997 g/cc),
+the fluid dynamic viscosity μ in g/cm/s (default μ = 0.0091 g/cm/s), and
+the gravitational accelaration g in cm/s/s (default g = 981 cm/s/s).
 
-By default, pipe is assumed to be 1 m long, L = 100 (in cm).
+`h2fRe` returns solutions found both
+within laminar (Re < 4e3) and within turbulent (Re < 2.3e3) bounds.
 
-By default, pipe is assumed to be smooth (ε = 0). If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
+Pipe is assumed to be 100 cm long (default is L = 100).
 
-Notice that default values are given in the cgs unit system and, if taken, all other parameters must as well be given in cgs units.
+Fluid is assumed to be water at 25 °C, with
+0.997 g/cc density and 0.0091 g/cm/s dynamic viscosity
+(default is ρ = 0.997 and μ = 0.0091).
 
-If fig = true is given a schematic Moody diagram is plotted as a graphical representation of the solution.
+Gravitational acceleration is assumed to be 981 cm/s/s (default is g = 981).
 
-If flow speed is given, both laminar and turbulent flow
-bounds are considered for possible solutions.
+Notice that default parameters are given in the cgs unit system and
+all parameters must be given in a consistent unit system.
+
+If lam = false is given then
+`f2Re` disregards the laminar flow bounds (Re < 4e3).
+
+If turb = false is given then
+`f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
+
+It is possible that no solution be found
+neither within laminar nor within turbulent bounds (see on examples).
+If msgs = false is not given, user will noticed.
+
+If fig = true is given
+a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 **Syntax:**
 
 ```julia
 h2fRe(; # Reynolds number Re and Darcy friction factor f
-    h::Number, # head loss in cm
-    L::Number=100, # pipe length in cm, default is 100 cm
+    h::Number; # head loss in cm
+    L::Number=100, # pipe length in cm
     ε::Number=NaN, # pipe relative roughness
     k::Number=NaN, # pipe roughness in cm
     D::Number=NaN, # pipe hydraulic diameter in cm
@@ -230,6 +287,9 @@ h2fRe(; # Reynolds number Re and Darcy friction factor f
     ρ::Number=0.997, # fluid dynamic density in g/cc
     μ::Number=0.0091, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
     fig::Bool=false # default is hide plot
     )
 ```
@@ -238,17 +298,67 @@ h2fRe(; # Reynolds number Re and Darcy friction factor f
 
 Compute the Reynolds number Re and
 the Darcy friction factor f given
-the head loss h = 40 cm,
-the pipe hydraulic diameter D = 4 in,
+the head loss h = 262 mm,
+the pipe hydraulic diameter D = 10 mm,
 the pipe length L = 25 m and
-the pipe relative roughness ε = 0.0021 for water flow.
+the pipe relative roughness ε = 0,
+the fluid density ρ = 0.989 g/cc and
+the fluid dynamic viscosity μ = 0.89 cP.
+In this case, both laminar and turbulent
+solutions are possible (at their limit bounds!):
+
+```julia
+h2fRe( # Reynolds number Re and Darcy friction factor f
+     h=262e-1, # head loss in cm
+     D=10e-1, # volumetric flow rate in cc/s
+     L=25e2, # pipe length in cm
+     ε=0, # pipe relative roughness
+     ρ=0.989, # fluid dynamic density in g/cc
+     μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
+     fig=true # show plot
+     )
+```
+
+Compute the Reynolds number Re and
+the Darcy friction factor f given
+the head loss h = 270 mm,
+the pipe hydraulic diameter D = 10 mm,
+the pipe length L = 25 m and
+the pipe relative roughness ε = 0.02,
+the fluid density ρ = 0.989 g/cc and
+the fluid dynamic viscosity μ = 0.89 cP.
+This is an extraordinary situation as there is no solution
+within laminar bounds (Re < 4e3) and
+within turbulent bounds (Re > 2.3e3) and
+`h2fRe` returns `Nothing`:
+
+```julia
+h2fRe( # Reynolds number Re and Darcy friction factor f
+     h=270e-1, # head loss in cm
+     D=10e-1, # volumetric flow rate in cc/s
+     L=25e2, # pipe length in cm
+     ε=0.02, # pipe relative roughness
+     ρ=0.989, # fluid dynamic density in g/cc
+     μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
+     fig=true # show plot
+     )
+```
+
+Compute the Reynolds number Re and
+the Darcy friction factor f, given
+the head loss h = 40 cm,
+the pipe hydraulic diameter D = 10 mm,
+the pipe length L = 25 m and
+the pipe roughness k = 0.30 mm,
+for water flow.
+In this case, pipe roughness is converted to relative roughness ε = k / D and `h2fRe` is called again:
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
      h=40, # head loss in cm
-     D=4*2.54, # pipe hyraulic diameter in cm
+     D=10e-1, # pipe hyraulic diameter in cm
      L=25e2, # pipe length in cm
-     ε=0.0027 # pipe relative roughness
+     k=0.30e-1 # pipe relative roughness
      )
 ```
 
@@ -277,7 +387,7 @@ the Darcy friction factor f, given
 the head loss h = 0.30 m,
 the flow speed v = 25 cm/s,
 the pipe length L = 25 m,
-the pipe roughness 0.02 cm
+the pipe roughness k = 0.02 cm
 for water flow and
 show results on a schematic Moody diagram.
 In this case, both laminar and turbulent
@@ -318,20 +428,28 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
 
 ### **doPlot**
 
-doPlot produces a schematic Moody diagram..
+`doPlot` produces a schematic Moody diagram
+including the line for ε
+(default is smooth pipe, ε = 0).
 
 **Syntax:**
 
 ```julia
-doPlot()
+doPlot(
+    ε::Number=0 # pipe relative roughness
+    )
 ```
 
 **Examples:**
 
-Build a schematic Moody diagram.
+Build a schematic Moody diagram
+with one extra line for turbulent flow
+with ε = 4.5e-3.
 
 ```julia
-doPlot()
+doPlot(
+      ε = 4.5e-3 # extra turbulent line in Moody diagram
+      )
 ```
 
 ### See Also

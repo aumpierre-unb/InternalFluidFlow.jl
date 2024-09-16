@@ -8,10 +8,10 @@ hveps2fRe(; # Reynolds number Re and Darcy friction factor f
     ρ::Number=NaN, # fluid dynamic density in g/cc
     μ::Number=NaN, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
-    fig::Bool=false, # default is hide plot
-    lam::Bool=true, # check on laminar flow bounds
-    turb::Bool=true, # check on turbulent flow bounds
-    msgs::Bool=true # show warning message
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
+    fig::Bool=false # default is hide plot
     )
 ```
 
@@ -38,10 +38,10 @@ function hveps2fRe(;
     ρ::Number,
     μ::Number,
     g::Number=981,
-    fig::Bool=false,
     lam::Bool=true,
     turb::Bool=true,
-    msgs::Bool=true
+    msgs::Bool=true,
+    fig::Bool=false
 )
     M = 2 * g * μ * h / v^3 / ρ / L
 

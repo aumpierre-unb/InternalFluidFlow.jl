@@ -16,17 +16,12 @@ See also: `Re2f`, `f2Re` and `h2fRe`.
 
 Examples
 ==========
-Build a schematic Moody diagram.
-```
-julia> doPlot()
-```
-
 Build a schematic Moody diagram
 with one extra line for turbulent flow
 with ε = 4.5e-3.
 ```
 julia> doPlot(
-       ε = 4.5e-3
+       ε = 4.5e-3 # extra turbulent line in Moody diagram
        )
 ```
 """

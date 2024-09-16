@@ -3,10 +3,10 @@
 f2Re(; # Reynolds number
     f::Number, # Darcy friction factor
     ε::Number=0, # relative roughness, default is smooth pipe
-    fig::Bool=false, # default hide plot
-    lam::Bool=true, # check on laminar flow bounds
-    turb::Bool=true, # check on turbulent flow bounds
-    msgs::Bool=true # show warning message
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
+    fig::Bool=false # default is hide plot
     )
 ```
 
@@ -19,22 +19,23 @@ for both laminar and turbulent regime, if possible.
 within laminar (Re < 4e3) and
 within turbulent (Re < 2.3e3) bounds.
 
-There is the possibility of not finding any solution if friction factor is
-too low for laminar flow or too high for turbulent flow (see on examples).
-
-By default, pipe is assumed to be smooth (ε = 0).
+Pipe is assumed to be smooth (default is ε = 0).
 If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
-
-If fig = true is given
-a schematic Moody diagram
-is plotted as a graphical representation
-of the solution.
 
 If lam = false is given
 then `f2Re` disregards the laminar flow bounds (Re < 4e3).
 
 If turb = false is given
 then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
+
+It is possible that no solution be found
+neither within laminar nor within turbulent bounds (see on examples).
+If msgs = false is not given, user will noticed.
+
+If fig = true is given
+a schematic Moody diagram
+is plotted as a graphical representation
+of the solution.
 
 `f2Re` is a main function of
 the `InternalFluidFlow` toolbox for Julia.
@@ -53,7 +54,6 @@ julia> f2Re( # Reynolds number
        f=2.8e-2, # Darcy friction factor
        ε=5e-3 # relative roughness
        )
-Friction factor is too high for turbulent flow with given relative roughness.
 InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.005)
 ```
 
@@ -68,7 +68,6 @@ julia> f2Re( # Reynolds number
        ε=5e-3 # relative roughness
        )
 Be aware that laminar flow bounds extends up to Re = 4e3.
-Friction factor is too high for turbulent flow with given relative roughness.
 InternalFluidFlow.Moody(3555.5555555555557, 0.018, 0.005)
 ```
 
@@ -82,8 +81,7 @@ julia> f2Re( # Reynolds number
        f=1.2e-2, # Darcy friction factor
        ε=9e-3 # relative roughness
        )
-Friction factor is too low for laminar flow.
-Friction factor is too high for turbulent flow with given relative roughness.
+There is no solution within laminar bounds (Re < 4e3) or within turbulent bounds (Re < 2.3e3).
 ```
 
 Compute the Reynolds number Re given
@@ -103,10 +101,10 @@ julia> f2Re( # Reynolds number
 function f2Re(;
     f::Number,
     ε::Number=0,
-    fig::Bool=false,
     lam::Bool=true,
     turb::Bool=true,
-    msgs::Bool=true
+    msgs::Bool=true,
+    fig::Bool=false
 )
     if lam
         Re = 64 / f
@@ -150,7 +148,7 @@ function f2Re(;
     if !lam && !turb
         if msgs
             printstyled(
-                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                "There is no solution within laminar bounds (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
                 color=:red)
         end
     end

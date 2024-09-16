@@ -8,6 +8,9 @@ hQthk2fRe(; # Reynolds number Re and Darcy friction factor f
     ρ::Number=NaN, # fluid dynamic density in g/cc
     μ::Number=NaN, # fluid dynamic viscosity in g/cm/s
     g::Number=981, # gravitational accelaration in cm/s/s
+    lam::Bool=true, # default is search within laminar bounds
+    turb::Bool=true, # default is search within turbulent bounds
+    msgs::Bool=true, # default is show warning messages
     fig::Bool=false # default is hide plot
     )
 ```
@@ -35,10 +38,10 @@ function hQthk2fRe(;
     ρ::Number,
     μ::Number,
     g::Number=981,
-    fig::Bool=false,
     lam::Bool=true,
     turb::Bool=true,
-    msgs::Bool=true
+    msgs::Bool=true,
+    fig::Bool=false
 )
     P = 2 * g * h * Q^3 / (π / 4)^3 / (μ / ρ)^5 / L
 
@@ -137,7 +140,7 @@ function hQthk2fRe(;
     else
         if msgs
             printstyled(
-                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                "There is no solution within laminar bounds (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
                 color=:red)
         end
     end
