@@ -53,7 +53,7 @@ function doPlot(
         yticks=([i for i in f_vals], [i for i in f_ticks])
     )
 
-    ε_ticks = ("0.00001", "0.00003", "0.0001", "0.0003", "0.001", "0.003", "0.01", "0.02", "0.05")
+    ε_ticks = ("0.00001", "0.00003", "0.0001", "0.0003", "0.001", "0.003", "0.01", "0.02", "0.03", "0.05")
     ε_vals = parse.(Float64, ε_ticks)
     for i in eachindex(ε_vals)
         turb(ε_vals[i])
