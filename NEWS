@@ -1,9 +1,11 @@
 ### TODO
 
-### InternalFluidFlow 2.0.0-alpha (2024-09-14)
+### InternalFluidFlow 2.0.0-alpha (2024-09-16)
 * Main and internal functions reformulated
 * All functions now scan for solutions within the laminar (Re < 4e3) and the turbulent (Re > 2.3e3) bounds
-* D, v, and Q are now keyword arguments in h2fRe
+* D, v, and Q are now keyword arguments in h2fRe function
+* f is a keyword arguments in f2Re function
+* Re is a keyword arguments in Re2f function
 * h2fRe function now accepts pipe roughness
 * Computed values now are presented as structure Moody(Re, f, ε)
 * Moody diagrams now display more turbulent lines, with relative roughness identified at the right margin
