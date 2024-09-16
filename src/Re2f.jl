@@ -141,7 +141,8 @@ function Re2f(;
             )
         end
         plot!(
-            [Re, Re], [6e-3, 1e-1],
+            [Re, Re],
+            [6e-3, 1e-1],
             seriestype=:line,
             color=:red,
             linestyle=:dash

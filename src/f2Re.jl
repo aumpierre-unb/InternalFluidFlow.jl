@@ -119,11 +119,6 @@ function f2Re(;
             end
         else
             lam = false
-            if msgs
-                printstyled(
-                    "Friction factor is too low for laminar flow.\n",
-                    color=:cyan)
-            end
         end
     end
 
@@ -149,11 +144,6 @@ function f2Re(;
             end
         else
             turb = false
-            if msgs
-                printstyled(
-                    "Friction factor is too high for turbulent flow with given relative roughness.\n",
-                    color=:cyan)
-            end
         end
     end
 
@@ -178,7 +168,8 @@ function f2Re(;
             )
         end
         plot!(
-            [1e2, 1e8], [f, f],
+            [1e2, 1e8],
+            [f, f],
             seriestype=:line,
             color=:red,
             linestyle=:dash
@@ -192,5 +183,11 @@ function f2Re(;
         moody_lam
     elseif turb
         moody_turb
+    else
+        if msgs
+            printstyled(
+                "There is no solution within laminar bound (Re < 4e3) or within turbulent bounds (Re < 2.3e3).\n",
+                color=:red)
+        end
     end
 end
