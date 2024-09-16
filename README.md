@@ -68,10 +68,10 @@ Pipe is assumed to be smooth (default is ε = 0).
 If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 If lam = false is given
-then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+then `Re2f` disregards the laminar flow bounds (Re < 4e3).
 
 If turb = false is given
-then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
+then `Re2f` disregards the turbulent flow bounds (Re > 2.3e3).
 
 If fig = true is given
 a schematic Moody diagram
@@ -259,10 +259,10 @@ Notice that default parameters are given in the cgs unit system and
 all parameters must be given in a consistent unit system.
 
 If lam = false is given then
-`f2Re` disregards the laminar flow bounds (Re < 4e3).
+`h2fRe` disregards the laminar flow bounds (Re < 4e3).
 
 If turb = false is given then
-`f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
+`h2fRe` disregards the turbulent flow bounds (Re > 2.3e3).
 
 It is possible that no solution be found
 neither within laminar nor within turbulent bounds (see on examples).
