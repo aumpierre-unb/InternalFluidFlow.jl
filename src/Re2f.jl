@@ -18,10 +18,10 @@ Pipe is assumed to be smooth (default is ε = 0).
 If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
 
 If lam = false is given
-then `f2Re` disregards the laminar flow bounds (Re < 4e3).
+then `Re2f` disregards the laminar flow bounds (Re < 4e3).
 
 If turb = false is given
-then `f2Re` disregards the turbulent flow bounds (Re > 2.3e3).
+then `Re2f` disregards the turbulent flow bounds (Re > 2.3e3).
 
 If fig = true is given
 a schematic Moody diagram
