@@ -16,7 +16,7 @@ using Test
     @test isnothing( # Re > 4e3 for laminar and Re < 2.3e3 for turbulent
         InternalFluidFlow.h2fRe(
             h=1.8,
-            D=1 * 2.54,
+            D=2.54,
             L=25e2,
             ε=0.027,
             msgs=false

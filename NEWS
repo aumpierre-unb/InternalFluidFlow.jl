@@ -1,5 +1,8 @@
 ### TODO
 
+### InternalFluidFlow 2.0.1-alpha (2024-09-18)
+* Minor changes
+
 ### InternalFluidFlow 2.0.0 (2024-09-17)
 * Main and internal functions reformulated
 * All functions now scan for solutions within the laminar (Re < 4e3) and the turbulent (Re > 2.3e3) bounds
