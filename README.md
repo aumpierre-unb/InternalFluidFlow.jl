@@ -65,7 +65,10 @@ the Reynolds number Re and
 the relative roughness ε.
 
 Pipe is assumed to be smooth (default is ε = 0).
-If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
+The upper limit for relative roughness is ε = 0.05.
+If given relative roughness ε > 0.05 is out of bounds then
+relative roughness is reassigned to ε = 0.05 for tubulent flow.
+Unless msgs = false is given, user will noticed.
 
 If lam = false is given
 then `Re2f` disregards the laminar flow bounds (Re < 4e3).
@@ -144,7 +147,10 @@ within laminar (Re < 4e3) and
 within turbulent (Re < 2.3e3) bounds.
 
 Pipe is assumed to be smooth (default is ε = 0).
-If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
+The upper limit for relative roughness is ε = 0.05.
+If given relative roughness ε > 0.05 is out of bounds then
+relative roughness is reassigned to ε = 0.05 for tubulent flow.
+Unless msgs = false is given, user will noticed.
 
 If lam = false is given
 then `f2Re` disregards the laminar flow bounds (Re < 4e3).
@@ -258,6 +264,11 @@ Gravitational acceleration is assumed to be 981 cm/s/s (default is g = 981).
 Notice that default parameters are given in the cgs unit system and
 all parameters must be given in a consistent unit system.
 
+The upper limit for relative roughness is ε = 0.05.
+If either given or calculated relative roughness ε > 0.05 is out of bounds then
+relative roughness is reassigned to ε = 0.05 for tubulent flow.
+Unless msgs = false is given, user will noticed.
+
 If lam = false is given then
 `h2fRe` disregards the laminar flow bounds (Re < 4e3).
 
@@ -358,7 +369,7 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
      h=40, # head loss in cm
      D=10e-1, # pipe hyraulic diameter in cm
      L=25e2, # pipe length in cm
-     k=0.30e-1 # pipe relative roughness
+     k=0.30e-1 # pipe  roughness in cm
      )
 ```
 
@@ -376,7 +387,7 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
      h=1.6*25, # head loss in cm
      Q=8.6e3, # volumetric flow rate in cc/s
      L=25e2, # pipe length in cm
-     k=0.08, # pipe relative roughness
+     k=0.08, # pipe roughness in cm
      ρ=0.989, # fluid dynamic density in g/cc
      μ=8.9e-3 # fluid dynamic viscosity in g/cm/s
      )

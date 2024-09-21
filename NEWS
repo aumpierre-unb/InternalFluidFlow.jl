@@ -1,7 +1,9 @@
 ### TODO
 
-### InternalFluidFlow 2.0.1-alpha (2024-09-18)
-* Minor changes
+### InternalFluidFlow 2.0.1-alpha (2024-09-20)
+* hDthk2fRe introduced as internal function
+* Warning message in h2fRe function is fixed for the case where pipe roughness in given instead of pipe relative roughness
+* Minor changes on documentation
 
 ### InternalFluidFlow 2.0.0 (2024-09-17)
 * Main and internal functions reformulated

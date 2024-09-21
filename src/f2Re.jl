@@ -20,7 +20,10 @@ within laminar (Re < 4e3) and
 within turbulent (Re < 2.3e3) bounds.
 
 Pipe is assumed to be smooth (default is ε = 0).
-If ε > 0.05, relative roughness is reset to upper limit ε = 0.05.
+The upper limit for relative roughness is ε = 0.05.
+If given relative roughness ε > 0.05 is out of bounds then
+relative roughness is reassigned to ε = 0.05 for tubulent flow.
+Unless msgs = false is given, user will noticed.
 
 If lam = false is given
 then `f2Re` disregards the laminar flow bounds (Re < 4e3).
