@@ -179,7 +179,7 @@ f2Re(; # Reynolds number
     turb::Bool=true, # default is search within turbulent bounds
     msgs::Bool=true, # default is show warning messages
     fig::Bool=false # default is hide plot
-    )
+    )::Moody
 ```
 
 **Examples:**
@@ -309,7 +309,7 @@ h2fRe(; # Reynolds number Re and Darcy friction factor f
     turb::Bool=true, # default is search within turbulent bounds
     msgs::Bool=true, # default is show warning messages
     fig::Bool=false # default is hide plot
-    )
+    )::Moody
 ```
 
 **Examples:**
