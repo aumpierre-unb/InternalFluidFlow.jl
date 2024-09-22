@@ -1,8 +1,10 @@
 @doc raw"""
-`InternalFluidFlow` provides a set of functions designed to solve problems 
-of steady incompressible internal fluid flow. All functions are based on the Poiseuille condition 
-for laminar flow, the Colebrook-White equation for turbulent flow, 
-and the Darcy-Weisbach equation for head loss.
+`InternalFluidFlow` provides a set of functions designed
+to solve problems of steady incompressible internal fluid flow.
+All functions are based on
+the Poiseuille condition for laminar flow,
+the Colebrook-White equation for turbulent flow and
+the Darcy-Weisbach equation for head loss.
 
 Author: Alexandre Umpierre `aumpierre@gmail.com`
 
