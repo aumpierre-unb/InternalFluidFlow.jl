@@ -1,16 +1,18 @@
 ### TODO
 
-### InternalFluidFlow 2.0.1-alpha (2024-09-20)
+### InternalFluidFlow 2.1.0-alpha (2024-09-21)
 * hDthk2fRe introduced as internal function
 * Warning message in h2fRe function is fixed for the case where pipe roughness in given instead of pipe relative roughness
+* ε is now a keyword arguments in doPlot function
+* doPlot function now accepts custom basckground color
 * Minor changes on documentation
 
 ### InternalFluidFlow 2.0.0 (2024-09-17)
 * Main and internal functions reformulated
 * All functions now scan for solutions within the laminar (Re < 4e3) and the turbulent (Re > 2.3e3) bounds
 * D, v, and Q are now keyword arguments in h2fRe function
-* f is a keyword arguments in f2Re function
-* Re is a keyword arguments in Re2f function
+* f is now a nukeyword arguments in f2Re function
+* Re is now a keyword arguments in Re2f function
 * h2fRe function now accepts pipe roughness
 * Computed values now are presented as structure Moody(Re, f, ε)
 * Moody diagrams now display more turbulent lines, with relative roughness identified at the right margin

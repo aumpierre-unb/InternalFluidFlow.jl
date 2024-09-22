@@ -14,8 +14,9 @@ h2fRe(; # Reynolds number Re and Darcy friction factor f
     lam::Bool=true, # default is search within laminar bounds
     turb::Bool=true, # default is search within turbulent bounds
     msgs::Bool=true, # default is show warning messages
-    fig::Bool=false # default is hide plot
-    )
+    fig::Bool=false, # default is hide plot
+    back::Symbol=:white # figure background is white
+    )::Moody
 ```
 
 `h2fRe` computes the Reynolds number Re and
@@ -83,7 +84,7 @@ the fluid dynamic viscosity μ = 0.89 cP.
 In this case, both laminar and turbulent
 solutions are possible (at their limit bounds!):
 ```
-julia> h2fRe( # Reynolds number Re and Darcy friction factor f
+julia> flow = h2fRe( # Reynolds number Re and Darcy friction factor f
        h=262e-1, # head loss in cm
        D=10e-1, # volumetric flow rate in cc/s
        L=25e2, # pipe length in cm
@@ -94,6 +95,14 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
        )
 Be aware that laminar flow bounds extends up to Re = 4e3.
 (InternalFluidFlow.Moody(3967.280262309052, 0.016131958361507454, 0.0), InternalFluidFlow.Moody(2320.5810994094313, 0.047149745642806745, 0.0))
+
+julia> lam, turb = flow; # laminar flow and turbulent flow
+
+julia> lam.Re # Re of the laminar flow
+3967.280262309052
+
+julia> turb.f # f of the turb flow
+0.047149745642806745
 ```
 
 Compute the Reynolds number Re and
@@ -193,7 +202,7 @@ solutions are possible,
 however laminar flow is extended to Re = 4e3 and
 relative roughness is reassigned to maximum ε = 5e-2 for tubulent flow:
 ```
-julia> h2fRe( # Reynolds number Re and Darcy friction factor f
+julia> flow = h2fRe( # Reynolds number Re and Darcy friction factor f
        h=0.12e2, # head loss in cm
        v=23, # flow speed in cm/s
        L=25e2, # pipe length in cm
@@ -203,7 +212,20 @@ julia> h2fRe( # Reynolds number Re and Darcy friction factor f
 Be aware that laminar flow bounds extends up to Re = 4e3.
 Be aware that pipe roughness for turbulent flow is reassigned to k = 0.20701973225753548 cm. All other parameters are unchanged.
 (InternalFluidFlow.Moody(3009.806001282173, 0.021263828955333366, 0.2511680263262789), InternalFluidFlow.Moody(10433.339517357244, 0.07370998224985127, 0.05))
-```
+
+julia> lam, turb = flow; # laminar flow and turbulent flow
+
+julia> lam.Re # Re of the laminar flow
+3009.806001282173
+
+julia> lam.ε # ε of the laminar flow
+0.2511680263262789
+
+julia> turb.f # f of the turbulent flow
+0.07370998224985127
+
+julia> turb.ε # ε of the turbulent flow
+0.05```
 """
 function h2fRe(;
     h::Number,
@@ -219,7 +241,8 @@ function h2fRe(;
     lam::Bool=true,
     turb::Bool=true,
     msgs::Bool=true,
-    fig::Bool=false
+    fig::Bool=false,
+    back::Symbol=:white
 )
     a = isnan.([D, v, Q]) .!= 1
     if sum(a) != 1
@@ -244,16 +267,16 @@ function h2fRe(;
     end
 
     if a == [1, 0, 0] && b == [1, 0]
-        hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
+        hDeps2fRe(h=h, D=D, L=L, ε=ε, ρ=ρ, μ=μ, g=g, lam=lam, turb=turb, msgs=msgs, fig=fig, back=back)
     elseif a == [1, 0, 0] && b == [0, 1]
-        hDthk2fRe(h=h, D=D, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
+        hDthk2fRe(h=h, D=D, L=L, k=k, ρ=ρ, μ=μ, g=g, lam=lam, turb=turb, msgs=msgs, fig=fig, back=back)
     elseif a == [0, 1, 0] && b == [1, 0]
-        hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
+        hveps2fRe(h=h, v=v, L=L, ε=ε, ρ=ρ, μ=μ, g=g, lam=lam, turb=turb, msgs=msgs, fig=fig, back=back)
     elseif a == [0, 1, 0] && b == [0, 1]
-        hvthk2fRe(h=h, v=v, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
+        hvthk2fRe(h=h, v=v, L=L, k=k, ρ=ρ, μ=μ, g=g, lam=lam, turb=turb, msgs=msgs, fig=fig, back=back)
     elseif a == [0, 0, 1] && b == [1, 0]
-        hQeps2fRe(h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
+        hQeps2fRe(h=h, Q=Q, L=L, ε=ε, ρ=ρ, μ=μ, g=g, lam=lam, turb=turb, msgs=msgs, fig=fig, back=back)
     elseif a == [0, 0, 1] && b == [0, 1]
-        hQthk2fRe(h=h, Q=Q, L=L, k=k, ρ=ρ, μ=μ, g=g, fig=fig, lam=lam, turb=turb, msgs=msgs)
+        hQthk2fRe(h=h, Q=Q, L=L, k=k, ρ=ρ, μ=μ, g=g, lam=lam, turb=turb, msgs=msgs, fig=fig, back=back)
     end
 end

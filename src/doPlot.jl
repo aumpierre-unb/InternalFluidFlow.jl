@@ -1,7 +1,8 @@
 @doc raw"""
 ```
-doPlot(
-    ε::Number=0 # pipe relative roughness
+doPlot(;
+    ε::Number=0, # pipe relative roughness
+    back::Symbol=:white # background color
     )
 ```
 
@@ -17,16 +18,22 @@ See also: `Re2f`, `f2Re` and `h2fRe`.
 Examples
 ==========
 Build a schematic Moody diagram
+with transparent background
 with one extra line for turbulent flow
-with ε = 4.5e-3.
+with ε = 4.5e-3 and
+save figure as moodyDiagram_transparent.svg.
 ```
 julia> doPlot(
-       ε = 4.5e-3 # extra turbulent line in Moody diagram
+       ε=4.5e-3, # extra turbulent line in Moody diagram
+       back=:transparent # transparent background
        )
+julia> using Plots
+julia> savefig("moodyDiagram_transparent.svg")
 ```
 """
-function doPlot(
-    ε::Number=0
+function doPlot(;
+    ε::Number=0,
+    back::Symbol=:white
 )
     f_ticks = ("0.006", "0.01", "0.015", "0.02", "0.03", "0.05", "0.1")
     f_vals = parse.(Float64, f_ticks)
@@ -133,5 +140,7 @@ function doPlot(
         )
     end
 
-    display(plot!())
+    display(plot!(
+        background_color=back
+    ))
 end

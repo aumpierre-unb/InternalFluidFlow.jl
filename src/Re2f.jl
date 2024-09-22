@@ -6,8 +6,9 @@ Re2f(; # Darcy friction factor
     lam::Bool=true, # default is search within laminar bounds
     turb::Bool=true, # default is search within turbulent bounds
     msgs::Bool=true, # default is show warning messages
-    fig::Bool=false # default is hide plot
-    )
+    fig::Bool=false, # default is hide plot
+    back::Symbol=:white # figure background is white
+    )::Moody
 ```
 
 `Re2f` computes the Darcy friction f factor given
@@ -42,11 +43,15 @@ Compute the Darcy friction factor f given
 the Reynolds number Re = 120,000 and
 the relative roughness ε = 3e-3.
 ```
-julia> Re2f( # Darcy friction factor
+julia> flow = Re2f( # Darcy friction factor
        Re=120e3, # Reynolds number
        ε=3e-3 # relative roughness
        )
 InternalFluidFlow.Moody(120000.0, 0.02726577561075442, 0.003)
+
+julia> flow.Re # Re of the flow
+
+julia> flow.f # f of the flow
 ```
 
 Compute the Darcy friction factor f given
@@ -82,7 +87,8 @@ function Re2f(;
     lam::Bool=true,
     turb::Bool=true,
     msgs::Bool=true,
-    fig::Bool=false
+    fig::Bool=false,
+    back::Symbol=:white
 )
     if lam
         if Re < 4e3
@@ -121,7 +127,7 @@ function Re2f(;
 
     if fig
         if turb
-            doPlot(ε_turb)
+            doPlot(ε=ε_turb, back=back)
         else
             doPlot()
         end

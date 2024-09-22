@@ -6,8 +6,9 @@ f2Re(; # Reynolds number
     lam::Bool=true, # default is search within laminar bounds
     turb::Bool=true, # default is search within turbulent bounds
     msgs::Bool=true, # default is show warning messages
-    fig::Bool=false # default is hide plot
-    )
+    fig::Bool=false, # default is hide plot
+    back::Symbol=:white # figure background is white
+    )::Moody
 ```
 
 `f2Re` computes the Reynolds number Re given
@@ -53,11 +54,17 @@ the pipe relative roughness ε = 5e-3.
 In this case, only laminar
 solution is possible:
 ```
-julia> f2Re( # Reynolds number
+julia> flow = f2Re( # Reynolds number
        f=2.8e-2, # Darcy friction factor
        ε=5e-3 # relative roughness
        )
 InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.005)
+
+julia> flow.Re # Re of the laminar flow
+2285.714285714286
+
+julia> flow.f # f of the turbulent flow
+0.028
 ```
 
 Compute the Reynolds number Re given
@@ -94,11 +101,19 @@ show results on a schematic Moody diagram.
 In this case, both laminar and turbulent
 solutions are possible:
 ```
-julia> f2Re( # Reynolds number
+julia> flow = f2Re( # Reynolds number
        f=0.028, # Darcy friction factor
        fig=true # show plot
        )
 (InternalFluidFlow.Moody(2285.714285714286, 0.028, 0.0), InternalFluidFlow.Moody(14593.727381591969, 0.028, 0.0))
+
+julia> lam, turb = flow; # laminar flow and turbulent flow
+
+julia> lam.Re # Re of the laminar flow
+2285.714285714286
+
+julia> turb.f # f of the turbulent flow
+0.028
 ```
 """
 function f2Re(;
@@ -107,7 +122,8 @@ function f2Re(;
     lam::Bool=true,
     turb::Bool=true,
     msgs::Bool=true,
-    fig::Bool=false
+    fig::Bool=false,
+    back::Symbol=:white
 )
     if lam
         Re = 64 / f
@@ -157,7 +173,7 @@ function f2Re(;
     end
 
     if fig
-        doPlot(ε_turb)
+        doPlot(ε=ε_turb, back=back)
         if turb
             plot!(
                 [moody_turb.Re],

@@ -51,7 +51,7 @@ This DOI represents all versions, and will always resolve to the latest one.
 
 ## The InternalFluidFlow Module for Julia
 
-InternalFluidFlow provides the following functions:
+`InternalFluidFlow` provides the following functions:
 
 - **Re2f**
 - **f2Re**
@@ -94,7 +94,7 @@ Re2f(; # Darcy friction factor
     turb::Bool=true, # default is search within turbulent bounds
     msgs::Bool=true, # default is show warning messages
     fig::Bool=false # default is hide plot
-    )
+    )::Moody
 ```
 
 **Examples:**
@@ -104,10 +104,12 @@ the Reynolds number Re = 120,000 and
 the relative roughness ε = 3e-3.
 
 ```julia
-Re2f( # Darcy friction factor
+flow = Re2f( # Darcy friction factor
     Re=120e3, # Reynolds number
     ε=3e-3 # relative roughness
     )
+flow.Re # Re of the flow
+flow.f # f of the flow
 ```
 
 Compute the Darcy friction factor f given
@@ -189,10 +191,12 @@ In this case, only laminar
 solution is possible:
 
 ```julia
-f2Re( # Reynolds number
+flow = f2Re( # Reynolds number
     f=2.8e-2, # Darcy friction factor
     ε=5e-3 # relative roughness
     )
+flow.Re # Re of the laminar flow
+flow.f # f of the turbulent flow
 ```
 
 Compute the Reynolds number Re given
@@ -229,10 +233,13 @@ In this case, both laminar and turbulent
 solutions are possible:
 
 ```julia
-f2Re( # Reynolds number
+flow = f2Re( # Reynolds number
     f=0.028, # Darcy friction factor
     fig=true # show plot
     )
+lam, turb = flow; # laminar flow and turbulent flow
+lam.Re # Re of the laminar flow
+turb.f # f of the turbulent flow
 ```
 
 ### **h2fRe**
@@ -319,15 +326,18 @@ In this case, both laminar and turbulent
 solutions are possible (at their limit bounds!):
 
 ```julia
-h2fRe( # Reynolds number Re and Darcy friction factor f
-     h=262e-1, # head loss in cm
-     D=10e-1, # volumetric flow rate in cc/s
-     L=25e2, # pipe length in cm
-     ε=0, # pipe relative roughness
-     ρ=0.989, # fluid dynamic density in g/cc
-     μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
-     fig=true # show plot
-     )
+flow = h2fRe( # Reynolds number Re and Darcy friction factor f
+    h=262e-1, # head loss in cm
+    D=10e-1, # volumetric flow rate in cc/s
+    L=25e2, # pipe length in cm
+    ε=0, # pipe relative roughness
+    ρ=0.989, # fluid dynamic density in g/cc
+    μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
+    fig=true # show plot
+    )
+lam, turb = flow; # laminar flow and turbulent flow
+lam.Re # Re of the laminar flow
+turb.f # f of the turb flow
 ```
 
 Compute the Reynolds number Re and
@@ -345,14 +355,14 @@ within turbulent bounds (Re > 2.3e3) and
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-     h=270e-1, # head loss in cm
-     D=10e-1, # volumetric flow rate in cc/s
-     L=25e2, # pipe length in cm
-     ε=0.02, # pipe relative roughness
-     ρ=0.989, # fluid dynamic density in g/cc
-     μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
-     fig=true # show plot
-     )
+    h=270e-1, # head loss in cm
+    D=10e-1, # volumetric flow rate in cc/s
+    L=25e2, # pipe length in cm
+    ε=0.02, # pipe relative roughness
+    ρ=0.989, # fluid dynamic density in g/cc
+    μ=8.9e-3, # fluid dynamic viscosity in g/cm/s
+    fig=true # show plot
+    )
 ```
 
 Compute the Reynolds number Re and
@@ -366,11 +376,11 @@ In this case, pipe roughness is converted to relative roughness ε = k / D and `
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-     h=40, # head loss in cm
-     D=10e-1, # pipe hyraulic diameter in cm
-     L=25e2, # pipe length in cm
-     k=0.30e-1 # pipe  roughness in cm
-     )
+    h=40, # head loss in cm
+    D=10e-1, # pipe hyraulic diameter in cm
+    L=25e2, # pipe length in cm
+    k=0.30e-1 # pipe  roughness in cm
+    )
 ```
 
 Compute the Reynolds number Re and
@@ -384,13 +394,13 @@ the fluid dynamic viscosity μ = 0.89 cP.
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-     h=1.6*25, # head loss in cm
-     Q=8.6e3, # volumetric flow rate in cc/s
-     L=25e2, # pipe length in cm
-     k=0.08, # pipe roughness in cm
-     ρ=0.989, # fluid dynamic density in g/cc
-     μ=8.9e-3 # fluid dynamic viscosity in g/cm/s
-     )
+    h=1.6*25, # head loss in cm
+    Q=8.6e3, # volumetric flow rate in cc/s
+    L=25e2, # pipe length in cm
+    k=0.08, # pipe roughness in cm
+    ρ=0.989, # fluid dynamic density in g/cc
+    μ=8.9e-3 # fluid dynamic viscosity in g/cm/s
+    )
 ```
 
 Compute the Reynolds number Re and
@@ -406,12 +416,12 @@ solutions are possible:
 
 ```julia
 h2fRe( # Reynolds number Re and Darcy friction factor f
-     h=0.30e2, # head loss in cm
-     v=25, # flow speed in cm/s
-     L=25e2, # pipe length in cm
-     k=0.02, # pipe roughness in cm
-     fig=true # show plot
-     )
+    h=0.30e2, # head loss in cm
+    v=25, # flow speed in cm/s
+    L=25e2, # pipe length in cm
+    k=0.02, # pipe roughness in cm
+    fig=true # show plot
+    )
 ```
 
 Compute the Reynolds number Re and
@@ -428,39 +438,49 @@ however laminar flow is extended to Re = 4e3 and
 relative roughness is reassigned to maximum ε = 5e-2 for tubulent flow:
 
 ```julia
-h2fRe( # Reynolds number Re and Darcy friction factor f
-     h=0.12e2, # head loss in cm
-     v=23, # flow speed in cm/s
-     L=25e2, # pipe length in cm
-     k=0.3, # pipe roughness in cm
-     fig=true # show plot
-     )
+flow = h2fRe( # Reynolds number Re and Darcy friction factor f
+    h=0.12e2, # head loss in cm
+    v=23, # flow speed in cm/s
+    L=25e2, # pipe length in cm
+    k=0.3, # pipe roughness in cm
+    fig=true # show plot
+    )
+lam, turb = flow; # laminar flow and turbulent flow
+lam.Re # Re of the laminar flow
+lam.ε # ε of the laminar flow
+turb.f # f of the turbulent flow
+turb.ε # ε of the turbulent flow
 ```
 
 ### **doPlot**
 
 `doPlot` produces a schematic Moody diagram
-including the line for ε
+including the the turbulent line for given relative roughness ε
 (default is smooth pipe, ε = 0).
 
 **Syntax:**
 
 ```julia
-doPlot(
-    ε::Number=0 # pipe relative roughness
+doPlot(;
+    ε::Number=0, # pipe relative roughness
+    back::Symbol=:white # background color
     )
 ```
 
 **Examples:**
 
 Build a schematic Moody diagram
+with transparent background
 with one extra line for turbulent flow
 with ε = 4.5e-3.
 
 ```julia
 doPlot(
-      ε = 4.5e-3 # extra turbulent line in Moody diagram
-      )
+    ε=4.5e-3, # extra turbulent line in Moody diagram
+    back=:transparent # transparent background
+    )
+using Plots
+savefig("moodyDiagram_transparent.svg")
 ```
 
 ### See Also

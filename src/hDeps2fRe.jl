@@ -11,7 +11,8 @@ hDeps2fRe(; # Reynolds number Re and Darcy friction factor f
     lam::Bool=true, # default is search within laminar bounds
     turb::Bool=true, # default is search within turbulent bounds
     msgs::Bool=true, # default is show warning messages
-    fig::Bool=false # default is hide plot
+    fig::Bool=false, # default is hide plot
+    back::Symbol=:white # figure background is white
     )
 ```
 
@@ -41,7 +42,8 @@ function hDeps2fRe(;
     lam::Bool=true,
     turb::Bool=true,
     msgs::Bool=true,
-    fig::Bool=false
+    fig::Bool=false,
+    back::Symbol=:white
 )
     K = 2 * g * h * ρ^2 * D^3 / μ^2 / L
 
@@ -84,7 +86,7 @@ function hDeps2fRe(;
 
     if fig
         if turb
-            doPlot(ε_turb)
+            doPlot(ε=ε_turb, back=back)
         else
             doPlot()
         end
