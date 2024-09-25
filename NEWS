@@ -1,6 +1,6 @@
 ### TODO
 
-### InternalFluidFlow 2.1.0-alpha (2024-09-21)
+### InternalFluidFlow 2.1.0 (2024-09-25)
 * hDthk2fRe introduced as internal function
 * Warning message in h2fRe function is fixed for the case where pipe roughness in given instead of pipe relative roughness
 * ε is now a keyword arguments in doPlot function
