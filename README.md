@@ -67,7 +67,7 @@ the relative roughness ε.
 Pipe is assumed to be smooth (default is ε = 0).
 The upper limit for relative roughness is ε = 0.05.
 If given relative roughness ε > 0.05 is out of bounds then
-relative roughness is reassigned to ε = 0.05 for tubulent flow.
+relative roughness is reassigned to ε = 0.05 for turbulent flow.
 Unless msgs = false is given, user will noticed.
 
 If lam = false is given
@@ -151,7 +151,7 @@ within turbulent (Re < 2.3e3) bounds.
 Pipe is assumed to be smooth (default is ε = 0).
 The upper limit for relative roughness is ε = 0.05.
 If given relative roughness ε > 0.05 is out of bounds then
-relative roughness is reassigned to ε = 0.05 for tubulent flow.
+relative roughness is reassigned to ε = 0.05 for turbulent flow.
 Unless msgs = false is given, user will noticed.
 
 If lam = false is given
@@ -273,7 +273,7 @@ all parameters must be given in a consistent unit system.
 
 The upper limit for relative roughness is ε = 0.05.
 If either given or calculated relative roughness ε > 0.05 is out of bounds then
-relative roughness is reassigned to ε = 0.05 for tubulent flow.
+relative roughness is reassigned to ε = 0.05 for turbulent flow.
 Unless msgs = false is given, user will noticed.
 
 If lam = false is given then
@@ -366,7 +366,7 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
 ```
 
 Compute the Reynolds number Re and
-the Darcy friction factor f, given
+the Darcy friction factor fgiven
 the head loss h = 40 cm,
 the pipe hydraulic diameter D = 10 mm,
 the pipe length L = 25 m and
@@ -404,7 +404,7 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
 ```
 
 Compute the Reynolds number Re and
-the Darcy friction factor f, given
+the Darcy friction factor fgiven
 the head loss h = 0.30 m,
 the flow speed v = 25 cm/s,
 the pipe length L = 25 m,
@@ -425,7 +425,7 @@ h2fRe( # Reynolds number Re and Darcy friction factor f
 ```
 
 Compute the Reynolds number Re and
-the Darcy friction factor f, given
+the Darcy friction factor fgiven
 the head loss h = 0.12 m,
 the flow speed v = 23 cm/s,
 the pipe length L = 25 m,
@@ -435,7 +435,7 @@ show results on a schematic Moody diagram.
 In this case, both laminar and turbulent
 solutions are possible,
 however laminar flow is extended to Re = 4e3 and
-relative roughness is reassigned to maximum ε = 5e-2 for tubulent flow:
+relative roughness is reassigned to maximum ε = 5e-2 for turbulent flow:
 
 ```julia
 flow = h2fRe( # Reynolds number Re and Darcy friction factor f
@@ -485,10 +485,10 @@ savefig("moodyDiagram_transparent.svg")
 
 ### See Also
 
-[McCabeThiele.jl](https://github.com/aumpierre-unb/McCabeThiele.jl),
-[Psychrometrics.jl](https://github.com/aumpierre-unb/Psychrometrics.jl),
-[PonchonSavarit.jl](https://github.com/aumpierre-unb/PonchonSavarit.jl).
+<!-- [McCabeThiele.jl](https://github.com/aumpierre-unb/McCabeThiele.jl), -->
+<!-- [PonchonSavarit.jl](https://github.com/aumpierre-unb/PonchonSavarit.jl), -->
+[Psychrometrics.jl](https://github.com/aumpierre-unb/Psychrometrics.jl).
 
-Copyright &copy; 2022 2023 2024 Alexandre Umpierre
+Copyright &copy; 2022 2023 2024 2025 Alexandre Umpierre
 
 email: <aumpierre@gmail.com>

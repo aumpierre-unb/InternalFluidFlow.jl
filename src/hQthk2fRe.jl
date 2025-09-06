@@ -17,7 +17,7 @@ hQthk2fRe(; # Reynolds number Re and Darcy friction factor f
 ```
 
 `hQthk2fRe` computes the Reynolds number Re and
-the Darcy friction factor f, given
+the Darcy friction factor fgiven
 the head loss h,
 the volumetric flow rate Q,
 the pipe length L,

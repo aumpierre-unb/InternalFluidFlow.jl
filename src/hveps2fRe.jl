@@ -17,7 +17,7 @@ hveps2fRe(; # Reynolds number Re and Darcy friction factor f
 ```
 
 `hveps2fRe` computes the Reynolds number Re and
-the Darcy friction factor f, given
+the Darcy friction factor fgiven
 the head loss h,
 the flow speed v,
 the pipe length L,

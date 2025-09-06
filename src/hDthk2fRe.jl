@@ -17,7 +17,7 @@ hDthk2fRe(; # Reynolds number Re and Darcy friction factor f
 ```
 
 `hDthk2fRe` computes the Reynolds number Re and
-the Darcy friction factor f, given
+the Darcy friction factor fgiven
 the head loss h,
 the pipe hydraulic diameter D,
 the pipe length L,
